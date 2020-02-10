@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class PreviewCard extends Component {
   render() {
-    const {previewCardTitle} = this.props;
+    const {previewCardTitle, onPreviewCardTitleClick} = this.props;
     const previewCardImgSrcValue = `img/${
       previewCardTitle
       .slice()
@@ -19,7 +19,13 @@ export default class PreviewCard extends Component {
           <img src={previewCardImgSrcValue} alt={previewCardTitle} width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{previewCardTitle}</a>
+          <a
+            onClick={onPreviewCardTitleClick}
+            className="small-movie-card__link"
+            href="movie-page.html"
+          >
+            {previewCardTitle}
+          </a>
         </h3>
       </article>
     );
@@ -27,5 +33,6 @@ export default class PreviewCard extends Component {
 }
 
 PreviewCard.propTypes = {
-  previewCardTitle: PropTypes.string.isRequired
+  previewCardTitle: PropTypes.string.isRequired,
+  onPreviewCardTitleClick: PropTypes.func.isRequired,
 };

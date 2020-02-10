@@ -4,7 +4,7 @@ import PreviewCardsList from '../preview-cards-list/preview-cards-list.jsx';
 
 export default class Main extends Component {
   render() {
-    const {promoCardData, previewCardTitles} = this.props;
+    const {promoCardData, previewCardTitles, onPreviewCardTitleClick} = this.props;
     const {title: promoCardTitle, genre: promoCardGenre, date: promoCardReleaseDate} = promoCardData;
 
     return (
@@ -101,7 +101,10 @@ export default class Main extends Component {
               </li>
             </ul>
 
-            <PreviewCardsList previewCardTitles={previewCardTitles} />
+            <PreviewCardsList
+              previewCardTitles={previewCardTitles}
+              onPreviewCardTitleClick={onPreviewCardTitleClick}
+            />
 
             <div className="catalog__more">
               <button className="catalog__button" type="button">Show more</button>
@@ -134,5 +137,6 @@ Main.propTypes = {
     date: PropTypes.string.isRequired,
   }).isRequired,
   previewCardTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onPreviewCardTitleClick: PropTypes.func.isRequired,
 };
 

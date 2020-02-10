@@ -4,9 +4,13 @@ import PreviewCard from '../preview-card/preview-card.jsx';
 
 export default class PreviewCardsList extends Component {
   render() {
-    const {previewCardTitles} = this.props;
+    const {previewCardTitles, onPreviewCardTitleClick} = this.props;
     const previewCardElements = previewCardTitles
-      .map((title, i) => <PreviewCard key={`${i}-${title.slice(0, 2)}`} previewCardTitle={title} />);
+      .map((title, i) => <PreviewCard
+        key={`${i}-${title.slice(0, 2)}`}
+        previewCardTitle={title}
+        onPreviewCardTitleClick={onPreviewCardTitleClick}
+      />);
 
     return (
       <div className="catalog__movies-list">
@@ -18,4 +22,5 @@ export default class PreviewCardsList extends Component {
 
 PreviewCardsList.propTypes = {
   previewCardTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onPreviewCardTitleClick: PropTypes.func.isRequired,
 };
