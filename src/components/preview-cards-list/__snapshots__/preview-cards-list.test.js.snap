@@ -23,6 +23,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </a>
@@ -47,6 +48,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Revenant
       </a>
@@ -71,6 +73,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Johnny English
       </a>
@@ -95,6 +98,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Shutter Island
       </a>
@@ -119,6 +123,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Pulp Fiction
       </a>
@@ -143,6 +148,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         No Country for Old Men
       </a>
@@ -167,6 +173,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Snatch
       </a>
@@ -191,6 +198,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Moonrise Kingdom
       </a>
@@ -215,6 +223,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Seven Years in Tibet
       </a>
@@ -239,6 +248,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Midnight Special
       </a>
@@ -263,6 +273,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         War of the Worlds
       </a>
@@ -287,6 +298,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Dardjeeling Limited
       </a>
@@ -311,6 +323,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Orlando
       </a>
@@ -335,6 +348,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Mindhunter
       </a>
@@ -359,6 +373,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
+        onClick={[Function]}
       >
         Midnight Special
       </a>

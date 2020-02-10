@@ -22,7 +22,10 @@ const previewCardTitles = [
 
 it(`Should PreviewCardsList render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCardsList previewCardTitles={previewCardTitles} />)
+    .create(<PreviewCardsList
+      previewCardTitles={previewCardTitles}
+      onPreviewCardTitleClick={() => {}}
+    />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

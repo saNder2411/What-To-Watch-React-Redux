@@ -6,7 +6,10 @@ const previewCardTitle = `Bohemian Rhapsody`;
 
 it(`Should PreviewCard render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCard previewCardTitle={previewCardTitle} />)
+    .create(<PreviewCard
+      previewCardTitle={previewCardTitle}
+      onPreviewCardTitleClick={() => {}}
+    />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

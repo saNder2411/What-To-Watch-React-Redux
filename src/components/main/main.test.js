@@ -26,7 +26,11 @@ const previewCardTitles = [
 
 it(`Should Main render correctly`, () => {
   const markup = renderer
-    .create(<Main promoCardData={promoCardData} previewCardTitles={previewCardTitles} />)
+    .create(<Main
+      promoCardData={promoCardData}
+      previewCardTitles={previewCardTitles}
+      onPreviewCardTitleClick={() => {}}
+    />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();
