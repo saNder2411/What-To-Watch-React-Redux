@@ -19,10 +19,11 @@ const mockEvt = {
   },
 };
 
+const onMouseOver = jest.fn();
+const onClick = jest.fn();
+
 it(`When you hover over the card, the id of the card enters the handler`, () => {
   const {id} = mock;
-  const onMouseOver = jest.fn();
-  const onClick = jest.fn();
   const previewCard = shallow(
       <PreviewCard
         previewCardData={mock}
@@ -34,4 +35,17 @@ it(`When you hover over the card, the id of the card enters the handler`, () => 
 
   expect(onMouseOver.mock.calls.length).toBe(1);
   expect(onMouseOver.mock.calls[0][0]).toHaveProperty(`currentTarget.id`, id);
+});
+
+it(`Should call onPreviewCardClick when preview card be pressed`, () => {
+  const previewCard = shallow(
+      <PreviewCard
+        previewCardData={mock}
+        previewCardHandlers={[onClick, onMouseOver]}
+      />
+  );
+
+  previewCard.simulate(`click`);
+
+  expect(onClick.mock.calls.length).toBe(1);
 });

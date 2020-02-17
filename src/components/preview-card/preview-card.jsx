@@ -9,8 +9,8 @@ const PreviewCard = ({previewCardData, previewCardHandlers}) => {
     <article
       className="small-movie-card catalog__movies-card"
       id={id}
-      onMouseOver={onPreviewCardMouseOver}
       onClick={onPreviewCardClick}
+      onMouseOver={onPreviewCardMouseOver}
     >
       <div className="small-movie-card__image">
         <img src={poster} alt={title} width="280" height="175" />
