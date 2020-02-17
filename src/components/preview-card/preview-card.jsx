@@ -1,38 +1,36 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class PreviewCard extends Component {
-  render() {
-    const {previewCardTitle, onPreviewCardTitleClick} = this.props;
-    const previewCardImgSrcValue = `img/${
-      previewCardTitle
-      .slice()
-      .split(` `)
-      .map((str) => str[str.length - 1] === `:` ? str.slice(0, -1) : str)
-      .join(`-`)
-      .toLowerCase()
-    }.jpg`;
+const PreviewCard = ({previewCardData, previewCardHandlers}) => {
+  const {id, title, poster} = previewCardData;
+  const [onPreviewCardClick, onPreviewCardMouseOver] = previewCardHandlers;
 
-    return (
-      <article className="small-movie-card catalog__movies-card">
-        <div className="small-movie-card__image">
-          <img src={previewCardImgSrcValue} alt={previewCardTitle} width="280" height="175" />
-        </div>
-        <h3 className="small-movie-card__title">
-          <a
-            onClick={onPreviewCardTitleClick}
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            {previewCardTitle}
-          </a>
-        </h3>
-      </article>
-    );
-  }
-}
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      id={id}
+      onMouseOver={onPreviewCardMouseOver}
+      onClick={onPreviewCardClick}
+    >
+      <div className="small-movie-card__image">
+        <img src={poster} alt={title} width="280" height="175" />
+      </div>
+      <h3 className="small-movie-card__title">
+        <a className="small-movie-card__link" href="movie-page.html">
+          {title}
+        </a>
+      </h3>
+    </article>
+  );
+};
 
 PreviewCard.propTypes = {
-  previewCardTitle: PropTypes.string.isRequired,
-  onPreviewCardTitleClick: PropTypes.func.isRequired,
+  previewCardData: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+  }).isRequired,
+  previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
 };
+
+export default PreviewCard;

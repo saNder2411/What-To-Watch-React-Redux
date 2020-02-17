@@ -2,14 +2,17 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import PreviewCard from './preview-card.jsx';
 
-const previewCardTitle = `Bohemian Rhapsody`;
+const previewCardData = {
+  id: 1,
+  title: `Bohemian Rhapsody`,
+  poster: `img/bohemian-rhapsody.jpg`,
+};
+
+const previewCardHandlers = [() => {}, () => {}];
 
 it(`Should PreviewCard render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCard
-      previewCardTitle={previewCardTitle}
-      onPreviewCardTitleClick={() => {}}
-    />)
+    .create(<PreviewCard previewCardData={previewCardData} previewCardHandlers={previewCardHandlers} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();
