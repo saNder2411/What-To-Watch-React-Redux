@@ -37,11 +37,11 @@ const data = {
   ],
 };
 
-const previewCardHandlers = [() => {}];
+const mockOnScreenChange = () => {};
 
 it(`Should Main render correctly`, () => {
   const markup = renderer
-    .create(<Main data={data} previewCardHandlers={previewCardHandlers} />)
+    .create(<Main data={data} onScreenChange={mockOnScreenChange} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

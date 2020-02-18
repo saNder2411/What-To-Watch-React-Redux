@@ -35,7 +35,7 @@ const mockData = {
         ],
         runtime: `1h 58m`,
         genre: `Drama`,
-        release: `1989`,
+        release: 1999,
       },
       reviewsId: [5, 6, 7, 8],
     },
@@ -43,12 +43,12 @@ const mockData = {
 };
 
 it(`Should call onPreviewCardTitleClick when preview card title be pressed`, () => {
-  const handlePreviewCardClick = jest.fn();
+  const mockOnScreenChange = jest.fn();
 
   const main = mount(
       <Main
         data={mockData}
-        previewCardHandlers={[handlePreviewCardClick]}
+        onScreenChange={mockOnScreenChange}
       />
   );
 
@@ -56,6 +56,6 @@ it(`Should call onPreviewCardTitleClick when preview card title be pressed`, () 
 
   firstPreviewCard.simulate(`click`);
 
-  expect(handlePreviewCardClick.mock.calls.length).toBe(1);
+  expect(mockOnScreenChange.mock.calls.length).toBe(1);
 
 });

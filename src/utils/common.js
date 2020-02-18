@@ -35,7 +35,7 @@ export default class Common {
 
     currentDate.setMinutes(currentDate.getMinutes() + diffValue);
 
-    return currentDate;
+    return +currentDate;
   }
 
   static getRandomRating() {

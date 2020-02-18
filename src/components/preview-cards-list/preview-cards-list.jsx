@@ -9,7 +9,14 @@ export default class PreviewCardsList extends PureComponent {
       activeCard: null,
     };
 
+    this._handlePreviewCardClick = this._handlePreviewCardClick.bind(this);
     this._handlePreviewCardMouseOver = this._handlePreviewCardMouseOver.bind(this);
+  }
+
+  _handlePreviewCardClick(evt) {
+    evt.preventDefault();
+
+    this.props.onScreenChange(evt.currentTarget.id);
   }
 
   _handlePreviewCardMouseOver(evt) {
@@ -19,9 +26,7 @@ export default class PreviewCardsList extends PureComponent {
   }
 
   render() {
-    const {cardsData, previewCardHandlers} = this.props;
-
-    previewCardHandlers.push(this._handlePreviewCardMouseOver);
+    const {cardsData} = this.props;
 
     const previewCards = cardsData
       .map((card) => (
@@ -32,7 +37,7 @@ export default class PreviewCardsList extends PureComponent {
             title: card.overviewData.title,
             poster: card.overviewData.previewPoster,
           }}
-          previewCardHandlers={previewCardHandlers}
+          previewCardHandlers={[this._handlePreviewCardClick, this._handlePreviewCardMouseOver]}
         />
       ));
 
@@ -67,5 +72,5 @@ PreviewCardsList.propTypes = {
     }).isRequired,
     reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   })).isRequired,
-  previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
+  onScreenChange: PropTypes.func.isRequired,
 };

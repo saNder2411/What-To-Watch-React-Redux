@@ -44,7 +44,7 @@ const Actors = [
   `Samuel L. Jackson`, `Frances McDormand`, `Liam Neeson`, `Denzel Washington`, `Will Smith`
 ];
 
-const MAX_AMOUNT_REVIEWS = 7;
+const MAX_AMOUNT_REVIEWS = 17;
 
 const getPreviewPosterSrcValue = (title) => {
   return `img/${

@@ -9,8 +9,8 @@ export default class Main extends PureComponent {
 
   render() {
     const {promoCardData, cardsData} = this.props.data;
-    const {title: promoCardTitle, genre: promoCardGenre, date: promoCardReleaseDate} = promoCardData;
-    const previewCardHandlers = this.props.previewCardHandlers;
+    const {title, genre, date} = promoCardData;
+    const onScreenChange = this.props.onScreenChange;
 
     return (
       <React.Fragment>
@@ -44,10 +44,10 @@ export default class Main extends PureComponent {
               </div>
 
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{promoCardTitle}</h2>
+                <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{promoCardGenre}</span>
-                  <span className="movie-card__year">{promoCardReleaseDate}</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{date}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -108,7 +108,7 @@ export default class Main extends PureComponent {
 
             <PreviewCardsList
               cardsData={cardsData}
-              previewCardHandlers={previewCardHandlers}
+              onScreenChange={onScreenChange}
             />
 
             <div className="catalog__more">
@@ -163,5 +163,5 @@ Main.propTypes = {
       reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     }).isRequired).isRequired,
   }).isRequired,
-  previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
+  onScreenChange: PropTypes.func.isRequired,
 };
