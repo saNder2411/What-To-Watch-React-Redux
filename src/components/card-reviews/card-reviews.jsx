@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardDetailsReview from '../card-details-review/card-details-review.jsx';
+import CardReview from '../card-review/card-review.jsx';
 import mockReviews from '../../mocks/mock-reviews';
 
 const CardDetailsReviews = ({data}) => {
@@ -24,7 +24,7 @@ const CardDetailsReviews = ({data}) => {
   const firstColElements = firstColReviews
     .map((review) => {
       return (
-        <CardDetailsReview
+        <CardReview
           key={`${review.id}-${review.rating}`}
           data={review}
         />
@@ -34,7 +34,7 @@ const CardDetailsReviews = ({data}) => {
   const secondColElements = secondColReviews
   .map((review) => {
     return (
-      <CardDetailsReview
+      <CardReview
         key={`${review.id}-${review.rating}`}
         data={review}
       />

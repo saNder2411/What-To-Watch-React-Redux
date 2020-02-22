@@ -86,7 +86,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              1970
+              1989
             </span>
           </p>
           <div
@@ -173,7 +173,7 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
               >
                 <a
                   className="movie-nav__link"
@@ -183,7 +183,7 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
               >
                 <a
                   className="movie-nav__link"

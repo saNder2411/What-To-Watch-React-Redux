@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import PreviewCardsList from '../preview-cards-list/preview-cards-list.jsx';
 
@@ -8,12 +8,12 @@ export default class Main extends PureComponent {
   }
 
   render() {
-    const {promoCardData, cardsData} = this.props.data;
+    const {promoCardData, cardsData} = this.props;
     const {title, genre, date} = promoCardData;
     const onScreenChange = this.props.onScreenChange;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <section className="movie-card">
           <div className="movie-card__bg">
             <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -130,38 +130,36 @@ export default class Main extends PureComponent {
             </div>
           </footer>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
 Main.propTypes = {
-  data: PropTypes.shape({
-    promoCardData: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    }).isRequired,
-    cardsData: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      overviewData: PropTypes.shape({
-        promoPoster: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-        previewPoster: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        rating: PropTypes.string.isRequired,
-        amountVoice: PropTypes.number.isRequired,
-      }).isRequired,
-      detailsData: PropTypes.shape({
-        director: PropTypes.string.isRequired,
-        actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        runtime: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        release: PropTypes.date,
-      }).isRequired,
-      reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    }).isRequired).isRequired,
+  promoCardData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   }).isRequired,
+  cardsData: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    overviewData: PropTypes.shape({
+      promoPoster: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      previewPoster: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      rating: PropTypes.string.isRequired,
+      amountVoice: PropTypes.number.isRequired,
+    }).isRequired,
+    detailsData: PropTypes.shape({
+      director: PropTypes.string.isRequired,
+      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      runtime: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      release: PropTypes.date,
+    }).isRequired,
+    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  }).isRequired).isRequired,
   onScreenChange: PropTypes.func.isRequired,
 };

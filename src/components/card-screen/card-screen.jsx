@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import CardDetailsContent from '../card-details-content/card-details-content.jsx';
+import CardContent from '../card-content/card-content.jsx';
 
-export default class CardDetailsScreen extends PureComponent {
+export default class CardScreen extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -29,7 +29,7 @@ export default class CardDetailsScreen extends PureComponent {
     const yearRelease = new Date(release).getFullYear();
 
     return (
-      <React.Fragment>
+      <Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
@@ -91,7 +91,7 @@ export default class CardDetailsScreen extends PureComponent {
                 <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
-              <CardDetailsContent data={data} />
+              <CardContent data={data} />
             </div>
           </div>
         </section>
@@ -156,20 +156,32 @@ export default class CardDetailsScreen extends PureComponent {
             </div>
           </footer>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
-CardDetailsScreen.propTypes = {
+CardScreen.propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     overviewData: PropTypes.shape({
+      promoPoster: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      previewPoster: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      rating: PropTypes.string.isRequired,
+      amountVoice: PropTypes.number.isRequired,
+      previewVideoSrc: PropTypes.string.isRequired,
     }).isRequired,
     detailsData: PropTypes.shape({
+      director: PropTypes.string.isRequired,
+      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      runtime: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
-      release: PropTypes.number.isRequired,
+      release: PropTypes.date,
     }).isRequired,
+    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   }).isRequired,
   onScreenChange: PropTypes.func.isRequired,
 };

@@ -8,7 +8,8 @@ exports[`Should PreviewCardsList render correctly 1`] = `
     className="small-movie-card catalog__movies-card"
     id={1}
     onClick={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"

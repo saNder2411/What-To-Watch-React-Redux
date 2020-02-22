@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardDetailsScreen from './card-details-screen.jsx';
+import CardScreen from './card-screen.jsx';
 
-const mockData = {
-  id: 1,
+const cardData = {
+  id: 0,
   overviewData: {
     promoPoster: `bg-the-grand-budapest-hotel`,
     poster: `the-grand-budapest-hotel-poster`,
@@ -15,6 +15,7 @@ const mockData = {
     ],
     rating: `10`,
     amountVoice: 100,
+    previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   detailsData: {
     director: `Steven Spielberg`,
@@ -23,7 +24,7 @@ const mockData = {
     ],
     runtime: `1h 58m`,
     genre: `Drama`,
-    release: 1999,
+    release: `1989`,
   },
   reviewsId: [5, 6, 7, 8],
 };
@@ -32,7 +33,7 @@ const mockOnScreenChange = () => {};
 
 it(`Should CardDetailsScreen render correctly`, () => {
   const markup = renderer
-    .create(<CardDetailsScreen data={mockData} onScreenChange={mockOnScreenChange} />)
+    .create(<CardScreen data={cardData} onScreenChange={mockOnScreenChange} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

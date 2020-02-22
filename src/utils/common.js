@@ -8,10 +8,9 @@ const TimeShiftInMin = {
 };
 
 const MAX_RATING = 10;
-const DEBOUNCE_TIMEOUT = 500;
 
 export default class Common {
-  static debounce(callback) {
+  static debounce(callback, timeout) {
     let lastTimeout = null;
 
     return (...parameters) => {
@@ -22,7 +21,7 @@ export default class Common {
 
       lastTimeout = setTimeout(() => {
         callback(...parameters);
-      }, DEBOUNCE_TIMEOUT);
+      }, timeout);
     };
   }
   static getRandomNumberFromPeriod(max, min = 0) {

@@ -44,6 +44,11 @@ const Actors = [
   `Samuel L. Jackson`, `Frances McDormand`, `Liam Neeson`, `Denzel Washington`, `Will Smith`
 ];
 
+const PreviewVideos = [
+  `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+];
+
 const MAX_AMOUNT_REVIEWS = 17;
 
 const getPreviewPosterSrcValue = (title) => {
@@ -79,6 +84,7 @@ const generateMockCard = (title, id) => {
       descriptions: Descriptions,
       rating: Common.getRandomRating(),
       amountVoice: Common.getRandomNumberFromPeriod(200),
+      previewVideoSrc: PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)],
     },
     detailsData: {
       director: Directors[Common.getRandomNumberFromPeriod(Directors.length)],
