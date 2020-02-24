@@ -10,7 +10,7 @@ const promoCardData = {
 
 const cardsData = [
   {
-    id: 1,
+    id: 0,
     overviewData: {
       promoPoster: `bg-the-grand-budapest-hotel`,
       poster: `the-grand-budapest-hotel-poster`,
@@ -22,6 +22,7 @@ const cardsData = [
       ],
       rating: `10`,
       amountVoice: 100,
+      previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     },
     detailsData: {
       director: `Steven Spielberg`,

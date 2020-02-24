@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CardDetailsDetails = ({data}) => {
+const CardDetails = ({data}) => {
   const {
     detailsData: {
       director,
@@ -62,7 +62,7 @@ const CardDetailsDetails = ({data}) => {
   );
 };
 
-CardDetailsDetails.propTypes = {
+CardDetails.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     overviewData: PropTypes.shape({
@@ -85,4 +85,4 @@ CardDetailsDetails.propTypes = {
   }).isRequired,
 };
 
-export default CardDetailsDetails;
+export default CardDetails;

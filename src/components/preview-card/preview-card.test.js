@@ -6,13 +6,28 @@ const previewCardData = {
   id: 1,
   title: `Bohemian Rhapsody`,
   poster: `img/bohemian-rhapsody.jpg`,
+  previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  isPlaying: false,
 };
 
-const previewCardHandlers = [() => {}, () => {}];
+const previewCardHandlers = [() => {}, () => {}, () => {}];
+
+const renderPlayer = () => {};
 
 it(`Should PreviewCard render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCard previewCardData={previewCardData} previewCardHandlers={previewCardHandlers} />)
+    .create(
+        <PreviewCard
+          previewCardData={previewCardData}
+          previewCardHandlers={previewCardHandlers}
+          renderPlayer={renderPlayer}
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    )
     .toJSON();
 
   expect(markup).toMatchSnapshot();

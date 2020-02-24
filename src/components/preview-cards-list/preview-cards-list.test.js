@@ -16,6 +16,7 @@ const cardsData = [
       ],
       rating: `10`,
       amountVoice: 100,
+      previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     },
     detailsData: {
       director: `Steven Spielberg`,
@@ -30,11 +31,11 @@ const cardsData = [
   },
 ];
 
-const previewCardHandlers = [() => {}];
+const onScreenChange = () => {};
 
 it(`Should PreviewCardsList render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCardsList cardsData={cardsData} previewCardHandlers={previewCardHandlers} />)
+    .create(<PreviewCardsList cardsData={cardsData} onScreenChange={onScreenChange} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

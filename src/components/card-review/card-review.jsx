@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CardDetailsReview = ({data}) => {
+const CardReview = ({data}) => {
   const {text, author, rating, date} = data;
   const year = new Date(date).getFullYear();
 
@@ -21,7 +21,7 @@ const CardDetailsReview = ({data}) => {
   );
 };
 
-CardDetailsReview.propTypes = {
+CardReview.propTypes = {
   data: PropTypes.shape({
     text: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
@@ -30,4 +30,4 @@ CardDetailsReview.propTypes = {
   }).isRequired,
 };
 
-export default CardDetailsReview;
+export default CardReview;

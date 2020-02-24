@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Main from '../main/main.jsx';
-import CardDetailsScreen from '../card-details-screen/card-details-screen.jsx';
+import CardScreen from '../card-screen/card-screen.jsx';
 
 
 export default class App extends PureComponent {
@@ -24,21 +24,10 @@ export default class App extends PureComponent {
   _renderApp() {
     const {screenMode} = this.state;
     const {cardsData} = this.props;
+    const cardData = cardsData.find((card) => screenMode === card.id);
+    const cardScreen = cardData && <CardScreen data={cardData} onScreenChange={this._updatesState}/>;
 
-    if (screenMode !== -1) {
-      const cardData = cardsData.find((card) => screenMode === card.id);
-
-      return (
-        <CardDetailsScreen data={cardData} onScreenChange={this._updatesState}/>
-      );
-    }
-
-    return (
-      <Main
-        data={this.props}
-        onScreenChange={this._updatesState}
-      />
-    );
+    return cardScreen || <Main {...this.props} onScreenChange={this._updatesState} />;
   }
 
   render() {
@@ -51,7 +40,7 @@ export default class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path='/dev-card-details-screen'>
-            <CardDetailsScreen data={cardsData[6]} onScreenChange={this._updatesState}/>
+            <CardScreen data={cardsData[1]} onScreenChange={this._updatesState}/>
           </Route>
         </Switch>
       </BrowserRouter>

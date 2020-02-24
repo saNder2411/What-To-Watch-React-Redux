@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 const CardLevelValues = [3, 5, 8, 10];
 
-const CardDetailsOverview = ({data}) => {
+const CardOverview = ({data}) => {
   const {
     overviewData: {
       descriptions: [descriptionsPartI, descriptionsPartII],
@@ -37,7 +37,7 @@ const CardDetailsOverview = ({data}) => {
   const cardLevel = calcCardLevel(rating, CardLevelValues);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
@@ -55,11 +55,11 @@ const CardDetailsOverview = ({data}) => {
 
         <p className="movie-card__starring"><strong>Starring: {actors.join(`, `)}</strong></p>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
-CardDetailsOverview.propTypes = {
+CardOverview.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     overviewData: PropTypes.shape({
@@ -74,4 +74,4 @@ CardDetailsOverview.propTypes = {
   }).isRequired,
 };
 
-export default CardDetailsOverview;
+export default CardOverview;

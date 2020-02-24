@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {CardMode} from '../../const.js';
 
-export default class CardDetailsNav extends PureComponent {
+export default class CardNav extends PureComponent {
   constructor(props) {
     super(props);
     this.state = null;
@@ -14,23 +15,25 @@ export default class CardDetailsNav extends PureComponent {
     if (evt.target.tagName !== `A`) {
       return;
     }
-    const cardDetailsMode = evt.target.textContent.toLowerCase();
-    this.props.onContentChange(cardDetailsMode);
+    const {target: {textContent}} = evt;
+
+    this.props.onContentChange(textContent.toLowerCase());
   }
 
   render() {
+    const {mode} = this.props;
     return (
       <nav className="movie-nav movie-card__nav">
         <ul
           onClick={this._handleNavClick}
           className="movie-nav__list">
-          <li className="movie-nav__item movie-nav__item--active">
+          <li className={`${`movie-nav__item`} ${CardMode.OVERVIEW === mode ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link">Overview</a>
           </li>
-          <li className="movie-nav__item">
+          <li className={`${`movie-nav__item`} ${CardMode.DETAILS === mode ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link">Details</a>
           </li>
-          <li className="movie-nav__item">
+          <li className={`${`movie-nav__item`} ${CardMode.REVIEWS === mode ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link">Reviews</a>
           </li>
         </ul>
@@ -39,6 +42,7 @@ export default class CardDetailsNav extends PureComponent {
   }
 }
 
-CardDetailsNav.propTypes = {
+CardNav.propTypes = {
   onContentChange: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
 };
