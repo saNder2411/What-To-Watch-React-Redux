@@ -1,40 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import Common from '../../utils/common.js';
 
 const CardLevelValues = [3, 5, 8, 10];
 
-const CardOverview = ({data}) => {
-  const {
-    overviewData: {
-      descriptions: [descriptionsPartI, descriptionsPartII],
-      rating,
-      amountVoice,
-    },
-    detailsData: {
-      director,
-      actors,
-    }
-  } = data;
-
-  const calcCardLevel = (ratingVal, levelValues) => {
-    const [minVal, middleLowVal, middleVal, maxVal] = levelValues;
-    const ratingNum = +ratingVal;
-    let level = `Bad`;
-
-    if (ratingNum >= minVal && ratingNum <= middleLowVal) {
-      level = `Normal`;
-    } else if (ratingNum >= middleLowVal && ratingNum <= middleVal) {
-      level = `Good`;
-    } else if (ratingNum >= middleVal && ratingNum < maxVal) {
-      level = `Very good`;
-    } else if (ratingNum >= maxVal) {
-      level = `Awesome`;
-    }
-
-    return level;
-  };
-
-  const cardLevel = calcCardLevel(rating, CardLevelValues);
+const CardOverview = ({data: {overviewData: {descriptions, rating, amountVoice}, detailsData: {director, actors}}}) => {
+  const [descriptionsPartOne, descriptionsPartTwo] = descriptions;
+  const cardLevel = Common.calcCardLevel(rating, CardLevelValues);
 
   return (
     <Fragment>
@@ -47,9 +19,9 @@ const CardOverview = ({data}) => {
       </div>
 
       <div className="movie-card__text">
-        <p>{descriptionsPartI}</p>
+        <p>{descriptionsPartOne}</p>
 
-        <p>{descriptionsPartII}</p>
+        <p>{descriptionsPartTwo}</p>
 
         <p className="movie-card__director"><strong>Director: {director}</strong></p>
 

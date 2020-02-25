@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardScreen from './card-screen.jsx';
+import CardOverview from './card-overview.jsx';
 
-const cardData = {
+const data = {
   id: 0,
   overviewData: {
     promoPoster: `bg-the-grand-budapest-hotel`,
@@ -29,15 +29,9 @@ const cardData = {
   reviewsId: [5, 6, 7, 8],
 };
 
-const cardsData = [
-  cardData,
-];
-
-const mockOnScreenChange = () => {};
-
-it(`Should CardScreen render correctly`, () => {
+it(`Should CardOverview render correctly`, () => {
   const markup = renderer
-    .create(<CardScreen data={{cardData, cardsData}} onScreenChange={mockOnScreenChange} />)
+    .create(<CardOverview data={data} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

@@ -7,6 +7,8 @@ const TimeShiftInMin = {
   MINUTES: 1,
 };
 
+const Month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+
 const MAX_RATING = 10;
 
 export default class Common {
@@ -42,5 +44,36 @@ export default class Common {
     const randomDecimal = Common.getRandomNumberFromPeriod(MAX_RATING);
 
     return randomNumber < MAX_RATING ? `${randomNumber}.${randomDecimal}` : `${randomNumber}`;
+  }
+
+  static calcCardLevel(ratingVal, [minVal, middleLowVal, middleVal, maxVal]) {
+    const ratingToNum = +ratingVal;
+    let level = `Bad`;
+
+    if (ratingToNum >= minVal && ratingToNum <= middleLowVal) {
+      level = `Normal`;
+    } else if (ratingToNum >= middleLowVal && ratingToNum <= middleVal) {
+      level = `Good`;
+    } else if (ratingToNum >= middleVal && ratingToNum < maxVal) {
+      level = `Very good`;
+    } else if (ratingToNum >= maxVal) {
+      level = `Awesome`;
+    }
+
+    return level;
+  }
+
+  static parseDateToStr(date) {
+    const day = new Date(date).getDate();
+    const month = new Date(date).getMonth();
+    const year = new Date(date).getFullYear();
+
+    return `${Month[month]} ${day}, ${year}`;
+  }
+
+  static dividedArrayInHalf(array) {
+    const firstPartLength = ((array.length % 2) + array.length) / 2;
+
+    return [array.slice(0, firstPartLength), array.slice(firstPartLength)];
   }
 }

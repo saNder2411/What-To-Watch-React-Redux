@@ -25,7 +25,7 @@ export default class App extends PureComponent {
     const {screenMode} = this.state;
     const {cardsData} = this.props;
     const cardData = cardsData.find((card) => screenMode === card.id);
-    const cardScreen = cardData && <CardScreen data={cardData} onScreenChange={this._updatesState}/>;
+    const cardScreen = cardData && <CardScreen data={{cardData, cardsData}} onScreenChange={this._updatesState}/>;
 
     return cardScreen || <Main {...this.props} onScreenChange={this._updatesState} />;
   }
@@ -50,5 +50,5 @@ export default class App extends PureComponent {
 
 App.propTypes = {
   promoCardData: PropTypes.object.isRequired,
-  cardsData: PropTypes.array.isRequired,
+  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };

@@ -10,7 +10,7 @@ const promoCardData = {
 
 const cardsData = [
   {
-    id: 0,
+    id: 789,
     overviewData: {
       promoPoster: `bg-the-grand-budapest-hotel`,
       poster: `the-grand-budapest-hotel-poster`,
@@ -31,7 +31,7 @@ const cardsData = [
       ],
       runtime: `1h 58m`,
       genre: `Drama`,
-      release: `1989`,
+      release: 1989,
     },
     reviewsId: [5, 6, 7, 8],
   },
