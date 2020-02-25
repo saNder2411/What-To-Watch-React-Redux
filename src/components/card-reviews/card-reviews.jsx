@@ -2,37 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardReview from '../card-review/card-review.jsx';
 import mockReviews from '../../mocks/mock-reviews';
+import Common from '../../utils/common.js';
 
-const CardDetailsReviews = ({data}) => {
-  const {reviewsId} = data;
+const CardReviews = ({data: {reviewsId}}) => {
   const reviews = [];
 
   reviewsId.forEach((id) => {
     const review = mockReviews.find((it) => it.id === id);
+
     if (review) {
       reviews.push(review);
     }
   });
 
-  const amountFirstColReviews = ((reviews.length % 2) + reviews.length) / 2;
-  const firstColReviews = reviews
-    .slice()
-    .splice(0, amountFirstColReviews);
-  const secondColReviews = reviews
-    .slice()
-    .splice(amountFirstColReviews);
-  const firstColElements = firstColReviews
-    .map((review) => {
-      return (
-        <CardReview
-          key={`${review.id}-${review.rating}`}
-          data={review}
-        />
-      );
-    });
+  const partsReviews = Common.dividedArrayInHalf(reviews);
 
-  const secondColElements = secondColReviews
-  .map((review) => {
+  const firstColReviews = partsReviews[0].map((review) => {
+    return (
+      <CardReview
+        key={`${review.id}-${review.rating}`}
+        data={review}
+      />
+    );
+  });
+
+  const secondColReviews = partsReviews[1].map((review) => {
     return (
       <CardReview
         key={`${review.id}-${review.rating}`}
@@ -44,16 +38,16 @@ const CardDetailsReviews = ({data}) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {firstColElements}
+        {firstColReviews}
       </div>
       <div className="movie-card__reviews-col">
-        {secondColElements}
+        {secondColReviews}
       </div>
     </div>
   );
 };
 
-CardDetailsReviews.propTypes = {
+CardReviews.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     overviewData: PropTypes.shape({
@@ -76,4 +70,4 @@ CardDetailsReviews.propTypes = {
   }).isRequired,
 };
 
-export default CardDetailsReviews;
+export default CardReviews;

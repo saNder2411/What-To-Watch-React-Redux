@@ -1,27 +1,34 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import CardNav from '../card-nav/card-nav.jsx';
+import CardTabsNav from '../card-tabs-nav/card-tabs-nav.jsx';
 import CardOverview from '../card-overview/card-overview.jsx';
 import CardDetails from '../card-details/card-details.jsx';
 import CardReviews from '../card-reviews/card-reviews.jsx';
 import {CardMode} from '../../const.js';
 
-export default class CardContent extends PureComponent {
+export default class CardTabs extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       cardMode: `overview`,
     };
 
-    this._updatesState = this._updatesState.bind(this);
+    this._handleTabsNavClick = this._handleTabsNavClick.bind(this);
   }
 
-  _updatesState(stateValue) {
-    this.setState({cardMode: stateValue});
+  _handleTabsNavClick(evt) {
+    evt.preventDefault();
+
+    if (evt.target.tagName !== `A`) {
+      return;
+    }
+
+    const {target: {textContent}} = evt;
+
+    this.setState({cardMode: textContent.toLowerCase()});
   }
 
-  _renderContent() {
-    const {cardMode} = this.state;
+  _renderTab(cardMode) {
     const {data} = this.props;
 
     switch (cardMode) {
@@ -35,16 +42,17 @@ export default class CardContent extends PureComponent {
   }
 
   render() {
+    const {cardMode} = this.state;
 
     return (
       <div className="movie-card__desc">
-        <CardNav mode={this.state.cardMode} onContentChange={this._updatesState}/>
-        {this._renderContent()}
+        <CardTabsNav mode={cardMode} onTabsNavClick={this._handleTabsNavClick}/>
+        {this._renderTab(cardMode)}
       </div>
     );
   }
 }
 
-CardContent.propTypes = {
+CardTabs.propTypes = {
   data: PropTypes.object.isRequired,
 };

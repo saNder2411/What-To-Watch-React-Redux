@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should CardReview render correctly 1`] = `
+<div
+  className="review"
+>
+  <blockquote
+    className="review__quote"
+  >
+    <p
+      className="review__text"
+    >
+      Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+    </p>
+    <footer
+      className="review__details"
+    >
+      <cite
+        className="review__author"
+      >
+        Kate Muir
+      </cite>
+      <time
+        className="review__date"
+        dateTime="2016-12-24"
+      >
+        January 1, 1970
+      </time>
+    </footer>
+  </blockquote>
+  <div
+    className="review__rating"
+  >
+    10
+  </div>
+</div>
+`;

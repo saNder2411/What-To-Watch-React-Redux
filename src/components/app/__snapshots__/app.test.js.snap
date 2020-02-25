@@ -259,7 +259,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          id={0}
+          id={789}
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}

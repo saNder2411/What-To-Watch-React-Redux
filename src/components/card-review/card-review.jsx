@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Common from '../../utils/common.js';
 
-const CardReview = ({data}) => {
-  const {text, author, rating, date} = data;
-  const year = new Date(date).getFullYear();
+const CardReview = ({data: {text, author, rating, date}}) => {
+  const dateToStr = Common.parseDateToStr(date);
 
   return (
     <div className="review">
@@ -12,7 +12,7 @@ const CardReview = ({data}) => {
 
         <footer className="review__details">
           <cite className="review__author">{author}</cite>
-          <time className="review__date" dateTime="2016-12-24">December 24, {year}</time>
+          <time className="review__date" dateTime="2016-12-24">{dateToStr}</time>
         </footer>
       </blockquote>
 

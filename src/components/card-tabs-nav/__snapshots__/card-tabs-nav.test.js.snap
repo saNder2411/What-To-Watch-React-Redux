@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should CardOverview render correctly 1`] = `
+<nav
+  className="movie-nav movie-card__nav"
+>
+  <ul
+    className="movie-nav__list"
+    onClick={[Function]}
+  >
+    <li
+      className="movie-nav__item movie-nav__item--active"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+      >
+        Overview
+      </a>
+    </li>
+    <li
+      className="movie-nav__item "
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+      >
+        Details
+      </a>
+    </li>
+    <li
+      className="movie-nav__item "
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+      >
+        Reviews
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

@@ -1,32 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const CardDetails = ({data}) => {
-  const {
-    detailsData: {
-      director,
-      actors,
-      runtime,
-      genre,
-      release,
-    }
-  } = data;
-
+const CardDetails = ({data: {detailsData: {director, actors, runtime, genre, release}}}) => {
   const yearRelease = new Date(release).getFullYear();
-  const actorsList = actors
-  .map((actor, i) => {
-    if (i === actors.length - 1) {
-      return (
-        <React.Fragment key={actor}>
-          {actor}
-        </React.Fragment>
-      );
-    }
-    return (
-      <React.Fragment key={actor}>
-        {actor} <br/>
-      </React.Fragment>
-    );
+  const actorsList = actors.map((actor, i) => {
+    const withTegBr = <Fragment key={actor}>{actor} <br/></Fragment>;
+    const withoutTegBr = <Fragment key={actor}>{actor}</Fragment>;
+
+    return i < actors.length - 1 ? withTegBr : withoutTegBr;
   });
 
   return (
