@@ -12,20 +12,6 @@ const Month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `
 const MAX_RATING = 10;
 
 export default class Common {
-  static debounce(callback, timeout) {
-    let lastTimeout = null;
-
-    return (...parameters) => {
-
-      if (lastTimeout) {
-        clearTimeout(lastTimeout);
-      }
-
-      lastTimeout = setTimeout(() => {
-        callback(...parameters);
-      }, timeout);
-    };
-  }
   static getRandomNumberFromPeriod(max, min = 0) {
     return min + Math.floor((max - min) * Math.random());
   }
@@ -75,5 +61,9 @@ export default class Common {
     const firstPartLength = ((array.length % 2) + array.length) / 2;
 
     return [array.slice(0, firstPartLength), array.slice(firstPartLength)];
+  }
+
+  static extend(a, b) {
+    return Object.assign({}, a, b);
   }
 }

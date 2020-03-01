@@ -24,7 +24,7 @@ const Titles = [
   `Midnight Special`,
 ];
 
-const Genres = [`Comedy`, `Drama`, `History`, `Thriller`, `War`];
+const Genres = [`Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thrillers`, `War`];
 
 const Descriptions = [
   `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,

@@ -16,16 +16,10 @@ export default class CardTabs extends PureComponent {
     this._handleTabsNavClick = this._handleTabsNavClick.bind(this);
   }
 
-  _handleTabsNavClick(evt) {
+  _handleTabsNavClick(evt, mode) {
     evt.preventDefault();
 
-    if (evt.target.tagName !== `A`) {
-      return;
-    }
-
-    const {target: {textContent}} = evt;
-
-    this.setState({cardMode: textContent.toLowerCase()});
+    this.setState({cardMode: mode});
   }
 
   _renderTab(cardMode) {

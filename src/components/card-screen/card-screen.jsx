@@ -1,14 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import Logo from '../logo/logo.jsx';
 import CardTabs from '../card-tabs/card-tabs.jsx';
-import PreviewCardsList from '../preview-cards-list/preview-cards-list.jsx';
-import withFilteringSimilarCards from '../../hocs/with-filtering-similar-cards/with-filtering-similar-cards.jsx';
+import WrappedPreviewCardList from '../../hocs/with-filtering-similar-cards/with-filtering-similar-cards.jsx';
 
-const WrappedPreviewCardList = withFilteringSimilarCards(PreviewCardsList);
-
-const CardScreen = ({data: {cardData, cardsData}, onScreenChange}) => {
+const CardScreen = ({activeCardId, cardsData}) => {
+  const cardData = cardsData.find(({id}) => activeCardId === id);
   const {overviewData: {title}, detailsData: {genre, release}} = cardData;
-
   const yearRelease = new Date(release).getFullYear();
 
   return (
@@ -22,20 +20,8 @@ const CardScreen = ({data: {cardData, cardsData}, onScreenChange}) => {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
-            <div className="logo">
-              <a
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onScreenChange(-1);
-                }}
-                href="main.html"
-                className="logo__link"
-              >
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
+
+            <Logo isLinkToMain />
 
             <div className="user-block">
               <div className="user-block__avatar">
@@ -90,24 +76,11 @@ const CardScreen = ({data: {cardData, cardsData}, onScreenChange}) => {
           <WrappedPreviewCardList
             cardData={cardData}
             cardsData={cardsData}
-            onScreenChange={onScreenChange}
           />
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a
-              onClick={(evt) => {
-                evt.preventDefault();
-                onScreenChange(-1);
-              }}
-              href="main.html"
-              className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo isLinkToMain isFooterLogo/>
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
@@ -119,19 +92,8 @@ const CardScreen = ({data: {cardData, cardsData}, onScreenChange}) => {
 };
 
 CardScreen.propTypes = {
-  data: PropTypes.shape({
-    cardData: PropTypes.shape({
-      overviewData: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
-      detailsData: PropTypes.shape({
-        genre: PropTypes.string.isRequired,
-        release: PropTypes.number.isRequired,
-      }).isRequired,
-    }).isRequired,
-    cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
-  }),
-  onScreenChange: PropTypes.func.isRequired,
+  activeCardId: PropTypes.number.isRequired,
+  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
 export default CardScreen;
