@@ -11,7 +11,7 @@ export default class CardsService {
     return mockReviews;
   }
 
-  getPromoCard() {
+  getPromoCardData() {
     return mockPromoCard;
   }
 }

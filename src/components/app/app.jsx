@@ -1,35 +1,49 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import CardScreen from '../card-screen/card-screen.jsx';
+import {connect} from 'react-redux';
+import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
+import ActionCreator from '../../actions/action-creator.js';
 
+class App extends PureComponent {
 
-const App = (props) => {
-  const {cardsData} = props;
+  componentDidMount() {
+    const {cardsService, cardsLoaded} = this.props;
+    const cardsData = cardsService.getCards();
+    cardsLoaded(cardsData);
+  }
 
-  return (
-    <BrowserRouter>
-      <Route
-        path='/'
-        exact
-        render={() => <Main {...props}/>}
-      />
-      <Route
-        path='/cards:id'
-        exact
-        render={({match}) => {
-          const {id} = match.params;
-          return <CardScreen activeCardId={+id} cardsData={cardsData}/>;
-        }}
-      />
-    </BrowserRouter>
-  );
-};
+  render() {
+    return (
+      <Switch>
+        <Route
+          path='/'
+          exact
+          render={() => <Main />}
+        />
+        <Route
+          path='/cards:id'
+          render={({match}) => {
+            const {id} = match.params;
+            return <CardScreen selectedCardId={+id}/>;
+          }}
+        />
+      </Switch>
+    );
+  }
+}
 
 App.propTypes = {
-  promoCardData: PropTypes.object.isRequired,
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  cardsService: PropTypes.object.isRequired,
+  cardsLoaded: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  cardsLoaded: (newCards) => {
+    dispatch(ActionCreator.cardsLoaded(newCards));
+  }
+});
+
+export default withCardsService(connect(undefined, mapDispatchToProps)(App));

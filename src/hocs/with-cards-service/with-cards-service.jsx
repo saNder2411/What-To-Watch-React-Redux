@@ -15,8 +15,6 @@ const withCardsService = (Component) => {
 
   }
 
-  WithCardsService.propTypes = {};
-
   return WithCardsService;
 };
 

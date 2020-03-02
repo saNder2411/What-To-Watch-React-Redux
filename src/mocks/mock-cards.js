@@ -49,14 +49,14 @@ const PreviewVideos = [
 const MAX_AMOUNT_REVIEWS = 17;
 
 const getPreviewPosterSrcValue = (title) => {
-  return `img/${
+  return `${
     title
     .slice()
     .split(` `)
     .map((str) => str[str.length - 1] === `:` ? str.slice(0, -1) : str)
     .join(`-`)
     .toLowerCase()
-  }.jpg`;
+  }`;
 };
 
 const getRandomRuntime = () => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PreviewCard from '../preview-card/preview-card.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
-const PreviewCardsList = ({cardsData, activeCard, previewCardHandlers}) => {
+const PreviewCardsList = ({cardsData, mouseEnterCard, previewCardHandlers}) => {
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 
   const previewCards = cardsData
@@ -14,9 +14,9 @@ const PreviewCardsList = ({cardsData, activeCard, previewCardHandlers}) => {
           previewCardData={{
             id: card.id,
             title: card.overviewData.title,
-            poster: card.overviewData.previewPoster,
+            previewPoster: card.overviewData.previewPoster,
             previewVideoSrc: card.overviewData.previewVideoSrc,
-            isPlaying: activeCard !== null && activeCard.id === card.id,
+            isPlaying: mouseEnterCard !== null && mouseEnterCard.id === card.id,
           }}
           previewCardHandlers={previewCardHandlers}
         />
@@ -52,7 +52,7 @@ PreviewCardsList.propTypes = {
     }).isRequired,
     reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   })).isRequired,
-  activeCard: PropTypes.object,
+  mouseEnterCard: PropTypes.object,
   previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
 };
 
