@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
 import ActionCreator from '../../actions/action-creator.js';
 import GenresList from '../../components/genres-list/genres-list.jsx';
 import {DEFAULT_GENRE} from '../../const.js';
@@ -13,6 +14,12 @@ const withGenresListState = (GenresListComponent) => {
       super(props);
 
       this._handleGenresListItemClick = this._handleGenresListItemClick.bind(this);
+    }
+
+    componentDidMount() {
+      const {cardsService, cardsLoaded} = this.props;
+      const cardsData = cardsService.getCards();
+      cardsLoaded(cardsData);
     }
 
     _handleGenresListItemClick(evt) {
@@ -44,9 +51,11 @@ const withGenresListState = (GenresListComponent) => {
   }
 
   WithGenresListState.propTypes = {
+    cardsService: PropTypes.object.isRequired,
+    cardsLoaded: PropTypes.func.isRequired,
+    changeGenre: PropTypes.func.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     genre: PropTypes.string,
-    changeGenre: PropTypes.func.isRequired,
   };
 
   return WithGenresListState;
@@ -55,9 +64,13 @@ const withGenresListState = (GenresListComponent) => {
 const mapStateToProps = (state) => ({cardsData: state.cardsData, genre: state.genre});
 
 const mapDispatchToProps = (dispatch) => ({
+  cardsLoaded: (newCards) => {
+    dispatch(ActionCreator.cardsLoaded(newCards));
+  },
+
   changeGenre: (genre) => {
     dispatch(ActionCreator.changeGenre(genre));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withGenresListState(GenresList));
+export default withCardsService(connect(mapStateToProps, mapDispatchToProps)(withGenresListState(GenresList)));

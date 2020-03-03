@@ -7,7 +7,7 @@ configure({adapter: new Adapter()});
 
 const playerOptions = {
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  poster: `img/bohemian-rhapsody.jpg`,
+  previewPoster: `img/bohemian-rhapsody.jpg`,
   isMuted: true,
   isDelay: true,
   isPlaying: false,

@@ -1,22 +1,12 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {Switch, Route} from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import CardScreen from '../card-screen/card-screen.jsx';
-import {connect} from 'react-redux';
-import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
-import ActionCreator from '../../actions/action-creator.js';
 
-class App extends PureComponent {
+const App = () => {
 
-  componentDidMount() {
-    const {cardsService, cardsLoaded} = this.props;
-    const cardsData = cardsService.getCards();
-    cardsLoaded(cardsData);
-  }
-
-  render() {
-    return (
+  return (
+    <BrowserRouter>
       <Switch>
         <Route
           path='/'
@@ -31,19 +21,8 @@ class App extends PureComponent {
           }}
         />
       </Switch>
-    );
-  }
-}
-
-App.propTypes = {
-  cardsService: PropTypes.object.isRequired,
-  cardsLoaded: PropTypes.func.isRequired,
+    </BrowserRouter>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  cardsLoaded: (newCards) => {
-    dispatch(ActionCreator.cardsLoaded(newCards));
-  }
-});
-
-export default withCardsService(connect(undefined, mapDispatchToProps)(App));
+export default App;

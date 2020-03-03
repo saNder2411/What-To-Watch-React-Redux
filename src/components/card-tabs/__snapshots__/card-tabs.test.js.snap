@@ -9,7 +9,6 @@ exports[`Should CardOverview render correctly 1`] = `
   >
     <ul
       className="movie-nav__list"
-      onClick={[Function]}
     >
       <li
         className="movie-nav__item movie-nav__item--active"
@@ -17,6 +16,7 @@ exports[`Should CardOverview render correctly 1`] = `
         <a
           className="movie-nav__link"
           href="#"
+          onClick={[Function]}
         >
           Overview
         </a>
@@ -27,6 +27,7 @@ exports[`Should CardOverview render correctly 1`] = `
         <a
           className="movie-nav__link"
           href="#"
+          onClick={[Function]}
         >
           Details
         </a>
@@ -37,6 +38,7 @@ exports[`Should CardOverview render correctly 1`] = `
         <a
           className="movie-nav__link"
           href="#"
+          onClick={[Function]}
         >
           Reviews
         </a>

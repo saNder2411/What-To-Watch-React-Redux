@@ -1,13 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Main from './main.jsx';
-import CardsService from '../../services/cards-service.js';
-import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
-
-const cardsService = new CardsService();
+import reducer from './reducer.js';
+import ActionTypes from '../action-types/action-types.js';
+import {DEFAULT_GENRE} from '../const.js';
 
 const mockPromoCardData = {
   title: `The Grand Budapest Hotel`,
@@ -15,6 +8,8 @@ const mockPromoCardData = {
   date: 2014,
   poster: `the-grand-budapest-hotel-poster`,
 };
+
+const mockGenre = `Drama`;
 
 const mockCardsData = [
   {
@@ -45,39 +40,45 @@ const mockCardsData = [
   },
 ];
 
-const mockStore = configureStore();
-
-const store = mockStore({
-  genre: `All Genre`,
-  cardsData: mockCardsData,
-  promoCardData: mockPromoCardData,
+const initialState = {
+  genre: DEFAULT_GENRE,
+  cardsData: [],
+  promoCardData: {},
   reviews: [],
   newReviews: [],
-});
+};
 
+describe(`Reducer work correctly`, () => {
+  it(`Reducer without additional parameters should return initial state`, () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
+  });
 
-it(`Should Main render correctly`, () => {
-  const markup = renderer.create(
-      <Provider store={store}>
-        <CardsServiceProvider value={cardsService}>
-          <BrowserRouter>
-            <Switch>
-              <Route
-                path='/'
-                exact
-                render={() => <Main />}
-              />
-            </Switch>
-          </BrowserRouter>
-        </CardsServiceProvider>
-      </Provider>,
-      {
-        createNodeMock: () => {
-          return {};
-        }
-      }
-  )
-  .toJSON();
+  it(`Reducer should update the current state to the set value`, () => {
+    expect(reducer(initialState, {type: ActionTypes.CARDS_LOADED, payload: mockCardsData}))
+      .toEqual({
+        genre: DEFAULT_GENRE,
+        cardsData: mockCardsData,
+        promoCardData: {},
+        reviews: [],
+        newReviews: [],
+      });
 
-  expect(markup).toMatchSnapshot();
+    expect(reducer(initialState, {type: ActionTypes.PROMO_CARD_LOADED, payload: mockPromoCardData}))
+    .toEqual({
+      genre: DEFAULT_GENRE,
+      cardsData: [],
+      promoCardData: mockPromoCardData,
+      reviews: [],
+      newReviews: [],
+    });
+
+    expect(reducer(initialState, {type: ActionTypes.CHANGE_GENRE, payload: mockGenre}))
+    .toEqual({
+      genre: mockGenre,
+      cardsData: [],
+      promoCardData: {},
+      reviews: [],
+      newReviews: [],
+    });
+  });
 });

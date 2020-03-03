@@ -8,8 +8,6 @@ import Poster from '../poster/poster.jsx';
 import Footer from '../footer/footer.jsx';
 
 const CardScreen = ({selectedCardId, cardsData}) => {
-  // console.log(selectedCardId);
-  // console.log(cardsData);
   const selectedCard = cardsData.find(({id}) => selectedCardId === id);
   const {overviewData: {title, previewPoster}, detailsData: {genre, release}} = selectedCard;
 

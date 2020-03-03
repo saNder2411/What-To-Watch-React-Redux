@@ -31,33 +31,9 @@ const PreviewCardsList = ({cardsData, mouseEnterCard, previewCardHandlers}) => {
 };
 
 PreviewCardsList.propTypes = {
-  cardsData: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    overviewData: PropTypes.shape({
-      promoPoster: PropTypes.string.isRequired,
-      poster: PropTypes.string.isRequired,
-      previewPoster: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      rating: PropTypes.string.isRequired,
-      amountVoice: PropTypes.number.isRequired,
-      previewVideoSrc: PropTypes.string.isRequired,
-    }).isRequired,
-    detailsData: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      runtime: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      release: PropTypes.date,
-    }).isRequired,
-    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-  })).isRequired,
+  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   mouseEnterCard: PropTypes.object,
   previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
-};
-
-PreviewCardsList.defaultProps = {
-  activeCard: null,
 };
 
 export default PreviewCardsList;

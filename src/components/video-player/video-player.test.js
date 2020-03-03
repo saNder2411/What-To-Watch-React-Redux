@@ -4,7 +4,7 @@ import VideoPlayer from './video-player.jsx';
 
 const playerOptions = {
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  poster: `img/bohemian-rhapsody.jpg`,
+  previewPoster: `img/bohemian-rhapsody.jpg`,
   isPlaying: false,
   isMuted: false,
   isDelay: false,

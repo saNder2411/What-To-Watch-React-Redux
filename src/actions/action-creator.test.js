@@ -1,17 +1,16 @@
-import React from 'react';
-import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
+import ActionCreator from './action-creator.js';
+import ActionTypes from '../action-types/action-types.js';
 
-configure({adapter: new Adapter()});
-
-const promoCardData = {
-  title: `True Detective`,
-  genre: `Triller`,
-  date: `2019`,
+const mockPromoCardData = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: 2014,
+  poster: `the-grand-budapest-hotel-poster`,
 };
 
-const cardsData = [
+const mockGenre = `Drama`;
+
+const mockCardsData = [
   {
     id: 1,
     overviewData: {
@@ -34,28 +33,23 @@ const cardsData = [
       ],
       runtime: `1h 58m`,
       genre: `Drama`,
-      release: `1989`,
+      release: 1989,
     },
     reviewsId: [5, 6, 7, 8],
   },
 ];
 
-const mockOnScreenChange = jest.fn();
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for update cards returns correct action`, () => {
+    expect(ActionCreator.cardsLoaded(mockCardsData)).toEqual({type: ActionTypes.CARDS_LOADED, payload: mockCardsData});
+  });
 
-it(`Should call onPreviewCardTitleClick when preview card title be pressed`, () => {
+  it(`Action creator for update promo card data returns correct action`, () => {
+    expect(ActionCreator.promoCardLoaded(mockPromoCardData)).toEqual({type: ActionTypes.PROMO_CARD_LOADED, payload: mockPromoCardData});
+  });
 
-  const main = mount(
-      <Main
-        promoCardData={promoCardData}
-        cardsData={cardsData}
-        onScreenChange={mockOnScreenChange}
-      />
-  );
-
-  const firstPreviewCard = main.find(`.small-movie-card`).first();
-
-  firstPreviewCard.simulate(`click`);
-
-  expect(mockOnScreenChange.mock.calls.length).toBe(1);
+  it(`Action creator for change genre returns correct action`, () => {
+    expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
+  });
 
 });

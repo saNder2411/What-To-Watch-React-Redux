@@ -5,9 +5,9 @@ import {DEFAULT_GENRE} from '../const.js';
 const initialState = {
   genre: DEFAULT_GENRE,
   cardsData: [],
+  promoCardData: {},
   reviews: [],
   newReviews: [],
-  promoCardData: {},
 };
 
 const reducer = (state = initialState, action) => {

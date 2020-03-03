@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 const mock = {
   id: 1,
   title: `Bohemian Rhapsody`,
-  poster: `img/bohemian-rhapsody.jpg`,
+  previewPoster: `img/bohemian-rhapsody.jpg`,
   previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   isPlaying: false,
 };
