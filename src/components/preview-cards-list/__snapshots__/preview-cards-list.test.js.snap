@@ -17,7 +17,7 @@ exports[`Should PreviewCardsList render correctly 1`] = `
       <img
         alt="Bohemian Rhapsody"
         height="175"
-        src="img/bohemian-rhapsody.jpg"
+        src="img/img/bohemian-rhapsody.jpg.jpg"
         width="280"
       />
     </div>

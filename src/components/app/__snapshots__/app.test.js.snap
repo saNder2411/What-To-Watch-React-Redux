@@ -25,7 +25,9 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link"
+          className="logo__link "
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -66,12 +68,12 @@ Array [
         className="movie-card__info"
       >
         <div
-          className="movie-card__poster"
+          className="movie-card__poster "
         >
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/undefined.jpg"
             width="218"
           />
         </div>
@@ -80,22 +82,16 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            True Detective
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            >
-              Triller
-            </span>
+            />
             <span
               className="movie-card__year"
-            >
-              2019
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -154,138 +150,20 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item catalog__genres-item--active"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Comedies
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Kids & Family
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          id={789}
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Bohemian Rhapsody
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
       <div
         className="catalog__more"
       >
@@ -305,6 +183,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

@@ -19,13 +19,13 @@ export default class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {src, poster, isMuted = false, isDelay = false, width, height} = this.props;
+    const {src, previewPoster, isMuted = false, isDelay = false, width, height} = this.props;
     const video = this._videoRef.current;
 
     video.src = src;
     video.width = width;
     video.height = height;
-    video.poster = poster;
+    video.poster = `img/${previewPoster}.jpg`;
     video.autoplay = false;
     video.muted = isMuted;
 
@@ -87,7 +87,7 @@ VideoPlayer.propTypes = {
   isMuted: PropTypes.bool,
   isDelay: PropTypes.bool,
   src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  previewPoster: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
 };

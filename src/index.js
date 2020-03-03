@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import store from './store.js';
 import App from './components/app/app.jsx';
-import mockCards from './mocks/mock-cards.js';
+import CardsService from './services/cards-service.js';
+import {CardsServiceProvider} from './components/cards-service-context/cards-service-context.js';
 
-const PromoCardData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`,
-};
+const cardsService = new CardsService();
 
 ReactDOM.render(
-    <App promoCardData={PromoCardData} cardsData={mockCards} />,
+    <Provider store={store}>
+      <CardsServiceProvider value={cardsService}>
+        <App />
+      </CardsServiceProvider>
+    </Provider>,
     document.querySelector(`#root`)
 );

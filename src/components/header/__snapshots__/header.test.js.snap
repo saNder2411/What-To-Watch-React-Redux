@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Header Should Header render correctly in CardScreen 1`] = `null`;
+
+exports[`Render Header Should Header render correctly in Main 1`] = `
+Array [
+  <div
+    className="movie-card__bg"
+  >
+    <img
+      alt="The Grand Budapest Hotel"
+      src="img/bg-the-grand-budapest-hotel.jpg"
+    />
+  </div>,
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header movie-card__head"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link "
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="user-block"
+    >
+      <div
+        className="user-block__avatar"
+      >
+        <img
+          alt="User avatar"
+          height="63"
+          src="img/avatar.jpg"
+          width="63"
+        />
+      </div>
+    </div>
+  </header>,
+]
+`;

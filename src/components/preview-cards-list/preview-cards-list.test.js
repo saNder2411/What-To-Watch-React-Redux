@@ -25,17 +25,21 @@ const cardsData = [
       ],
       runtime: `1h 58m`,
       genre: `Drama`,
-      release: `1989`,
+      release: 1989,
     },
     reviewsId: [5, 6, 7, 8],
   },
 ];
-
-const onScreenChange = () => {};
+const mouseEnterCard = null;
+const previewCardHandlers = [() => {}, () => {}, () => {}];
 
 it(`Should PreviewCardsList render correctly`, () => {
   const markup = renderer
-    .create(<PreviewCardsList cardsData={cardsData} onScreenChange={onScreenChange} />)
+    .create(<PreviewCardsList
+      cardsData={cardsData}
+      mouseEnterCard={mouseEnterCard}
+      previewCardHandlers={previewCardHandlers}
+    />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();
