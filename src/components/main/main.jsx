@@ -2,8 +2,8 @@ import React, {Fragment} from 'react';
 import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
 import WithGenresListState from '../../hocs/with-genres-list-state/with-genres-list-state.jsx';
 import MainHeader from '../main-header/main-header.jsx';
+import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import Footer from '../footer/footer.jsx';
-
 
 const Main = () => {
   return (
@@ -16,10 +16,8 @@ const Main = () => {
 
           <WithGenresListState/>
           <WithPreviewCardsListState />
+          <ShowMoreButton />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
         </section>
 
         <Footer />

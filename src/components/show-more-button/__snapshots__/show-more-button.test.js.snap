@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render ShowMoreButton Should ShowMoreButton render correctly 1`] = `
+<div
+  className="catalog__more"
+>
+  <button
+    className="catalog__button"
+    onClick={[Function]}
+    type="button"
+  >
+    Show more
+  </button>
+</div>
+`;
+
+exports[`Render ShowMoreButton Should ShowMoreButton render correctly when there are no cards to render 1`] = `null`;

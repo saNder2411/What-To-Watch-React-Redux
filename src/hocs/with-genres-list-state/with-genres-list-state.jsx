@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
 import ActionCreator from '../../actions/action-creator.js';
 import GenresList from '../../components/genres-list/genres-list.jsx';
-import {DEFAULT_GENRE} from '../../const.js';
+import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
 
 const MAX_AMOUNT_GENRES_LABEL = 9;
 
@@ -25,9 +25,10 @@ const withGenresListState = (GenresListComponent) => {
     _handleGenresListItemClick(evt) {
       evt.preventDefault();
       const {target: {textContent}} = evt;
-      const {changeGenre} = this.props;
+      const {changeGenre, changeShowingCardsAmount} = this.props;
 
       changeGenre(textContent);
+      changeShowingCardsAmount(ShowingCardsAmount.ON_START);
     }
 
     _createLabels(cardsData) {
@@ -53,15 +54,16 @@ const withGenresListState = (GenresListComponent) => {
   WithGenresListState.propTypes = {
     cardsService: PropTypes.object.isRequired,
     cardsLoaded: PropTypes.func.isRequired,
-    changeGenre: PropTypes.func.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     genre: PropTypes.string,
+    changeGenre: PropTypes.func.isRequired,
+    changeShowingCardsAmount: PropTypes.func.isRequired,
   };
 
   return WithGenresListState;
 };
 
-const mapStateToProps = (state) => ({cardsData: state.cardsData, genre: state.genre});
+const mapStateToProps = ({cardsData, genre}) => ({cardsData, genre});
 
 const mapDispatchToProps = (dispatch) => ({
   cardsLoaded: (newCards) => {
@@ -70,7 +72,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   changeGenre: (genre) => {
     dispatch(ActionCreator.changeGenre(genre));
-  }
+  },
+
+  changeShowingCardsAmount: (amount) => {
+    dispatch(ActionCreator.changeShowingCardsAmount(amount));
+  },
 });
 
 export default withCardsService(connect(mapStateToProps, mapDispatchToProps)(withGenresListState(GenresList)));

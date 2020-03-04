@@ -6,4 +6,9 @@ const CardMode = {
 
 const DEFAULT_GENRE = `All genres`;
 
-export {CardMode, DEFAULT_GENRE};
+const ShowingCardsAmount = {
+  ON_START: 8,
+  BY_BUTTON: 8,
+};
+
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount};

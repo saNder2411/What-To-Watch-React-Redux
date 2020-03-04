@@ -62,8 +62,4 @@ export default class Common {
 
     return [array.slice(0, firstPartLength), array.slice(firstPartLength)];
   }
-
-  static extend(a, b) {
-    return Object.assign({}, a, b);
-  }
 }

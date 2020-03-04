@@ -50,9 +50,11 @@ const mockStore = configureStore();
 const store = mockStore({
   genre: `All Genre`,
   cardsData: mockCardsData,
-  promoCardData: mockPromoCardData,
+  filteredCardsLength: 20,
+  showingCardsAmount: 8,
   reviews: [],
   newReviews: [],
+  promoCardData: mockPromoCardData,
 });
 
 
