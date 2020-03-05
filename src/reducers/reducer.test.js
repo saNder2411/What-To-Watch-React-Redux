@@ -43,9 +43,11 @@ const mockCardsData = [
 const initialState = {
   genre: DEFAULT_GENRE,
   cardsData: [],
-  promoCardData: {},
+  filteredCardsLength: 0,
+  showingCardsAmount: 8,
   reviews: [],
   newReviews: [],
+  promoCardData: {},
 };
 
 describe(`Reducer work correctly`, () => {
@@ -58,6 +60,8 @@ describe(`Reducer work correctly`, () => {
       .toEqual({
         genre: DEFAULT_GENRE,
         cardsData: mockCardsData,
+        filteredCardsLength: 0,
+        showingCardsAmount: 8,
         promoCardData: {},
         reviews: [],
         newReviews: [],
@@ -68,6 +72,8 @@ describe(`Reducer work correctly`, () => {
       genre: DEFAULT_GENRE,
       cardsData: [],
       promoCardData: mockPromoCardData,
+      filteredCardsLength: 0,
+      showingCardsAmount: 8,
       reviews: [],
       newReviews: [],
     });
@@ -77,6 +83,41 @@ describe(`Reducer work correctly`, () => {
       genre: mockGenre,
       cardsData: [],
       promoCardData: {},
+      filteredCardsLength: 0,
+      showingCardsAmount: 8,
+      reviews: [],
+      newReviews: [],
+    });
+
+    expect(reducer(initialState, {type: ActionTypes.CHANGE_FILTERED_CARDS_LENGTH, payload: 10}))
+    .toEqual({
+      genre: DEFAULT_GENRE,
+      cardsData: [],
+      promoCardData: {},
+      filteredCardsLength: 10,
+      showingCardsAmount: 8,
+      reviews: [],
+      newReviews: [],
+    });
+
+    expect(reducer(initialState, {type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: 8}))
+    .toEqual({
+      genre: DEFAULT_GENRE,
+      cardsData: [],
+      promoCardData: {},
+      filteredCardsLength: 0,
+      showingCardsAmount: 8,
+      reviews: [],
+      newReviews: [],
+    });
+
+    expect(reducer(initialState, {type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: undefined}))
+    .toEqual({
+      genre: DEFAULT_GENRE,
+      cardsData: [],
+      promoCardData: {},
+      filteredCardsLength: 0,
+      showingCardsAmount: 16,
       reviews: [],
       newReviews: [],
     });

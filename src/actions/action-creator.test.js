@@ -52,4 +52,15 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
   });
 
+  it(`Action creator for change filtered cards length returns correct action`, () => {
+    expect(ActionCreator.changeFilteredCardsLength(10)).toEqual({type: ActionTypes.CHANGE_FILTERED_CARDS_LENGTH, payload: 10});
+  });
+
+  it(`Action creator for change showing cards amount returns correct action`, () => {
+    expect(ActionCreator.changeShowingCardsAmount(8)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: 8});
+  });
+
+  it(`Action creator for change showing cards amount returns correct action`, () => {
+    expect(ActionCreator.changeShowingCardsAmount(undefined)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: undefined});
+  });
 });
