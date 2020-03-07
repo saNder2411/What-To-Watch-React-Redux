@@ -7,17 +7,13 @@ const PreviewCardsList = ({cardsData, mouseEnterCard, previewCardHandlers}) => {
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 
   const previewCards = cardsData
-    .map((card) => {
+    .map(({id, title, previewPoster, previewVideoSrc}) => {
+      const isPlaying = mouseEnterCard !== null && mouseEnterCard.id === id;
+
       return (
         <WrappedPreviewCard
-          key={`${card.id}-${card.overviewData.title.slice(0, 2)}`}
-          previewCardData={{
-            id: card.id,
-            title: card.overviewData.title,
-            previewPoster: card.overviewData.previewPoster,
-            previewVideoSrc: card.overviewData.previewVideoSrc,
-            isPlaying: mouseEnterCard !== null && mouseEnterCard.id === card.id,
-          }}
+          key={`${id}-${title.slice(0, 2)}`}
+          previewCardData={{id, title, previewPoster, previewVideoSrc, isPlaying}}
           previewCardHandlers={previewCardHandlers}
         />
       );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {CardMode} from '../../const.js';
 
@@ -17,7 +17,9 @@ const CardTabsNav = ({mode, onTabsNavClick}) => {
         <a
           href="#"
           className="movie-nav__link"
-          onClick={(evt) => onTabsNavClick(evt, name)}>{LABEL}
+          onClick={(evt) => onTabsNavClick(evt, name)}
+        >
+          {LABEL}
         </a>
       </li>
     );
@@ -37,4 +39,4 @@ CardTabsNav.propTypes = {
   onTabsNavClick: PropTypes.func.isRequired,
 };
 
-export default CardTabsNav;
+export default memo(CardTabsNav);

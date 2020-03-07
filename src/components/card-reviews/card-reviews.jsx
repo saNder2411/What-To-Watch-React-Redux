@@ -4,7 +4,7 @@ import CardReview from '../card-review/card-review.jsx';
 import mockReviews from '../../mocks/mock-reviews';
 import Common from '../../utils/common.js';
 
-const CardReviews = ({data: {reviewsId}}) => {
+const CardReviews = ({reviewsId}) => {
   const reviews = [];
 
   reviewsId.forEach((id) => {
@@ -21,7 +21,7 @@ const CardReviews = ({data: {reviewsId}}) => {
     return (
       <CardReview
         key={`${review.id}-${review.rating}`}
-        data={review}
+        {...review}
       />
     );
   });
@@ -30,7 +30,7 @@ const CardReviews = ({data: {reviewsId}}) => {
     return (
       <CardReview
         key={`${review.id}-${review.rating}`}
-        data={review}
+        {...review}
       />
     );
   });
@@ -48,26 +48,7 @@ const CardReviews = ({data: {reviewsId}}) => {
 };
 
 CardReviews.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    overviewData: PropTypes.shape({
-      promoPoster: PropTypes.string.isRequired,
-      poster: PropTypes.string.isRequired,
-      previewPoster: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      rating: PropTypes.string.isRequired,
-      amountVoice: PropTypes.number.isRequired,
-    }).isRequired,
-    detailsData: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      runtime: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      release: PropTypes.number.isRequired,
-    }).isRequired,
-    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-  }).isRequired,
+  reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
 };
 
 export default CardReviews;

@@ -7,7 +7,7 @@ import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
 
 const cardsService = new CardsService();
-const mockStore = configureStore([]);
+const mockStore = configureStore();
 
 it(`Should App render correctly`, () => {
 

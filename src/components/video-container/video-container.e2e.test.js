@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import VideoPlayer from './video-player.jsx';
+import VideoContainer from './video-container.jsx';
 
 configure({adapter: new Adapter()});
 
@@ -19,7 +19,7 @@ describe(`Will verify that the component has two states: play and pause`, () => 
   it(`Will verify that the component has state: play`, () => {
     let isPlaying = false;
     const videPlayer = mount(
-        <VideoPlayer
+        <VideoContainer
           {...playerOptions}
         />,
         {
@@ -44,7 +44,7 @@ describe(`Will verify that the component has two states: play and pause`, () => 
   it(`Will verify that the component has state: pause`, () => {
     let isPlaying = true;
     const videPlayer = mount(
-        <VideoPlayer
+        <VideoContainer
           {...playerOptions}
         />,
         {

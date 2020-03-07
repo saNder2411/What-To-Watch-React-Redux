@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoPlayer from './video-player.jsx';
+import VideoContainer from './video-container.jsx';
 
 const playerOptions = {
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -15,7 +15,7 @@ const playerOptions = {
 it(`VideoPlayer is rendered correctly`, () => {
 
   const markup = renderer.create(
-      <VideoPlayer {...playerOptions} />,
+      <VideoContainer {...playerOptions} />,
       {
         createNodeMock: () => {
           return {};

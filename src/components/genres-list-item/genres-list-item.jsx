@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 const GenresListItem = ({label, isActive, onGenresListItemClick}) => {
@@ -21,4 +21,4 @@ GenresListItem.propTypes = {
   onGenresListItemClick: PropTypes.func.isRequired,
 };
 
-export default GenresListItem;
+export default memo(GenresListItem);

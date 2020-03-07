@@ -4,7 +4,7 @@ import Common from '../../utils/common.js';
 
 const CardLevelValues = [3, 5, 8, 10];
 
-const CardOverview = ({data: {overviewData: {descriptions, rating, amountVoice}, detailsData: {director, actors}}}) => {
+const CardOverview = ({descriptions, rating, amountVoice, director, actors}) => {
   const [descriptionsPartOne, descriptionsPartTwo] = descriptions;
   const cardLevel = Common.calcCardLevel(rating, CardLevelValues);
 
@@ -32,18 +32,11 @@ const CardOverview = ({data: {overviewData: {descriptions, rating, amountVoice},
 };
 
 CardOverview.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    overviewData: PropTypes.shape({
-      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      rating: PropTypes.string.isRequired,
-      amountVoice: PropTypes.number.isRequired,
-    }).isRequired,
-    detailsData: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    }).isRequired,
-  }).isRequired,
+  descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  rating: PropTypes.string.isRequired,
+  amountVoice: PropTypes.number.isRequired,
+  director: PropTypes.string.isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default CardOverview;
