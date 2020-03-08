@@ -10,9 +10,9 @@ const withVideo = (Component) => {
       this.state = {
         progress: 0,
         isLoading: true,
-        isPlaying: props.isPlaying,
-        isMuted: props.isMuted,
-        isDelay: props.isDelay,
+        isPlaying: this.props.isPlaying,
+        isMuted: this.props.isMuted,
+        isDelay: this.props.isDelay,
       };
 
       this._videoRef = createRef();
@@ -53,10 +53,7 @@ const withVideo = (Component) => {
 
       if (this.state.isPlaying) {
         video.play();
-        return;
       }
-
-      video.pause();
     }
 
     componentWillUnmount() {

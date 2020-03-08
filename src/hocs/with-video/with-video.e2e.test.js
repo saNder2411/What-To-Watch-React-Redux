@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -9,9 +9,9 @@ configure({adapter: new Adapter()});
 const Player = (props) => {
   const {children} = props;
   return (
-    <div>
+    <Fragment>
       {children}
-    </div>
+    </Fragment>
   );
 };
 
@@ -23,7 +23,7 @@ Player.propTypes = {
 };
 
 const videoProps = {
-  isPlaying: true,
+  isPlaying: false,
   poster: ``,
   src: ``,
   isMuted: true,
@@ -32,30 +32,32 @@ const videoProps = {
   height: 175,
 };
 
-it(`Checks that HOC's callback turn on video (play)`, () => {
-  const PlayerWrapped = withVideo(Player);
-  const wrapper = mount(<PlayerWrapped
-    {...videoProps}
-  />);
+describe(`Check preview video player`, () => {
+  it(`Checks that video turn on (play) when the browser can play multimedia`, () => {
+    const PlayerWrapped = withVideo(Player);
+    const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-  wrapper.instance().componentDidMount();
+    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.pause = () => {};
 
-  wrapper.find(`video`).simulate(`play`);
+    const {_videoRef} = wrapper.instance();
 
-  expect(wrapper.state().isPlaying).toEqual(true);
+    jest.spyOn(_videoRef.current, `play`);
+
+    wrapper.instance().componentDidMount();
+
+    wrapper.setProps({isPlaying: true});
+
+    wrapper.find(`video`).simulate(`canplaythrough`);
+
+    wrapper.setState({isLoading: false});
+
+    wrapper.instance().componentDidUpdate();
+
+    wrapper.setState({isPlaying: true});
+
+
+    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+  });
 });
 
-it(`Checks that HOC's callback turn off video (pause)`, () => {
-  const PlayerWrapped = withVideo(Player);
-  const wrapper = mount(<PlayerWrapped
-    {...videoProps}
-    isPlaying={false}
-  />);
-
-  wrapper.instance().componentDidMount();
-
-  wrapper.find(`video`).simulate(`pause`);
-
-
-  expect(wrapper.state().isPlaying).toEqual(false);
-});

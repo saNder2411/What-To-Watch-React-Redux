@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import renderer from 'react-test-renderer';
 import PropTypes from 'prop-types';
 import withVideo from './with-video.jsx';
@@ -8,9 +8,9 @@ const MockComponent = (props) => {
   const {children} = props;
 
   return (
-    <div>
+    <Fragment>
       {children}
-    </div>
+    </Fragment>
   );
 };
 
