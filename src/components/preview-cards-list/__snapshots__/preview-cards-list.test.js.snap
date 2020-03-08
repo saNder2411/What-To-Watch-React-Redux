@@ -1,36 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should PreviewCardsList render correctly 1`] = `
+exports[`Render PreviewCardsList Should PreviewCardsList render correctly in CardScreen 1`] = `null`;
+
+exports[`Render PreviewCardsList Should PreviewCardsList render correctly in Main 1`] = `
 <div
   className="catalog__movies-list"
->
-  <article
-    className="small-movie-card catalog__movies-card"
-    id={1}
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Bohemian Rhapsody"
-        height="175"
-        src="img/img/bohemian-rhapsody.jpg.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Bohemian Rhapsody
-      </a>
-    </h3>
-  </article>
-</div>
+/>
 `;

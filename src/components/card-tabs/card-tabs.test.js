@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import CardTabs from './card-tabs.jsx';
+import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
 
 const cardData = {
   id: 0,
@@ -25,9 +26,11 @@ const cardData = {
   reviewsId: [5, 6, 7, 8],
 };
 
+const MockComponentWrapped = withCardTabsState(CardTabs);
+
 it(`Should CardOverview render correctly`, () => {
   const markup = renderer
-    .create(<CardTabs data={cardData} />)
+    .create(<MockComponentWrapped {...cardData} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

@@ -2,10 +2,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import VideoContainer from './video-container.jsx';
 
-const playerOptions = {
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  previewPoster: `img/bohemian-rhapsody.jpg`,
-  isPlaying: false,
+const videoProps = {
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  poster: `img/bohemian-rhapsody.jpg`,
+  isPlaying: true,
   isMuted: false,
   isDelay: false,
   width: 280,
@@ -15,7 +15,9 @@ const playerOptions = {
 it(`VideoPlayer is rendered correctly`, () => {
 
   const markup = renderer.create(
-      <VideoContainer {...playerOptions} />,
+      <VideoContainer {...videoProps}>
+        <video/>
+      </VideoContainer>,
       {
         createNodeMock: () => {
           return {};
