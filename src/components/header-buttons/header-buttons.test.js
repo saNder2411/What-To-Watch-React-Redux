@@ -45,9 +45,7 @@ describe(`Render HeaderButtons`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <HeaderButtons />;
-                  }}
+                  component={HeaderButtons}
                 />
               </Switch>
             </BrowserRouter>

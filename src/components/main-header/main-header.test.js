@@ -39,7 +39,7 @@ it(`Should MainHeader render correctly`, () => {
               <Route
                 path='/'
                 exact
-                render={() => <MockWrapped />}
+                component={MockWrapped}
               />
             </Switch>
           </BrowserRouter>

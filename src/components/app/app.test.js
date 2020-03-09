@@ -14,7 +14,7 @@ it(`Should App render correctly`, () => {
   const store = mockStore({
     genre: `All Genre`,
     cardsData: [],
-    filteredCardsLength: 20,
+    filteredCardsLength: 0,
     showingCardsAmount: 8,
     reviews: [],
     newReviews: [],

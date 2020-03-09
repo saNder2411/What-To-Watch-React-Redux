@@ -28,7 +28,7 @@ describe(`Render PreviewCardsList`, () => {
                 <Route
                   path='/'
                   exact
-                  render={() => <MockWrappedPreviewCardsList />}
+                  component={MockWrappedPreviewCardsList}
                 />
               </Switch>
             </BrowserRouter>

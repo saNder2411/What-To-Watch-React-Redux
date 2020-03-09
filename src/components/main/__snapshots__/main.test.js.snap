@@ -73,7 +73,7 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="img/undefined.jpg"
+            src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
           />
         </div>
@@ -82,16 +82,22 @@ Array [
         >
           <h2
             className="movie-card__title"
-          />
+          >
+            The Grand Budapest Hotel
+          </h2>
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            />
+            >
+              Drama
+            </span>
             <span
               className="movie-card__year"
-            />
+            >
+              2014
+            </span>
           </p>
           <div
             className="movie-card__buttons"
@@ -158,6 +164,17 @@ Array [
             onClick={[Function]}
           >
             All genres
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Drama
           </a>
         </li>
       </ul>

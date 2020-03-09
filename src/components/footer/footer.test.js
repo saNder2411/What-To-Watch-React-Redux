@@ -45,9 +45,7 @@ describe(`Render Footer`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <Footer />;
-                  }}
+                  component={Footer}
                 />
               </Switch>
             </BrowserRouter>

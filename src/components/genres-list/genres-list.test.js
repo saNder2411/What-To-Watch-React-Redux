@@ -35,7 +35,7 @@ it(`Should GenresList render correctly`, () => {
                 <Route
                   path='/'
                   exact
-                  render={() => <MockWrappedGenreList />}
+                  component={MockWrappedGenreList}
                 />
               </Switch>
             </BrowserRouter>
