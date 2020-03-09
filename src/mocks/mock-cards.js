@@ -111,6 +111,7 @@ const getRandomRuntime = () => {
 };
 
 const generateMockCard = (title, id) => {
+  const urlVideo = PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)];
   return {
     id,
     promoPoster: `bg-the-grand-budapest-hotel`,
@@ -120,7 +121,8 @@ const generateMockCard = (title, id) => {
     descriptions: Descriptions,
     rating: Common.getRandomRating(),
     amountVoice: Common.getRandomNumberFromPeriod(200),
-    previewVideoSrc: PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)],
+    previewVideoSrc: urlVideo,
+    videoSrc: urlVideo,
     director: Directors[Common.getRandomNumberFromPeriod(Directors.length)],
     actors: Actors.filter(() => Math.random() > 0.5),
     runtime: getRandomRuntime(),

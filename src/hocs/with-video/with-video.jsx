@@ -7,21 +7,12 @@ const withVideo = (Component) => {
   class WithVideo extends PureComponent {
     constructor(props) {
       super(props);
-      this.state = {
-        progress: 0,
-        isLoading: true,
-        isPlaying: this.props.isPlaying,
-        isMuted: this.props.isMuted,
-        isDelay: this.props.isDelay,
-      };
-
       this._videoRef = createRef();
-
       this._currentTimeout = null;
     }
 
     componentDidMount() {
-      const {src, poster, isMuted = false, isDelay = false, width, height} = this.props;
+      const {isPlaying, onEnded, onTimeUpdate, src, poster, isMuted = false, isDelay = false, width = ``, height = ``} = this.props;
       const video = this._videoRef.current;
 
       video.src = src;
@@ -32,27 +23,44 @@ const withVideo = (Component) => {
       video.muted = isMuted;
 
       video.oncanplaythrough = () => {
-        if (isDelay) {
+        if (isDelay && isPlaying) {
           this._currentTimeout = setTimeout(() => {
-            this.setState({isLoading: false});
+            video.play();
           }, DELAY);
+
           return;
         }
 
-        this.setState({isLoading: false});
+        if (isPlaying) {
+          video.play();
+        }
       };
 
-      video.onplay = () => this.setState({isPlaying: true});
-      video.onpause = () => this.setState({isPlaying: false});
-      video.onended = () => this.setState({isPlaying: false});
-      video.ontimeupdate = () => this.setState({progress: Math.floor(video.currentTime)});
+      video.onended = () => {
+        if (onEnded) {
+          onEnded();
+        } else {
+          video.play();
+        }
+      };
+
+      video.ontimeupdate = () => {
+        if (onTimeUpdate) {
+          const percentValue = Math.floor((Math.floor(video.currentTime) / video.duration) * 100);
+          const secondsValue = Math.floor(video.currentTime);
+
+          onTimeUpdate(secondsValue, percentValue);
+        }
+      };
     }
 
     componentDidUpdate() {
       const video = this._videoRef.current;
 
-      if (this.state.isPlaying) {
+      if (this.props.isPlaying) {
         video.play();
+      } else {
+        video.pause();
       }
     }
 
@@ -65,8 +73,6 @@ const withVideo = (Component) => {
       video.height = 0;
 
       video.oncanplaythrough = null;
-      video.onplay = null;
-      video.onpause = null;
       video.onended = null;
       video.ontimeupdate = null;
 
@@ -74,9 +80,10 @@ const withVideo = (Component) => {
     }
 
     render() {
+      const {className = ``} = this.props;
       return (
         <Component>
-          <video ref={this._videoRef} />
+          <video ref={this._videoRef} className={className}/>
         </Component>
       );
     }
@@ -88,8 +95,11 @@ const withVideo = (Component) => {
     isDelay: PropTypes.bool,
     src: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    className: PropTypes.string,
+    onEnded: PropTypes.func,
+    onTimeUpdate: PropTypes.func,
   };
 
   return WithVideo;

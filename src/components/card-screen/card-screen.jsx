@@ -13,13 +13,13 @@ const WrappedCardTabs = withCardTabsState(CardTabs);
 const WrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
-  const selectedCard = cardsData.find(({id}) => selectedCardId === id);
+  const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
   const {title, previewPoster, genre, release} = selectedCard;
 
   return (
     <Fragment>
       <section className="movie-card movie-card--full">
-        <CardScreenHeader title={title} genre={genre} release={release}/>
+        <CardScreenHeader title={title} genre={genre} release={release} selectedCardId={selectedCardId}/>
 
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
@@ -46,10 +46,10 @@ const CardScreen = ({selectedCardId, cardsData}) => {
 };
 
 CardScreen.propTypes = {
-  selectedCardId: PropTypes.number.isRequired,
+  selectedCardId: PropTypes.string.isRequired,
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const mapStateToProps = (state) => ({cardsData: state.cardsData});
+const mapStateToProps = ({cardsData}) => ({cardsData});
 
 export default connect(mapStateToProps)(CardScreen);

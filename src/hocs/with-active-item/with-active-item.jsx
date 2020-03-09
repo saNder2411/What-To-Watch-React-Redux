@@ -48,7 +48,7 @@ const withActiveItem = (Component) => {
     changeShowingCardsAmount: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    selectedCardId: PropTypes.number,
+    selectedCardId: PropTypes.string,
   };
 
   const mapStateToProps = ({cardsData}) => ({cardsData});
