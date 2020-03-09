@@ -6,6 +6,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import MainHeader from './main-header.jsx';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+import withData from '../../hocs/with-data/with-data.jsx';
+import {DataTypes} from '../../const.js';
 
 const cardsService = new CardsService();
 
@@ -26,6 +28,7 @@ const store = mockStore({
   newReviews: [],
 });
 
+const MockWrapped = withData(MainHeader, DataTypes.PROMO_DATA);
 
 it(`Should MainHeader render correctly`, () => {
   const markup = renderer.create(
@@ -36,7 +39,7 @@ it(`Should MainHeader render correctly`, () => {
               <Route
                 path='/'
                 exact
-                render={() => <MainHeader />}
+                component={MockWrapped}
               />
             </Switch>
           </BrowserRouter>

@@ -113,23 +113,19 @@ const getRandomRuntime = () => {
 const generateMockCard = (title, id) => {
   return {
     id,
-    overviewData: {
-      promoPoster: `bg-the-grand-budapest-hotel`,
-      poster: `the-grand-budapest-hotel-poster`,
-      previewPoster: getPreviewPosterSrcValue(title),
-      title,
-      descriptions: Descriptions,
-      rating: Common.getRandomRating(),
-      amountVoice: Common.getRandomNumberFromPeriod(200),
-      previewVideoSrc: PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)],
-    },
-    detailsData: {
-      director: Directors[Common.getRandomNumberFromPeriod(Directors.length)],
-      actors: Actors.filter(() => Math.random() > 0.5),
-      runtime: getRandomRuntime(),
-      genre: Genres[Common.getRandomNumberFromPeriod(Genres.length)],
-      release: Common.getRandomDate(),
-    },
+    promoPoster: `bg-the-grand-budapest-hotel`,
+    poster: `the-grand-budapest-hotel-poster`,
+    previewPoster: getPreviewPosterSrcValue(title),
+    title,
+    descriptions: Descriptions,
+    rating: Common.getRandomRating(),
+    amountVoice: Common.getRandomNumberFromPeriod(200),
+    previewVideoSrc: PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)],
+    director: Directors[Common.getRandomNumberFromPeriod(Directors.length)],
+    actors: Actors.filter(() => Math.random() > 0.5),
+    runtime: getRandomRuntime(),
+    genre: Genres[Common.getRandomNumberFromPeriod(Genres.length)],
+    release: Common.getRandomDate(),
     reviewsId: MockReviews
       .slice()
       .splice(Common.getRandomNumberFromPeriod(MockReviews.length - MAX_AMOUNT_REVIEWS), Common.getRandomNumberFromPeriod(MAX_AMOUNT_REVIEWS))
@@ -137,6 +133,6 @@ const generateMockCard = (title, id) => {
   };
 };
 
-const generateMockCards = (titles) => titles.map((title, i) => generateMockCard(title, i));
+const generateMockCards = (titles) => titles.map((title, i) => generateMockCard(title, i + 1));
 
 export default generateMockCards(Titles);

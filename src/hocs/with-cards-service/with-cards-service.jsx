@@ -1,19 +1,17 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {CardsServiceConsumer} from '../../components/cards-service-context/cards-service-context.js';
 
 const withCardsService = (Component) => {
-  class WithCardsService extends PureComponent {
-    render() {
-      return (
-        <CardsServiceConsumer>
-          {
-            (cardsService) => <Component {...this.props} cardsService={cardsService} />
-          }
-        </CardsServiceConsumer>
-      );
-    }
+  const WithCardsService = (props) => {
 
-  }
+    return (
+      <CardsServiceConsumer>
+        {
+          (cardsService) => <Component {...props} cardsService={cardsService} />
+        }
+      </CardsServiceConsumer>
+    );
+  };
 
   return WithCardsService;
 };

@@ -1,5 +1,8 @@
 import React, {PureComponent} from 'react';
-import VideoPlayer from '../../components/video-player/video-player.jsx';
+import VideoContainer from '../../components/video-container/video-container.jsx';
+import withVideo from '../with-video/with-video.jsx';
+
+const VideoPlayer = withVideo(VideoContainer);
 
 const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends PureComponent {
@@ -16,8 +19,6 @@ const withVideoPlayer = (Component) => {
       );
     }
   }
-
-  WithVideoPlayer.propTypes = {};
 
   return WithVideoPlayer;
 };

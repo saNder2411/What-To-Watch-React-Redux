@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Common from '../../utils/common.js';
 
-const CardReview = ({data: {text, author, rating, date}}) => {
+const CardReview = ({text, author, rating, date}) => {
   const dateToStr = Common.parseDateToStr(date);
 
   return (
@@ -22,12 +22,10 @@ const CardReview = ({data: {text, author, rating, date}}) => {
 };
 
 CardReview.propTypes = {
-  data: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
-  }).isRequired,
+  text: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
 };
 
 export default CardReview;

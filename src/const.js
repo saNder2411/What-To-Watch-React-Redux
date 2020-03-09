@@ -11,4 +11,9 @@ const ShowingCardsAmount = {
   BY_BUTTON: 8,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount};
+const DataTypes = {
+  PROMO_DATA: `PROMO_DATA`,
+  CARDS_DATA: `CARDS_DATA`,
+};
+
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes};

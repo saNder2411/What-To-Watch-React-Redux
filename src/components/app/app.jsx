@@ -11,7 +11,7 @@ const App = () => {
         <Route
           path='/'
           exact
-          render={() => <Main />}
+          component={Main}
         />
         <Route
           path='/cards:id'

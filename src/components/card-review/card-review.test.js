@@ -12,7 +12,7 @@ const review = {
 
 it(`Should CardReview render correctly`, () => {
   const markup = renderer
-    .create(<CardReview data={review} />)
+    .create(<CardReview {...review} />)
     .toJSON();
 
   expect(markup).toMatchSnapshot();

@@ -39,12 +39,6 @@ exports[`Should CardDetails render correctly 1`] = `
          
         <br />
         Leonardo DiCaprio
-         
-        <br />
-        Morgan Freeman
-         
-        <br />
-        Tom Hanks
       </span>
     </p>
   </div>

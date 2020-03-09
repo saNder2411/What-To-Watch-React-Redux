@@ -2,14 +2,19 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CardTabs from '../card-tabs/card-tabs.jsx';
+import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
 import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
 import Poster from '../poster/poster.jsx';
 import Footer from '../footer/footer.jsx';
 
+const WrappedCardTabs = withCardTabsState(CardTabs);
+const WrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
+
 const CardScreen = ({selectedCardId, cardsData}) => {
   const selectedCard = cardsData.find(({id}) => selectedCardId === id);
-  const {overviewData: {title, previewPoster}, detailsData: {genre, release}} = selectedCard;
+  const {title, previewPoster, genre, release} = selectedCard;
 
   return (
     <Fragment>
@@ -20,7 +25,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
           <div className="movie-card__info">
 
             <Poster poster={previewPoster} isCardScreen />
-            <CardTabs data={selectedCard} />
+            <WrappedCardTabs {...selectedCard} />
 
           </div>
         </div>
@@ -30,7 +35,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <WithPreviewCardsListState selectedCardId={selectedCardId}/>
+          <WrappedPreviewCardsList selectedCardId={selectedCardId}/>
 
         </section>
 

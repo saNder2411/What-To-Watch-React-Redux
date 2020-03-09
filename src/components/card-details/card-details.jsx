@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const CardDetails = ({data: {detailsData: {director, actors, runtime, genre, release}}}) => {
+const CardDetails = ({director, actors, runtime, genre, release}) => {
   const yearRelease = new Date(release).getFullYear();
   const actorsList = actors.map((actor, i) => {
     const withTegBr = <Fragment key={actor}>{actor} <br/></Fragment>;
@@ -44,26 +44,11 @@ const CardDetails = ({data: {detailsData: {director, actors, runtime, genre, rel
 };
 
 CardDetails.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    overviewData: PropTypes.shape({
-      promoPoster: PropTypes.string.isRequired,
-      poster: PropTypes.string.isRequired,
-      previewPoster: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      rating: PropTypes.string.isRequired,
-      amountVoice: PropTypes.number.isRequired,
-    }).isRequired,
-    detailsData: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      runtime: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      release: PropTypes.number.isRequired,
-    }).isRequired,
-    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-  }).isRequired,
+  director: PropTypes.string.isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  runtime: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  release: PropTypes.number.isRequired,
 };
 
 export default CardDetails;
