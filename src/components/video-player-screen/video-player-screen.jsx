@@ -98,7 +98,7 @@ VideoPlayerScreen.propTypes = {
   isFullScreen: PropTypes.bool.isRequired,
   progressInSeconds: PropTypes.number.isRequired,
   progressInPercent: PropTypes.number.isRequired,
-  playerRef: PropTypes.any,
+  playerRef: PropTypes.object.isRequired,
   handlePlayButtonClick: PropTypes.func.isRequired,
   handleVideoTimeUpdate: PropTypes.func.isRequired,
   handleFullScreenButtonClick: PropTypes.func.isRequired,
