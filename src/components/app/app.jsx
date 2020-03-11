@@ -29,7 +29,7 @@ const App = () => {
           path='/player:id'
           render={({match}) => {
             const {id} = match.params;
-            return <WrappedVideoPlayerScreen selectedCardId={+id}/>;
+            return <WrappedVideoPlayerScreen selectedCardId={id}/>;
           }}
         />
       </Switch>

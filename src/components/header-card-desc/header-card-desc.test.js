@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import HeaderCardDesc from './header-card-desc.jsx';
+import HeaderButtons from '../header-buttons/header-buttons.jsx';
 
 const mockStore = configureStore();
 const store = mockStore({
@@ -27,11 +28,12 @@ describe(`Render HeaderCardDesc`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <HeaderCardDesc title={title} genre={genre} date={date} isCardScreen/>;
-                  }}
-                />
+                  path='/'
+                >
+                  <HeaderCardDesc title={title} genre={genre} date={date} >
+                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                  </HeaderCardDesc>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -49,10 +51,11 @@ describe(`Render HeaderCardDesc`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <HeaderCardDesc title={title} genre={genre} date={date} />;
-                  }}
-                />
+                >
+                  <HeaderCardDesc title={title} genre={genre} date={date} >
+                    <HeaderButtons />
+                  </HeaderCardDesc>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>

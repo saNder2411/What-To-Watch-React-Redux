@@ -3,7 +3,10 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import CardScreen from './card-screen.jsx';
+import CardScreenBottom from './card-screen-bottom.jsx';
+import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import Footer from '../footer/footer.jsx';
 
 const mockStore = configureStore();
 const mockPromoCardData = {
@@ -12,6 +15,7 @@ const mockPromoCardData = {
   date: 2014,
   poster: `the-grand-budapest-hotel-poster`,
 };
+
 const mockCardsData = [
   {
     id: 1,
@@ -36,6 +40,7 @@ const mockCardsData = [
     reviewsId: [5, 6, 7, 8],
   },
 ];
+
 const store = mockStore({
   genre: `All Genre`,
   cardsData: mockCardsData,
@@ -46,25 +51,27 @@ const store = mockStore({
   promoCardData: mockPromoCardData,
 });
 
-it(`Should CardScreen render correctly`, () => {
-  const markup = renderer.create(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              path='/'
-              render={() => <CardScreen selectedCardId={`1`}/>}
-            />
-          </Switch>
-        </BrowserRouter>
-      </Provider>,
-      {
-        createNodeMock: () => {
-          return {};
-        }
-      }
-  )
-  .toJSON();
+const WrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
+
+it(`Should CardScreenBottom render correctly`, () => {
+  const markup = renderer
+    .create(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Switch>
+              <Route
+                path='/'
+              >
+                <CardScreenBottom>
+                  <WrappedPreviewCardsList selectedCardId={`1`} />
+                  <Footer isCardScreen />
+                </CardScreenBottom>
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </Provider>
+    )
+    .toJSON();
 
   expect(markup).toMatchSnapshot();
 });

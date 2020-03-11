@@ -59,9 +59,7 @@ describe(`Render ShowMoreButton`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <ShowMoreButton changeShowingCardsAmount={changeShowingCardsAmount}/>;
-                  }}
+                  render={() => <ShowMoreButton changeShowingCardsAmount={changeShowingCardsAmount}/>}
                 />
               </Switch>
             </BrowserRouter>

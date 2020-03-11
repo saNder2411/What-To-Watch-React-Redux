@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Main render correctly 1`] = `
+<div
+  className="player"
+>
+  <div>
+    <video
+      className="player__video"
+    />
+  </div>
+  <a
+    href="/cards1"
+    onClick={[Function]}
+  >
+    <button
+      className="player__exit"
+      type="button"
+    >
+      Exit
+    </button>
+  </a>
+  <div
+    className="player__controls"
+  >
+    <div
+      className="player__controls-row"
+    >
+      <div
+        className="player__time"
+      >
+        <progress
+          className="player__progress"
+          max="100"
+          value={0}
+        />
+        <div
+          className="player__toggler"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          Toggler
+        </div>
+      </div>
+      <div
+        className="player__time-value"
+      >
+        0:00:00
+      </div>
+    </div>
+    <div
+      className="player__controls-row"
+    >
+      <button
+        className="player__play"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="21"
+          viewBox="0 0 14 21"
+          width="14"
+        >
+          <use
+            xlinkHref="#pause"
+          />
+        </svg>
+        <span>
+          Pause
+        </span>
+      </button>
+      <div
+        className="player__name"
+      >
+        Bohemian Rhapsody
+      </div>
+      <button
+        className="player__full-screen"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="27"
+          viewBox="0 0 27 27"
+          width="27"
+        >
+          <use
+            xlinkHref="#full-screen"
+          />
+        </svg>
+        <span>
+          Full screen
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

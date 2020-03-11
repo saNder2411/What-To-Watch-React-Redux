@@ -23,10 +23,8 @@ describe(`Render Header`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <Header isCardScreen/>;
-                  }}
+                  path='/'
+                  render={() => <Header isCardScreen/>}
                 />
               </Switch>
             </BrowserRouter>

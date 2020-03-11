@@ -4,15 +4,8 @@ import PropTypes from 'prop-types';
 import withVideo from './with-video.jsx';
 
 
-const MockComponent = (props) => {
-  const {children} = props;
+const MockComponent = ({children}) => <Fragment>{children}</Fragment>;
 
-  return (
-    <Fragment>
-      {children}
-    </Fragment>
-  );
-};
 
 MockComponent.propTypes = {
   children: PropTypes.oneOfType([
@@ -23,18 +16,18 @@ MockComponent.propTypes = {
 
 const MockComponentWrapped = withVideo(MockComponent);
 
-const videoProps = {
-  isPlaying: false,
-  poster: ``,
-  src: ``,
-  isMuted: true,
-  isDelay: true,
-  width: 280,
-  height: 175,
-};
 
-it(`withVideo is rendered correctly`, () => {
-  const tree = renderer.create((
+it(`withVideo is rendered correctly for PreviewCard`, () => {
+  const videoProps = {
+    isPlaying: false,
+    poster: ``,
+    src: ``,
+    isMuted: true,
+    isDelay: true,
+    width: 280,
+    height: 175,
+  };
+  const markup = renderer.create((
     <MockComponentWrapped {...videoProps}/>
   ), {
     createNodeMock() {
@@ -42,5 +35,28 @@ it(`withVideo is rendered correctly`, () => {
     }
   }).toJSON();
 
-  expect(tree).toMatchSnapshot();
+  expect(markup).toMatchSnapshot();
+});
+
+it(`withVideo is rendered correctly for VideoPlayerScreen`, () => {
+  const videoProps = {
+    isPlaying: true,
+    poster: `img/bohemian-rhapsody.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    className: `player__video`,
+    onEnded: () => {},
+    onTimeUpdate: () => {},
+  };
+  const markup = renderer.create(
+      <MockComponentWrapped {...videoProps}>
+        <video/>
+      </MockComponentWrapped>,
+      {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
+
+  expect(markup).toMatchSnapshot();
 });

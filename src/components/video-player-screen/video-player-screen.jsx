@@ -18,9 +18,9 @@ const VideoPlayerScreen = (props) => {
     handlePlayButtonClick, handleVideoTimeUpdate, handleFullScreenButtonClick,
   } = props;
 
-  const selectedCard = selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
+  const selectedCard = +selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
   const {videoSrc, poster, title} = selectedCard;
-  const toExit = selectedCardId === -1 ? `/` : `/cards${selectedCardId}`;
+  const toExit = +selectedCardId === -1 ? `/` : `/cards${selectedCardId}`;
   const videoProps = {
     isPlaying,
     poster,
@@ -90,7 +90,7 @@ const VideoPlayerScreen = (props) => {
 };
 
 VideoPlayerScreen.propTypes = {
-  selectedCardId: PropTypes.number.isRequired,
+  selectedCardId: PropTypes.string.isRequired,
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
   promoCardData: PropTypes.object.isRequired,
   renderPlayer: PropTypes.func.isRequired,
