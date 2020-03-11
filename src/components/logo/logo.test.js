@@ -25,10 +25,8 @@ describe(`Render Logo`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <Logo isCardScreen changeGenre={changeGenre}/>;
-                  }}
+                  path='/'
+                  render={() => <Logo isCardScreen changeGenre={changeGenre}/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -47,9 +45,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <Logo changeGenre={changeGenre}/>;
-                  }}
+                  render={() => <Logo changeGenre={changeGenre}/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -67,10 +63,8 @@ describe(`Render Logo`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <Logo isCardScreen isFooterLogo changeGenre={changeGenre}/>;
-                  }}
+                  path='/'
+                  render={() => <Logo isCardScreen isFooterLogo changeGenre={changeGenre}/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -89,9 +83,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <Logo isFooterLogo changeGenre={changeGenre}/>;
-                  }}
+                  render={() => <Logo isFooterLogo changeGenre={changeGenre}/>}
                 />
               </Switch>
             </BrowserRouter>

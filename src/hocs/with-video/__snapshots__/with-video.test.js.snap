@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withVideo is rendered correctly 1`] = `<video />`;
+exports[`withVideo is rendered correctly for PreviewCard 1`] = `
+<video
+  className=""
+/>
+`;
+
+exports[`withVideo is rendered correctly for VideoPlayerScreen 1`] = `
+<video
+  className="player__video"
+/>
+`;

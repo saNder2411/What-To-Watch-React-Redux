@@ -23,10 +23,8 @@ describe(`Render Footer`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <Footer isCardScreen/>;
-                  }}
+                  path='/'
+                  render={() => <Footer isCardScreen/>}
                 />
               </Switch>
             </BrowserRouter>

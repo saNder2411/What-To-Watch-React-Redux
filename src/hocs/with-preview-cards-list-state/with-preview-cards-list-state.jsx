@@ -31,7 +31,7 @@ const withPreviewCardsListState = (Component) => {
     _filtersCardsByGenre(currentGenre, cards, selectedCardId) {
       if (selectedCardId) {
         return cards
-          .filter(({id, genre}) => id !== selectedCardId && genre === currentGenre)
+          .filter(({id, genre}) => id !== +selectedCardId && genre === currentGenre)
           .slice(0, MAX_AMOUNT_SIMILAR_CARD);
       }
 
@@ -60,7 +60,7 @@ const withPreviewCardsListState = (Component) => {
   WithPreviewCardsListState.propTypes = {
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     genre: PropTypes.string.isRequired,
-    selectedCardId: PropTypes.number,
+    selectedCardId: PropTypes.string,
     showingCardsAmount: PropTypes.number,
     changeFilteredCardsLength: PropTypes.func.isRequired,
     onActiveItemClick: PropTypes.func.isRequired,

@@ -3,15 +3,26 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import CardScreen from './card-screen.jsx';
+import CardsService from '../../services/cards-service.js';
+import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+import VideoPlayerScreen from './video-player-screen.jsx';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
+import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
+
+const WrappedVideoPlayerScreen = withVideoPlayerScreenState(withVideoPlayer(VideoPlayerScreen));
+
+const cardsService = new CardsService();
 
 const mockStore = configureStore();
+
 const mockPromoCardData = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   date: 2014,
   poster: `the-grand-budapest-hotel-poster`,
+  videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
+
 const mockCardsData = [
   {
     id: 1,
@@ -25,7 +36,8 @@ const mockCardsData = [
     ],
     rating: `10`,
     amountVoice: 100,
-    previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewVideoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Steven Spielberg`,
     actors: [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
@@ -36,6 +48,7 @@ const mockCardsData = [
     reviewsId: [5, 6, 7, 8],
   },
 ];
+
 const store = mockStore({
   genre: `All Genre`,
   cardsData: mockCardsData,
@@ -46,17 +59,20 @@ const store = mockStore({
   promoCardData: mockPromoCardData,
 });
 
-it(`Should CardScreen render correctly`, () => {
+it(`Should Main render correctly`, () => {
   const markup = renderer.create(
       <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              path='/'
-              render={() => <CardScreen selectedCardId={`1`}/>}
-            />
-          </Switch>
-        </BrowserRouter>
+        <CardsServiceProvider value={cardsService}>
+          <BrowserRouter>
+            <Switch>
+              <Route
+                path='/'
+                exact
+                render={() => <WrappedVideoPlayerScreen selectedCardId={`1`}/>}
+              />
+            </Switch>
+          </BrowserRouter>
+        </CardsServiceProvider>
       </Provider>,
       {
         createNodeMock: () => {

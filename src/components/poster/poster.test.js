@@ -25,10 +25,8 @@ describe(`Render Poster`, () => {
             <BrowserRouter>
               <Switch>
                 <Route
-                  path='/cards:id'
-                  render={() => {
-                    return <Poster poster={poster} isCardScreen/>;
-                  }}
+                  path='/'
+                  render={() => <Poster poster={poster} isCardScreen/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -47,9 +45,7 @@ describe(`Render Poster`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => {
-                    return <Poster poster={poster} />;
-                  }}
+                  render={() => <Poster poster={poster} />}
                 />
               </Switch>
             </BrowserRouter>

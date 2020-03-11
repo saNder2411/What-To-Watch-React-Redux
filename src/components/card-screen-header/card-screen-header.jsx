@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../header/header.jsx';
-import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 
-const CardScreenHeader = ({title, genre, release}) => {
-  const yearRelease = new Date(release).getFullYear();
+const CardScreenHeader = ({children}) => {
+  const [Header, HeaderCardDesc] = children;
 
   return (
     <div className="movie-card__hero">
-      <Header isCardScreen />
-
+      {Header}
       <div className="movie-card__wrap">
-        <HeaderCardDesc title={title} genre={genre} date={yearRelease} isCardScreen />
+        {HeaderCardDesc}
       </div>
     </div>
   );
 };
 
 CardScreenHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
 };
 
 export default CardScreenHeader;

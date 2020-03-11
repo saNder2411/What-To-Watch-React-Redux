@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Poster Should Poster render correctly in CardScreen 1`] = `null`;
+exports[`Render Poster Should Poster render correctly in CardScreen 1`] = `
+<div
+  className="movie-card__poster movie-card__poster--big"
+>
+  <img
+    alt="The Grand Budapest Hotel poster"
+    height="327"
+    src="img/the-grand-budapest-hotel-poster.jpg"
+    width="218"
+  />
+</div>
+`;
 
 exports[`Render Poster Should Poster render correctly in Main 1`] = `
 <div

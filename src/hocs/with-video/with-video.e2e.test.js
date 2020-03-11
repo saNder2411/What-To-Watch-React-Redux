@@ -6,14 +6,7 @@ import withVideo from './with-video.jsx';
 
 configure({adapter: new Adapter()});
 
-const Player = (props) => {
-  const {children} = props;
-  return (
-    <Fragment>
-      {children}
-    </Fragment>
-  );
-};
+const Player = ({children}) => <Fragment>{children}</Fragment>;
 
 Player.propTypes = {
   children: PropTypes.oneOfType([
@@ -22,17 +15,16 @@ Player.propTypes = {
   ]).isRequired,
 };
 
-const videoProps = {
-  isPlaying: false,
-  poster: ``,
-  src: ``,
-  isMuted: true,
-  isDelay: true,
-  width: 280,
-  height: 175,
-};
-
 describe(`Check preview video player`, () => {
+  const videoProps = {
+    isPlaying: false,
+    poster: ``,
+    src: ``,
+    isMuted: true,
+    isDelay: true,
+    width: 280,
+    height: 175,
+  };
   it(`Checks that video turn on (play) when the browser can play multimedia`, () => {
     const PlayerWrapped = withVideo(Player);
     const wrapper = mount(<PlayerWrapped {...videoProps} />);
@@ -50,14 +42,74 @@ describe(`Check preview video player`, () => {
 
     wrapper.find(`video`).simulate(`canplaythrough`);
 
-    wrapper.setState({isLoading: false});
+    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+  });
 
-    wrapper.instance().componentDidUpdate();
+  it(`Checks that the video plays from the beginning, when it plays to the end`, () => {
+    const PlayerWrapped = withVideo(Player);
+    const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-    wrapper.setState({isPlaying: true});
+    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.pause = () => {};
 
+    const {_videoRef} = wrapper.instance();
+
+    jest.spyOn(_videoRef.current, `play`);
+
+    wrapper.instance().componentDidMount();
+
+    wrapper.setProps({isPlaying: true});
+
+    wrapper.find(`video`).simulate(`ended`);
 
     expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
   });
 });
 
+describe(`Check video player screen`, () => {
+  const videoProps = {
+    isPlaying: false,
+    poster: ``,
+    src: ``,
+    className: `player__video`,
+    onEnded: () => {},
+    onTimeUpdate: () => {},
+  };
+  it(`Checks that video turn on (play) when isPlaying prop becomes true`, () => {
+    const PlayerWrapped = withVideo(Player);
+    const wrapper = mount(<PlayerWrapped {...videoProps} />);
+
+    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.pause = () => {};
+
+    const {_videoRef} = wrapper.instance();
+
+    jest.spyOn(_videoRef.current, `play`);
+
+    wrapper.instance().componentDidMount();
+
+    wrapper.setProps({isPlaying: true});
+
+    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+  });
+
+  it(`Checks that video turn on (pause) when isPlaying prop becomes false`, () => {
+    const PlayerWrapped = withVideo(Player);
+    const wrapper = mount(<PlayerWrapped {...videoProps} />);
+
+    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.pause = () => {};
+
+    const {_videoRef} = wrapper.instance();
+
+    jest.spyOn(_videoRef.current, `pause`);
+
+    wrapper.instance().componentDidMount();
+
+    wrapper.setProps({isPlaying: true});
+
+    wrapper.setProps({isPlaying: false});
+
+    expect(_videoRef.current.pause).toHaveBeenCalledTimes(1);
+  });
+});

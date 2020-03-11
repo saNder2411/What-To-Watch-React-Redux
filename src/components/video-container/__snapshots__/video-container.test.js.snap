@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer is rendered correctly 1`] = `<video />`;
+exports[`VideoPlayer is rendered correctly in PreviewCard 1`] = `<video />`;
+
+exports[`VideoPlayer is rendered correctly in VideoPlayerScreen 1`] = `<video />`;

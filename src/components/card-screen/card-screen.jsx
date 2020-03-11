@@ -6,6 +6,11 @@ import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-st
 import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
+import CardScreenTop from '../card-screen-top/card-screen-top.jsx';
+import Header from '../header/header.jsx';
+import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
+import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import CardScreenBottom from '../card-screen-bottom/card-screen-bottom.jsx';
 import Poster from '../poster/poster.jsx';
 import Footer from '../footer/footer.jsx';
 
@@ -13,43 +18,36 @@ const WrappedCardTabs = withCardTabsState(CardTabs);
 const WrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
-  const selectedCard = cardsData.find(({id}) => selectedCardId === id);
+  const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
   const {title, previewPoster, genre, release} = selectedCard;
+  const yearRelease = new Date(release).getFullYear();
 
   return (
     <Fragment>
-      <section className="movie-card movie-card--full">
-        <CardScreenHeader title={title} genre={genre} release={release}/>
+      <CardScreenTop>
+        <CardScreenHeader >
+          <Header isCardScreen />
+          <HeaderCardDesc title={title} genre={genre} date={yearRelease} >
+            <HeaderButtons isCardScreen selectedCardId={selectedCardId}/>
+          </HeaderCardDesc>
+        </CardScreenHeader>
+        <Poster poster={previewPoster} isCardScreen />
+        <WrappedCardTabs {...selectedCard} />
+      </CardScreenTop>
 
-        <div className="movie-card__wrap movie-card__translate-top">
-          <div className="movie-card__info">
-
-            <Poster poster={previewPoster} isCardScreen />
-            <WrappedCardTabs {...selectedCard} />
-
-          </div>
-        </div>
-      </section>
-
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-
-          <WrappedPreviewCardsList selectedCardId={selectedCardId}/>
-
-        </section>
-
+      <CardScreenBottom>
+        <WrappedPreviewCardsList selectedCardId={selectedCardId} />
         <Footer isCardScreen />
-      </div>
+      </CardScreenBottom>
     </Fragment>
   );
 };
 
 CardScreen.propTypes = {
-  selectedCardId: PropTypes.number.isRequired,
+  selectedCardId: PropTypes.string.isRequired,
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const mapStateToProps = (state) => ({cardsData: state.cardsData});
+const mapStateToProps = ({cardsData}) => ({cardsData});
 
 export default connect(mapStateToProps)(CardScreen);
