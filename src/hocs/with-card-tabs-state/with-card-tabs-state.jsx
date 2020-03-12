@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import CardOverview from '../../components/card-overview/card-overview.jsx';
 import CardDetails from '../../components/card-details/card-details.jsx';
 import CardReviews from '../../components/card-reviews/card-reviews.jsx';
+
 import {CardMode} from '../../const.js';
 
 

@@ -1,11 +1,15 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import compose from '../compose/compose.js';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
+
 import ActionCreator from '../../actions/action-creator.js';
 import {DataTypes} from '../../const.js';
 
-const withData = (Component, dataType) => {
+
+const withData = (dataType) => (Component) => {
   class WithData extends PureComponent {
     componentDidMount() {
       const {cardsService, promoCardLoaded, cardsLoaded} = this.props;
@@ -66,7 +70,7 @@ const withData = (Component, dataType) => {
     },
   });
 
-  return withCardsService(connect(mapStateToProps, mapDispatchToProps)(WithData));
+  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithData);
 };
 
 export default withData;

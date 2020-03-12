@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import compose from '../compose/compose.js';
 import ActionCreator from '../../actions/action-creator.js';
 import {ShowingCardsAmount} from '../../const.js';
 
@@ -63,7 +65,7 @@ const withActiveItem = (Component) => {
     },
   });
 
-  return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithActiveItem));
+  return compose(connect(mapStateToProps, mapDispatchToProps), withRouter)(WithActiveItem);
 };
 
 export default withActiveItem;

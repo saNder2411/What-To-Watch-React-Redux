@@ -1,9 +1,10 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import PreviewCardsList from '../../components/preview-cards-list/preview-cards-list.jsx';
-import {DEFAULT_GENRE} from '../../const.js';
+import PropTypes from 'prop-types';
+
 import ActionCreator from '../../actions/action-creator.js';
+import {DEFAULT_GENRE} from '../../const.js';
+
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
 
@@ -66,15 +67,15 @@ const withPreviewCardsListState = (Component) => {
     onActiveItemClick: PropTypes.func.isRequired,
   };
 
-  return WithPreviewCardsListState;
+  const mapStateToProps = ({genre, showingCardsAmount}) => ({genre, showingCardsAmount});
+
+  const mapDispatchToProps = (dispatch) => ({
+    changeFilteredCardsLength: (length) => {
+      dispatch(ActionCreator.changeFilteredCardsLength(length));
+    },
+  });
+
+  return connect(mapStateToProps, mapDispatchToProps)(WithPreviewCardsListState);
 };
 
-const mapStateToProps = ({genre, showingCardsAmount}) => ({genre, showingCardsAmount});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeFilteredCardsLength: (length) => {
-    dispatch(ActionCreator.changeFilteredCardsLength(length));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withPreviewCardsListState(PreviewCardsList));
+export default withPreviewCardsListState;

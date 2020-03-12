@@ -6,14 +6,14 @@ import withVideoPlayer from '../with-video-player/with-video-player.jsx';
 import withVideoPlayerScreenState from './with-video-player-screen-state.jsx';
 
 const MockVideoPlayerScreen = (props) => {
-  const {renderPlayer, isPlaying, playerRef, handlePlayButtonClick, handleVideoTimeUpdate, handleFullScreenButtonClick} = props;
+  const {renderPlayer, isPlaying, playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
   const videoProps = {
     isPlaying,
     poster: ``,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     className: `player__video`,
-    onEnded: handlePlayButtonClick,
-    onTimeUpdate: handleVideoTimeUpdate,
+    onEnded: onPlayButtonClick,
+    onTimeUpdate: onVideoTimeUpdate,
   };
 
   return (
@@ -27,14 +27,14 @@ const MockVideoPlayerScreen = (props) => {
           <button
             type="button"
             className="player__play"
-            onClick={handlePlayButtonClick}
+            onClick={onPlayButtonClick}
           >
           </button>
 
           <button
             type="button"
             className="player__full-screen"
-            onClick={handleFullScreenButtonClick}
+            onClick={onFullScreenButtonClick}
           >
           </button>
         </div>
@@ -48,9 +48,9 @@ MockVideoPlayerScreen.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   isFullScreen: PropTypes.bool.isRequired,
   playerRef: PropTypes.object.isRequired,
-  handlePlayButtonClick: PropTypes.func.isRequired,
-  handleVideoTimeUpdate: PropTypes.func.isRequired,
-  handleFullScreenButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onVideoTimeUpdate: PropTypes.func.isRequired,
+  onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
 const WrappedVideoPlayerScreen = withVideoPlayerScreenState(withVideoPlayer(MockVideoPlayerScreen));
@@ -90,11 +90,15 @@ describe(`Check VideoPlayerScreen state`, () => {
     window.HTMLMediaElement.prototype.play = () => {};
     window.HTMLMediaElement.prototype.pause = () => {};
 
-    wrapper.setState({progressInSeconds: 0});
+    wrapper.instance._handleVideoTimeUpdate = (arg, arg2) => wrapper.setState({progressInSeconds: arg, progressInPercent: arg2});
+
+    jest.spyOn(wrapper.instance, `_handleVideoTimeUpdate`);
+
+    wrapper.instance().componentDidMount();
 
     wrapper.find(`video`).simulate(`timeupdate`);
 
-    expect(wrapper.state().progressInSeconds).toBe(0);
+    expect(wrapper.instance._handleVideoTimeUpdate).toHaveBeenCalledTimes(1);
   });
 });
 

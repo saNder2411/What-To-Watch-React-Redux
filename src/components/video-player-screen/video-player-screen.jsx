@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const convertVideoTime = (sec) => {
   const hours = (sec - (sec % (60 * 60))) / (60 * 60);
@@ -15,7 +16,7 @@ const VideoPlayerScreen = (props) => {
   const {
     selectedCardId, promoCardData, cardsData, renderPlayer,
     isPlaying, progressInSeconds, progressInPercent, playerRef,
-    handlePlayButtonClick, handleVideoTimeUpdate, handleFullScreenButtonClick,
+    onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick,
   } = props;
 
   const selectedCard = +selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
@@ -26,8 +27,8 @@ const VideoPlayerScreen = (props) => {
     poster,
     src: videoSrc,
     className: `player__video`,
-    onEnded: handlePlayButtonClick,
-    onTimeUpdate: handleVideoTimeUpdate,
+    onEnded: onPlayButtonClick,
+    onTimeUpdate: onVideoTimeUpdate,
   };
 
   return (
@@ -53,7 +54,7 @@ const VideoPlayerScreen = (props) => {
           <button
             type="button"
             className="player__play"
-            onClick={handlePlayButtonClick}
+            onClick={onPlayButtonClick}
           >
             {isPlaying ? (
               <Fragment>
@@ -76,7 +77,7 @@ const VideoPlayerScreen = (props) => {
           <button
             type="button"
             className="player__full-screen"
-            onClick={handleFullScreenButtonClick}
+            onClick={onFullScreenButtonClick}
           >
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"></use>
@@ -99,9 +100,9 @@ VideoPlayerScreen.propTypes = {
   progressInSeconds: PropTypes.number.isRequired,
   progressInPercent: PropTypes.number.isRequired,
   playerRef: PropTypes.object.isRequired,
-  handlePlayButtonClick: PropTypes.func.isRequired,
-  handleVideoTimeUpdate: PropTypes.func.isRequired,
-  handleFullScreenButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onVideoTimeUpdate: PropTypes.func.isRequired,
+  onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({cardsData, promoCardData}) => ({cardsData, promoCardData});
