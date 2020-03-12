@@ -5,8 +5,11 @@ const extend = (a, b) => Object.assign({}, a, b);
 
 const initialState = {
   promoCardData: {},
-  genre: DEFAULT_GENRE,
   cardsData: [],
+  loading: true,
+  errorPromo: null,
+  errorCards: null,
+  genre: DEFAULT_GENRE,
   filteredCardsLength: 0,
   showingCardsAmount: ShowingCardsAmount.ON_START,
   reviews: [],
@@ -16,11 +19,24 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case ActionTypes.CARDS_LOADED:
-      return extend(state, {cardsData: action.payload});
+    case ActionTypes.FETCH_PROMO_CARD_REQUEST:
+      return extend(state, {promoCardData: {}, loading: true, errorPromo: null});
 
-    case ActionTypes.PROMO_CARD_LOADED:
-      return extend(state, {promoCardData: action.payload});
+    case ActionTypes.FETCH_CARDS_REQUEST:
+      return extend(state, {cardsData: [], loading: true, errorCards: null});
+
+    case ActionTypes.FETCH_PROMO_CARD_SUCCESS:
+      return extend(state, {promoCardData: action.payload, loading: false, errorPromo: null});
+
+    case ActionTypes.FETCH_CARDS_SUCCESS:
+      return extend(state, {cardsData: action.payload, loading: false, errorCards: null});
+
+    case ActionTypes.FETCH_PROMO_CARD_FAILURE:
+      return extend(state, {promoCardData: {}, loading: false, errorPromo: action.payload});
+
+    case ActionTypes.FETCH_CARDS_FAILURE:
+      return extend(state, {cardsData: [], loading: false, errorCards: action.payload});
+
 
     case ActionTypes.CHANGE_GENRE:
       return extend(state, {genre: action.payload});

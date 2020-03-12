@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Poster = ({poster, isCardScreen}) => {
   return (
     <div className={`movie-card__poster ${isCardScreen ? `movie-card__poster--big` : ``}`}>
-      <img src={`img/${poster}.jpg`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+      <img src={`img/${poster ? poster : `the-grand-budapest-hotel-poster`}.jpg`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
     </div>
   );
 };
