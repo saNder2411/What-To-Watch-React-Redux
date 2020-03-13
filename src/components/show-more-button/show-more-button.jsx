@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActionCreator from '../../actions/action-creator.js';
 
-const ShowMoreButton = ({filteredCardsLength, showingCardsAmount, changeShowingCardsAmount}) => {
-  const showMoreButton = filteredCardsLength > showingCardsAmount ? (
+const ShowMoreButton = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
+  const showMoreButton = filteredCards.length > showingCardsAmount ? (
     <div className="catalog__more">
       <button
         className="catalog__button"
@@ -20,12 +20,12 @@ const ShowMoreButton = ({filteredCardsLength, showingCardsAmount, changeShowingC
 };
 
 ShowMoreButton.propTypes = {
-  filteredCardsLength: PropTypes.number,
+  filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   showingCardsAmount: PropTypes.number,
   changeShowingCardsAmount: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredCardsLength, showingCardsAmount}) => ({filteredCardsLength, showingCardsAmount});
+const mapStateToProps = ({filteredCards, showingCardsAmount}) => ({filteredCards, showingCardsAmount});
 
 const mapDispatchToProps = (dispatch) => ({
   changeShowingCardsAmount: (amount) => {

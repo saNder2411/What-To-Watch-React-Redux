@@ -18,9 +18,11 @@ import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-st
 import withPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
+import {ComponentTypes} from '../../const.js';
+
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
-const WrappedPreviewCardsList = compose(withActiveItem, withPreviewCardsListState)(PreviewCardsList);
+const WrappedPreviewCardsList = compose(withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST), withPreviewCardsListState)(PreviewCardsList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);

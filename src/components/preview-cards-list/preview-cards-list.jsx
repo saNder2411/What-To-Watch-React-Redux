@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import PreviewCard from '../preview-card/preview-card.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
-const PreviewCardsList = ({cardsData, mouseEnterCard, previewCardHandlers}) => {
+const PreviewCardsList = ({filteredCards, mouseEnterCard, previewCardHandlers}) => {
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 
-  const previewCards = cardsData
+  const previewCards = filteredCards
     .map(({id, title, previewPoster, previewVideoSrc}) => {
       const isPlaying = mouseEnterCard !== null && mouseEnterCard.id === id;
 
@@ -27,7 +27,7 @@ const PreviewCardsList = ({cardsData, mouseEnterCard, previewCardHandlers}) => {
 };
 
 PreviewCardsList.propTypes = {
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   mouseEnterCard: PropTypes.object,
   previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
 };

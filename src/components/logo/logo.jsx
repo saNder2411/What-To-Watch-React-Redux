@@ -1,12 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import ActionCreator from '../../actions/action-creator.js';
-import {DEFAULT_GENRE} from '../../const.js';
 
-const Logo = ({isCardScreen, isFooterLogo, changeGenre}) => {
-  const onClick = isCardScreen ? () => changeGenre(DEFAULT_GENRE) : (evt) => evt.preventDefault();
+const Logo = ({isCardScreen, isFooterLogo}) => {
+  const onClick = isCardScreen ? () => {} : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 
   return (
@@ -27,13 +24,6 @@ const Logo = ({isCardScreen, isFooterLogo, changeGenre}) => {
 Logo.propTypes = {
   isCardScreen: PropTypes.bool,
   isFooterLogo: PropTypes.bool,
-  changeGenre: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeGenre: (genre) => {
-    dispatch(ActionCreator.changeGenre(genre));
-  }
-});
-
-export default connect(undefined, mapDispatchToProps)(Logo);
+export default Logo;
