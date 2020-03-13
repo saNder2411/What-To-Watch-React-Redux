@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import GenresList from './genres-list.jsx';
+import GenreList from './genre-list.jsx';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
 import withData from '../../hocs/with-data/with-data.jsx';
@@ -22,10 +22,10 @@ const store = mockStore({
   promoCardData: {},
 });
 
-const MockWrappedGenreList = withData(withActiveItem(GenresList), DataTypes.CARDS_DATA);
+const MockWrappedGenreList = withData(withActiveItem(GenreList), DataTypes.CARDS_DATA);
 
 
-it(`Should GenresList render correctly`, () => {
+it(`Should GenreList render correctly`, () => {
   const markup = renderer
     .create(
         <Provider store={store}>

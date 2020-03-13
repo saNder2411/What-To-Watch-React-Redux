@@ -19,16 +19,16 @@ const withData = (dataType) => (Component) => {
     }
 
     render() {
-      const {promoCardData, cardsData, loading, errorPromo, errorCards} = this.props;
+      const {promoCardData, promoLoading, promoError, cardsData, cardsLoading, cardsError} = this.props;
 
-      if (loading) {
+      if (promoLoading || cardsLoading) {
         return <Spinner />;
       }
 
       switch (dataType) {
         case DataTypes.PROMO_DATA:
-          if (errorPromo) {
-            return <ErrorIndicator message={errorPromo.message} />;
+          if (promoError) {
+            return <ErrorIndicator message={promoError.message} />;
           }
 
           return (
@@ -36,8 +36,8 @@ const withData = (dataType) => (Component) => {
           );
 
         case DataTypes.CARDS_DATA:
-          if (errorCards) {
-            return <ErrorIndicator message={errorCards.message} />;
+          if (cardsError) {
+            return <ErrorIndicator message={cardsError.message} />;
           }
 
           return (
@@ -54,13 +54,16 @@ const withData = (dataType) => (Component) => {
   WithData.propTypes = {
     fetchData: PropTypes.func.isRequired,
     promoCardData: PropTypes.object.isRequired,
+    promoLoading: PropTypes.bool.isRequired,
+    promoError: PropTypes.object,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    loading: PropTypes.bool.isRequired,
-    errorPromo: PropTypes.object,
-    errorCards: PropTypes.object,
+    cardsLoading: PropTypes.bool.isRequired,
+    cardsError: PropTypes.object,
   };
 
-  const mapStateToProps = ({promoCardData, cardsData, loading, errorPromo, errorCards}) => ({promoCardData, cardsData, loading, errorPromo, errorCards});
+  const mapStateToProps = ({promoCard: {promoCardData, promoLoading, promoError}, cardList: {cardsData, cardsLoading, cardsError}}) => (
+    {promoCardData, promoLoading, promoError, cardsData, cardsLoading, cardsError}
+  );
 
   const mapDispatchToProps = (dispatch, ownProps) => {
     const {cardsService} = ownProps;

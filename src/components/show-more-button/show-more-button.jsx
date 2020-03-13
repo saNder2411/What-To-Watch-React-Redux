@@ -25,7 +25,7 @@ ShowMoreButton.propTypes = {
   changeShowingCardsAmount: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredCards, showingCardsAmount}) => ({filteredCards, showingCardsAmount});
+const mapStateToProps = ({cardList: {filteredCards, showingCardsAmount}}) => ({filteredCards, showingCardsAmount});
 
 const mapDispatchToProps = (dispatch) => ({
   changeShowingCardsAmount: (amount) => {

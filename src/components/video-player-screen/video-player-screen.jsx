@@ -105,6 +105,6 @@ VideoPlayerScreen.propTypes = {
   onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({cardsData, promoCardData}) => ({cardsData, promoCardData});
+const mapStateToProps = ({promoCard: {promoCardData}, cardList: {cardsData}}) => ({promoCardData, cardsData});
 
 export default connect(mapStateToProps)(VideoPlayerScreen);

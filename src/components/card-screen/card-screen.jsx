@@ -10,19 +10,19 @@ import HeaderButtons from '../header-buttons/header-buttons.jsx';
 import Poster from '../poster/poster.jsx';
 import CardTabs from '../card-tabs/card-tabs.jsx';
 import CardScreenBottom from '../card-screen-bottom/card-screen-bottom.jsx';
-import PreviewCardsList from '../preview-cards-list/preview-cards-list.jsx';
+import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import Footer from '../footer/footer.jsx';
 
 import compose from '../../hocs/compose/compose.js';
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
-import withPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 import {ComponentTypes} from '../../const.js';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
-const WrappedPreviewCardsList = compose(withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST), withPreviewCardsListState)(PreviewCardsList);
+const WrappedPreviewCardList = compose(withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST), withPreviewCardListState)(PreviewCardList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
@@ -43,7 +43,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
       </CardScreenTop>
 
       <CardScreenBottom>
-        <WrappedPreviewCardsList selectedCardId={selectedCardId} />
+        <WrappedPreviewCardList selectedCardId={selectedCardId} />
         <Footer isCardScreen />
       </CardScreenBottom>
     </Fragment>
@@ -55,6 +55,6 @@ CardScreen.propTypes = {
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const mapStateToProps = ({cardsData}) => ({cardsData});
+const mapStateToProps = ({cardList: {cardsData}}) => ({cardsData});
 
 export default connect(mapStateToProps)(CardScreen);

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import GenresListItem from './genres-list-item.jsx';
+import GenreListItem from './genre-list-item.jsx';
 
 const mockStore = configureStore();
 const store = mockStore({
@@ -15,10 +15,10 @@ const store = mockStore({
 });
 const label = `All Genre`;
 const isActive = true;
-const onGenresListItemClick = () => {};
+const onGenreListItemClick = () => {};
 
 
-it(`Should GenresListItem render correctly`, () => {
+it(`Should GenreListItem render correctly`, () => {
   const markup = renderer
     .create(
         <Provider store={store}>
@@ -27,10 +27,10 @@ it(`Should GenresListItem render correctly`, () => {
               <Route
                 path='/'
                 render={() => {
-                  return <GenresListItem
+                  return <GenreListItem
                     label={label}
                     isActive={isActive}
-                    onGenresListItemClick={onGenresListItemClick}/>;
+                    onGenreListItemClick={onGenreListItemClick}/>;
                 }}
               />
             </Switch>

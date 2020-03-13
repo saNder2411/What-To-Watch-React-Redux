@@ -69,7 +69,7 @@ const withActiveItem = (componentType) => (Component) => {
     selectedCardId: PropTypes.string,
   };
 
-  const mapStateToProps = ({cardsData, filteredCards}) => ({cardsData, filteredCards});
+  const mapStateToProps = ({cardList: {cardsData, filteredCards}}) => ({cardsData, filteredCards});
   const mapDispatchToProps = (dispatch) => ({filtersCards: FilterActions.filtersCards(dispatch)});
 
   return compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(WithActiveItem);

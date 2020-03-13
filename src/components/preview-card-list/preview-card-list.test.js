@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
+import WithPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const mockStore = configureStore();
@@ -50,10 +50,10 @@ const store = mockStore({
   promoCardData: mockPromoCardData,
 });
 
-const MockWrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
+const MockWrappedPreviewCardList = withActiveItem(WithPreviewCardListState);
 
 describe(`Render PreviewCardsList`, () => {
-  it(`Should PreviewCardsList render correctly in Main`, () => {
+  it(`Should PreviewCardList render correctly in Main`, () => {
     const markup = renderer
       .create(
           <Provider store={store} >
@@ -62,7 +62,7 @@ describe(`Render PreviewCardsList`, () => {
                 <Route
                   path='/'
                   exact
-                  component={MockWrappedPreviewCardsList}
+                  component={MockWrappedPreviewCardList}
                 />
               </Switch>
             </BrowserRouter>
@@ -73,7 +73,7 @@ describe(`Render PreviewCardsList`, () => {
     expect(markup).toMatchSnapshot();
   });
 
-  it(`Should PreviewCardsList render correctly in CardScreen`, () => {
+  it(`Should PreviewCardList render correctly in CardScreen`, () => {
     const markup = renderer
       .create(
           <Provider store={store} >
@@ -82,7 +82,7 @@ describe(`Render PreviewCardsList`, () => {
                 <Route
                   path='/'
                   exact
-                  render={() => <MockWrappedPreviewCardsList selectedCardId={`1`}/>}
+                  render={() => <MockWrappedPreviewCardList selectedCardId={`1`}/>}
                 />
               </Switch>
             </BrowserRouter>
