@@ -69,7 +69,7 @@ const withData = (dataType) => (Component) => {
     const {cardsService} = ownProps;
 
     return {
-      fetchData: FetchActions.fetchData(cardsService, dispatch),
+      fetchData: (datType) => dispatch(FetchActions.fetchData(cardsService)(datType)),
     };
   };
 
