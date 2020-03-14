@@ -20,21 +20,13 @@ const FetchActions = {
     }
   },
 
-  fetchData: (cardsService) => (dataType) => async (dispatch) => {
+  fetchData: (cardsService) => (dataType) => (dispatch) => {
     switch (dataType) {
       case DataTypes.PROMO_DATA:
         dispatch(ActionCreator.promoCardRequested());
-        try {
-          const promoData = await cardsService.getPromoCardData();
-          dispatch(ActionCreator.promoCardLoaded(promoData))
-        } catch(error) {
-          dispatch(ActionCreator.promoCardError(error))
-        }
-
-
-        // cardsService.getPromoCardData()
-        //   .then((promoCardData) => dispatch(ActionCreator.promoCardLoaded(promoCardData)))
-        //   .catch((error) => dispatch(ActionCreator.promoCardError(error)));
+        cardsService.getPromoCardData()
+          .then((promoCardData) => dispatch(ActionCreator.promoCardLoaded(promoCardData)))
+          .catch((error) => dispatch(ActionCreator.promoCardError(error)));
         break;
 
       case DataTypes.CARDS_DATA:

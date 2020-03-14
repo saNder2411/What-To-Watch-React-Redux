@@ -12,7 +12,7 @@ export default class CardsService {
   getPromoCardData() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.8) {
+        if (Math.random() > 0.9) {
           reject(new Error(`Error! Something bad happened!`));
         } else {
           resolve(this.mockPromoCardData);
