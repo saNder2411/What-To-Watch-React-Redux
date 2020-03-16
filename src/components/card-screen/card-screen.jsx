@@ -9,6 +9,9 @@ import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
 import Poster from '../poster/poster.jsx';
 import CardTabs from '../card-tabs/card-tabs.jsx';
+import CardOverview from '../../components/card-overview/card-overview.jsx';
+import CardDetails from '../../components/card-details/card-details.jsx';
+import CardReviews from '../../components/card-reviews/card-reviews.jsx';
 import CardScreenBottom from '../card-screen-bottom/card-screen-bottom.jsx';
 import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import Footer from '../footer/footer.jsx';
@@ -38,7 +41,11 @@ const CardScreen = ({selectedCardId, cardsData}) => {
           </HeaderCardDesc>
         </CardScreenHeader>
         <Poster isCardScreen posterImage={posterImage} title={title}/>
-        <WrappedCardTabs {...selectedCard} />
+        <WrappedCardTabs >
+          <CardOverview {...selectedCard} />
+          <CardDetails {...selectedCard} />
+          <CardReviews />
+        </WrappedCardTabs>
       </CardScreenTop>
 
       <CardScreenBottom>

@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import CardReview from '../card-review/card-review.jsx';
-import mockReviews from '../../mocks/mock-reviews';
-import Common from '../../utils/common.js';
+
 
 const CardReviews = () => {
-  const reviews = [];
+  // const reviews = [];
 
   // reviewsId.forEach((id) => {
   //   const review = mockReviews.find((it) => it.id === id);

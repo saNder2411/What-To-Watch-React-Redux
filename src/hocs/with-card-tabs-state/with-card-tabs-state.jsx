@@ -1,10 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import CardOverview from '../../components/card-overview/card-overview.jsx';
-import CardDetails from '../../components/card-details/card-details.jsx';
-import CardReviews from '../../components/card-reviews/card-reviews.jsx';
-
 import {CardMode} from '../../const.js';
 
 
@@ -21,21 +17,20 @@ const withCardTabsState = (Component) => {
 
     _handleTabsNavClick(evt, mode) {
       evt.preventDefault();
-
       this.setState({cardMode: mode});
     }
 
     _renderTab(cardMode) {
-      const {director, starring, runtime, genre, released, description, rating, scoresCount} = this.props;
+      const {children: [CardOverview, CardDetails, CardReviews]} = this.props;
 
       switch (cardMode) {
         case CardMode.DETAILS:
-          return <CardDetails director={director} starring={starring} runtime={runtime} genre={genre} released={released} />;
+          return CardDetails;
         case CardMode.REVIEWS:
-          return <CardReviews />;
+          return CardReviews;
       }
 
-      return <CardOverview director={director} starring={starring} description={description} rating={rating} scoresCount={scoresCount}/>;
+      return CardOverview;
     }
 
     render() {
@@ -50,14 +45,10 @@ const withCardTabsState = (Component) => {
   }
 
   WithCardTabsState.propTypes = {
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runtime: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    scoresCount: PropTypes.number.isRequired,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]).isRequired,
   };
 
   return WithCardTabsState;

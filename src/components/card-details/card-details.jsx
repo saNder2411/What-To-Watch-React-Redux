@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {getTimeInHoursAndMinutes} from '../../utils/utils.js';
 
 const CardDetails = ({director, starring, runtime, genre, released}) => {
-  const yearRelease = new Date(released).getFullYear();
+  const formatRuntime = getTimeInHoursAndMinutes(runtime);
+
   const actorsList = starring.map((actor, i) => {
     const withTegBr = <Fragment key={actor}>{actor} <br/></Fragment>;
     const withoutTegBr = <Fragment key={actor}>{actor}</Fragment>;
@@ -28,7 +30,7 @@ const CardDetails = ({director, starring, runtime, genre, released}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{runtime}</span>
+          <span className="movie-card__details-value">{formatRuntime}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
@@ -36,7 +38,7 @@ const CardDetails = ({director, starring, runtime, genre, released}) => {
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">{yearRelease}</span>
+          <span className="movie-card__details-value">{released}</span>
         </p>
       </div>
     </div>

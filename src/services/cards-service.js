@@ -1,25 +1,6 @@
-import mockCards from '../mocks/mock-cards';
-import mockReviews from '../mocks/mock-reviews.js';
-import mockPromoCard from '../mocks/mock-promo-card.js';
-
 export default class CardsService {
   constructor(API) {
     this._API = API;
-    this.mockPromoCardData = mockPromoCard;
-    this.mockCardsData = mockCards;
-    this.mockReviewsData = mockReviews;
-  }
-
-  getPromoCardData() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.9) {
-          reject(new Error(`Error! Something bad happened!`));
-        } else {
-          resolve(this.mockPromoCardData);
-        }
-      }, 700);
-    });
   }
 
   _parseCard(data) {
@@ -42,22 +23,6 @@ export default class CardsService {
       videoSrc: data[`video_link`],
       previewVideoSrc: data[`preview_video_link`],
     };
-  }
-
-  getCards() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.8) {
-          reject(new Error(`Error! Something bad happened!`));
-        } else {
-          resolve(this.mockCardsData);
-        }
-      }, 700);
-    });
-  }
-
-  getReviews() {
-    return mockReviews;
   }
 
   getPromoCard() {
