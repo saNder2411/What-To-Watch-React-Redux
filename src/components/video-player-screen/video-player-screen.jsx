@@ -1,8 +1,11 @@
 import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {Link} from 'react-router-dom';
+
+import {connect} from 'react-redux';
+import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
+import {getCardsData} from '../../reducers/card-list/selectors.js';
 
 const convertVideoTime = (sec) => {
   const hours = (sec - (sec % (60 * 60))) / (60 * 60);
@@ -105,6 +108,9 @@ VideoPlayerScreen.propTypes = {
   onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({promoCard: {promoCardData}, cardList: {cardsData}}) => ({promoCardData, cardsData});
+const mapStateToProps = (state) => ({
+  promoCardData: getPromoCardData(state),
+  cardsData: getCardsData(state),
+});
 
 export default connect(mapStateToProps)(VideoPlayerScreen);

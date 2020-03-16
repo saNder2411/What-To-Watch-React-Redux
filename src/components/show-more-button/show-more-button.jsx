@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {connect} from 'react-redux';
+import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
 import ActionCreator from '../../actions/action-creator.js';
 
 const ShowMoreButton = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
@@ -25,7 +27,10 @@ ShowMoreButton.propTypes = {
   changeShowingCardsAmount: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredCardList: {filteredCards, showingCardsAmount}}) => ({filteredCards, showingCardsAmount});
+const mapStateToProps = (state) => ({
+  filteredCards: getFilteredCards(state),
+  showingCardsAmount: getShowingCardsAmount(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   changeShowingCardsAmount: (amount) => {

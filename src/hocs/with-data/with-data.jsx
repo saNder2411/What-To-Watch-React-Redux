@@ -7,6 +7,8 @@ import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx
 
 import compose from '../compose/compose.js';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
+import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
+import {getCardsData, getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 
 import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
@@ -61,9 +63,14 @@ const withData = (dataType) => (Component) => {
     cardsError: PropTypes.object,
   };
 
-  const mapStateToProps = ({promoCard: {promoCardData, promoLoading, promoError}, cardList: {cardsData, cardsLoading, cardsError}}) => (
-    {promoCardData, promoLoading, promoError, cardsData, cardsLoading, cardsError}
-  );
+  const mapStateToProps = (state) => ({
+    promoCardData: getPromoCardData(state),
+    promoLoading: getPromoLoading(state),
+    promoError: getPromoError(state),
+    cardsData: getCardsData(state),
+    cardsLoading: getCardsLoading(state),
+    cardsError: getCardsError(state),
+  });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
     const {cardsService} = ownProps;

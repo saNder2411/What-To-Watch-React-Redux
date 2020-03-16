@@ -20,6 +20,7 @@ import compose from '../../hocs/compose/compose.js';
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import {getCardsData} from '../../reducers/card-list/selectors.js';
 
 import {ComponentTypes} from '../../const.js';
 
@@ -61,6 +62,6 @@ CardScreen.propTypes = {
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const mapStateToProps = ({cardList: {cardsData}}) => ({cardsData});
+const mapStateToProps = (state) => ({cardsData: getCardsData(state)});
 
 export default connect(mapStateToProps)(CardScreen);

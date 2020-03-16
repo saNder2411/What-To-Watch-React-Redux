@@ -1,10 +1,14 @@
 import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {withRouter} from 'react-router-dom';
+
+import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
+import {getCardsData} from '../../reducers/card-list/selectors.js';
+import {getFilteredCards} from '../../reducers/filtered-card-list/selectors.js';
 import FilterActions from '../../actions/filter-actions/filter-actions.js';
+
 import {DEFAULT_GENRE, ComponentTypes, ShowingCardsAmount} from '../../const.js';
 
 
@@ -69,7 +73,11 @@ const withActiveItem = (componentType) => (Component) => {
     selectedCardId: PropTypes.string,
   };
 
-  const mapStateToProps = ({cardList: {cardsData}, filteredCardList: {filteredCards}}) => ({cardsData, filteredCards});
+  const mapStateToProps = (state) => ({
+    cardsData: getCardsData(state),
+    filteredCards: getFilteredCards(state),
+  });
+
   const mapDispatchToProps = (dispatch) => ({filtersCards: FilterActions.filtersCards(dispatch)});
 
   return compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(WithActiveItem);

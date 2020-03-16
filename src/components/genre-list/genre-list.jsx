@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {connect} from 'react-redux';
+import {getGenre} from '../../reducers/filtered-card-list/selectors.js';
+
 import GenreListItem from '../genre-list-item/genre-list-item.jsx';
+
 import {DEFAULT_GENRE} from '../../const.js';
 
 const MAX_AMOUNT_GENRES_LABEL = 9;
@@ -36,6 +40,6 @@ GenreList.propTypes = {
   onActiveItemClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredCardList: {genre}}) => ({genre});
+const mapStateToProps = (state) => ({genre: getGenre(state)});
 
 export default connect(mapStateToProps)(GenreList);
