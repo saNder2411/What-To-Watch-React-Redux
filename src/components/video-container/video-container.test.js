@@ -6,7 +6,7 @@ import VideoContainer from './video-container.jsx';
 it(`VideoPlayer is rendered correctly in PreviewCard`, () => {
   const videoProps = {
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    poster: `img/bohemian-rhapsody.jpg`,
+    posterImage: `img/bohemian-rhapsody.jpg`,
     isPlaying: true,
     isMuted: false,
     isDelay: false,
@@ -31,7 +31,7 @@ it(`VideoPlayer is rendered correctly in PreviewCard`, () => {
 it(`VideoPlayer is rendered correctly in VideoPlayerScreen`, () => {
   const videoProps = {
     isPlaying: true,
-    poster: `img/bohemian-rhapsody.jpg`,
+    posterImage: `img/bohemian-rhapsody.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     className: `player__video`,
     onEnded: () => {},

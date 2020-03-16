@@ -114,20 +114,20 @@ const generateMockCard = (title, id) => {
   const urlVideo = PreviewVideos[Common.getRandomNumberFromPeriod(PreviewVideos.length)];
   return {
     id,
-    promoPoster: `bg-the-grand-budapest-hotel`,
-    poster: `the-grand-budapest-hotel-poster`,
-    previewPoster: getPreviewPosterSrcValue(title),
+    backgroundImage: `bg-the-grand-budapest-hotel`,
+    posterImage: `the-grand-budapest-hotel-poster`,
+    previewImage: getPreviewPosterSrcValue(title),
     title,
-    descriptions: Descriptions,
+    description: Descriptions,
     rating: Common.getRandomRating(),
-    amountVoice: Common.getRandomNumberFromPeriod(200),
+    scoresCount: Common.getRandomNumberFromPeriod(200),
     previewVideoSrc: urlVideo,
     videoSrc: urlVideo,
     director: Directors[Common.getRandomNumberFromPeriod(Directors.length)],
-    actors: Actors.filter(() => Math.random() > 0.5),
+    starring: Actors.filter(() => Math.random() > 0.5),
     runtime: getRandomRuntime(),
     genre: Genres[Common.getRandomNumberFromPeriod(Genres.length)],
-    release: Common.getRandomDate(),
+    released: Common.getRandomDate(),
     reviewsId: MockReviews
       .slice()
       .splice(Common.getRandomNumberFromPeriod(MockReviews.length - MAX_AMOUNT_REVIEWS), Common.getRandomNumberFromPeriod(MAX_AMOUNT_REVIEWS))

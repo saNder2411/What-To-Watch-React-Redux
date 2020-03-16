@@ -2,11 +2,11 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Logo from '../logo/logo.jsx';
 
-const Header = ({isCardScreen}) => {
+const Header = ({isCardScreen, title, backgroundImage}) => {
   return (
     <Fragment>
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        <img src={backgroundImage} alt={title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -27,6 +27,8 @@ const Header = ({isCardScreen}) => {
 
 Header.propTypes = {
   isCardScreen: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
 };
 
 export default Header;

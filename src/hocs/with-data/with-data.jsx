@@ -8,7 +8,7 @@ import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx
 import compose from '../compose/compose.js';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
 
-import FetchActions from '../../actions/fetch-actions.js';
+import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
 
 

@@ -4,10 +4,10 @@ import CardDetails from './card-details.jsx';
 
 const data = {
   director: `Steven Spielberg`,
-  actors: [`Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`],
+  starring: [`Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`],
   runtime: `1h 58m`,
   genre: `Drama`,
-  release: 1978,
+  released: 1978,
 };
 
 it(`Should CardDetails render correctly`, () => {

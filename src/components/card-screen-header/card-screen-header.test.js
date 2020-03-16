@@ -19,7 +19,7 @@ const store = mockStore({
 
 const title = `Bohemian Rhapsody`;
 const genre = `Drama`;
-const release = 1989;
+const released = 1989;
 
 it(`Should CardScreenHeader render correctly`, () => {
   const markup = renderer
@@ -32,7 +32,7 @@ it(`Should CardScreenHeader render correctly`, () => {
               >
                 <CardScreenHeader >
                   <Header isCardScreen />
-                  <HeaderCardDesc title={title} genre={genre} date={release} >
+                  <HeaderCardDesc title={title} genre={genre} date={released} >
                     <HeaderButtons isCardScreen selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </CardScreenHeader>

@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const CardDetails = ({director, actors, runtime, genre, release}) => {
-  const yearRelease = new Date(release).getFullYear();
-  const actorsList = actors.map((actor, i) => {
+const CardDetails = ({director, starring, runtime, genre, released}) => {
+  const yearRelease = new Date(released).getFullYear();
+  const actorsList = starring.map((actor, i) => {
     const withTegBr = <Fragment key={actor}>{actor} <br/></Fragment>;
     const withoutTegBr = <Fragment key={actor}>{actor}</Fragment>;
 
-    return i < actors.length - 1 ? withTegBr : withoutTegBr;
+    return i < starring.length - 1 ? withTegBr : withoutTegBr;
   });
 
   return (
@@ -45,10 +45,10 @@ const CardDetails = ({director, actors, runtime, genre, release}) => {
 
 CardDetails.propTypes = {
   director: PropTypes.string.isRequired,
-  actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  runtime: PropTypes.string.isRequired,
+  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  runtime: PropTypes.number.isRequired,
   genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
+  released: PropTypes.number.isRequired,
 };
 
 export default CardDetails;

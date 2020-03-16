@@ -1,4 +1,4 @@
-import ActionCreator from './action-creator.js';
+import ActionCreator from '../action-creator.js';
 
 const FilterActions = {
   filtersCards: (dispatch) => (genre, filteredCards, showingCardsAmount) => {

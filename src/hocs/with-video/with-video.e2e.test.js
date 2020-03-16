@@ -18,7 +18,7 @@ Player.propTypes = {
 describe(`Check preview video player`, () => {
   const videoProps = {
     isPlaying: false,
-    poster: ``,
+    posterImage: ``,
     src: ``,
     isMuted: true,
     isDelay: true,
@@ -69,7 +69,7 @@ describe(`Check preview video player`, () => {
 describe(`Check video player screen`, () => {
   const videoProps = {
     isPlaying: false,
-    poster: ``,
+    posterImage: ``,
     src: ``,
     className: `player__video`,
     onEnded: () => {},

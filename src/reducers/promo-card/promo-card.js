@@ -1,10 +1,19 @@
-import ActionTypes from '../action-types/action-types.js';
-import {extend} from './reducer.js';
+import ActionTypes from '../../action-types/action-types.js';
+import {extend} from '../reducer.js';
 
-const updatePromoCard = ({promoCard}, action) => {
+const initialState = {
+  promoCard: {
+    promoCardData: {},
+    promoLoading: true,
+    promoError: null,
+  }
+};
+
+const updatePromoCard = (state = initialState, action) => {
+
   switch (action.type) {
     case ActionTypes.FETCH_PROMO_CARD_REQUEST:
-      return extend(promoCard,
+      return extend(state.promoCard,
           {
             promoCardData: {},
             promoLoading: true,
@@ -12,7 +21,7 @@ const updatePromoCard = ({promoCard}, action) => {
           });
 
     case ActionTypes.FETCH_PROMO_CARD_SUCCESS:
-      return extend(promoCard,
+      return extend(state.promoCard,
           {
             promoCardData: action.payload,
             promoLoading: false,
@@ -20,7 +29,7 @@ const updatePromoCard = ({promoCard}, action) => {
           });
 
     case ActionTypes.FETCH_PROMO_CARD_FAILURE:
-      return extend(promoCard,
+      return extend(state.promoCard,
           {
             promoCardData: {},
             promoLoading: false,
@@ -28,8 +37,8 @@ const updatePromoCard = ({promoCard}, action) => {
           });
 
     default:
-      return promoCard;
+      return state.promoCard;
   }
 };
 
-export default updatePromoCard;
+export {updatePromoCard};

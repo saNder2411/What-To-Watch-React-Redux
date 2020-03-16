@@ -9,7 +9,7 @@ const MockVideoPlayerScreen = (props) => {
   const {renderPlayer, isPlaying, playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
   const videoProps = {
     isPlaying,
-    poster: ``,
+    posterImage: ``,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     className: `player__video`,
     onEnded: onPlayButtonClick,

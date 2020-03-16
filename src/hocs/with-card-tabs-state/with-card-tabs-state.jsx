@@ -26,16 +26,16 @@ const withCardTabsState = (Component) => {
     }
 
     _renderTab(cardMode) {
-      const {director, actors, runtime, genre, release, descriptions, rating, amountVoice, reviewsId} = this.props;
+      const {director, starring, runtime, genre, released, description, rating, scoresCount} = this.props;
 
       switch (cardMode) {
         case CardMode.DETAILS:
-          return <CardDetails director={director} actors={actors} runtime={runtime} genre={genre} release={release} />;
+          return <CardDetails director={director} starring={starring} runtime={runtime} genre={genre} released={released} />;
         case CardMode.REVIEWS:
-          return <CardReviews reviewsId={reviewsId} />;
+          return <CardReviews />;
       }
 
-      return <CardOverview director={director} actors={actors} descriptions={descriptions} rating={rating} amountVoice={amountVoice}/>;
+      return <CardOverview director={director} starring={starring} description={description} rating={rating} scoresCount={scoresCount}/>;
     }
 
     render() {
@@ -51,14 +51,13 @@ const withCardTabsState = (Component) => {
 
   WithCardTabsState.propTypes = {
     director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runtime: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    runtime: PropTypes.number.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    rating: PropTypes.string.isRequired,
-    amountVoice: PropTypes.number.isRequired,
-    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    released: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    scoresCount: PropTypes.number.isRequired,
   };
 
   return WithCardTabsState;

@@ -26,19 +26,18 @@ const WrappedPreviewCardList = compose(withActiveItem(ComponentTypes.PREVIEW_CAR
 
 const CardScreen = ({selectedCardId, cardsData}) => {
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
-  const {title, previewPoster, genre, release} = selectedCard;
-  const yearRelease = new Date(release).getFullYear();
+  const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
   return (
     <Fragment>
       <CardScreenTop>
         <CardScreenHeader >
-          <Header isCardScreen />
-          <HeaderCardDesc title={title} genre={genre} date={yearRelease} >
+          <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+          <HeaderCardDesc title={title} genre={genre} released={released} >
             <HeaderButtons isCardScreen selectedCardId={selectedCardId}/>
           </HeaderCardDesc>
         </CardScreenHeader>
-        <Poster poster={previewPoster} isCardScreen />
+        <Poster isCardScreen posterImage={posterImage} title={title}/>
         <WrappedCardTabs {...selectedCard} />
       </CardScreenTop>
 

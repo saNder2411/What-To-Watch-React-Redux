@@ -42,11 +42,11 @@ const withPreviewCardListState = (Component) => {
   WithPreviewCardListState.propTypes = {
     filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     selectedCardId: PropTypes.string,
-    showingCardsAmount: PropTypes.number,
+    showingCardsAmount: PropTypes.number.isRequired,
     onActiveItemClick: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = ({cardList: {showingCardsAmount}}) => ({showingCardsAmount});
+  const mapStateToProps = ({filteredCardList: {showingCardsAmount}}) => ({showingCardsAmount});
 
   return connect(mapStateToProps)(WithPreviewCardListState);
 };

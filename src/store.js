@@ -1,4 +1,5 @@
-import {createStore, compose, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import reducer from './reducers/reducer.js';
 import thunkMiddleware from 'redux-thunk';
 
@@ -12,9 +13,12 @@ const stringMiddleware = () => (dispatch) => (action) => {
   return dispatch(action);
 };
 
-const store = createStore(reducer, compose(
-    applyMiddleware(stringMiddleware, thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f));
+const store = createStore(
+    reducer,
+    composeWithDevTools(
+        applyMiddleware(stringMiddleware, thunkMiddleware)
+    )
+);
 
 const actionCreatorForThunkMiddleware = (action, timeout) => (dispatch) => {
   setTimeout(() => dispatch(action), timeout);

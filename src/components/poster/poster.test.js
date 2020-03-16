@@ -14,7 +14,7 @@ const store = mockStore({
   promoCardData: {},
 });
 
-const poster = `the-grand-budapest-hotel-poster`;
+const posterImage = `the-grand-budapest-hotel-poster`;
 
 
 describe(`Render Poster`, () => {
@@ -26,7 +26,7 @@ describe(`Render Poster`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Poster poster={poster} isCardScreen/>}
+                  render={() => <Poster posterImage={posterImage} isCardScreen/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -45,7 +45,7 @@ describe(`Render Poster`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Poster poster={poster} />}
+                  render={() => <Poster posterImage={posterImage} />}
                 />
               </Switch>
             </BrowserRouter>

@@ -1,5 +1,5 @@
-import ActionCreator from './action-creator.js';
-import {DataTypes} from '../const.js';
+import ActionCreator from '../action-creator.js';
+import {DataTypes} from '../../const.js';
 
 const FetchActions = {
   fetchDataOld: (cardsService, dispatch) => (dataType) => {
@@ -24,14 +24,14 @@ const FetchActions = {
     switch (dataType) {
       case DataTypes.PROMO_DATA:
         dispatch(ActionCreator.promoCardRequested());
-        cardsService.getPromoCardData()
+        cardsService.getPromoCard()
           .then((promoCardData) => dispatch(ActionCreator.promoCardLoaded(promoCardData)))
           .catch((error) => dispatch(ActionCreator.promoCardError(error)));
         break;
 
       case DataTypes.CARDS_DATA:
         dispatch(ActionCreator.cardsRequested());
-        cardsService.getCards()
+        cardsService.getCardList()
           .then((cardsData) => dispatch(ActionCreator.cardsLoaded(cardsData)))
           .catch((error) => dispatch(ActionCreator.cardsError(error)));
         break;

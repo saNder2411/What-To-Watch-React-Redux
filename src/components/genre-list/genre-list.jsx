@@ -7,7 +7,7 @@ import {DEFAULT_GENRE} from '../../const.js';
 const MAX_AMOUNT_GENRES_LABEL = 9;
 
 const createLabels = (cardsData) => {
-  const genres = cardsData.slice().map((card) => card.genre).sort();
+  const genres = cardsData.slice().map(({genre}) => genre).sort();
 
   return [DEFAULT_GENRE, ...Array.from(new Set(genres)).slice(0, MAX_AMOUNT_GENRES_LABEL)];
 };
@@ -36,6 +36,6 @@ GenreList.propTypes = {
   onActiveItemClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({cardList: {genre}}) => ({genre});
+const mapStateToProps = ({filteredCardList: {genre}}) => ({genre});
 
 export default connect(mapStateToProps)(GenreList);

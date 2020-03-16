@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderCardDesc = ({title, genre, date, children}) => {
+const HeaderCardDesc = ({title, genre, released, children}) => {
   return (
     <div className="movie-card__desc">
       <h2 className="movie-card__title">{title}</h2>
       <p className="movie-card__meta">
         <span className="movie-card__genre">{genre}</span>
-        <span className="movie-card__year">{date}</span>
+        <span className="movie-card__year">{released}</span>
       </p>
       {children}
     </div>
@@ -17,7 +17,7 @@ const HeaderCardDesc = ({title, genre, date, children}) => {
 HeaderCardDesc.propTypes = {
   title: PropTypes.string,
   genre: PropTypes.string,
-  date: PropTypes.number,
+  released: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
