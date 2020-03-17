@@ -14,6 +14,7 @@ const ShowingCardsAmount = {
 const DataTypes = {
   PROMO_DATA: `PROMO_DATA`,
   CARDS_DATA: `CARDS_DATA`,
+  REVIEWS_DATA: `REVIEWS_DATA`,
 };
 
 const ComponentTypes = {

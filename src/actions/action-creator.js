@@ -29,6 +29,20 @@ const ActionCreator = {
     payload: error,
   }),
 
+  reviewsRequested: () => ({
+    type: ActionTypes.FETCH_REVIEWS_REQUEST,
+  }),
+
+  reviewsLoaded: (newCards) => ({
+    type: ActionTypes.FETCH_REVIEWS_SUCCESS,
+    payload: newCards,
+  }),
+
+  reviewsError: (error) => ({
+    type: ActionTypes.FETCH_REVIEWS_FAILURE,
+    payload: error,
+  }),
+
   changeGenre: (genre) => ({
     type: ActionTypes.CHANGE_GENRE,
     payload: genre,

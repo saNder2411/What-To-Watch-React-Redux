@@ -2,7 +2,7 @@ import ActionCreator from '../action-creator.js';
 import {DataTypes} from '../../const.js';
 
 const FetchActions = {
-  fetchData: (cardsService) => (dataType) => (dispatch) => {
+  fetchData: (cardsService, selectedCardId) => (dataType) => (dispatch) => {
     switch (dataType) {
       case DataTypes.PROMO_DATA:
         dispatch(ActionCreator.promoCardRequested());
@@ -16,6 +16,15 @@ const FetchActions = {
         cardsService.getCardList()
           .then((cardsData) => dispatch(ActionCreator.cardsLoaded(cardsData)))
           .catch((error) => dispatch(ActionCreator.cardsError(error)));
+        break;
+
+      case DataTypes.REVIEWS_DATA:
+        dispatch(ActionCreator.reviewsRequested());
+        cardsService.getReviews(selectedCardId)
+        .then((reviewsData) => {
+          dispatch(ActionCreator.reviewsLoaded(reviewsData));
+        })
+        .catch((error) => dispatch(ActionCreator.reviewsError(error)));
         break;
     }
   },

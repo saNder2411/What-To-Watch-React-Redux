@@ -21,13 +21,13 @@ const withCardTabsState = (Component) => {
     }
 
     _renderTab(cardMode) {
-      const {children: [CardOverview, CardDetails, CardReviews]} = this.props;
+      const {children: [CardOverview, CardDetails, WrappedCardReviews]} = this.props;
 
       switch (cardMode) {
         case CardMode.DETAILS:
           return CardDetails;
         case CardMode.REVIEWS:
-          return CardReviews;
+          return WrappedCardReviews;
       }
 
       return CardOverview;

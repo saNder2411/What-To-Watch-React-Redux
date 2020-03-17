@@ -42,4 +42,9 @@ export default class CardsService {
     return this._API.get(`/films`)
     .then((res) => res.data.map(this._parseCard));
   }
+
+  getReviews(id) {
+    return this._API.get(`/comments/${id}`)
+      .then((res) => res.data);
+  }
 }
