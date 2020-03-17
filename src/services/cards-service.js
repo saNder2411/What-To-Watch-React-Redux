@@ -25,6 +25,14 @@ export default class CardsService {
     };
   }
 
+  _handleError(res) {
+    if (res.status < 200 || res.status > 299) {
+      throw new Error(`Could not fetch, received ${res.status}`);
+    }
+
+    return res;
+  }
+
   getPromoCard() {
     return this._API.get(`/films/promo`)
     .then((res) => this._parseCard(res.data));

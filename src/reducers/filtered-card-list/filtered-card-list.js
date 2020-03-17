@@ -4,8 +4,8 @@ import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
 
 const initialState = {
   filteredCardList: {
-    filteredCards: [],
     genre: DEFAULT_GENRE,
+    selectedCardId: -1,
     showingCardsAmount: ShowingCardsAmount.ON_START,
   }
 };
@@ -15,22 +15,16 @@ const updateFilteredCardList = (state = initialState, action) => {
     case ActionTypes.FETCH_CARDS_REQUEST:
       return extend(state.filteredCardList,
           {
-            filteredCards: [],
             genre: DEFAULT_GENRE,
+            selectedCardId: -1,
             showingCardsAmount: ShowingCardsAmount.ON_START,
           });
-
-    case ActionTypes.FETCH_CARDS_SUCCESS:
-      return extend(state.filteredCardList, {filteredCards: action.payload});
-
-    case ActionTypes.FETCH_CARDS_FAILURE:
-      return extend(state.filteredCardList, {filteredCards: []});
 
     case ActionTypes.CHANGE_GENRE:
       return extend(state.filteredCardList, {genre: action.payload});
 
-    case ActionTypes.CHANGE_FILTERED_CARDS:
-      return extend(state.filteredCardList, {filteredCards: action.payload});
+    case ActionTypes.CHANGE_SELECTED_CARD:
+      return extend(state.filteredCardList, {selectedCardId: action.payload});
 
     case ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT:
       return extend(state.filteredCardList,

@@ -1,10 +1,12 @@
 import ActionCreator from '../action-creator.js';
 
 const FilterActions = {
-  filtersCards: (dispatch) => (genre, filteredCards, showingCardsAmount) => {
+  filtersCards: (dispatch) => (genre, showingCardsAmount, selectedCardId) => {
     dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.changeFilteredCards(filteredCards));
     dispatch(ActionCreator.changeShowingCardsAmount(showingCardsAmount));
+    if (selectedCardId) {
+      dispatch(ActionCreator.changeSelectedCard(selectedCardId));
+    }
   },
 };
 

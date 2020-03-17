@@ -26,7 +26,10 @@ import {ComponentTypes} from '../../const.js';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
-const WrappedPreviewCardList = compose(withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST), withPreviewCardListState)(PreviewCardList);
+
+const WrappedPreviewCardList = compose(
+    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
+    withPreviewCardListState)(PreviewCardList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);

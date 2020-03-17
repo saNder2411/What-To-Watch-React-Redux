@@ -5,23 +5,23 @@ const ActionCreator = {
     type: ActionTypes.FETCH_PROMO_CARD_REQUEST,
   }),
 
-  cardsRequested: () => ({
-    type: ActionTypes.FETCH_CARDS_REQUEST,
-  }),
-
   promoCardLoaded: (newPromoCard) => ({
     type: ActionTypes.FETCH_PROMO_CARD_SUCCESS,
     payload: newPromoCard,
   }),
 
-  cardsLoaded: (newCards) => ({
-    type: ActionTypes.FETCH_CARDS_SUCCESS,
-    payload: newCards,
-  }),
-
   promoCardError: (error) => ({
     type: ActionTypes.FETCH_PROMO_CARD_FAILURE,
     payload: error,
+  }),
+
+  cardsRequested: () => ({
+    type: ActionTypes.FETCH_CARDS_REQUEST,
+  }),
+
+  cardsLoaded: (newCards) => ({
+    type: ActionTypes.FETCH_CARDS_SUCCESS,
+    payload: newCards,
   }),
 
   cardsError: (error) => ({
@@ -34,9 +34,9 @@ const ActionCreator = {
     payload: genre,
   }),
 
-  changeFilteredCards: (filteredCards) => ({
-    type: ActionTypes.CHANGE_FILTERED_CARDS,
-    payload: filteredCards,
+  changeSelectedCard: (id) => ({
+    type: ActionTypes.CHANGE_SELECTED_CARD,
+    payload: id,
   }),
 
   changeShowingCardsAmount: (amount) => ({

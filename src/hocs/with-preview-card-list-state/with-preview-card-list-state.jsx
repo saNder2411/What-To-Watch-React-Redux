@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
+import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
@@ -48,7 +48,10 @@ const withPreviewCardListState = (Component) => {
     onActiveItemClick: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = (state) => ({showingCardsAmount: getShowingCardsAmount(state)});
+  const mapStateToProps = (state) => ({
+    filteredCards: getFilteredCards(state),
+    showingCardsAmount: getShowingCardsAmount(state)
+  });
 
   return connect(mapStateToProps)(WithPreviewCardListState);
 };

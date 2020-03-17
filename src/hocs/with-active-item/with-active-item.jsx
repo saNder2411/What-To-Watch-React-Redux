@@ -6,10 +6,9 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
-import {getFilteredCards} from '../../reducers/filtered-card-list/selectors.js';
 import FilterActions from '../../actions/filter-actions/filter-actions.js';
 
-import {DEFAULT_GENRE, ComponentTypes, ShowingCardsAmount} from '../../const.js';
+import {ComponentTypes, ShowingCardsAmount} from '../../const.js';
 
 
 const withActiveItem = (componentType) => (Component) => {
@@ -26,29 +25,25 @@ const withActiveItem = (componentType) => (Component) => {
 
       if (id) {
         const {genre} = cardsData.find((card) => card.id === +id);
-        const filteredCards = cardsData.filter((card) => card.id !== +id && card.genre === genre);
 
-        filtersCards(genre, filteredCards, ShowingCardsAmount.ON_START);
+        filtersCards(genre, ShowingCardsAmount.ON_START, +id);
         history.push(`/cards${id}`);
 
         return;
       }
 
       const {target: {textContent: genre}} = evt;
-      const filteredCards = genre === DEFAULT_GENRE ? cardsData : cardsData.filter((card) => card.genre === genre);
 
-      filtersCards(genre, filteredCards, ShowingCardsAmount.ON_START);
+      filtersCards(genre, ShowingCardsAmount.ON_START);
     }
 
     render() {
-      const {cardsData, selectedCardId, filteredCards} = this.props;
+      const {cardsData} = this.props;
 
       switch (componentType) {
         case ComponentTypes.PREVIEW_CARDS_LIST:
           return (
             <Component
-              filteredCards={filteredCards}
-              selectedCardId={selectedCardId}
               onActiveItemClick={this._handleActiveItemClick}
             />
           );
@@ -69,13 +64,10 @@ const withActiveItem = (componentType) => (Component) => {
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    selectedCardId: PropTypes.string,
   };
 
   const mapStateToProps = (state) => ({
     cardsData: getCardsData(state),
-    filteredCards: getFilteredCards(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({filtersCards: FilterActions.filtersCards(dispatch)});
