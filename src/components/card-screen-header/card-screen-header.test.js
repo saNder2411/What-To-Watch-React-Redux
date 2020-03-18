@@ -7,19 +7,57 @@ import CardScreenHeader from './card-screen-header.jsx';
 import Header from '../header/header.jsx';
 import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
+const mockCardsData = [
+  {
+    id: 1,
+    backgroundImage: `bg-the-grand-budapest-hotel`,
+    posterImage: `the-grand-budapest-hotel-poster`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
+    title: `Bohemian Rhapsody`,
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+    rating: 9,
+    scoresCount: 100,
+    previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    director: `Steven Spielberg`,
+    starring: [
+      `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
+    ],
+    runtime: 98,
+    genre: `Drama`,
+    released: 1989,
+  },
+];
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  reviews: [],
-  newReviews: [],
-  promoCardData: {},
+  promoCard: {
+    promoCardData: {},
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: mockCardsData,
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `Drama`,
+    selectedCardId: 1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
 const title = `Bohemian Rhapsody`;
 const genre = `Drama`;
-const release = 1989;
+const released = 1989;
+const backgroundImage = `bg-the-grand-budapest-hotel`;
 
 it(`Should CardScreenHeader render correctly`, () => {
   const markup = renderer
@@ -31,8 +69,8 @@ it(`Should CardScreenHeader render correctly`, () => {
                 path='/'
               >
                 <CardScreenHeader >
-                  <Header isCardScreen />
-                  <HeaderCardDesc title={title} genre={genre} date={release} >
+                  <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+                  <HeaderCardDesc title={title} genre={genre} released={released} >
                     <HeaderButtons isCardScreen selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </CardScreenHeader>

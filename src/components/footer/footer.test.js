@@ -4,14 +4,30 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Footer from './footer.jsx';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  reviews: [],
-  newReviews: [],
-  promoCardData: {},
+  promoCard: {
+    promoCardData: {},
+    promoLoading: true,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: [],
+    cardsLoading: true,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `All genre`,
+    selectedCardId: -1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
 

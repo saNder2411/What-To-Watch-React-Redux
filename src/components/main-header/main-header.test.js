@@ -7,28 +7,58 @@ import MainHeader from './main-header.jsx';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
 import withData from '../../hocs/with-data/with-data.jsx';
+import createAPI from '../../api';
 import {DataTypes} from '../../const.js';
+import thunk from 'redux-thunk';
 
-const cardsService = new CardsService();
+const API = createAPI(() => {});
+const cardsService = new CardsService(API);
+const mockStore = configureStore([thunk]);
 
 const mockPromoCardData = {
-  title: `The Grand Budapest Hotel`,
+  id: 1,
+  backgroundImage: `bg-the-grand-budapest-hotel`,
+  posterImage: `the-grand-budapest-hotel-poster`,
+  previewImage: `img/bohemian-rhapsody.jpg`,
+  title: `Bohemian Rhapsody`,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+  rating: 9,
+  scoresCount: 100,
+  previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  director: `Steven Spielberg`,
+  starring: [
+    `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
+  ],
+  runtime: 98,
   genre: `Drama`,
-  date: 2014,
-  poster: `the-grand-budapest-hotel-poster`,
+  released: 1989,
 };
 
-const mockStore = configureStore();
-
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  promoCardData: mockPromoCardData,
-  reviews: [],
-  newReviews: [],
+  promoCard: {
+    promoCardData: mockPromoCardData,
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: [],
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `All genre`,
+    selectedCardId: -1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
-const MockWrapped = withData(MainHeader, DataTypes.PROMO_DATA);
+const WrappedMainHeader = withData(DataTypes.PROMO_DATA)(MainHeader);
 
 it(`Should MainHeader render correctly`, () => {
   const markup = renderer.create(
@@ -39,7 +69,7 @@ it(`Should MainHeader render correctly`, () => {
               <Route
                 path='/'
                 exact
-                component={MockWrapped}
+                component={WrappedMainHeader}
               />
             </Switch>
           </BrowserRouter>

@@ -14,6 +14,12 @@ const ShowingCardsAmount = {
 const DataTypes = {
   PROMO_DATA: `PROMO_DATA`,
   CARDS_DATA: `CARDS_DATA`,
+  REVIEWS_DATA: `REVIEWS_DATA`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes};
+const ComponentTypes = {
+  PREVIEW_CARDS_LIST: `PREVIEW_CARDS_LIST`,
+  GENRES_LIST: `GENRES_LIST`,
+};
+
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, ComponentTypes};

@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import CardOverview from '../../components/card-overview/card-overview.jsx';
-import CardDetails from '../../components/card-details/card-details.jsx';
-import CardReviews from '../../components/card-reviews/card-reviews.jsx';
+
 import {CardMode} from '../../const.js';
 
 
@@ -19,21 +17,20 @@ const withCardTabsState = (Component) => {
 
     _handleTabsNavClick(evt, mode) {
       evt.preventDefault();
-
       this.setState({cardMode: mode});
     }
 
     _renderTab(cardMode) {
-      const {director, actors, runtime, genre, release, descriptions, rating, amountVoice, reviewsId} = this.props;
+      const {children: [CardOverview, CardDetails, WrappedCardReviews]} = this.props;
 
       switch (cardMode) {
         case CardMode.DETAILS:
-          return <CardDetails director={director} actors={actors} runtime={runtime} genre={genre} release={release} />;
+          return CardDetails;
         case CardMode.REVIEWS:
-          return <CardReviews reviewsId={reviewsId} />;
+          return WrappedCardReviews;
       }
 
-      return <CardOverview director={director} actors={actors} descriptions={descriptions} rating={rating} amountVoice={amountVoice}/>;
+      return CardOverview;
     }
 
     render() {
@@ -48,15 +45,10 @@ const withCardTabsState = (Component) => {
   }
 
   WithCardTabsState.propTypes = {
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runtime: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    rating: PropTypes.string.isRequired,
-    amountVoice: PropTypes.number.isRequired,
-    reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]).isRequired,
   };
 
   return WithCardTabsState;

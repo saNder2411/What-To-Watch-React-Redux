@@ -2,10 +2,23 @@ import ActionCreator from './action-creator.js';
 import ActionTypes from '../action-types/action-types.js';
 
 const mockPromoCardData = {
-  title: `The Grand Budapest Hotel`,
+  id: 1,
+  backgroundImage: `bg-the-grand-budapest-hotel`,
+  posterImage: `the-grand-budapest-hotel-poster`,
+  previewImage: `img/bohemian-rhapsody.jpg`,
+  title: `Bohemian Rhapsody`,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+  rating: 9,
+  scoresCount: 100,
+  previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  director: `Steven Spielberg`,
+  starring: [
+    `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
+  ],
+  runtime: 98,
   genre: `Drama`,
-  date: 2014,
-  poster: `the-grand-budapest-hotel-poster`,
+  released: 1989,
 };
 
 const mockGenre = `Drama`;
@@ -13,43 +26,95 @@ const mockGenre = `Drama`;
 const mockCardsData = [
   {
     id: 1,
-    promoPoster: `bg-the-grand-budapest-hotel`,
-    poster: `the-grand-budapest-hotel-poster`,
-    previewPoster: `img/bohemian-rhapsody.jpg`,
+    backgroundImage: `bg-the-grand-budapest-hotel`,
+    posterImage: `the-grand-budapest-hotel-poster`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
-    descriptions: [
-      `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-      `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-    ],
-    rating: `10`,
-    amountVoice: 100,
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+    rating: 9,
+    scoresCount: 100,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     director: `Steven Spielberg`,
-    actors: [
+    starring: [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
-    runtime: `1h 58m`,
+    runtime: 98,
     genre: `Drama`,
-    release: 1989,
-    reviewsId: [5, 6, 7, 8],
+    released: 1989,
   },
 ];
 
+const mockReviewsData = [
+  {
+    id: 5,
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    user: {
+      id: 1,
+      name: `Kate Muir`,
+    },
+    rating: 10,
+    date: `2567`,
+  },
+  {
+    id: 2,
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    user: {
+      id: 3,
+      name: `Kate`,
+    },
+    rating: 7,
+    date: `1967`,
+  }
+];
+
+const mockError = {
+  message: `Error!`,
+};
+
 describe(`Action creators work correctly`, () => {
-  it(`Action creator for update cards returns correct action`, () => {
-    expect(ActionCreator.cardsLoaded(mockCardsData)).toEqual({type: ActionTypes.CARDS_LOADED, payload: mockCardsData});
+  it(`Action creator for promo card request returns correct action`, () => {
+    expect(ActionCreator.promoCardRequested()).toEqual({type: ActionTypes.FETCH_PROMO_CARD_REQUEST});
   });
 
   it(`Action creator for update promo card data returns correct action`, () => {
-    expect(ActionCreator.promoCardLoaded(mockPromoCardData)).toEqual({type: ActionTypes.PROMO_CARD_LOADED, payload: mockPromoCardData});
+    expect(ActionCreator.promoCardLoaded(mockPromoCardData)).toEqual({type: ActionTypes.FETCH_PROMO_CARD_SUCCESS, payload: mockPromoCardData});
+  });
+
+  it(`Action creator for promo card error request data returns correct action`, () => {
+    expect(ActionCreator.promoCardError(mockError)).toEqual({type: ActionTypes.FETCH_PROMO_CARD_FAILURE, payload: mockError});
+  });
+
+  it(`Action creator for cards request returns correct action`, () => {
+    expect(ActionCreator.cardsRequested()).toEqual({type: ActionTypes.FETCH_CARDS_REQUEST});
+  });
+
+  it(`Action creator for update cards returns correct action`, () => {
+    expect(ActionCreator.cardsLoaded(mockCardsData)).toEqual({type: ActionTypes.FETCH_CARDS_SUCCESS, payload: mockCardsData});
+  });
+
+  it(`Action creator for card error request returns correct action`, () => {
+    expect(ActionCreator.cardsError(mockError)).toEqual({type: ActionTypes.FETCH_CARDS_FAILURE, payload: mockError});
+  });
+
+  it(`Action creator for reviews request returns correct action`, () => {
+    expect(ActionCreator.reviewsRequested()).toEqual({type: ActionTypes.FETCH_REVIEWS_REQUEST});
+  });
+
+  it(`Action creator for update reviews returns correct action`, () => {
+    expect(ActionCreator.reviewsLoaded(mockReviewsData)).toEqual({type: ActionTypes.FETCH_REVIEWS_SUCCESS, payload: mockReviewsData});
+  });
+
+  it(`Action creator for reviews error request returns correct action`, () => {
+    expect(ActionCreator.reviewsError(mockError)).toEqual({type: ActionTypes.FETCH_REVIEWS_FAILURE, payload: mockError});
   });
 
   it(`Action creator for change genre returns correct action`, () => {
     expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
   });
 
-  it(`Action creator for change filtered cards length returns correct action`, () => {
-    expect(ActionCreator.changeFilteredCardsLength(10)).toEqual({type: ActionTypes.CHANGE_FILTERED_CARDS_LENGTH, payload: 10});
+  it(`Action creator for change selected card returns correct action`, () => {
+    expect(ActionCreator.changeSelectedCard(10)).toEqual({type: ActionTypes.CHANGE_SELECTED_CARD, payload: 10});
   });
 
   it(`Action creator for change showing cards amount returns correct action`, () => {
@@ -57,6 +122,6 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for change showing cards amount returns correct action`, () => {
-    expect(ActionCreator.changeShowingCardsAmount(undefined)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: undefined});
+    expect(ActionCreator.changeShowingCardsAmount(void 0)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: void 0});
   });
 });

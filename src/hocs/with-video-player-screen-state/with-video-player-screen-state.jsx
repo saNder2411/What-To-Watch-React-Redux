@@ -55,9 +55,9 @@ const withVideoPlayerScreenState = (Component) => {
           {...this.props}
           {...this.state}
           playerRef={this._playerRef}
-          handlePlayButtonClick={this._handlePlayButtonClick}
-          handleVideoTimeUpdate={this._handleVideoTimeUpdate}
-          handleFullScreenButtonClick={this._handleFullScreenButtonClick}
+          onPlayButtonClick={this._handlePlayButtonClick}
+          onVideoTimeUpdate={this._handleVideoTimeUpdate}
+          onFullScreenButtonClick={this._handleFullScreenButtonClick}
         />
       );
     }

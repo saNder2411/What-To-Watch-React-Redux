@@ -9,11 +9,11 @@ const PreviewVideoOptions = {
 };
 
 const PreviewCard = ({previewCardData, previewCardHandlers, renderPlayer}) => {
-  const {id, title, previewPoster, previewVideoSrc, isPlaying} = previewCardData;
+  const {id, title, previewImage, previewVideoSrc, isPlaying} = previewCardData;
   const [onPreviewCardClick, onPreviewCardMouseEnter, onPreviewCardMouseLeave] = previewCardHandlers;
   const videoProps = {
     isPlaying,
-    poster: previewPoster,
+    previewImage,
     src: previewVideoSrc,
     isMuted: PreviewVideoOptions.IS_MUTED,
     isDelay: PreviewVideoOptions.IS_DELAY,
@@ -30,7 +30,7 @@ const PreviewCard = ({previewCardData, previewCardHandlers, renderPlayer}) => {
       onMouseLeave={onPreviewCardMouseLeave}
     >
       <div className="small-movie-card__image">
-        {isPlaying ? renderPlayer(videoProps) : <img src={`img/${previewPoster}.jpg`} alt={title} width="280" height="175" />}
+        {isPlaying ? renderPlayer(videoProps) : <img src={previewImage} alt={title} width="280" height="175" />}
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">
@@ -46,7 +46,7 @@ PreviewCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
-    previewPoster: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
     isPlaying: PropTypes.bool.isRequired,
   }).isRequired,
   previewCardHandlers: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,

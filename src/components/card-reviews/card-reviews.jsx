@@ -1,21 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import CardReview from '../card-review/card-review.jsx';
-import mockReviews from '../../mocks/mock-reviews';
-import Common from '../../utils/common.js';
 
-const CardReviews = ({reviewsId}) => {
-  const reviews = [];
+import {dividedArrayInHalf} from '../../utils/utils.js';
 
-  reviewsId.forEach((id) => {
-    const review = mockReviews.find((it) => it.id === id);
 
-    if (review) {
-      reviews.push(review);
-    }
-  });
+const CardReviews = ({reviewsData}) => {
 
-  const partsReviews = Common.dividedArrayInHalf(reviews);
+
+  const partsReviews = dividedArrayInHalf(reviewsData);
 
   const firstColReviews = partsReviews[0].map((review) => {
     return (
@@ -48,7 +42,7 @@ const CardReviews = ({reviewsId}) => {
 };
 
 CardReviews.propTypes = {
-  reviewsId: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  reviewsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default CardReviews;

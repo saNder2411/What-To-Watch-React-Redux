@@ -1,36 +1,45 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import CardTabs from './card-tabs.jsx';
+import CardOverview from '../../components/card-overview/card-overview.jsx';
+import CardDetails from '../../components/card-details/card-details.jsx';
+import CardReviews from '../../components/card-reviews/card-reviews.jsx';
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
+import withData from '../../hocs/with-data/with-data.jsx';
+import {DataTypes} from '../../const.js';
 
-const cardData = {
-  id: 0,
-  promoPoster: `bg-the-grand-budapest-hotel`,
-  poster: `the-grand-budapest-hotel-poster`,
-  previewPoster: `img/bohemian-rhapsody.jpg`,
+const selectedCard = {
+  id: 1,
+  backgroundImage: `bg-the-grand-budapest-hotel`,
+  posterImage: `the-grand-budapest-hotel-poster`,
+  previewImage: `img/bohemian-rhapsody.jpg`,
   title: `Bohemian Rhapsody`,
-  descriptions: [
-    `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-    `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-  ],
-  rating: `10`,
-  amountVoice: 100,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+  rating: 9,
+  scoresCount: 100,
   previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   director: `Steven Spielberg`,
-  actors: [
+  starring: [
     `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
   ],
-  runtime: `1h 58m`,
+  runtime: 98,
   genre: `Drama`,
-  release: 1969,
-  reviewsId: [5, 6, 7, 8],
+  released: 1989,
 };
 
-const MockComponentWrapped = withCardTabsState(CardTabs);
+const WrappedCardTabs = withCardTabsState(CardTabs);
+const WrappedCardReviews = withData(DataTypes.REVIEWS_DATA)(CardReviews);
 
 it(`Should CardOverview render correctly`, () => {
   const markup = renderer
-    .create(<MockComponentWrapped {...cardData} />)
+    .create(
+        <WrappedCardTabs >
+          <CardOverview {...selectedCard} />
+          <CardDetails {...selectedCard} />
+          <WrappedCardReviews selectedCardId={`1`} />
+        </WrappedCardTabs>
+    )
     .toJSON();
 
   expect(markup).toMatchSnapshot();

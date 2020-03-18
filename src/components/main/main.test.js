@@ -5,52 +5,76 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from './main.jsx';
 import CardsService from '../../services/cards-service.js';
+import createAPI from '../../api';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+import thunk from 'redux-thunk';
 
-const cardsService = new CardsService();
-
-const mockStore = configureStore();
+const API = createAPI(() => {});
+const cardsService = new CardsService(API);
+const mockStore = configureStore([thunk]);
 
 const mockPromoCardData = {
-  title: `The Grand Budapest Hotel`,
+  id: 1,
+  backgroundImage: `bg-the-grand-budapest-hotel`,
+  posterImage: `the-grand-budapest-hotel-poster`,
+  previewImage: `img/bohemian-rhapsody.jpg`,
+  title: `Bohemian Rhapsody`,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+  rating: 9,
+  scoresCount: 100,
+  previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  director: `Steven Spielberg`,
+  starring: [
+    `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
+  ],
+  runtime: 98,
   genre: `Drama`,
-  date: 2014,
-  poster: `the-grand-budapest-hotel-poster`,
+  released: 1989,
 };
 
 const mockCardsData = [
   {
     id: 1,
-    promoPoster: `bg-the-grand-budapest-hotel`,
-    poster: `the-grand-budapest-hotel-poster`,
-    previewPoster: `img/bohemian-rhapsody.jpg`,
+    backgroundImage: `bg-the-grand-budapest-hotel`,
+    posterImage: `the-grand-budapest-hotel-poster`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
-    descriptions: [
-      `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-      `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-    ],
-    rating: `10`,
-    amountVoice: 100,
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+    rating: 9,
+    scoresCount: 100,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     director: `Steven Spielberg`,
-    actors: [
+    starring: [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
-    runtime: `1h 58m`,
+    runtime: 98,
     genre: `Drama`,
-    release: 1989,
-    reviewsId: [5, 6, 7, 8],
+    released: 1989,
   },
 ];
-
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: mockCardsData,
-  filteredCardsLength: 0,
-  showingCardsAmount: 8,
-  reviews: [],
-  newReviews: [],
-  promoCardData: mockPromoCardData,
+  promoCard: {
+    promoCardData: mockPromoCardData,
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: mockCardsData,
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `All genre`,
+    selectedCardId: -1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
 

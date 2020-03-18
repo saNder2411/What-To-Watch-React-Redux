@@ -2,56 +2,64 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import CardScreenBottom from './card-screen-bottom.jsx';
-import WithPreviewCardsListState from '../../hocs/with-preview-cards-list-state/with-preview-cards-list-state.jsx';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import compose from '../../hocs/compose/compose.js';
+import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import Footer from '../footer/footer.jsx';
+import {ComponentTypes} from '../../const.js';
 
-const mockStore = configureStore();
-const mockPromoCardData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: 2014,
-  poster: `the-grand-budapest-hotel-poster`,
-};
-
+const mockStore = configureStore([thunk]);
 const mockCardsData = [
   {
     id: 1,
-    promoPoster: `bg-the-grand-budapest-hotel`,
-    poster: `the-grand-budapest-hotel-poster`,
-    previewPoster: `img/bohemian-rhapsody.jpg`,
+    backgroundImage: `bg-the-grand-budapest-hotel`,
+    posterImage: `the-grand-budapest-hotel-poster`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
-    descriptions: [
-      `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-      `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-    ],
-    rating: `10`,
-    amountVoice: 100,
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+    rating: 9,
+    scoresCount: 100,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     director: `Steven Spielberg`,
-    actors: [
+    starring: [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
-    runtime: `1h 58m`,
+    runtime: 98,
     genre: `Drama`,
-    release: 1989,
-    reviewsId: [5, 6, 7, 8],
+    released: 1989,
   },
 ];
-
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: mockCardsData,
-  filteredCardsLength: 0,
-  showingCardsAmount: 8,
-  reviews: [],
-  newReviews: [],
-  promoCardData: mockPromoCardData,
+  promoCard: {
+    promoCardData: {},
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: mockCardsData,
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `Drama`,
+    selectedCardId: 1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
-const WrappedPreviewCardsList = withActiveItem(WithPreviewCardsListState);
+const WrappedPreviewCardList = compose(
+    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
+    withPreviewCardListState)(PreviewCardList);
 
 it(`Should CardScreenBottom render correctly`, () => {
   const markup = renderer
@@ -63,7 +71,7 @@ it(`Should CardScreenBottom render correctly`, () => {
                 path='/'
               >
                 <CardScreenBottom>
-                  <WrappedPreviewCardsList selectedCardId={`1`} />
+                  <WrappedPreviewCardList selectedCardId={`1`} />
                   <Footer isCardScreen />
                 </CardScreenBottom>
               </Route>

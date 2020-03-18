@@ -1,30 +1,62 @@
 import ActionTypes from '../action-types/action-types.js';
 
 const ActionCreator = {
-  cardsLoaded: (newCards) => ({
-    type: ActionTypes.CARDS_LOADED,
-    payload: newCards
+  promoCardRequested: () => ({
+    type: ActionTypes.FETCH_PROMO_CARD_REQUEST,
   }),
 
   promoCardLoaded: (newPromoCard) => ({
-    type: ActionTypes.PROMO_CARD_LOADED,
-    payload: newPromoCard
+    type: ActionTypes.FETCH_PROMO_CARD_SUCCESS,
+    payload: newPromoCard,
+  }),
+
+  promoCardError: (error) => ({
+    type: ActionTypes.FETCH_PROMO_CARD_FAILURE,
+    payload: error,
+  }),
+
+  cardsRequested: () => ({
+    type: ActionTypes.FETCH_CARDS_REQUEST,
+  }),
+
+  cardsLoaded: (newCards) => ({
+    type: ActionTypes.FETCH_CARDS_SUCCESS,
+    payload: newCards,
+  }),
+
+  cardsError: (error) => ({
+    type: ActionTypes.FETCH_CARDS_FAILURE,
+    payload: error,
+  }),
+
+  reviewsRequested: () => ({
+    type: ActionTypes.FETCH_REVIEWS_REQUEST,
+  }),
+
+  reviewsLoaded: (newCards) => ({
+    type: ActionTypes.FETCH_REVIEWS_SUCCESS,
+    payload: newCards,
+  }),
+
+  reviewsError: (error) => ({
+    type: ActionTypes.FETCH_REVIEWS_FAILURE,
+    payload: error,
   }),
 
   changeGenre: (genre) => ({
     type: ActionTypes.CHANGE_GENRE,
-    payload: genre
+    payload: genre,
   }),
 
-  changeFilteredCardsLength: (length) => ({
-    type: ActionTypes.CHANGE_FILTERED_CARDS_LENGTH,
-    payload: length
+  changeSelectedCard: (id) => ({
+    type: ActionTypes.CHANGE_SELECTED_CARD,
+    payload: id,
   }),
 
   changeShowingCardsAmount: (amount) => ({
     type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
     payload: amount,
-  })
+  }),
 };
 
 export default ActionCreator;

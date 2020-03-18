@@ -4,17 +4,31 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Logo from './logo.jsx';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  reviews: [],
-  newReviews: [],
-  promoCardData: {},
+  promoCard: {
+    promoCardData: {},
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: [],
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `Drama`,
+    selectedCardId: 1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
-
-const changeGenre = () => {};
 
 
 describe(`Render Logo`, () => {
@@ -26,7 +40,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo isCardScreen changeGenre={changeGenre}/>}
+                  render={() => <Logo isCardScreen/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -45,7 +59,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo changeGenre={changeGenre}/>}
+                  render={() => <Logo />}
                 />
               </Switch>
             </BrowserRouter>
@@ -64,7 +78,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo isCardScreen isFooterLogo changeGenre={changeGenre}/>}
+                  render={() => <Logo isCardScreen isFooterLogo />}
                 />
               </Switch>
             </BrowserRouter>
@@ -83,7 +97,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo isFooterLogo changeGenre={changeGenre}/>}
+                  render={() => <Logo isFooterLogo />}
                 />
               </Switch>
             </BrowserRouter>

@@ -1,43 +1,45 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import Spinner from '../../components/spinner/spinner.jsx';
+import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
+
+import compose from '../compose/compose.js';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
-import ActionCreator from '../../actions/action-creator.js';
+import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
+import {getCardsData, getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
+import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
+
+import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
 
-const withData = (Component, dataType) => {
+
+const withData = (dataType) => (Component) => {
   class WithData extends PureComponent {
     componentDidMount() {
-      const {cardsService, promoCardLoaded, cardsLoaded} = this.props;
-
-      switch (dataType) {
-        case DataTypes.PROMO_DATA:
-          const promoCardData = cardsService.getPromoCardData();
-
-          promoCardLoaded(promoCardData);
-          break;
-
-        case DataTypes.CARDS_DATA:
-          const cardsData = cardsService.getCards();
-
-          cardsLoaded(cardsData);
-          break;
-      }
+      this.props.fetchData(dataType);
     }
 
     render() {
-      const {promoCardData, cardsData} = this.props;
+      const {
+        promoCardData, promoLoading, promoError,
+        cardsData, cardsLoading, cardsError,
+        reviewsData, reviewsLoading, reviewsError} = this.props;
+
+      if (promoLoading || cardsLoading || reviewsLoading) {
+        return <Spinner />;
+      }
 
       switch (dataType) {
         case DataTypes.PROMO_DATA:
-          return (
-            <Component {...promoCardData}/>
-          );
+          return promoError ? <ErrorIndicator message={promoError.message} /> : <Component {...promoCardData}/>;
 
         case DataTypes.CARDS_DATA:
-          return (
-            <Component cardsData={cardsData} />
-          );
+          return cardsError ? <ErrorIndicator message={cardsError.message} /> : <Component cardsData={cardsData} />;
+
+        case DataTypes.REVIEWS_DATA:
+          return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : <Component reviewsData={reviewsData} />;
       }
 
       return (
@@ -47,26 +49,39 @@ const withData = (Component, dataType) => {
   }
 
   WithData.propTypes = {
-    cardsService: PropTypes.object.isRequired,
-    promoCardLoaded: PropTypes.func.isRequired,
-    cardsLoaded: PropTypes.func.isRequired,
+    fetchData: PropTypes.func.isRequired,
     promoCardData: PropTypes.object.isRequired,
+    promoLoading: PropTypes.bool.isRequired,
+    promoError: PropTypes.object,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    cardsLoading: PropTypes.bool.isRequired,
+    cardsError: PropTypes.object,
+    reviewsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    reviewsLoading: PropTypes.bool.isRequired,
+    reviewsError: PropTypes.object,
   };
 
-  const mapStateToProps = ({promoCardData, cardsData}) => ({promoCardData, cardsData});
-
-  const mapDispatchToProps = (dispatch) => ({
-    promoCardLoaded: (newPromoCard) => {
-      dispatch(ActionCreator.promoCardLoaded(newPromoCard));
-    },
-
-    cardsLoaded: (newCards) => {
-      dispatch(ActionCreator.cardsLoaded(newCards));
-    },
+  const mapStateToProps = (state) => ({
+    promoCardData: getPromoCardData(state),
+    promoLoading: getPromoLoading(state),
+    promoError: getPromoError(state),
+    cardsData: getCardsData(state),
+    cardsLoading: getCardsLoading(state),
+    cardsError: getCardsError(state),
+    reviewsData: getReviewsData(state),
+    reviewsLoading: getReviewsLoading(state),
+    reviewsError: getReviewsError(state),
   });
 
-  return withCardsService(connect(mapStateToProps, mapDispatchToProps)(WithData));
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    const {cardsService, selectedCardId} = ownProps;
+
+    return {
+      fetchData: (datType) => dispatch(FetchActions.fetchData(cardsService, selectedCardId)(datType)),
+    };
+  };
+
+  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithData);
 };
 
 export default withData;

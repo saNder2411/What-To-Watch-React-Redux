@@ -5,7 +5,7 @@ import PreviewCard from './preview-card.jsx';
 const previewCardData = {
   id: 1,
   title: `Bohemian Rhapsody`,
-  previewPoster: `bohemian-rhapsody`,
+  previewImage: `bohemian-rhapsody`,
   previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   isPlaying: false,
 };

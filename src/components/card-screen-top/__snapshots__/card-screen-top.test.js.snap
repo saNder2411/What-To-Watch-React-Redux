@@ -11,8 +11,8 @@ exports[`Should CardScreenTop render correctly 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Bohemian Rhapsody"
+        src="bg-the-grand-budapest-hotel"
       />
     </div>
     <h1
@@ -146,9 +146,9 @@ exports[`Should CardScreenTop render correctly 1`] = `
         className="movie-card__poster movie-card__poster--big"
       >
         <img
-          alt="The Grand Budapest Hotel poster"
+          alt="Bohemian Rhapsody"
           height="327"
-          src="img/img/bohemian-rhapsody.jpg.jpg"
+          src="img/bohemian-rhapsody.jpg"
           width="218"
         />
       </div>
@@ -202,7 +202,7 @@ exports[`Should CardScreenTop render correctly 1`] = `
           <div
             className="movie-rating__score"
           >
-            10
+            9
           </div>
           <p
             className="movie-rating__meta"
@@ -210,7 +210,7 @@ exports[`Should CardScreenTop render correctly 1`] = `
             <span
               className="movie-rating__level"
             >
-              Awesome
+              Very good
             </span>
             <span
               className="movie-rating__count"
@@ -225,9 +225,6 @@ exports[`Should CardScreenTop render correctly 1`] = `
         >
           <p>
             In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-          </p>
-          <p>
-            Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
           </p>
           <p
             className="movie-card__director"

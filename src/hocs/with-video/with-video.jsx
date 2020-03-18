@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 
-const DELAY = 1500;
+const DELAY = 1000;
 
 const withVideo = (Component) => {
   class WithVideo extends PureComponent {
@@ -12,13 +12,13 @@ const withVideo = (Component) => {
     }
 
     componentDidMount() {
-      const {isPlaying, onEnded, onTimeUpdate, src, poster, isMuted = false, isDelay = false, width = ``, height = ``} = this.props;
+      const {isPlaying, onEnded, onTimeUpdate, src, previewImage, isMuted = false, isDelay = false, width = ``, height = ``} = this.props;
       const video = this._videoRef.current;
 
       video.src = src;
       video.width = width;
       video.height = height;
-      video.poster = `img/${poster}.jpg`;
+      video.poster = previewImage;
       video.autoplay = false;
       video.muted = isMuted;
 
@@ -94,7 +94,7 @@ const withVideo = (Component) => {
     isMuted: PropTypes.bool,
     isDelay: PropTypes.bool,
     src: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
     width: PropTypes.number,
     height: PropTypes.number,
     className: PropTypes.string,

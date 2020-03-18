@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Poster = ({poster, isCardScreen}) => {
+const Poster = ({isCardScreen, posterImage, title}) => {
   return (
     <div className={`movie-card__poster ${isCardScreen ? `movie-card__poster--big` : ``}`}>
-      <img src={`img/${poster}.jpg`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+      <img src={`${posterImage ? posterImage : `img/the-grand-budapest-hotel-poster.jpg`}`} alt={title} width="218" height="327" />
     </div>
   );
 };
 
 Poster.propTypes = {
-  poster: PropTypes.string,
   isCardScreen: PropTypes.bool,
+  posterImage: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default Poster;
