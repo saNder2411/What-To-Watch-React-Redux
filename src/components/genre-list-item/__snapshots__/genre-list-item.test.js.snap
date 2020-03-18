@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should GenresListItem render correctly 1`] = `
+exports[`Should GenreListItem render correctly 1`] = `
 <li
   className="catalog__genres-item catalog__genres-item--active"
 >

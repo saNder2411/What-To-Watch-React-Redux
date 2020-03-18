@@ -22,7 +22,6 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 import withData from '../../hocs/with-data/with-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
-import {getSelectedCardId} from '../../reducers/filtered-card-list/selectors';
 
 import {DataTypes, ComponentTypes} from '../../const.js';
 

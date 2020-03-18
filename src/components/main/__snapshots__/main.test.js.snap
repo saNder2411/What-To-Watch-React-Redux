@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Bohemian Rhapsody"
+        src="bg-the-grand-budapest-hotel"
       />
     </div>
     <h1
@@ -71,9 +71,9 @@ Array [
           className="movie-card__poster "
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Bohemian Rhapsody"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="the-grand-budapest-hotel-poster"
             width="218"
           />
         </div>
@@ -83,7 +83,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -96,7 +96,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2014
+              1989
             </span>
           </p>
           <div

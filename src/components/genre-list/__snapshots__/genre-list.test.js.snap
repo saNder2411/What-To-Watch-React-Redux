@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should GenresList render correctly 1`] = `
+exports[`Should GenreList render correctly 1`] = `
 <ul
   className="catalog__genres-list"
 >
@@ -13,6 +13,17 @@ exports[`Should GenresList render correctly 1`] = `
       onClick={[Function]}
     >
       All genres
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Drama
     </a>
   </li>
 </ul>

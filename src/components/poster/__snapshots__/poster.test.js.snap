@@ -5,9 +5,9 @@ exports[`Render Poster Should Poster render correctly in CardScreen 1`] = `
   className="movie-card__poster movie-card__poster--big"
 >
   <img
-    alt="The Grand Budapest Hotel poster"
+    alt="Terminator"
     height="327"
-    src="img/the-grand-budapest-hotel-poster.jpg"
+    src="the-grand-budapest-hotel-poster"
     width="218"
   />
 </div>
@@ -18,9 +18,9 @@ exports[`Render Poster Should Poster render correctly in Main 1`] = `
   className="movie-card__poster "
 >
   <img
-    alt="The Grand Budapest Hotel poster"
+    alt="Terminator"
     height="327"
-    src="img/the-grand-budapest-hotel-poster.jpg"
+    src="the-grand-budapest-hotel-poster"
     width="218"
   />
 </div>

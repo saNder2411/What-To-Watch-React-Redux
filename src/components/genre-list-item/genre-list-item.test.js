@@ -4,14 +4,30 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import GenreListItem from './genre-list-item.jsx';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  reviews: [],
-  newReviews: [],
-  promoCardData: {},
+  promoCard: {
+    promoCardData: {},
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: [],
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `All genre`,
+    selectedCardId: -1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 const label = `All Genre`;
 const isActive = true;

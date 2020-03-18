@@ -56,7 +56,7 @@ exports[`Should CardDetails render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1h 58m
+        2h 26m
       </span>
     </p>
     <p
@@ -84,7 +84,7 @@ exports[`Should CardDetails render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1970
+        1978
       </span>
     </p>
   </div>

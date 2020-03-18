@@ -5,19 +5,35 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import HeaderCardDesc from './header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 const store = mockStore({
-  genre: `All Genre`,
-  cardsData: [],
-  reviews: [],
-  newReviews: [],
-  promoCardData: {},
+  promoCard: {
+    promoCardData: {},
+    promoLoading: false,
+    promoError: null,
+  },
+  cardList: {
+    cardsData: [],
+    cardsLoading: false,
+    cardsError: null,
+  },
+  filteredCardList: {
+    genre: `Drama`,
+    selectedCardId: 1,
+    showingCardsAmount: 8,
+  },
+  reviews: {
+    reviewsData: [],
+    reviewsLoading: false,
+    reviewsError: null,
+  }
 });
 
 const title = `Bohemian Rhapsody`;
 const genre = `Drama`;
-const date = 1989;
+const released = 1989;
 
 
 describe(`Render HeaderCardDesc`, () => {
@@ -30,7 +46,7 @@ describe(`Render HeaderCardDesc`, () => {
                 <Route
                   path='/'
                 >
-                  <HeaderCardDesc title={title} genre={genre} date={date} >
+                  <HeaderCardDesc title={title} genre={genre} released={released} >
                     <HeaderButtons isCardScreen selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </Route>
@@ -52,7 +68,7 @@ describe(`Render HeaderCardDesc`, () => {
                 <Route
                   path='/'
                 >
-                  <HeaderCardDesc title={title} genre={genre} date={date} >
+                  <HeaderCardDesc title={title} genre={genre} released={released}>
                     <HeaderButtons />
                   </HeaderCardDesc>
                 </Route>

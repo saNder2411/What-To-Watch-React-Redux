@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render PreviewCardsList Should PreviewCardsList render correctly in CardScreen 1`] = `
+exports[`Render PreviewCardsList Should PreviewCardList render correctly in CardScreen 1`] = `
 <div
   className="catalog__movies-list"
 />
 `;
 
-exports[`Render PreviewCardsList Should PreviewCardsList render correctly in Main 1`] = `
+exports[`Render PreviewCardsList Should PreviewCardList render correctly in Main 1`] = `
 <div
   className="catalog__movies-list"
 />

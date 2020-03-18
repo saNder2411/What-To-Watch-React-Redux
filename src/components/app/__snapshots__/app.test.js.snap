@@ -2,140 +2,15 @@
 
 exports[`Should App render correctly 1`] = `
 Array [
-  <section
-    className="movie-card"
+  <div
+    className="page-content"
   >
-    <div
-      className="movie-card__bg"
+    <h2
+      className="movie-card__title"
     >
-      <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
-      />
-    </div>
-    <h1
-      className="visually-hidden"
-    >
-      WTW
-    </h1>
-    <header
-      className="page-header movie-card__head"
-    >
-      <div
-        className="logo"
-      >
-        <a
-          className="logo__link "
-          href="/"
-          onClick={[Function]}
-        >
-          <span
-            className="logo__letter logo__letter--1"
-          >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
-      </div>
-      <div
-        className="user-block"
-      >
-        <div
-          className="user-block__avatar"
-        >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
-      </div>
-    </header>
-    <div
-      className="movie-card__wrap"
-    >
-      <div
-        className="movie-card__info"
-      >
-        <div
-          className="movie-card__poster "
-        >
-          <img
-            alt="The Grand Budapest Hotel poster"
-            height="327"
-            src="img/undefined.jpg"
-            width="218"
-          />
-        </div>
-        <div
-          className="movie-card__desc"
-        >
-          <h2
-            className="movie-card__title"
-          />
-          <p
-            className="movie-card__meta"
-          >
-            <span
-              className="movie-card__genre"
-            />
-            <span
-              className="movie-card__year"
-            />
-          </p>
-          <div
-            className="movie-card__buttons"
-          >
-            <button
-              className="btn btn--play movie-card__button"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
-              >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
-            <button
-              className="btn btn--list movie-card__button"
-              type="button"
-            >
-              <svg
-                height="20"
-                viewBox="0 0 19 20"
-                width="19"
-              >
-                <use
-                  xlinkHref="#add"
-                />
-              </svg>
-              <span>
-                My list
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>,
+      Loading ...
+    </h2>
+  </div>,
   <div
     className="page-content"
   >
@@ -147,21 +22,15 @@ Array [
       >
         Catalog
       </h2>
-      <ul
-        className="catalog__genres-list"
+      <div
+        className="page-content"
       >
-        <li
-          className="catalog__genres-item "
+        <h2
+          className="movie-card__title"
         >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            All genres
-          </a>
-        </li>
-      </ul>
+          Loading ...
+        </h2>
+      </div>
       <div
         className="catalog__movies-list"
       />

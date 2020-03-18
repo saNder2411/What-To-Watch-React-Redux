@@ -6,9 +6,77 @@ exports[`Should CardReviews render correctly 1`] = `
 >
   <div
     className="movie-card__reviews-col"
-  />
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2016-12-24"
+          >
+            January 1, 2567
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        10
+      </div>
+    </div>
+  </div>
   <div
     className="movie-card__reviews-col"
-  />
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2016-12-24"
+          >
+            January 1, 1967
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        7
+      </div>
+    </div>
+  </div>
 </div>
 `;

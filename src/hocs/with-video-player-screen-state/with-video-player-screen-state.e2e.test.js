@@ -9,7 +9,7 @@ const MockVideoPlayerScreen = (props) => {
   const {renderPlayer, isPlaying, playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
   const videoProps = {
     isPlaying,
-    posterImage: ``,
+    previewImage: `img/bohemian-rhapsody.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     className: `player__video`,
     onEnded: onPlayButtonClick,
@@ -83,22 +83,6 @@ describe(`Check VideoPlayerScreen state`, () => {
     wrapper.find(`button.player__full-screen`).simulate(`click`);
 
     expect(wrapper.state().isFullScreen).toBe(true);
-  });
-
-  it(`Checks that pressing play button changes progress in the state`, () => {
-    const wrapper = mount(<WrappedVideoPlayerScreen />);
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
-
-    wrapper.instance._handleVideoTimeUpdate = (arg, arg2) => wrapper.setState({progressInSeconds: arg, progressInPercent: arg2});
-
-    jest.spyOn(wrapper.instance, `_handleVideoTimeUpdate`);
-
-    wrapper.instance().componentDidMount();
-
-    wrapper.find(`video`).simulate(`timeupdate`);
-
-    expect(wrapper.instance._handleVideoTimeUpdate).toHaveBeenCalledTimes(1);
   });
 });
 

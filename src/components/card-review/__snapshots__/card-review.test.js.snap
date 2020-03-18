@@ -24,7 +24,7 @@ exports[`Should CardReview render correctly 1`] = `
         className="review__date"
         dateTime="2016-12-24"
       >
-        January 1, 1970
+        January 1, 2567
       </time>
     </footer>
   </blockquote>
