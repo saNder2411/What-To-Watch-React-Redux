@@ -7,8 +7,6 @@ import {dividedArrayInHalf} from '../../utils/utils.js';
 
 
 const CardReviews = ({reviewsData}) => {
-
-
   const partsReviews = dividedArrayInHalf(reviewsData);
 
   const firstColReviews = partsReviews[0].map((review) => {

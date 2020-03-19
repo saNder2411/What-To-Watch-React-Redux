@@ -26,20 +26,23 @@ const withData = (dataType) => (Component) => {
         promoCardData, promoLoading, promoError,
         cardsData, cardsLoading, cardsError,
         reviewsData, reviewsLoading, reviewsError} = this.props;
-
-      if (promoLoading || cardsLoading || reviewsLoading) {
-        return <Spinner />;
-      }
+      let content;
 
       switch (dataType) {
         case DataTypes.PROMO_DATA:
-          return promoError ? <ErrorIndicator message={promoError.message} /> : <Component {...promoCardData}/>;
+          content = promoLoading ? <div className="movie-card"><Spinner /></div> : <Component {...promoCardData}/>;
+
+          return promoError ? <ErrorIndicator message={promoError.message} /> : content;
 
         case DataTypes.CARDS_DATA:
-          return cardsError ? <ErrorIndicator message={cardsError.message} /> : <Component cardsData={cardsData} />;
+          content = cardsLoading ? <Spinner /> : <Component cardsData={cardsData} />;
+
+          return cardsError ? <ErrorIndicator message={cardsError.message} /> : content;
 
         case DataTypes.REVIEWS_DATA:
-          return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : <Component reviewsData={reviewsData} />;
+          content = reviewsLoading ? <Spinner /> : <Component reviewsData={reviewsData} />;
+
+          return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : content;
       }
 
       return (

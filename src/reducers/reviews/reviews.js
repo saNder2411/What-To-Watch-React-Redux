@@ -4,7 +4,7 @@ import {extend} from '../../utils/utils.js';
 const initialState = {
   reviews: {
     reviewsData: [],
-    reviewsLoading: false,
+    reviewsLoading: true,
     reviewsError: null,
   }
 };
