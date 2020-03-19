@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Logo = ({isCardScreen, isFooterLogo}) => {
-  const onClick = isCardScreen ? () => {} : (evt) => evt.preventDefault();
+const Logo = ({toMain, isFooterLogo}) => {
+  const onClick = toMain ? () => {} : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 
   return (
@@ -22,7 +22,7 @@ const Logo = ({isCardScreen, isFooterLogo}) => {
 };
 
 Logo.propTypes = {
-  isCardScreen: PropTypes.bool,
+  toMain: PropTypes.bool,
   isFooterLogo: PropTypes.bool,
 };
 

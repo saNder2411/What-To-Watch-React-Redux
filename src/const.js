@@ -22,4 +22,9 @@ const ComponentTypes = {
   GENRES_LIST: `GENRES_LIST`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, ComponentTypes};
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, ComponentTypes, AuthorizationStatus};

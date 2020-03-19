@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logo from '../logo/logo.jsx';
 
-const Footer = ({isCardScreen}) => {
+const Footer = ({children}) => {
   return (
     <footer className="page-footer">
-      <Logo isCardScreen={isCardScreen} isFooterLogo />
-
+      {children}
       <div className="copyright">
         <p>© 2019 What to watch Ltd.</p>
       </div>
@@ -15,7 +13,10 @@ const Footer = ({isCardScreen}) => {
 };
 
 Footer.propTypes = {
-  isCardScreen: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
 };
 
 export default Footer;

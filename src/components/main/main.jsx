@@ -6,6 +6,7 @@ import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import Footer from '../footer/footer.jsx';
+import Logo from '../logo/logo.jsx';
 
 import compose from '../../hocs/compose/compose.js';
 import withData from '../../hocs/with-data/with-data.jsx';
@@ -27,11 +28,14 @@ const Main = () => {
   return (
     <Fragment>
       <WrappedMainHeader/>
+
       <MainContent>
         <WrappedGenreList/>
         <WrappedPreviewCardList />
         <ShowMoreButton />
-        <Footer />
+        <Footer>
+          <Logo isFooterLogo/>
+        </Footer>
       </MainContent>
     </Fragment>
   );

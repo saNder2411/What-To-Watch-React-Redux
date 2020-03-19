@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import CardScreen from '../card-screen/card-screen.jsx';
 import VideoPlayerScreen from '../video-player-screen/video-player-screen.jsx';
+import SignInScreen from '../sign-in-screen/sign-in-screen.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
 
@@ -31,6 +32,10 @@ const App = () => {
             const {id} = match.params;
             return <WrappedVideoPlayerScreen selectedCardId={id}/>;
           }}
+        />
+        <Route
+          path='/login'
+          component={SignInScreen}
         />
       </Switch>
     </BrowserRouter>

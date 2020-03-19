@@ -57,6 +57,13 @@ const ActionCreator = {
     type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
     payload: amount,
   }),
+
+  requireAuthorization: (status) => {
+    return {
+      type: ActionTypes.REQUIRED_AUTHORIZATION,
+      payload: status,
+    };
+  },
 };
 
 export default ActionCreator;
