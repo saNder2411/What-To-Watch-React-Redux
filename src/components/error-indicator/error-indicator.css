@@ -1,0 +1,12 @@
+.error-indicator {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#dfcf77;
+}
+
+.error-indicator .error-indicator__message {
+  font-size: 1.7rem;
+  padding: 5px;
+}
