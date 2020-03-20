@@ -6,6 +6,7 @@ import CardScreenTop from '../card-screen-top/card-screen-top.jsx';
 import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
 import Header from '../header/header.jsx';
 import Logo from '../logo/logo.jsx';
+import UserBlock from '../user-block/user-block.jsx';
 import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
 import Poster from '../poster/poster.jsx';
@@ -45,6 +46,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
         <CardScreenHeader >
           <Header title={title} backgroundImage={backgroundImage}>
             <Logo toMain />
+            <UserBlock />
           </Header>
           <HeaderCardDesc title={title} genre={genre} released={released} >
             <HeaderButtons isCardScreen selectedCardId={selectedCardId}/>

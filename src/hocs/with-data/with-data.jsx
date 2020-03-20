@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Spinner from '../../components/spinner/spinner.jsx';
 import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';

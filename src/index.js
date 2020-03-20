@@ -7,10 +7,14 @@ import createAPI from './api';
 import CardsService from './services/cards-service.js';
 import {CardsServiceProvider} from './components/cards-service-context/cards-service-context.js';
 import ActionCreator from './actions/action-creator.js';
+import FetchActions from './actions/fetch-actions/fetch-actions.js';
+import {DataTypes} from './const.js';
 
 const onUnauthorized = (error) => store.dispatch(ActionCreator.authorizationStatusError(error));
 const API = createAPI(onUnauthorized);
 const cardsService = new CardsService(API);
+
+store.dispatch(FetchActions.fetchData(cardsService)(DataTypes.CHECK_USER_AUTH));
 
 ReactDOM.render(
     <Provider store={store}>

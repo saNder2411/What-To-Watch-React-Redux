@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 const Header = ({title, backgroundImage, children}) => {
+  const [Logo, UserBlock] = children;
   return (
     <Fragment>
       <div className="movie-card__bg">
@@ -9,12 +10,8 @@ const Header = ({title, backgroundImage, children}) => {
       </div>
       <h1 className="visually-hidden">WTW</h1>
       <header className="page-header movie-card__head">
-        {children}
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
+        {Logo}
+        {UserBlock}
       </header>
     </Fragment>
   );
