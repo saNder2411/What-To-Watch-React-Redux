@@ -1,40 +1,41 @@
 import ActionTypes from '../../action-types/action-types.js';
 import {extend} from '../../utils/utils.js';
-import {AuthorizationStatus} from '../../const.js';
+import {AuthStatus} from '../../const.js';
 
 const initialState = {
   user: {
-    userInfo: {},
-    authorizationStatus: AuthorizationStatus.NO_AUTH,
-    authorizationLoading: true,
-    authorizationError: null,
+    userData: {},
+    authStatus: AuthStatus.NO_AUTH,
+    authLoading: true,
+    authError: null,
   }
 };
 
 const updateUser = (state = initialState, action) => {
+
   switch (action.type) {
-    case ActionTypes.FETCH_AUTHORIZATION_REQUEST:
+    case ActionTypes.FETCH_AUTH_REQUEST:
       return extend(state.user, {
-        userInfo: {},
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-        authorizationLoading: true,
-        authorizationError: null,
+        userData: {},
+        authStatus: AuthStatus.NO_AUTH,
+        authLoading: true,
+        authError: null,
       });
 
-    case ActionTypes.FETCH_AUTHORIZATION_SUCCESS:
+    case ActionTypes.FETCH_AUTH_SUCCESS:
       return extend(state.user, {
-        userInfo: action.payload,
-        authorizationStatus: AuthorizationStatus.AUTH,
-        authorizationLoading: false,
-        authorizationError: null,
+        userData: action.payload,
+        authStatus: AuthStatus.AUTH,
+        authLoading: false,
+        authError: null,
       });
 
-    case ActionTypes.FETCH_AUTHORIZATION_FAILURE:
+    case ActionTypes.FETCH_AUTH_FAILURE:
       return extend(state.user, {
-        userInfo: {},
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-        authorizationLoading: false,
-        authorizationError: action.payload,
+        userData: {},
+        authStatus: AuthStatus.NO_AUTH,
+        authLoading: false,
+        authError: action.payload,
       });
   }
 

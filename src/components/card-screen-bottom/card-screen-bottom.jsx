@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const CardScreenBottom = ({children}) => {
+
   const [WrappedPreviewCardsList, Footer] = children;
 
   return (

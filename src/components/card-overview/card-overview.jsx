@@ -2,9 +2,11 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {calcCardLevel} from '../../utils/utils.js';
 
+
 const CardLevelValues = [3, 5, 8, 10];
 
 const CardOverview = ({description, rating, scoresCount, director, starring}) => {
+
   const cardLevel = calcCardLevel(rating, CardLevelValues);
 
   return (

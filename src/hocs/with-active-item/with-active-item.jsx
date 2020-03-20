@@ -12,7 +12,9 @@ import {ComponentTypes, ShowingCardsAmount} from '../../const.js';
 
 
 const withActiveItem = (componentType) => (Component) => {
+
   class WithActiveItem extends PureComponent {
+
     constructor(props) {
       super(props);
       this._handleActiveItemClick = this._handleActiveItemClick.bind(this);

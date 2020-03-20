@@ -2,7 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
 const Logo = ({toMain, isFooterLogo}) => {
+
   const onClick = toMain ? () => {} : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 

@@ -1,5 +1,5 @@
-const getAuthorizationStatus = ({user: {authorizationStatus}}) => authorizationStatus;
+const getAuthStatus = ({user: {authStatus}}) => authStatus;
 
-const getUserInfo = ({user: {userInfo}}) => userInfo;
+const getUserData = ({user: {userData}}) => userData;
 
-export {getAuthorizationStatus, getUserInfo};
+export {getAuthStatus, getUserData};

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const MainContent = ({children}) => {
+
   const [WrappedGenreList, WrappedPreviewCardsList, ShowMoreButton, Footer] = children;
 
   return (

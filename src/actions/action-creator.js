@@ -1,6 +1,7 @@
 import ActionTypes from '../action-types/action-types.js';
 
 const ActionCreator = {
+
   promoCardRequested: () => ({type: ActionTypes.FETCH_PROMO_CARD_REQUEST}),
 
   promoCardLoaded: (newPromoCard) => ({
@@ -52,15 +53,15 @@ const ActionCreator = {
     payload: amount,
   }),
 
-  authorizationStatusRequested: () => ({type: ActionTypes.FETCH_AUTHORIZATION_REQUEST}),
+  authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
 
-  authorizationStatusLoaded: (userInfo) => ({
-    type: ActionTypes.FETCH_AUTHORIZATION_SUCCESS,
-    payload: userInfo,
+  authDataLoaded: (userData) => ({
+    type: ActionTypes.FETCH_AUTH_SUCCESS,
+    payload: userData,
   }),
 
-  authorizationStatusError: (error) => ({
-    type: ActionTypes.FETCH_AUTHORIZATION_FAILURE,
+  authDataError: (error) => ({
+    type: ActionTypes.FETCH_AUTH_FAILURE,
     payload: error,
   }),
 };

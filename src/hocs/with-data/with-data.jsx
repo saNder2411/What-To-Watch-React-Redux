@@ -16,7 +16,9 @@ import {DataTypes} from '../../const.js';
 
 
 const withData = (dataType) => (Component) => {
+
   class WithData extends PureComponent {
+
     componentDidMount() {
       this.props.fetchData(dataType);
     }

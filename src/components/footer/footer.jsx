@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const Footer = ({children}) => {
+
   return (
     <footer className="page-footer">
       {children}

@@ -1,6 +1,8 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
+
 import {CardMode} from '../../const.js';
+
 
 const NuvButtonsData = [
   {name: CardMode.OVERVIEW, LABEL: `Overview`},
@@ -9,6 +11,7 @@ const NuvButtonsData = [
 ];
 
 const CardTabsNav = ({mode, onTabsNavClick}) => {
+
   const navButtons = NuvButtonsData.map(({name, LABEL}) => {
     const isActiveClass = name === mode ? `movie-nav__item--active` : ``;
 

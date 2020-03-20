@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const CardScreenTop = ({children}) => {
+
   const [CardScreenHeader, Poster, WrappedCardTabs] = children;
 
   return (

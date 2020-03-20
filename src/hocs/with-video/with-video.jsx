@@ -1,10 +1,13 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 
+
 const DELAY = 1000;
 
 const withVideo = (Component) => {
+
   class WithVideo extends PureComponent {
+
     constructor(props) {
       super(props);
       this._videoRef = createRef();

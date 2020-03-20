@@ -37,6 +37,7 @@ const WrappedPreviewCardList = compose(
     withPreviewCardListState)(PreviewCardList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
+
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 

@@ -4,6 +4,7 @@ import PreviewCard from '../preview-card/preview-card.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 const PreviewCardList = ({filteredCards, mouseEnterCard, previewCardHandlers}) => {
+
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 
   const previewCards = filteredCards

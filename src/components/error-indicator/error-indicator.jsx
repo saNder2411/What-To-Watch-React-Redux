@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './error-indicator.css';
 
+
 const ErrorIndicator = ({message}) => {
+
   return (
     <div className="page-content">
       <div className="error-indicator">

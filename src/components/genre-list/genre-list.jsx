@@ -8,15 +8,18 @@ import GenreListItem from '../genre-list-item/genre-list-item.jsx';
 
 import {DEFAULT_GENRE} from '../../const.js';
 
+
 const MAX_AMOUNT_GENRES_LABEL = 9;
 
 const createLabels = (cardsData) => {
+
   const genres = cardsData.slice().map(({genre}) => genre).sort();
 
   return [DEFAULT_GENRE, ...Array.from(new Set(genres)).slice(0, MAX_AMOUNT_GENRES_LABEL)];
 };
 
 const GenreList = ({cardsData, genre, onActiveItemClick}) => {
+
   const labels = createLabels(cardsData);
   const items = labels.map((label) => (
     <GenreListItem

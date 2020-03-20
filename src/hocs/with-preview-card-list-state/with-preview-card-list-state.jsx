@@ -8,7 +8,9 @@ import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-c
 const MAX_AMOUNT_SIMILAR_CARD = 4;
 
 const withPreviewCardListState = (Component) => {
+
   class WithPreviewCardListState extends PureComponent {
+
     constructor(props) {
       super(props);
       this.state = {

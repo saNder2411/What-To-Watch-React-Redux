@@ -1,8 +1,11 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
+
 const Header = ({title, backgroundImage, children}) => {
+
   const [Logo, UserBlock] = children;
+
   return (
     <Fragment>
       <div className="movie-card__bg">

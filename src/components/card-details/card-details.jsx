@@ -1,8 +1,11 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+
 import {getTimeInHoursAndMinutes} from '../../utils/utils.js';
 
+
 const CardDetails = ({director, starring, runtime, genre, released}) => {
+
   const formatRuntime = getTimeInHoursAndMinutes(runtime);
 
   const actorsList = starring.map((actor, i) => {

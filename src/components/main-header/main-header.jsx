@@ -8,6 +8,7 @@ import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import Poster from '../poster/poster.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
 
+
 const MainHeader = ({title, genre, released, posterImage, backgroundImage}) => {
 
   return (

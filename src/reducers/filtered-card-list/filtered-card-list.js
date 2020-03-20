@@ -2,6 +2,7 @@ import ActionTypes from '../../action-types/action-types.js';
 import {extend} from '../../utils/utils.js';
 import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
 
+
 const initialState = {
   filteredCardList: {
     genre: DEFAULT_GENRE,
@@ -11,6 +12,7 @@ const initialState = {
 };
 
 const updateFilteredCardList = (state = initialState, action) => {
+
   switch (action.type) {
     case ActionTypes.FETCH_CARDS_REQUEST:
       return extend(state.filteredCardList,

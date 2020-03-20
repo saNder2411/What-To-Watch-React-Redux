@@ -1,4 +1,5 @@
 export default class CardsService {
+
   constructor(API) {
     this._API = API;
   }
@@ -25,7 +26,7 @@ export default class CardsService {
     };
   }
 
-  _parseUserInfo(data) {
+  _parseUserData(data) {
     return {
       id: data[`id`],
       email: data[`email`],
@@ -57,13 +58,13 @@ export default class CardsService {
       .then((res) => res.data);
   }
 
-  getAuthorizationStatus() {
+  getAuthStatus() {
     return this._API.get(`/login`)
-      .then((res) => this._parseUserInfo(res.data));
+      .then((res) => this._parseUserData(res.data));
   }
 
-  setLoginUser({email, password}) {
+  setAuthUserData({email, password}) {
     return this._API.post(`login`, {email, password})
-      .then((res) => this._parseUserInfo(res.data));
+      .then((res) => this._parseUserData(res.data));
   }
 }

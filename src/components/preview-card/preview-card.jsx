@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const PreviewVideoOptions = {
   WIDTH: 280,
   HEIGHT: 175,
@@ -9,6 +10,7 @@ const PreviewVideoOptions = {
 };
 
 const PreviewCard = ({previewCardData, previewCardHandlers, renderPlayer}) => {
+
   const {id, title, previewImage, previewVideoSrc, isPlaying} = previewCardData;
   const [onPreviewCardClick, onPreviewCardMouseEnter, onPreviewCardMouseLeave] = previewCardHandlers;
   const videoProps = {
