@@ -15,6 +15,8 @@ const DataTypes = {
   PROMO_DATA: `PROMO_DATA`,
   CARDS_DATA: `CARDS_DATA`,
   REVIEWS_DATA: `REVIEWS_DATA`,
+  CHECK_USER_AUTH: `CHECK_USER_AUTH`,
+  USER_AUTH: `USER_AUTH`,
 };
 
 const ComponentTypes = {

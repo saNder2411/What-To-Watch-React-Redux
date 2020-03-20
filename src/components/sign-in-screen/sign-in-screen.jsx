@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import Logo from '../logo/logo.jsx';
 import Footer from '../footer/footer.jsx';

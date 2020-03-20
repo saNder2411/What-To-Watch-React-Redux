@@ -25,6 +25,15 @@ export default class CardsService {
     };
   }
 
+  _parseUserInfo(data) {
+    return {
+      id: data[`id`],
+      email: data[`email`],
+      name: data[`name`],
+      avatarSrc: data[`avatar_url`],
+    };
+  }
+
   _handleError(res) {
     if (res.status < 200 || res.status > 299) {
       throw new Error(`Could not fetch, received ${res.status}`);
@@ -35,16 +44,21 @@ export default class CardsService {
 
   getPromoCard() {
     return this._API.get(`/films/promo`)
-    .then((res) => this._parseCard(res.data));
+      .then((res) => this._parseCard(res.data));
   }
 
   getCardList() {
     return this._API.get(`/films`)
-    .then((res) => res.data.map(this._parseCard));
+      .then((res) => res.data.map(this._parseCard));
   }
 
   getReviews(id) {
     return this._API.get(`/comments/${id}`)
       .then((res) => res.data);
+  }
+
+  getAuthorizationStatus() {
+    return this._API.get(`/login`)
+      .then((res) => this._parseUserInfo(res.data));
   }
 }

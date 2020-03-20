@@ -6,8 +6,10 @@ import App from './components/app/app.jsx';
 import createAPI from './api';
 import CardsService from './services/cards-service.js';
 import {CardsServiceProvider} from './components/cards-service-context/cards-service-context.js';
+import ActionCreator from './actions/action-creator.js';
 
-const API = createAPI(() => {});
+const onUnauthorized = (error) => store.dispatch(ActionCreator.authorizationStatusError(error));
+const API = createAPI(onUnauthorized);
 const cardsService = new CardsService(API);
 
 ReactDOM.render(
