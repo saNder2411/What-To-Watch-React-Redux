@@ -5,6 +5,7 @@ export default class CardsService {
   }
 
   _parseCard(data) {
+
     return {
       id: data[`id`],
       title: data[`name`],
@@ -27,6 +28,7 @@ export default class CardsService {
   }
 
   _parseUserData(data) {
+
     return {
       id: data[`id`],
       email: data[`email`],
@@ -44,26 +46,31 @@ export default class CardsService {
   }
 
   getPromoCard() {
+
     return this._API.get(`/films/promo`)
       .then((res) => this._parseCard(res.data));
   }
 
   getCardList() {
+
     return this._API.get(`/films`)
       .then((res) => res.data.map(this._parseCard));
   }
 
   getReviews(id) {
+
     return this._API.get(`/comments/${id}`)
       .then((res) => res.data);
   }
 
   getAuthStatus() {
+
     return this._API.get(`/login`)
       .then((res) => this._parseUserData(res.data));
   }
 
   setAuthUserData({email, password}) {
+
     return this._API.post(`login`, {email, password})
       .then((res) => this._parseUserData(res.data));
   }

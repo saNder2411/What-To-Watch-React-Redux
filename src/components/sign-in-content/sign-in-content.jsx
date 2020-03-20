@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SignInErrorMessage from '../sign-in-error-message/ sign-in-error-message.jsx';
 
 
-const SignInContent = ({emailRef, passwordRef, onSubmit}) => {
+const SignInContent = ({emailRef, passwordRef, error, onSubmit}) => {
 
   return (
     <div className="sign-in user-page__content">
       <form
-        action="#"
+        action=""
         className="sign-in__form"
         onSubmit={onSubmit}
       >
+        <SignInErrorMessage error={error}/>
         <div className="sign-in__fields">
           <div className="sign-in__field">
             <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email"
@@ -34,9 +36,10 @@ const SignInContent = ({emailRef, passwordRef, onSubmit}) => {
 };
 
 SignInContent.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
   emailRef: PropTypes.object.isRequired,
   passwordRef: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.object,
 };
 
 export default SignInContent;

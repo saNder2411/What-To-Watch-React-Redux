@@ -11,14 +11,14 @@ const AuthActions = {
         dispatch(ActionCreator.authRequested());
         cardsService.getAuthStatus()
           .then((userData) => dispatch(ActionCreator.authDataLoaded(userData)))
-          .catch((error) => dispatch(ActionCreator.authDataError(error)));
+          .catch((error) => dispatch(ActionCreator.authDataError(error.response)));
         break;
 
       case AuthActionTypes.USER_AUTH:
         dispatch(ActionCreator.authRequested());
         cardsService.setAuthUserData(formUserData)
           .then((userData) => dispatch(ActionCreator.authDataLoaded(userData)))
-          .catch((error) => dispatch(ActionCreator.authDataError(error)));
+          .catch((error) => dispatch(ActionCreator.authDataError(error.response)));
         break;
     }
 

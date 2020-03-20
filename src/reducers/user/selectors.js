@@ -1,5 +1,9 @@
-const getAuthStatus = ({user: {authStatus}}) => authStatus;
-
 const getUserData = ({user: {userData}}) => userData;
 
-export {getAuthStatus, getUserData};
+const getAuthStatus = ({user: {authStatus}}) => authStatus;
+
+const getAuthLoading = ({user: {authLoading}}) => authLoading;
+
+const getAuthError = ({user: {authError}}) => authError;
+
+export {getUserData, getAuthStatus, getAuthLoading, getAuthError};

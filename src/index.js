@@ -10,7 +10,7 @@ import ActionCreator from './actions/action-creator.js';
 import AuthActions from './actions/auth-actions/auth-actions.js';
 import {AuthActionTypes} from './const.js';
 
-const onUnauthorized = (error) => store.dispatch(ActionCreator.authorizationDataError(error));
+const onUnauthorized = (error) => store.dispatch(ActionCreator.authDataError(error));
 const API = createAPI(onUnauthorized);
 const cardsService = new CardsService(API);
 

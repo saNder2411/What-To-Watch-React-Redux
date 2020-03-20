@@ -9,7 +9,6 @@ import {AuthStatus} from '../../const.js';
 
 
 const UserBlock = ({authStatus, userData: {avatarSrc = ``} = {}}) => {
-
   const content = authStatus === AuthStatus.NO_AUTH ?
     <Link to="/login" className="user-block__link">Sign in</Link> :
     <div className="user-block__avatar">
