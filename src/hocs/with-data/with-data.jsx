@@ -6,7 +6,7 @@ import Spinner from '../../components/spinner/spinner.jsx';
 import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
 
 import compose from '../compose/compose.js';
-import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
+import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
 import {getCardsData, getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';

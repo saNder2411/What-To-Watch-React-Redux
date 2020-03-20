@@ -61,4 +61,9 @@ export default class CardsService {
     return this._API.get(`/login`)
       .then((res) => this._parseUserInfo(res.data));
   }
+
+  setLoginUser({email, password}) {
+    return this._API.post(`login`, {email, password})
+      .then((res) => this._parseUserInfo(res.data));
+  }
 }

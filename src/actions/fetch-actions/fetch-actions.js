@@ -2,7 +2,7 @@ import ActionCreator from '../action-creator.js';
 import {DataTypes} from '../../const.js';
 
 const FetchActions = {
-  fetchData: (cardsService, selectedCardId) => (dataType) => (dispatch) => {
+  fetchData: (cardsService, selectedCardId) => (dataType, userData) => (dispatch) => {
     switch (dataType) {
       case DataTypes.PROMO_DATA:
         dispatch(ActionCreator.promoCardRequested());
@@ -28,6 +28,13 @@ const FetchActions = {
       case DataTypes.CHECK_USER_AUTH:
         dispatch(ActionCreator.authorizationStatusRequested());
         cardsService.getAuthorizationStatus()
+          .then((userInfo) => dispatch(ActionCreator.authorizationStatusLoaded(userInfo)))
+          .catch((error) => dispatch(ActionCreator.authorizationStatusError(error)));
+        break;
+
+      case DataTypes.USER_AUTH:
+        dispatch(ActionCreator.authorizationStatusRequested());
+        cardsService.setLoginUser(userData)
           .then((userInfo) => dispatch(ActionCreator.authorizationStatusLoaded(userInfo)))
           .catch((error) => dispatch(ActionCreator.authorizationStatusError(error)));
         break;
