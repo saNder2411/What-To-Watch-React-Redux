@@ -36,6 +36,12 @@ const changeShowingCardsAmount = () => {};
 describe(`Render ShowMoreButton`, () => {
   it(`Should ShowMoreButton render correctly when there are no cards to render`, () => {
     const store = mockStore({
+      user: {
+        userData: {},
+        authStatus: `NO_AUTH`,
+        authLoading: true,
+        authError: null,
+      },
       promoCard: {
         promoCardData: [],
         promoLoading: false,
@@ -79,6 +85,12 @@ describe(`Render ShowMoreButton`, () => {
 
   it(`Should ShowMoreButton render correctly`, () => {
     const store = mockStore({
+      user: {
+        userData: {},
+        authStatus: `NO_AUTH`,
+        authLoading: false,
+        authError: null,
+      },
       promoCard: {
         promoCardData: {},
         promoLoading: false,

@@ -4,12 +4,16 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+
 import CardScreenBottom from './card-screen-bottom.jsx';
+import Logo from '../logo/logo.jsx';
+import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
+import Footer from '../footer/footer.jsx';
+
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import compose from '../../hocs/compose/compose.js';
-import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
-import Footer from '../footer/footer.jsx';
+
 import {ComponentTypes} from '../../const.js';
 
 const mockStore = configureStore([thunk]);
@@ -35,6 +39,12 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -72,7 +82,9 @@ it(`Should CardScreenBottom render correctly`, () => {
               >
                 <CardScreenBottom>
                   <WrappedPreviewCardList selectedCardId={`1`} />
-                  <Footer isCardScreen />
+                  <Footer>
+                    <Logo toMain isFooterLogo/>
+                  </Footer>
                 </CardScreenBottom>
               </Route>
             </Switch>

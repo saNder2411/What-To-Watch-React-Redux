@@ -1,13 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+
 import CardScreenHeader from './card-screen-header.jsx';
 import Header from '../header/header.jsx';
+import Logo from '../logo/logo.jsx';
+import UserBlock from '../user-block/user-block.jsx';
 import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
-import thunk from 'redux-thunk';
+
 
 const mockStore = configureStore([thunk]);
 const mockCardsData = [
@@ -32,6 +36,12 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -69,7 +79,10 @@ it(`Should CardScreenHeader render correctly`, () => {
                 path='/'
               >
                 <CardScreenHeader >
-                  <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+                  <Header title={title} backgroundImage={backgroundImage}>
+                    <Logo toMain />
+                    <UserBlock />
+                  </Header>
                   <HeaderCardDesc title={title} genre={genre} released={released} >
                     <HeaderButtons isCardScreen selectedCardId={`1`}/>
                   </HeaderCardDesc>

@@ -8,6 +8,12 @@ import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,

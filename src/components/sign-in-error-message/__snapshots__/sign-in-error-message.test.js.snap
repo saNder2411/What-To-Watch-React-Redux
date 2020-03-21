@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render SignInErrorMessage Should SignInErrorMessage render correctly when bad request data 1`] = `
+<div
+  className="sign-in__message"
+>
+  <p>
+    We can’t recognize this email 
+    <br />
+     and password combination. Please try again.
+  </p>
+</div>
+`;
+
+exports[`Render SignInErrorMessage Should SignInErrorMessage render correctly when bad validation email 1`] = `
+<div
+  className="sign-in__message"
+>
+  <p>
+    Please enter a valid email address
+  </p>
+</div>
+`;

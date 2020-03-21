@@ -1,22 +1,27 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import thunk from 'redux-thunk';
+import createAPI from '../../api';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+
 import MainContent from './main-content.jsx';
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
+import ShowMoreButton from '../show-more-button/show-more-button.jsx';
+import Footer from '../footer/footer.jsx';
+import Logo from '../logo/logo.jsx';
+
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withData from '../../hocs/with-data/with-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import ShowMoreButton from '../show-more-button/show-more-button.jsx';
-import createAPI from '../../api';
 import compose from '../../hocs/compose/compose.js';
-import Footer from '../footer/footer.jsx';
+
 import {DataTypes, ComponentTypes} from '../../const.js';
-import thunk from 'redux-thunk';
+
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);
@@ -64,6 +69,12 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: mockPromoCardData,
     promoLoading: false,
@@ -110,7 +121,9 @@ it(`Should MainContent render correctly`, () => {
                   <WrappedGenreList/>
                   <WrappedPreviewCardList />
                   <ShowMoreButton />
-                  <Footer />
+                  <Footer>
+                    <Logo isFooterLogo/>
+                  </Footer>
                 </MainContent>
               </Route>
             </Switch>
