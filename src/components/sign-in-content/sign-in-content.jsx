@@ -3,26 +3,28 @@ import PropTypes from 'prop-types';
 import SignInErrorMessage from '../sign-in-error-message/ sign-in-error-message.jsx';
 
 
-const SignInContent = ({emailRef, passwordRef, error, onSubmit}) => {
+const SignInContent = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}) => {
+  const emailClassName = isValidEmail ? `sign-in__field` : `sign-in__field sign-in__field--error`;
 
   return (
     <div className="sign-in user-page__content">
       <form
         action=""
         className="sign-in__form"
-        onSubmit={onSubmit}
+        onSubmit={onFormSubmit}
+        noValidate
       >
-        <SignInErrorMessage error={error}/>
+        <SignInErrorMessage error={error} isValidEmail={isValidEmail}/>
         <div className="sign-in__fields">
-          <div className="sign-in__field">
+          <div className={emailClassName}>
             <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email"
-              ref={emailRef}
+              onChange={onInputChange} value={email}
             />
             <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
           </div>
           <div className="sign-in__field">
             <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" autoComplete="off"
-              ref={passwordRef}
+              onChange={onInputChange} value={password}
             />
             <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
           </div>
@@ -36,10 +38,12 @@ const SignInContent = ({emailRef, passwordRef, error, onSubmit}) => {
 };
 
 SignInContent.propTypes = {
-  emailRef: PropTypes.object.isRequired,
-  passwordRef: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   error: PropTypes.object,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  isValidEmail: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SignInContent;
