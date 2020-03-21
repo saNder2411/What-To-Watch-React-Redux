@@ -10,7 +10,7 @@ exports[`Render UserBlock Should UserBlock render correctly when user authorizat
     <img
       alt="User avatar"
       height="63"
-      src="avatar_url"
+      src="https://htmlacademy-react-3.appspot.com/avatar_url"
       width="63"
     />
   </div>

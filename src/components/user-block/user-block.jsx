@@ -12,7 +12,7 @@ const UserBlock = ({authStatus, userData: {avatarSrc = ``} = {}}) => {
   const content = authStatus === AuthStatus.NO_AUTH ?
     <Link to="/login" className="user-block__link">Sign in</Link> :
     <div className="user-block__avatar">
-      <img src={avatarSrc} alt="User avatar" width="63" height="63" />
+      <img src={`https://htmlacademy-react-3.appspot.com/${avatarSrc}`} alt="User avatar" width="63" height="63" />
     </div>;
 
   return (
