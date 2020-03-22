@@ -9,7 +9,7 @@ import createAPI from '../../api.js';
 import thunk from 'redux-thunk';
 
 import SignInContent from './sign-in-content.jsx';
-import withValidatedForm from '../../hocs/with-validated-form/with-validated-form.jsx';
+import withAuthFormState from '../../hocs/with-auth-form-state/with-auth-form-state.jsx';
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);
@@ -25,7 +25,7 @@ const store = mockStore({
   },
 });
 
-const WrappedSignInContent = withValidatedForm(SignInContent);
+const WrappedSignInContent = withAuthFormState(SignInContent);
 
 
 it(`Should SignInContent render correctly`, () => {

@@ -64,7 +64,7 @@ const store = mockStore({
   }
 });
 
-const WrappedMainHeader = withData(DataTypes.PROMO_DATA)(MainHeader);
+const WrappedMainHeader = withData(DataTypes.FETCH_PROMO_DATA)(MainHeader);
 
 it(`Should MainHeader render correctly`, () => {
   const markup = renderer.create(

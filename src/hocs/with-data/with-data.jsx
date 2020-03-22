@@ -31,17 +31,17 @@ const withData = (dataType) => (Component) => {
       let content;
 
       switch (dataType) {
-        case DataTypes.PROMO_DATA:
+        case DataTypes.FETCH_PROMO_DATA:
           content = promoLoading ? <div className="movie-card"><Spinner /></div> : <Component {...promoCardData}/>;
 
           return promoError ? <ErrorIndicator message={promoError.message} /> : content;
 
-        case DataTypes.CARDS_DATA:
+        case DataTypes.FETCH_CARDS_DATA:
           content = cardsLoading ? <Spinner /> : <Component cardsData={cardsData} />;
 
           return cardsError ? <ErrorIndicator message={cardsError.message} /> : content;
 
-        case DataTypes.REVIEWS_DATA:
+        case DataTypes.FETCH_REVIEWS_DATA:
           content = reviewsLoading ? <Spinner /> : <Component reviewsData={reviewsData} />;
 
           return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : content;

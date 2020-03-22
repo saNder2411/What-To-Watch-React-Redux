@@ -63,7 +63,7 @@ const store = mockStore({
 });
 
 const WrappedGenreList = compose(
-    withData(DataTypes.CARDS_DATA),
+    withData(DataTypes.FETCH_CARDS_DATA),
     withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
 
 

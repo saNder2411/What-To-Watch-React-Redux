@@ -9,8 +9,8 @@ const API = createAPI(() => {});
 const cardsService = new CardsService(API);
 
 describe(`FetchActions work correctly`, () => {
-  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.PROMO_DATA`, () => {
-    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.PROMO_DATA);
+  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.FETCH_PROMO_DATA`, () => {
+    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.FETCH_PROMO_DATA);
     const dispatch = jest.fn();
 
     fetchDataLoader(dispatch);
@@ -21,8 +21,8 @@ describe(`FetchActions work correctly`, () => {
     });
   });
 
-  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.CARDS_DATA`, () => {
-    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.CARDS_DATA);
+  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.FETCH_CARDS_DATA`, () => {
+    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.FETCH_CARDS_DATA);
     const dispatch = jest.fn();
 
     fetchDataLoader(dispatch);
@@ -33,8 +33,8 @@ describe(`FetchActions work correctly`, () => {
     });
   });
 
-  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.REVIEWS_DATA`, () => {
-    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.REVIEWS_DATA);
+  it(`Should make a correct fetchData call to dispatch with arguments DataTypes.FETCH_REVIEWS_DATA`, () => {
+    const fetchDataLoader = FetchActions.fetchData(cardsService)(DataTypes.FETCH_REVIEWS_DATA);
     const dispatch = jest.fn();
 
     fetchDataLoader(dispatch);

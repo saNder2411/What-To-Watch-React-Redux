@@ -16,10 +16,10 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 import {DataTypes, ComponentTypes} from '../../const.js';
 
 
-const WrappedMainHeader = withData(DataTypes.PROMO_DATA)(MainHeader);
+const WrappedMainHeader = withData(DataTypes.FETCH_PROMO_DATA)(MainHeader);
 
 const WrappedGenreList = compose(
-    withData(DataTypes.CARDS_DATA),
+    withData(DataTypes.FETCH_CARDS_DATA),
     withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
 
 const WrappedPreviewCardList = compose(

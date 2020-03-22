@@ -30,7 +30,7 @@ import {DataTypes, ComponentTypes} from '../../const.js';
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
 
-const WrappedCardReviews = withData(DataTypes.REVIEWS_DATA)(CardReviews);
+const WrappedCardReviews = withData(DataTypes.FETCH_REVIEWS_DATA)(CardReviews);
 
 const WrappedPreviewCardList = compose(
     withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),

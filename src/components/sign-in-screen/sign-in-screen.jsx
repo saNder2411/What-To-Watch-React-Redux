@@ -3,9 +3,9 @@ import React from 'react';
 import SignInContent from '../sign-in-content/sign-in-content.jsx';
 import Logo from '../logo/logo.jsx';
 import Footer from '../footer/footer.jsx';
-import withValidatedForm from '../../hocs/with-validated-form/with-validated-form.jsx';
+import withAuthFormState from '../../hocs/with-auth-form-state/with-auth-form-state.jsx';
 
-const WrappedSignInContent = withValidatedForm(SignInContent);
+const WrappedSignInContent = withAuthFormState(SignInContent);
 
 const SignInScreen = () => {
 
