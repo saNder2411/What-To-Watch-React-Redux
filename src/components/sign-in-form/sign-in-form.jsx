@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SignInErrorMessage from '../sign-in-error-message/ sign-in-error-message.jsx';
 
 
-const SignInContent = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}) => {
+const SignInForm = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}) => {
   const emailClassName = isValidEmail ? `sign-in__field` : `sign-in__field sign-in__field--error`;
 
   return (
@@ -37,7 +37,7 @@ const SignInContent = ({email, password, isValidEmail, error, onInputChange, onF
   );
 };
 
-SignInContent.propTypes = {
+SignInForm.propTypes = {
   error: PropTypes.object,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
@@ -46,4 +46,4 @@ SignInContent.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
 };
 
-export default SignInContent;
+export default SignInForm;

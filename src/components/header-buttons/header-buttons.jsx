@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 
 
 const HeaderButtons = ({isCardScreen, selectedCardId, history}) => {
 
-  const addReviewButton = isCardScreen ? <a href="add-review.html" className="btn movie-card__button">Add review</a> : null;
+  const addReviewButton = isCardScreen ? <Link to={`/review${selectedCardId}`} className="btn movie-card__button">Add review</Link> : null;
   const toScreen = isCardScreen ? `/player${selectedCardId}` : `/player${-1}`;
 
   return (

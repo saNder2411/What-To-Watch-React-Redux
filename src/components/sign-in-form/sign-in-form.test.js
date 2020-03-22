@@ -8,7 +8,7 @@ import {CardsServiceProvider} from '../cards-service-context/cards-service-conte
 import createAPI from '../../api.js';
 import thunk from 'redux-thunk';
 
-import SignInContent from './sign-in-content.jsx';
+import SignInForm from './sign-in-form.jsx';
 import withAuthFormState from '../../hocs/with-auth-form-state/with-auth-form-state.jsx';
 
 const API = createAPI(() => {});
@@ -25,7 +25,7 @@ const store = mockStore({
   },
 });
 
-const WrappedSignInContent = withAuthFormState(SignInContent);
+const WrappedSignInForm = withAuthFormState(SignInForm);
 
 
 it(`Should SignInContent render correctly`, () => {
@@ -37,7 +37,7 @@ it(`Should SignInContent render correctly`, () => {
               <Switch>
                 <Route
                   path='/'
-                  component={WrappedSignInContent}
+                  component={WrappedSignInForm}
                 />
               </Switch>
             </BrowserRouter>

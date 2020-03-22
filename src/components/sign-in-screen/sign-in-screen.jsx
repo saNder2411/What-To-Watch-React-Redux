@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SignInContent from '../sign-in-content/sign-in-content.jsx';
+import SignInForm from '../sign-in-form/sign-in-form.jsx';
 import Logo from '../logo/logo.jsx';
 import Footer from '../footer/footer.jsx';
 import withAuthFormState from '../../hocs/with-auth-form-state/with-auth-form-state.jsx';
 
-const WrappedSignInContent = withAuthFormState(SignInContent);
+const WrappedSignInForm = withAuthFormState(SignInForm);
 
 const SignInScreen = () => {
 
@@ -16,7 +16,7 @@ const SignInScreen = () => {
         <h1 className="page-title user-page__title">Sign in</h1>
       </header>
 
-      <WrappedSignInContent />
+      <WrappedSignInForm />
 
       <Footer>
         <Logo toMain isFooterLogo />

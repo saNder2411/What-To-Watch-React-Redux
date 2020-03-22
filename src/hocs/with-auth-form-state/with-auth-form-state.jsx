@@ -27,6 +27,10 @@ const withAuthFormState = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
+    componentWillUnmount() {
+      this.setState({email: ``, password: ``, isValidEmail: true});
+    }
+
     _handleFormSubmit(evt) {
       evt.preventDefault();
 
