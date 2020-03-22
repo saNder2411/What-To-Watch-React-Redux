@@ -15,9 +15,9 @@ import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
 
 
-const withData = (dataType) => (Component) => {
+const withFetchData = (dataType) => (Component) => {
 
-  class WithData extends PureComponent {
+  class WithFetchData extends PureComponent {
 
     componentDidMount() {
       this.props.fetchData(dataType);
@@ -53,7 +53,7 @@ const withData = (dataType) => (Component) => {
     }
   }
 
-  WithData.propTypes = {
+  WithFetchData.propTypes = {
     fetchData: PropTypes.func.isRequired,
     promoCardData: PropTypes.object.isRequired,
     promoLoading: PropTypes.bool.isRequired,
@@ -86,7 +86,7 @@ const withData = (dataType) => (Component) => {
     };
   };
 
-  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithData);
+  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithFetchData);
 };
 
-export default withData;
+export default withFetchData;

@@ -8,7 +8,7 @@ import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
 import createAPI from '../../api.js';
 import compose from '../../hocs/compose/compose.js';
-import withData from '../../hocs/with-data/with-data.jsx';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {DataTypes, ComponentTypes} from '../../const.js';
 import thunk from 'redux-thunk';
@@ -63,7 +63,7 @@ const store = mockStore({
 });
 
 const WrappedGenreList = compose(
-    withData(DataTypes.FETCH_CARDS_DATA),
+    withFetchData(DataTypes.FETCH_CARDS_DATA),
     withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
 
 

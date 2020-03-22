@@ -44,5 +44,17 @@ describe(`FetchActions work correctly`, () => {
       type: ActionTypes.FETCH_REVIEWS_REQUEST,
     });
   });
+
+  it(`Should make a correct call to dispatch with arguments DataTypes.FETCH_CHECK_USER_AUTH`, () => {
+    const authActionCreator = FetchActions.fetchData(cardsService)(DataTypes.FETCH_CHECK_USER_AUTH);
+    const dispatch = jest.fn();
+
+    authActionCreator(dispatch);
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: ActionTypes.FETCH_AUTH_REQUEST,
+    });
+  });
 });
 

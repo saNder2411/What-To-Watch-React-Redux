@@ -19,7 +19,7 @@ import Poster from '../poster/poster.jsx';
 import CardTabs from '../card-tabs/card-tabs.jsx';
 
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
-import withData from '../../hocs/with-data/with-data.jsx';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 
 import {DataTypes} from '../../const.js';
 
@@ -96,7 +96,7 @@ const selectedCard = {
 };
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
-const WrappedCardReviews = withData(DataTypes.FETCH_REVIEWS_DATA)(CardReviews);
+const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardReviews);
 
 const title = `Bohemian Rhapsody`;
 const genre = `Drama`;
