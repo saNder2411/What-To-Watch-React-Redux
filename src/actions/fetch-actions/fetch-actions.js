@@ -1,7 +1,9 @@
 import ActionCreator from '../action-creator.js';
 import {DataTypes} from '../../const.js';
 
+
 const FetchActions = {
+
   fetchData: (cardsService, selectedCardId) => (dataType) => (dispatch) => {
     switch (dataType) {
       case DataTypes.PROMO_DATA:
@@ -21,9 +23,7 @@ const FetchActions = {
       case DataTypes.REVIEWS_DATA:
         dispatch(ActionCreator.reviewsRequested());
         cardsService.getReviews(selectedCardId)
-        .then((reviewsData) => {
-          dispatch(ActionCreator.reviewsLoaded(reviewsData));
-        })
+        .then((reviewsData) => dispatch(ActionCreator.reviewsLoaded(reviewsData)))
         .catch((error) => dispatch(ActionCreator.reviewsError(error)));
         break;
     }

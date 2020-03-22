@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
 import ActionCreator from '../../actions/action-creator.js';
 
+
 const ShowMoreButton = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
+
   const showMoreButton = filteredCards.length > showingCardsAmount ? (
     <div className="catalog__more">
       <button

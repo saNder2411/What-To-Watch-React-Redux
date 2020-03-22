@@ -6,9 +6,15 @@ import App from './components/app/app.jsx';
 import createAPI from './api';
 import CardsService from './services/cards-service.js';
 import {CardsServiceProvider} from './components/cards-service-context/cards-service-context.js';
+import ActionCreator from './actions/action-creator.js';
+import AuthActions from './actions/auth-actions/auth-actions.js';
+import {AuthActionTypes} from './const.js';
 
-const API = createAPI(() => {});
+const onUnauthorized = (error) => store.dispatch(ActionCreator.authDataError(error));
+const API = createAPI(onUnauthorized);
 const cardsService = new CardsService(API);
+
+store.dispatch(AuthActions.authActionCreator(cardsService)(AuthActionTypes.CHECK_USER_AUTH));
 
 ReactDOM.render(
     <Provider store={store}>

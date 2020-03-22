@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const HeaderCardDesc = ({title, genre, released, children}) => {
+
   return (
     <div className="movie-card__desc">
       <h2 className="movie-card__title">{title}</h2>

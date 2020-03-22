@@ -1,7 +1,9 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
+
 const GenreListItem = ({label, isActive, onGenreListItemClick}) => {
+
   return (
     <li className={`catalog__genres-item ${isActive ? `catalog__genres-item--active` : ``}`}>
       <a

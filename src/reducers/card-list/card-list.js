@@ -1,6 +1,7 @@
 import ActionTypes from '../../action-types/action-types.js';
 import {extend} from '../../utils/utils.js';
 
+
 const initialState = {
   cardList: {
     cardsData: [],
@@ -10,6 +11,7 @@ const initialState = {
 };
 
 const updateCardList = (state = initialState, action) => {
+
   switch (action.type) {
     case ActionTypes.FETCH_CARDS_REQUEST:
       return extend(state.cardList,

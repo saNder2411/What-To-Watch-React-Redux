@@ -1,7 +1,10 @@
 import React, {PureComponent, createRef} from 'react';
 
+
 const withVideoPlayerScreenState = (Component) => {
+
   class WithVideoPlayerScreenState extends PureComponent {
+
     constructor(props) {
       super(props);
 

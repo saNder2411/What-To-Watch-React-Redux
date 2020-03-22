@@ -1,7 +1,9 @@
 import React from 'react';
 import {CardsServiceConsumer} from '../../components/cards-service-context/cards-service-context.js';
 
+
 const withCardsService = (Component) => {
+
   const WithCardsService = (props) => {
 
     return (

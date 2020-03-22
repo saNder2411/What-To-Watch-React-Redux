@@ -5,7 +5,9 @@ import {CardMode} from '../../const.js';
 
 
 const withCardTabsState = (Component) => {
+
   class WithCardTabsState extends PureComponent {
+
     constructor(props) {
       super(props);
       this.state = {

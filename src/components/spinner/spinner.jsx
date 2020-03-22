@@ -1,9 +1,25 @@
 import React from 'react';
+import './spinner.css';
+
 
 const Spinner = () => {
+
   return (
-    <div className="page-content">
-      <h2 className="movie-card__title">Loading ...</h2>
+    <div className="spinner">
+      <div className="spinner__wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,17 @@
 import ActionTypes from '../../action-types/action-types.js';
 import {extend} from '../../utils/utils.js';
 
+
 const initialState = {
   reviews: {
     reviewsData: [],
-    reviewsLoading: false,
+    reviewsLoading: true,
     reviewsError: null,
   }
 };
 
 const updateReviews = (state = initialState, action) => {
+
   switch (action.type) {
     case ActionTypes.FETCH_REVIEWS_REQUEST:
       return extend(state.reviews,

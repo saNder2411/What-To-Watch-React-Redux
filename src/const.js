@@ -22,4 +22,20 @@ const ComponentTypes = {
   GENRES_LIST: `GENRES_LIST`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, ComponentTypes};
+const Error = {
+  UNAUTHORIZED: 401,
+  BAD_DATA_REQUEST: 400,
+};
+
+const AuthStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+const AuthActionTypes = {
+  CHECK_USER_AUTH: `CHECK_USER_AUTH`,
+  USER_AUTH: `USER_AUTH`,
+};
+
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes,
+  ComponentTypes, Error, AuthStatus, AuthActionTypes};

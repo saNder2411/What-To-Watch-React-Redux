@@ -6,6 +6,7 @@ import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import Footer from '../footer/footer.jsx';
+import Logo from '../logo/logo.jsx';
 
 import compose from '../../hocs/compose/compose.js';
 import withData from '../../hocs/with-data/with-data.jsx';
@@ -14,7 +15,9 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 
 import {DataTypes, ComponentTypes} from '../../const.js';
 
+
 const WrappedMainHeader = withData(DataTypes.PROMO_DATA)(MainHeader);
+
 const WrappedGenreList = compose(
     withData(DataTypes.CARDS_DATA),
     withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
@@ -24,14 +27,18 @@ const WrappedPreviewCardList = compose(
     withPreviewCardListState)(PreviewCardList);
 
 const Main = () => {
+
   return (
     <Fragment>
       <WrappedMainHeader/>
+
       <MainContent>
         <WrappedGenreList/>
         <WrappedPreviewCardList />
         <ShowMoreButton />
-        <Footer />
+        <Footer>
+          <Logo isFooterLogo/>
+        </Footer>
       </MainContent>
     </Fragment>
   );

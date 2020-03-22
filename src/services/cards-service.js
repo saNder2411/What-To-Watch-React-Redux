@@ -1,9 +1,11 @@
 export default class CardsService {
+
   constructor(API) {
     this._API = API;
   }
 
   _parseCard(data) {
+
     return {
       id: data[`id`],
       title: data[`name`],
@@ -25,6 +27,16 @@ export default class CardsService {
     };
   }
 
+  _parseUserData(data) {
+
+    return {
+      id: data[`id`],
+      email: data[`email`],
+      name: data[`name`],
+      avatarSrc: data[`avatar_url`],
+    };
+  }
+
   _handleError(res) {
     if (res.status < 200 || res.status > 299) {
       throw new Error(`Could not fetch, received ${res.status}`);
@@ -34,17 +46,32 @@ export default class CardsService {
   }
 
   getPromoCard() {
+
     return this._API.get(`/films/promo`)
-    .then((res) => this._parseCard(res.data));
+      .then((res) => this._parseCard(res.data));
   }
 
   getCardList() {
+
     return this._API.get(`/films`)
-    .then((res) => res.data.map(this._parseCard));
+      .then((res) => res.data.map(this._parseCard));
   }
 
   getReviews(id) {
+
     return this._API.get(`/comments/${id}`)
       .then((res) => res.data);
+  }
+
+  getAuthStatus() {
+
+    return this._API.get(`/login`)
+      .then((res) => this._parseUserData(res.data));
+  }
+
+  setAuthUserData({email, password}) {
+
+    return this._API.post(`login`, {email, password})
+      .then((res) => this._parseUserData(res.data));
   }
 }

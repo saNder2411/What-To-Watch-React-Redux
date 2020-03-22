@@ -1,8 +1,5 @@
 import axios from 'axios';
-
-const Error = {
-  UNAUTHORIZED: 401
-};
+import {Error} from './const.js';
 
 const createAPI = (onUnauthorized) => {
   const api = axios.create({
@@ -15,16 +12,16 @@ const createAPI = (onUnauthorized) => {
     return response;
   };
 
-  const onFail = (err) => {
-    const {response} = err;
+  const onFail = (error) => {
+    const {response} = error;
 
     if (response.status === Error.UNAUTHORIZED) {
-      onUnauthorized();
+      onUnauthorized(response);
 
-      throw err;
+      throw error;
     }
 
-    throw err;
+    throw error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

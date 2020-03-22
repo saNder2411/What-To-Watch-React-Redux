@@ -1,12 +1,12 @@
 import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Spinner from '../../components/spinner/spinner.jsx';
 import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
 
 import compose from '../compose/compose.js';
-import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
+import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
 import {getCardsData, getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
@@ -16,7 +16,9 @@ import {DataTypes} from '../../const.js';
 
 
 const withData = (dataType) => (Component) => {
+
   class WithData extends PureComponent {
+
     componentDidMount() {
       this.props.fetchData(dataType);
     }
@@ -26,20 +28,23 @@ const withData = (dataType) => (Component) => {
         promoCardData, promoLoading, promoError,
         cardsData, cardsLoading, cardsError,
         reviewsData, reviewsLoading, reviewsError} = this.props;
-
-      if (promoLoading || cardsLoading || reviewsLoading) {
-        return <Spinner />;
-      }
+      let content;
 
       switch (dataType) {
         case DataTypes.PROMO_DATA:
-          return promoError ? <ErrorIndicator message={promoError.message} /> : <Component {...promoCardData}/>;
+          content = promoLoading ? <div className="movie-card"><Spinner /></div> : <Component {...promoCardData}/>;
+
+          return promoError ? <ErrorIndicator message={promoError.message} /> : content;
 
         case DataTypes.CARDS_DATA:
-          return cardsError ? <ErrorIndicator message={cardsError.message} /> : <Component cardsData={cardsData} />;
+          content = cardsLoading ? <Spinner /> : <Component cardsData={cardsData} />;
+
+          return cardsError ? <ErrorIndicator message={cardsError.message} /> : content;
 
         case DataTypes.REVIEWS_DATA:
-          return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : <Component reviewsData={reviewsData} />;
+          content = reviewsLoading ? <Spinner /> : <Component reviewsData={reviewsData} />;
+
+          return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : content;
       }
 
       return (

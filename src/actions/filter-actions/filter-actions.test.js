@@ -1,4 +1,3 @@
-
 import FilterActions from './filter-actions.js';
 import ActionTypes from '../../action-types/action-types.js';
 

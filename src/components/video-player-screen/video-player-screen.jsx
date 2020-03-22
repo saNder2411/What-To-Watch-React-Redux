@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 
+
 const convertVideoTime = (sec) => {
   const hours = (sec - (sec % (60 * 60))) / (60 * 60);
   const minutes = ((sec - (hours * 60 * 60)) - (sec % 60)) / 60;
@@ -16,6 +17,7 @@ const convertVideoTime = (sec) => {
 };
 
 const VideoPlayerScreen = (props) => {
+
   const {
     selectedCardId, promoCardData, cardsData, renderPlayer,
     isPlaying, progressInSeconds, progressInPercent, playerRef,

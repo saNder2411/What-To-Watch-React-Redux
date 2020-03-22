@@ -3,9 +3,13 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import thunk from 'redux-thunk';
+
 import CardScreenTop from './card-screen-top.jsx';
 import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
 import Header from '../header/header.jsx';
+import Logo from '../logo/logo.jsx';
+import UserBlock from '../user-block/user-block.jsx';
 import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
 import CardOverview from '../../components/card-overview/card-overview.jsx';
@@ -13,10 +17,12 @@ import CardDetails from '../../components/card-details/card-details.jsx';
 import CardReviews from '../../components/card-reviews/card-reviews.jsx';
 import Poster from '../poster/poster.jsx';
 import CardTabs from '../card-tabs/card-tabs.jsx';
+
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
 import withData from '../../hocs/with-data/with-data.jsx';
+
 import {DataTypes} from '../../const.js';
-import thunk from 'redux-thunk';
+
 
 const mockStore = configureStore([thunk]);
 const mockCardsData = [
@@ -41,6 +47,12 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -103,7 +115,10 @@ it(`Should CardScreenTop render correctly`, () => {
               >
                 <CardScreenTop>
                   <CardScreenHeader >
-                    <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+                    <Header title={title} backgroundImage={backgroundImage}>
+                      <Logo toMain />
+                      <UserBlock />
+                    </Header>
                     <HeaderCardDesc title={title} genre={genre} released={released} >
                       <HeaderButtons isCardScreen selectedCardId={`1`}/>
                     </HeaderCardDesc>

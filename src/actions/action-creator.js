@@ -1,9 +1,8 @@
 import ActionTypes from '../action-types/action-types.js';
 
 const ActionCreator = {
-  promoCardRequested: () => ({
-    type: ActionTypes.FETCH_PROMO_CARD_REQUEST,
-  }),
+
+  promoCardRequested: () => ({type: ActionTypes.FETCH_PROMO_CARD_REQUEST}),
 
   promoCardLoaded: (newPromoCard) => ({
     type: ActionTypes.FETCH_PROMO_CARD_SUCCESS,
@@ -15,9 +14,7 @@ const ActionCreator = {
     payload: error,
   }),
 
-  cardsRequested: () => ({
-    type: ActionTypes.FETCH_CARDS_REQUEST,
-  }),
+  cardsRequested: () => ({type: ActionTypes.FETCH_CARDS_REQUEST}),
 
   cardsLoaded: (newCards) => ({
     type: ActionTypes.FETCH_CARDS_SUCCESS,
@@ -29,9 +26,7 @@ const ActionCreator = {
     payload: error,
   }),
 
-  reviewsRequested: () => ({
-    type: ActionTypes.FETCH_REVIEWS_REQUEST,
-  }),
+  reviewsRequested: () => ({type: ActionTypes.FETCH_REVIEWS_REQUEST}),
 
   reviewsLoaded: (newCards) => ({
     type: ActionTypes.FETCH_REVIEWS_SUCCESS,
@@ -56,6 +51,18 @@ const ActionCreator = {
   changeShowingCardsAmount: (amount) => ({
     type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
     payload: amount,
+  }),
+
+  authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
+
+  authDataLoaded: (userData) => ({
+    type: ActionTypes.FETCH_AUTH_SUCCESS,
+    payload: userData,
+  }),
+
+  authDataError: (error) => ({
+    type: ActionTypes.FETCH_AUTH_FAILURE,
+    payload: error,
   }),
 };
 

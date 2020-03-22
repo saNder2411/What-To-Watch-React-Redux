@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import CardScreenTop from '../card-screen-top/card-screen-top.jsx';
 import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
 import Header from '../header/header.jsx';
+import Logo from '../logo/logo.jsx';
+import UserBlock from '../user-block/user-block.jsx';
 import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
 import HeaderButtons from '../header-buttons/header-buttons.jsx';
 import Poster from '../poster/poster.jsx';
@@ -35,6 +37,7 @@ const WrappedPreviewCardList = compose(
     withPreviewCardListState)(PreviewCardList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
+
   const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
@@ -42,7 +45,10 @@ const CardScreen = ({selectedCardId, cardsData}) => {
     <Fragment>
       <CardScreenTop>
         <CardScreenHeader >
-          <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+          <Header title={title} backgroundImage={backgroundImage}>
+            <Logo toMain />
+            <UserBlock />
+          </Header>
           <HeaderCardDesc title={title} genre={genre} released={released} >
             <HeaderButtons isCardScreen selectedCardId={selectedCardId}/>
           </HeaderCardDesc>
@@ -57,7 +63,9 @@ const CardScreen = ({selectedCardId, cardsData}) => {
 
       <CardScreenBottom>
         <WrappedPreviewCardList selectedCardId={selectedCardId} />
-        <Footer isCardScreen />
+        <Footer>
+          <Logo toMain isFooterLogo/>
+        </Footer>
       </CardScreenBottom>
     </Fragment>
   );

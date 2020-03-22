@@ -36,6 +36,12 @@ const mockPromoCardData = {
 };
 
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: mockPromoCardData,
     promoLoading: false,

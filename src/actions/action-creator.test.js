@@ -72,6 +72,13 @@ const mockError = {
   message: `Error!`,
 };
 
+const mockUserDate = {
+  id: 1,
+  email: `vova@gmail.com`,
+  name: `Vlad`,
+  avatarSrc: `avatar_url`,
+};
+
 describe(`Action creators work correctly`, () => {
   it(`Action creator for promo card request returns correct action`, () => {
     expect(ActionCreator.promoCardRequested()).toEqual({type: ActionTypes.FETCH_PROMO_CARD_REQUEST});
@@ -123,5 +130,18 @@ describe(`Action creators work correctly`, () => {
 
   it(`Action creator for change showing cards amount returns correct action`, () => {
     expect(ActionCreator.changeShowingCardsAmount(void 0)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: void 0});
+  });
+
+
+  it(`Action creator for auth request returns correct action`, () => {
+    expect(ActionCreator.authRequested()).toEqual({type: ActionTypes.FETCH_AUTH_REQUEST});
+  });
+
+  it(`Action creator for update user auth data returns correct action`, () => {
+    expect(ActionCreator.authDataLoaded(mockUserDate)).toEqual({type: ActionTypes.FETCH_AUTH_SUCCESS, payload: mockUserDate});
+  });
+
+  it(`Action creator for user auth error request returns correct action`, () => {
+    expect(ActionCreator.authDataError(mockError)).toEqual({type: ActionTypes.FETCH_AUTH_FAILURE, payload: mockError});
   });
 });

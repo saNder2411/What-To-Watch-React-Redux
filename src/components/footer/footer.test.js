@@ -3,19 +3,28 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Footer from './footer.jsx';
 import thunk from 'redux-thunk';
+
+import Footer from './footer.jsx';
+import Logo from '../logo/logo.jsx';
+
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
-    promoLoading: true,
+    promoLoading: false,
     promoError: null,
   },
   cardList: {
     cardsData: [],
-    cardsLoading: true,
+    cardsLoading: false,
     cardsError: null,
   },
   filteredCardList: {
@@ -38,10 +47,11 @@ describe(`Render Footer`, () => {
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => <Footer isCardScreen/>}
-                />
+                <Route path='/'>
+                  <Footer>
+                    <Logo toMain isFooterLogo/>
+                  </Footer>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -57,10 +67,11 @@ describe(`Render Footer`, () => {
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  component={Footer}
-                />
+                <Route path='/'>
+                  <Footer>
+                    <Logo isFooterLogo/>
+                  </Footer>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>

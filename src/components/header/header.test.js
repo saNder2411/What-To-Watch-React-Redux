@@ -6,14 +6,24 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import createAPI from '../../api.js';
 import CardsService from '../../services/cards-service.js';
-import Header from './header.jsx';
 import thunk from 'redux-thunk';
+
+import Header from './header.jsx';
+import Logo from '../logo/logo.jsx';
+import UserBlock from '../user-block/user-block.jsx';
+
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -48,7 +58,10 @@ describe(`Render Header`, () => {
               <BrowserRouter>
                 <Switch>
                   <Route path='/'>
-                    <Header isCardScreen title={title} backgroundImage={backgroundImage}/>
+                    <Header title={title} backgroundImage={backgroundImage}>
+                      <Logo toMain />
+                      <UserBlock />
+                    </Header>
                   </Route>
                 </Switch>
               </BrowserRouter>
@@ -68,7 +81,10 @@ describe(`Render Header`, () => {
               <BrowserRouter>
                 <Switch>
                   <Route path='/'>
-                    <Header title={title} backgroundImage={backgroundImage}/>
+                    <Header title={title} backgroundImage={backgroundImage}>
+                      <Logo />
+                      <UserBlock />
+                    </Header>
                   </Route>
                 </Switch>
               </BrowserRouter>

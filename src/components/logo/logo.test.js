@@ -8,6 +8,12 @@ import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({
+  user: {
+    userData: {},
+    authStatus: `NO_AUTH`,
+    authLoading: false,
+    authError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -40,7 +46,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo isCardScreen/>}
+                  render={() => <Logo toMain />}
                 />
               </Switch>
             </BrowserRouter>
@@ -59,7 +65,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo />}
+                  component={Logo}
                 />
               </Switch>
             </BrowserRouter>
@@ -78,7 +84,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo isCardScreen isFooterLogo />}
+                  render={() => <Logo toMain isFooterLogo />}
                 />
               </Switch>
             </BrowserRouter>
