@@ -3,18 +3,24 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 
+import {connect} from 'react-redux';
+import compose from '../../hocs/compose/compose.js';
+import {getAuthStatus} from '../../reducers/user/selectors.js';
+import {AuthStatus} from '../../const.js';
 
-const HeaderButtons = ({isCardScreen, selectedCardId, history}) => {
 
-  const addReviewButton = isCardScreen ? <Link to={`/review${selectedCardId}`} className="btn movie-card__button">Add review</Link> : null;
-  const toScreen = isCardScreen ? `/player${selectedCardId}` : `/player${-1}`;
+const HeaderButtons = ({isCardScreen, authStatus, selectedCardId, history}) => {
+
+  const addReviewButton = isCardScreen && authStatus === AuthStatus.AUTH ?
+    <Link to={`/review${selectedCardId}`} className="btn movie-card__button">Add review</Link> : null;
+  const toPlayerScreen = isCardScreen ? `/player${selectedCardId}` : `/player${-1}`;
 
   return (
     <div className="movie-card__buttons">
       <button
         className="btn btn--play movie-card__button"
         type="button"
-        onClick={() => history.push(toScreen)}
+        onClick={() => history.push(toPlayerScreen)}
       >
         <svg viewBox="0 0 19 19" width="19" height="19">
           <use xlinkHref="#play-s"></use>
@@ -34,8 +40,11 @@ const HeaderButtons = ({isCardScreen, selectedCardId, history}) => {
 
 HeaderButtons.propTypes = {
   isCardScreen: PropTypes.bool,
+  authStatus: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
   selectedCardId: PropTypes.string,
 };
 
-export default withRouter(HeaderButtons);
+const mapStateToProps = (state) => ({authStatus: getAuthStatus(state)});
+
+export default compose(withRouter, connect(mapStateToProps))(HeaderButtons);

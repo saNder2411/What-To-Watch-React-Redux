@@ -33,7 +33,7 @@ const AddReviewScreen = ({selectedCardId, cardsData}) => {
         <Poster isAddReviewScreen posterImage={posterImage} title={title}/>
       </div>
 
-      <WrappedAddReviewForm />
+      <WrappedAddReviewForm selectedCardId={selectedCardId} />
     </section>
   );
 };

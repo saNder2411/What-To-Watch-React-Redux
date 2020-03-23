@@ -6,8 +6,15 @@ import Spinner from '../../components/spinner/spinner.jsx';
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
+import {getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
+
 import SendActions from '../../actions/send-actions/send-actions.js';
-import {DataTypes, AuthStatus} from '../../const.js';
+import {DataTypes} from '../../const.js';
+
+const ReviewLengthRange = {
+  MIN: 50,
+  MAX: 400,
+};
 
 const withAddReviewFormState = (Component) => {
   class WithAddReviewFormState extends PureComponent {
@@ -26,6 +33,10 @@ const withAddReviewFormState = (Component) => {
 
     _handleFormSubmit(evt) {
       evt.preventDefault();
+      const {sendReview} = this.props;
+      const reviewData = this.state;
+
+      sendReview(DataTypes.SEND_REVIEW_DATA, reviewData);
       this.setState({
         rating: 0,
         comment: ``,
@@ -46,24 +57,43 @@ const withAddReviewFormState = (Component) => {
 
     render() {
       const {rating, comment} = this.state;
-      const isValidForm = (rating > 0 && comment.length >= 5 && comment.length < 400) ? true : false;
+      const isValidForm = rating > 0 && comment.length >= ReviewLengthRange.MIN && comment.length <= ReviewLengthRange.MAX;
+      const {reviewsLoading, reviewsError} = this.props;
 
-      return (
+      return reviewsLoading ?
+        <Spinner /> :
         <Component
           isValidForm={isValidForm}
           rating={rating}
           comment={comment}
+          error={reviewsError}
           onFormSubmit={this._handleFormSubmit}
           onRadioChange={this._handleRadioChange}
           onTextareaChange={this._handleTextareaChange}
-        />
-      );
+        />;
     }
   }
 
-  WithAddReviewFormState.propTypes = {};
+  WithAddReviewFormState.propTypes = {
+    reviewsLoading: PropTypes.bool.isRequired,
+    reviewsError: PropTypes.object,
+    sendReview: PropTypes.func.isRequired,
+  };
 
-  return compose(withCardsService, connect())(WithAddReviewFormState);
+  const mapStateToProps = (state) => ({
+    reviewsLoading: getReviewsLoading(state),
+    reviewsError: getReviewsError(state),
+  });
+
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    const {cardsService, selectedCardId} = ownProps;
+
+    return {
+      sendReview: (datType, reviewData) => dispatch(SendActions.sendData(cardsService, selectedCardId)(datType, reviewData)),
+    };
+  };
+
+  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithAddReviewFormState);
 };
 
 export default withAddReviewFormState;

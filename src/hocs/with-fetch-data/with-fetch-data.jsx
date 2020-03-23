@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import Spinner from '../../components/spinner/spinner.jsx';
 import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
 
+import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
