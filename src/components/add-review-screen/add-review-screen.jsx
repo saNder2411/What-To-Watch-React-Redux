@@ -9,7 +9,12 @@ import UserBlock from '../user-block/user-block.jsx';
 import Poster from '../poster/poster.jsx';
 import AddReviewForm from '../add-review-form/add-review-form.jsx';
 
+import withAddReviewFormState from '../../hocs/with-add-review-form-state/with-add-review-form-state.jsx';
+
 import {getCardsData} from '../../reducers/card-list/selectors.js';
+
+
+const WrappedAddReviewForm = withAddReviewFormState(AddReviewForm);
 
 
 const AddReviewScreen = ({selectedCardId, cardsData}) => {
@@ -28,7 +33,7 @@ const AddReviewScreen = ({selectedCardId, cardsData}) => {
         <Poster isAddReviewScreen posterImage={posterImage} title={title}/>
       </div>
 
-      <AddReviewForm />
+      <WrappedAddReviewForm />
     </section>
   );
 };

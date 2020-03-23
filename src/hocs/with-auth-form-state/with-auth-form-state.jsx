@@ -14,7 +14,9 @@ import {DataTypes, AuthStatus} from '../../const.js';
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const withAuthFormState = (Component) => {
+
   class WithAuthFormState extends PureComponent {
+
     constructor(props) {
       super(props);
       this.state = {
