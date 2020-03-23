@@ -31,7 +31,7 @@ const mockError = {
 const initialState = {
   reviews: {
     reviewsData: [],
-    reviewsLoading: true,
+    reviewsLoading: false,
     reviewsError: null,
   }
 };
@@ -40,7 +40,7 @@ describe(`Reducer reviews work correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       reviewsData: [],
-      reviewsLoading: true,
+      reviewsLoading: false,
       reviewsError: null,
     });
   });

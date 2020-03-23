@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should AddReviewBreadcrumbs render correctly 1`] = `
+<nav
+  className="breadcrumbs"
+>
+  <ul
+    className="breadcrumbs__list"
+  >
+    <li
+      className="breadcrumbs__item"
+    >
+      <a
+        className="breadcrumbs__link"
+        href="/cards1"
+        onClick={[Function]}
+      >
+        Titanic
+      </a>
+    </li>
+    <li
+      className="breadcrumbs__item"
+    >
+      <a
+        className="breadcrumbs__link"
+      >
+        Add review
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

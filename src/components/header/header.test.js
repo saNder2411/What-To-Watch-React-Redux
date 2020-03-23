@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import Header from './header.jsx';
 import Logo from '../logo/logo.jsx';
 import UserBlock from '../user-block/user-block.jsx';
+import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs.jsx';
 
 
 const API = createAPI(() => {});
@@ -61,6 +62,30 @@ describe(`Render Header`, () => {
                     <Header title={title} backgroundImage={backgroundImage}>
                       <Logo toMain />
                       <UserBlock />
+                    </Header>
+                  </Route>
+                </Switch>
+              </BrowserRouter>
+            </CardsServiceProvider>
+          </Provider>
+      )
+      .toJSON();
+
+    expect(markup).toMatchSnapshot();
+  });
+
+  it(`Should Header render correctly in AddReviewScreen`, () => {
+    const markup = renderer
+      .create(
+          <Provider store={store}>
+            <CardsServiceProvider value={cardsService}>
+              <BrowserRouter>
+                <Switch>
+                  <Route path='/'>
+                    <Header title={title} backgroundImage={backgroundImage}>
+                      <Logo toMain />
+                      <UserBlock />
+                      <AddReviewBreadcrumbs title={title} selectedCardId={`1`} />
                     </Header>
                   </Route>
                 </Switch>

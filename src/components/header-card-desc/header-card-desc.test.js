@@ -14,26 +14,6 @@ const store = mockStore({
     authStatus: `NO_AUTH`,
     authLoading: false,
     authError: null,
-  },
-  promoCard: {
-    promoCardData: {},
-    promoLoading: false,
-    promoError: null,
-  },
-  cardList: {
-    cardsData: [],
-    cardsLoading: false,
-    cardsError: null,
-  },
-  filteredCardList: {
-    genre: `Drama`,
-    selectedCardId: 1,
-    showingCardsAmount: 8,
-  },
-  reviews: {
-    reviewsData: [],
-    reviewsLoading: false,
-    reviewsError: null,
   }
 });
 
@@ -76,6 +56,34 @@ describe(`Render HeaderCardDesc`, () => {
                 >
                   <HeaderCardDesc title={title} genre={genre} released={released}>
                     <HeaderButtons />
+                  </HeaderCardDesc>
+                </Route>
+              </Switch>
+            </BrowserRouter>
+          </Provider>
+      )
+      .toJSON();
+
+    expect(markup).toMatchSnapshot();
+  });
+
+  it(`Should HeaderCardDesc render correctly in CardScreen user auth`, () => {
+    const authStore = mockStore({
+      user: {
+        userData: {},
+        authStatus: `AUTH`,
+        authLoading: false,
+        authError: null,
+      },
+    });
+    const markup = renderer
+      .create(
+          <Provider store={authStore}>
+            <BrowserRouter>
+              <Switch>
+                <Route path='/'>
+                  <HeaderCardDesc title={title} genre={genre} released={released} >
+                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </Route>
               </Switch>

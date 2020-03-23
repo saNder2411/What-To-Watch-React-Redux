@@ -1,8 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Render Poster Should Poster render correctly in AddReviewScreen 1`] = `
+<div
+  className="movie-card__poster  movie-card__poster--small"
+>
+  <img
+    alt="Terminator"
+    height="327"
+    src="the-grand-budapest-hotel-poster"
+    width="218"
+  />
+</div>
+`;
+
 exports[`Render Poster Should Poster render correctly in CardScreen 1`] = `
 <div
-  className="movie-card__poster movie-card__poster--big"
+  className="movie-card__poster movie-card__poster--big "
 >
   <img
     alt="Terminator"
@@ -15,7 +28,7 @@ exports[`Render Poster Should Poster render correctly in CardScreen 1`] = `
 
 exports[`Render Poster Should Poster render correctly in Main 1`] = `
 <div
-  className="movie-card__poster "
+  className="movie-card__poster  "
 >
   <img
     alt="Terminator"
