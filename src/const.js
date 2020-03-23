@@ -12,9 +12,12 @@ const ShowingCardsAmount = {
 };
 
 const DataTypes = {
-  PROMO_DATA: `PROMO_DATA`,
-  CARDS_DATA: `CARDS_DATA`,
-  REVIEWS_DATA: `REVIEWS_DATA`,
+  FETCH_PROMO_DATA: `FETCH_PROMO_DATA`,
+  FETCH_CARDS_DATA: `FETCH_CARDS_DATA`,
+  FETCH_REVIEWS_DATA: `FETCH_REVIEWS_DATA`,
+  FETCH_CHECK_USER_AUTH: `FETCH_CHECK_USER_AUTH`,
+  SEND_USER_AUTH_DATA: `SEND_USER_AUTH_DATA`,
+  SEND_REVIEW_DATA: `SEND_REVIEW_DATA`,
 };
 
 const ComponentTypes = {
@@ -32,10 +35,5 @@ const AuthStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-const AuthActionTypes = {
-  CHECK_USER_AUTH: `CHECK_USER_AUTH`,
-  USER_AUTH: `USER_AUTH`,
-};
-
 export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes,
-  ComponentTypes, Error, AuthStatus, AuthActionTypes};
+  ComponentTypes, Error, AuthStatus};

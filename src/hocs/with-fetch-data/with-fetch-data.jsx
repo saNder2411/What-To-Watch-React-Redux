@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import Spinner from '../../components/spinner/spinner.jsx';
 import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
 
+import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
@@ -15,9 +15,9 @@ import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
 
 
-const withData = (dataType) => (Component) => {
+const withFetchData = (dataType) => (Component) => {
 
-  class WithData extends PureComponent {
+  class WithFetchData extends PureComponent {
 
     componentDidMount() {
       this.props.fetchData(dataType);
@@ -31,17 +31,17 @@ const withData = (dataType) => (Component) => {
       let content;
 
       switch (dataType) {
-        case DataTypes.PROMO_DATA:
+        case DataTypes.FETCH_PROMO_DATA:
           content = promoLoading ? <div className="movie-card"><Spinner /></div> : <Component {...promoCardData}/>;
 
           return promoError ? <ErrorIndicator message={promoError.message} /> : content;
 
-        case DataTypes.CARDS_DATA:
+        case DataTypes.FETCH_CARDS_DATA:
           content = cardsLoading ? <Spinner /> : <Component cardsData={cardsData} />;
 
           return cardsError ? <ErrorIndicator message={cardsError.message} /> : content;
 
-        case DataTypes.REVIEWS_DATA:
+        case DataTypes.FETCH_REVIEWS_DATA:
           content = reviewsLoading ? <Spinner /> : <Component reviewsData={reviewsData} />;
 
           return reviewsError ? <ErrorIndicator message={reviewsError.message} /> : content;
@@ -53,7 +53,7 @@ const withData = (dataType) => (Component) => {
     }
   }
 
-  WithData.propTypes = {
+  WithFetchData.propTypes = {
     fetchData: PropTypes.func.isRequired,
     promoCardData: PropTypes.object.isRequired,
     promoLoading: PropTypes.bool.isRequired,
@@ -86,7 +86,7 @@ const withData = (dataType) => (Component) => {
     };
   };
 
-  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithData);
+  return compose(withCardsService, connect(mapStateToProps, mapDispatchToProps))(WithFetchData);
 };
 
-export default withData;
+export default withFetchData;

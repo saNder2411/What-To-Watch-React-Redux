@@ -123,12 +123,6 @@ exports[`Should CardScreenTop render correctly 1`] = `
               My list
             </span>
           </button>
-          <a
-            className="btn movie-card__button"
-            href="add-review.html"
-          >
-            Add review
-          </a>
         </div>
       </div>
     </div>
@@ -140,7 +134,7 @@ exports[`Should CardScreenTop render correctly 1`] = `
       className="movie-card__info"
     >
       <div
-        className="movie-card__poster movie-card__poster--big"
+        className="movie-card__poster movie-card__poster--big "
       >
         <img
           alt="Bohemian Rhapsody"

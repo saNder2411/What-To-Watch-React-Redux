@@ -3,15 +3,12 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import GenreList from './genre-list.jsx';
 import CardsService from '../../services/cards-service.js';
+import createAPI from '../../api';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
-import createAPI from '../../api.js';
-import compose from '../../hocs/compose/compose.js';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {DataTypes, ComponentTypes} from '../../const.js';
 import thunk from 'redux-thunk';
+
+import AddReviewScreen from './add-review-screen.jsx';
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);
@@ -40,20 +37,16 @@ const mockCardsData = [
 ];
 
 const store = mockStore({
-  promoCard: {
-    promoCardData: {},
-    promoLoading: false,
-    promoError: null,
+  user: {
+    userData: {},
+    authStatus: `AUTH`,
+    authLoading: false,
+    authError: null,
   },
   cardList: {
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
-  },
-  filteredCardList: {
-    genre: `All genre`,
-    selectedCardId: -1,
-    showingCardsAmount: 8,
   },
   reviews: {
     reviewsData: [],
@@ -62,29 +55,27 @@ const store = mockStore({
   }
 });
 
-const WrappedGenreList = compose(
-    withFetchData(DataTypes.FETCH_CARDS_DATA),
-    withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
 
-
-it(`Should GenreList render correctly`, () => {
-  const markup = renderer
-    .create(
-        <Provider store={store}>
-          <CardsServiceProvider value={cardsService}>
-            <BrowserRouter>
-              <Switch>
-                <Route
-                  path='/'
-                  exact
-                  component={WrappedGenreList}
-                />
-              </Switch>
-            </BrowserRouter>
-          </CardsServiceProvider>
-        </Provider>
-    )
-    .toJSON();
+it(`Should AddReviewScreen render correctly`, () => {
+  const markup = renderer.create(
+      <Provider store={store}>
+        <CardsServiceProvider value={cardsService}>
+          <BrowserRouter>
+            <Switch>
+              <Route path='/'>
+                <AddReviewScreen selectedCardId={`1`}/>
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </CardsServiceProvider>
+      </Provider>,
+      {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  )
+  .toJSON();
 
   expect(markup).toMatchSnapshot();
 });

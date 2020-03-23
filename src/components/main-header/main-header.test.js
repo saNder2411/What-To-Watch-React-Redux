@@ -6,7 +6,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import MainHeader from './main-header.jsx';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
-import withData from '../../hocs/with-data/with-data.jsx';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import createAPI from '../../api';
 import {DataTypes} from '../../const.js';
 import thunk from 'redux-thunk';
@@ -64,7 +64,7 @@ const store = mockStore({
   }
 });
 
-const WrappedMainHeader = withData(DataTypes.PROMO_DATA)(MainHeader);
+const WrappedMainHeader = withFetchData(DataTypes.FETCH_PROMO_DATA)(MainHeader);
 
 it(`Should MainHeader render correctly`, () => {
   const markup = renderer.create(

@@ -69,9 +69,15 @@ export default class CardsService {
       .then((res) => this._parseUserData(res.data));
   }
 
-  setAuthUserData({email, password}) {
+  sendAuthUserData(userData) {
 
-    return this._API.post(`login`, {email, password})
+    return this._API.post(`login`, userData)
       .then((res) => this._parseUserData(res.data));
+  }
+
+  sendReview(id, review) {
+
+    return this._API.post(`/comments/${id}`, review)
+      .then((res) => res.data);
   }
 }

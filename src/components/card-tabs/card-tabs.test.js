@@ -5,7 +5,7 @@ import CardOverview from '../../components/card-overview/card-overview.jsx';
 import CardDetails from '../../components/card-details/card-details.jsx';
 import CardReviews from '../../components/card-reviews/card-reviews.jsx';
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
-import withData from '../../hocs/with-data/with-data.jsx';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import {DataTypes} from '../../const.js';
 
 const selectedCard = {
@@ -29,7 +29,7 @@ const selectedCard = {
 };
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
-const WrappedCardReviews = withData(DataTypes.REVIEWS_DATA)(CardReviews);
+const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardReviews);
 
 it(`Should CardOverview render correctly`, () => {
   const markup = renderer

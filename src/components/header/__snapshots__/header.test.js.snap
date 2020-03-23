@@ -1,5 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Render Header Should Header render correctly in AddReviewScreen 1`] = `
+Array [
+  <div
+    className="movie-card__bg"
+  >
+    <img
+      alt="Bohemian Rhapsody"
+      src="bg-the-grand-budapest-hotel"
+    />
+  </div>,
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link "
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <nav
+      className="breadcrumbs"
+    >
+      <ul
+        className="breadcrumbs__list"
+      >
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+            href="/cards1"
+            onClick={[Function]}
+          >
+            Bohemian Rhapsody
+          </a>
+        </li>
+        <li
+          className="breadcrumbs__item"
+        >
+          <a
+            className="breadcrumbs__link"
+          >
+            Add review
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="user-block"
+    >
+      <a
+        className="user-block__link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Sign in
+      </a>
+    </div>
+  </header>,
+]
+`;
+
 exports[`Render Header Should Header render correctly in CardScreen 1`] = `
 Array [
   <div
