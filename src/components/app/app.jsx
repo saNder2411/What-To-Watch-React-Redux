@@ -7,8 +7,11 @@ import VideoPlayerScreen from '../video-player-screen/video-player-screen.jsx';
 import SignInScreen from '../sign-in-screen/sign-in-screen.jsx';
 import AddReviewScreen from '../add-review-screen/add-review-screen.jsx';
 
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
+
+import {DataTypes} from '../../const.js';
 
 
 const WrappedVideoPlayerScreen = withVideoPlayerScreenState(withVideoPlayer(VideoPlayerScreen));
@@ -18,31 +21,29 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/' exact>
+          <Main />
+        </Route>
         <Route
-          path='/'
+          path='/cards/:id'
           exact
-          component={Main}
-        />
-        <Route
-          path='/cards:id'
           render={({match}) => {
             const {id} = match.params;
             return <CardScreen selectedCardId={id}/>;
           }}
         />
         <Route
-          path='/player:id'
+          path='/player/:id'
           render={({match}) => {
             const {id} = match.params;
             return <WrappedVideoPlayerScreen selectedCardId={id}/>;
           }}
         />
+        <Route path='/login'>
+          <SignInScreen />
+        </Route>
         <Route
-          path='/login'
-          component={SignInScreen}
-        />
-        <Route
-          path='/review:id'
+          path='/cards/:id/review'
           render={({match}) => {
             const {id} = match.params;
             return <AddReviewScreen selectedCardId={id}/>;
@@ -53,4 +54,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withFetchData(DataTypes.FETCH_CARDS_DATA)(App);

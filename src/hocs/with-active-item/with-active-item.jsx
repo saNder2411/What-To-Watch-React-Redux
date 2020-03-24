@@ -8,10 +8,10 @@ import compose from '../compose/compose.js';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 import FilterActions from '../../actions/filter-actions/filter-actions.js';
 
-import {ComponentTypes, ShowingCardsAmount} from '../../const.js';
+import {ShowingCardsAmount} from '../../const.js';
 
 
-const withActiveItem = (componentType) => (Component) => {
+const withActiveItem = (Component) => {
 
   class WithActiveItem extends PureComponent {
 
@@ -29,7 +29,7 @@ const withActiveItem = (componentType) => (Component) => {
         const {genre} = cardsData.find((card) => card.id === +id);
 
         filtersCards(genre, ShowingCardsAmount.ON_START, +id);
-        history.push(`/cards${id}`);
+        history.push(`/cards/${id}`);
 
         return;
       }
@@ -40,25 +40,8 @@ const withActiveItem = (componentType) => (Component) => {
     }
 
     render() {
-      const {cardsData} = this.props;
 
-      switch (componentType) {
-        case ComponentTypes.PREVIEW_CARDS_LIST:
-          return (
-            <Component
-              onActiveItemClick={this._handleActiveItemClick}
-            />
-          );
-        case ComponentTypes.GENRES_LIST:
-          return (
-            <Component
-              cardsData={cardsData}
-              onActiveItemClick={this._handleActiveItemClick}
-            />
-          );
-      }
-
-      return <Component />;
+      return <Component onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 

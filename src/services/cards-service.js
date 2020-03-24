@@ -65,13 +65,13 @@ export default class CardsService {
 
   getAuthStatus() {
 
-    return this._API.get(`/login`)
+    return this._API.get(`/login     `)
       .then((res) => this._parseUserData(res.data));
   }
 
   sendAuthUserData(userData) {
 
-    return this._API.post(`login`, userData)
+    return this._API.post(`/login`, userData)
       .then((res) => this._parseUserData(res.data));
   }
 

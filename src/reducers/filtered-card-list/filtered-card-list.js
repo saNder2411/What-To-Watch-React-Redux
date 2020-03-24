@@ -14,7 +14,7 @@ const initialState = {
 const updateFilteredCardList = (state = initialState, action) => {
 
   switch (action.type) {
-    case ActionTypes.FETCH_CARDS_REQUEST:
+    case ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST:
       return extend(state.filteredCardList,
           {
             genre: DEFAULT_GENRE,

@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
-import {getCardsData, getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
+import {getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
 
 import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
@@ -25,9 +25,8 @@ const withFetchData = (dataType) => (Component) => {
 
     render() {
       const {
-        promoCardData, promoLoading, promoError,
-        cardsData, cardsLoading, cardsError,
-        reviewsData, reviewsLoading, reviewsError} = this.props;
+        promoCardData, promoLoading, promoError, cardsLoading,
+        cardsError, reviewsData, reviewsLoading, reviewsError} = this.props;
       let content;
 
       switch (dataType) {
@@ -37,7 +36,7 @@ const withFetchData = (dataType) => (Component) => {
           return promoError ? <ErrorIndicator message={promoError.message} /> : content;
 
         case DataTypes.FETCH_CARDS_DATA:
-          content = cardsLoading ? <Spinner /> : <Component cardsData={cardsData} />;
+          content = cardsLoading ? <Spinner /> : <Component />;
 
           return cardsError ? <ErrorIndicator message={cardsError.message} /> : content;
 
@@ -58,7 +57,6 @@ const withFetchData = (dataType) => (Component) => {
     promoCardData: PropTypes.object.isRequired,
     promoLoading: PropTypes.bool.isRequired,
     promoError: PropTypes.object,
-    cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     cardsLoading: PropTypes.bool.isRequired,
     cardsError: PropTypes.object,
     reviewsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -70,7 +68,6 @@ const withFetchData = (dataType) => (Component) => {
     promoCardData: getPromoCardData(state),
     promoLoading: getPromoLoading(state),
     promoError: getPromoError(state),
-    cardsData: getCardsData(state),
     cardsLoading: getCardsLoading(state),
     cardsError: getCardsError(state),
     reviewsData: getReviewsData(state),

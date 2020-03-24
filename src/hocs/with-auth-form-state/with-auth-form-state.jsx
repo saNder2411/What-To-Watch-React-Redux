@@ -71,11 +71,7 @@ const withAuthFormState = (Component) => {
           onFormSubmit={this._handleFormSubmit}
         />;
 
-      if (authStatus === AuthStatus.AUTH) {
-        return <Redirect to="/" />;
-      }
-
-      return content;
+      return authStatus === AuthStatus.AUTH ? <Redirect to="/" /> : content;
     }
   }
 

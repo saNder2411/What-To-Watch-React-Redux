@@ -26,7 +26,7 @@ const VideoPlayerScreen = (props) => {
 
   const selectedCard = +selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
   const {videoSrc, previewImage, title} = selectedCard;
-  const toExit = +selectedCardId === -1 ? `/` : `/cards${selectedCardId}`;
+  const toExit = +selectedCardId === -1 ? `/` : `/cards/${selectedCardId}`;
   const videoProps = {
     isPlaying,
     previewImage,

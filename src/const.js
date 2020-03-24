@@ -20,11 +20,6 @@ const DataTypes = {
   SEND_REVIEW_DATA: `SEND_REVIEW_DATA`,
 };
 
-const ComponentTypes = {
-  PREVIEW_CARDS_LIST: `PREVIEW_CARDS_LIST`,
-  GENRES_LIST: `GENRES_LIST`,
-};
-
 const Error = {
   UNAUTHORIZED: 401,
   BAD_DATA_REQUEST: 400,
@@ -35,5 +30,4 @@ const AuthStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes,
-  ComponentTypes, Error, AuthStatus};
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, Error, AuthStatus};

@@ -15,6 +15,7 @@ const API = createAPI(onUnauthorized);
 const cardsService = new CardsService(API);
 
 store.dispatch(FetchActions.fetchData(cardsService)(DataTypes.FETCH_CHECK_USER_AUTH));
+// store.dispatch(FetchActions.fetchData(cardsService)(DataTypes.FETCH_CARDS_DATA));
 
 ReactDOM.render(
     <Provider store={store}>

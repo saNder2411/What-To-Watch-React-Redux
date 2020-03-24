@@ -8,7 +8,7 @@ const AddReviewBreadcrumbs = ({title, selectedCardId}) => {
     <nav className="breadcrumbs">
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
-          <Link to={`/cards${selectedCardId}`} className="breadcrumbs__link">{title}</Link>
+          <Link to={`/cards/${selectedCardId}`} className="breadcrumbs__link">{title}</Link>
         </li>
         <li className="breadcrumbs__item">
           <a className="breadcrumbs__link">Add review</a>

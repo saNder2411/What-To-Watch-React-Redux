@@ -25,16 +25,14 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 
-import {DataTypes, ComponentTypes} from '../../const.js';
+import {DataTypes} from '../../const.js';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
 
 const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardReviews);
 
-const WrappedPreviewCardList = compose(
-    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
-    withPreviewCardListState)(PreviewCardList);
+const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
 const CardScreen = ({selectedCardId, cardsData}) => {
 

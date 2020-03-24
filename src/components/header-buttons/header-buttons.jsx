@@ -12,8 +12,12 @@ import {AuthStatus} from '../../const.js';
 const HeaderButtons = ({isCardScreen, authStatus, selectedCardId, history}) => {
 
   const addReviewButton = isCardScreen && authStatus === AuthStatus.AUTH ?
-    <Link to={`/review${selectedCardId}`} className="btn movie-card__button">Add review</Link> : null;
-  const toPlayerScreen = isCardScreen ? `/player${selectedCardId}` : `/player${-1}`;
+    <Link
+      to={`/cards/${selectedCardId}/review`}
+      className="btn movie-card__button">
+        Add review
+    </Link> : null;
+  const toPlayerScreen = isCardScreen ? `/player/${selectedCardId}` : `/player/${-1}`;
 
   return (
     <div className="movie-card__buttons">

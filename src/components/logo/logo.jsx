@@ -2,10 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {connect} from 'react-redux';
+import ActionCreator from '../../actions/action-creator.js';
 
-const Logo = ({toMain, isFooterLogo}) => {
 
-  const onClick = toMain ? () => {} : (evt) => evt.preventDefault();
+const Logo = ({toMain, isFooterLogo, setDefaultFilteredCardList}) => {
+
+  const onClick = toMain ? () => setDefaultFilteredCardList() : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 
   return (
@@ -26,6 +29,12 @@ const Logo = ({toMain, isFooterLogo}) => {
 Logo.propTypes = {
   toMain: PropTypes.bool,
   isFooterLogo: PropTypes.bool,
+  setDefaultFilteredCardList: PropTypes.func.isRequired,
 };
 
-export default Logo;
+const mapDispatchToProps = (dispatch) => ({
+  setDefaultFilteredCardList: () => dispatch(ActionCreator.setDefaultFilteredCardList()),
+});
+
+
+export default connect(void 0, mapDispatchToProps)(Logo);

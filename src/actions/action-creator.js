@@ -43,15 +43,17 @@ const ActionCreator = {
     payload: genre,
   }),
 
+  changeShowingCardsAmount: (amount) => ({
+    type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
+    payload: amount,
+  }),
+
   changeSelectedCard: (id) => ({
     type: ActionTypes.CHANGE_SELECTED_CARD,
     payload: id,
   }),
 
-  changeShowingCardsAmount: (amount) => ({
-    type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
-    payload: amount,
-  }),
+  setDefaultFilteredCardList: () => ({type: ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST}),
 
   authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
 
