@@ -5,15 +5,13 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getAuthStatus, getUserData} from '../../reducers/user/selectors.js';
 
-import {AuthStatus} from '../../const.js';
 
-
-const UserBlock = ({authStatus, userData: {avatarSrc = ``} = {}}) => {
-  const content = authStatus === AuthStatus.NO_AUTH ?
-    <Link to="/login" className="user-block__link">Sign in</Link> :
+const UserBlock = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
+  const content = isAuthorized ?
     <div className="user-block__avatar">
       <img src={`https://htmlacademy-react-3.appspot.com/${avatarSrc}`} alt="User avatar" width="63" height="63" />
-    </div>;
+    </div> :
+    <Link to="/login" className="user-block__link">Sign in</Link>;
 
   return (
     <div className="user-block">
@@ -23,12 +21,12 @@ const UserBlock = ({authStatus, userData: {avatarSrc = ``} = {}}) => {
 };
 
 UserBlock.propTypes = {
-  authStatus: PropTypes.string.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
   userData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authStatus: getAuthStatus(state),
+  isAuthorized: getAuthStatus(state),
   userData: getUserData(state),
 });
 

@@ -2,7 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
+import {getShowingCardsAmount, getFilteredCards, getFavoriteCards} from '../../reducers/filtered-card-list/selectors.js';
+import {Screens} from '../../const.js';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
@@ -31,11 +32,23 @@ const withPreviewCardListState = (Component) => {
     }
 
     render() {
-      const {filteredCards, selectedCardId, showingCardsAmount, onActiveItemClick} = this.props;
+      const {filteredCards, favoriteCards, screen, showingCardsAmount, onActiveItemClick} = this.props;
+      const cards = [];
+
+      switch (screen) {
+        case Screens.MAIN:
+          cards = [...filteredCards.slice(0, showingCardsAmount)];
+          break;
+        case Screens.CARD:
+          cards = [...filteredCards.slice(0, MAX_AMOUNT_SIMILAR_CARD)];
+          break;
+        case Screens.USER_LIST:
+          cards = [...favoriteCards];
+      }
 
       return (
         <Component
-          filteredCards={filteredCards.slice(0, selectedCardId ? MAX_AMOUNT_SIMILAR_CARD : showingCardsAmount)}
+          cards={cards}
           mouseEnterCard={this.state.mouseEnterCard}
           previewCardHandlers={[onActiveItemClick, this._handlePreviewCardMouseEnter, this._handlePreviewCardMouseLeave]}
         />
@@ -45,14 +58,16 @@ const withPreviewCardListState = (Component) => {
 
   WithPreviewCardListState.propTypes = {
     filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    selectedCardId: PropTypes.string,
+    favoriteCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    screen: PropTypes.string.isRequired,
     showingCardsAmount: PropTypes.number.isRequired,
     onActiveItemClick: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = (state) => ({
     filteredCards: getFilteredCards(state),
-    showingCardsAmount: getShowingCardsAmount(state)
+    showingCardsAmount: getShowingCardsAmount(state),
+    favoriteCards: getFavoriteCards(state),
   });
 
   return connect(mapStateToProps)(WithPreviewCardListState);

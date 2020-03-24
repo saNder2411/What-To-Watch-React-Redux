@@ -10,7 +10,7 @@ const mockStore = configureStore([thunk]);
 const store = mockStore({
   user: {
     userData: {},
-    authStatus: `NO_AUTH`,
+    isAuthorized: false,
     authLoading: false,
     authError: null,
   },
@@ -59,7 +59,7 @@ describe(`Render HeaderButtons`, () => {
     const authStore = mockStore({
       user: {
         userData: {},
-        authStatus: `AUTH`,
+        isAuthorized: true,
         authLoading: false,
         authError: null,
       },

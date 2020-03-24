@@ -25,9 +25,10 @@ const Error = {
   BAD_DATA_REQUEST: 400,
 };
 
-const AuthStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
+const Screens = {
+  MAIN: `MAIN`,
+  CARD: `CARDS`,
+  USER_LIST: `USER_LIST`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, Error, AuthStatus};
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, Error, Screens};

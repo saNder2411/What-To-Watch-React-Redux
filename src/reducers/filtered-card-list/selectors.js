@@ -17,7 +17,13 @@ const getFilteredCards = createSelector(
       }
 
       return cards.filter((card) => card.id !== cardId && card.genre === genre);
-    });
+    }
+);
+
+const getFavoriteCards = createSelector(
+    getCardsData,
+    (cards) => cards.filter(({isFavorite}) => isFavorite)
+);
 
 
-export {getGenre, getSelectedCardId, getShowingCardsAmount, getFilteredCards};
+export {getGenre, getSelectedCardId, getShowingCardsAmount, getFilteredCards, getFavoriteCards};

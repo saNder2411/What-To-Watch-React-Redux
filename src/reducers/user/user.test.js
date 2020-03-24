@@ -1,6 +1,5 @@
 import {updateUser as reducer} from './user.js';
 import ActionTypes from '../../action-types/action-types.js';
-import {AuthStatus} from '../../const.js';
 
 const mockUserDate = {
   id: 1,
@@ -17,7 +16,7 @@ const mockError = {
 const initialState = {
   user: {
     userData: {},
-    authStatus: AuthStatus.NO_AUTH,
+    isAuthorized: false,
     authLoading: true,
     authError: null,
   }
@@ -27,7 +26,7 @@ describe(`Reducer user work correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       userData: {},
-      authStatus: AuthStatus.NO_AUTH,
+      isAuthorized: false,
       authLoading: true,
       authError: null,
     });
@@ -37,7 +36,7 @@ describe(`Reducer user work correctly`, () => {
     expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_REQUEST}))
       .toEqual({
         userData: {},
-        authStatus: AuthStatus.NO_AUTH,
+        isAuthorized: false,
         authLoading: true,
         authError: null,
       });
@@ -47,7 +46,7 @@ describe(`Reducer user work correctly`, () => {
     expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_SUCCESS, payload: mockUserDate}))
       .toEqual({
         userData: mockUserDate,
-        authStatus: AuthStatus.AUTH,
+        isAuthorized: true,
         authLoading: false,
         authError: null,
       });
@@ -57,7 +56,7 @@ describe(`Reducer user work correctly`, () => {
     expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_FAILURE, payload: mockError}))
       .toEqual({
         userData: {},
-        authStatus: AuthStatus.NO_AUTH,
+        isAuthorized: false,
         authLoading: false,
         authError: mockError,
       });

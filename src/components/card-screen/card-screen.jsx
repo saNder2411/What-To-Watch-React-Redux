@@ -25,7 +25,7 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 
-import {DataTypes} from '../../const.js';
+import {DataTypes, Screens} from '../../const.js';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
@@ -60,7 +60,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
       </CardScreenTop>
 
       <CardScreenBottom>
-        <WrappedPreviewCardList selectedCardId={selectedCardId} />
+        <WrappedPreviewCardList screen={Screens.CARD} />
         <Footer>
           <Logo toMain isFooterLogo/>
         </Footer>

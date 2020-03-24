@@ -13,7 +13,7 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 
-import {DataTypes} from '../../const.js';
+import {DataTypes, Screens} from '../../const.js';
 
 
 const WrappedMainHeader = withFetchData(DataTypes.FETCH_PROMO_DATA)(MainHeader);
@@ -27,7 +27,7 @@ const Main = () => {
       <WrappedMainHeader/>
       <MainContent>
         <WrappedGenreList/>
-        <WrappedPreviewCardList />
+        <WrappedPreviewCardList screen={Screens.MAIN} />
         <ShowMoreButton />
         <Footer>
           <Logo isFooterLogo/>

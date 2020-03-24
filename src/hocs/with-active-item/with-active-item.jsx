@@ -41,12 +41,14 @@ const withActiveItem = (Component) => {
     }
 
     render() {
+      const {screen} = this.props;
 
-      return <Component onActiveItemClick={this._handleActiveItemClick} />;
+      return <Component screen={screen} onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 
   WithActiveItem.propTypes = {
+    screen: PropTypes.string,
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,

@@ -5,16 +5,18 @@ import {Redirect} from 'react-router-dom';
 import Spinner from '../../components/spinner/spinner.jsx';
 
 import {connect} from 'react-redux';
-import compose from '../../hocs/compose/compose.js';
+import compose from '../compose/compose.js';
 import {getAuthStatus, getAuthLoading, getAuthError} from '../../reducers/user/selectors.js';
-import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
-import AuthActions from '../../actions/auth-actions/auth-actions.js';
-import {AuthActionTypes, AuthStatus} from '../../const.js';
+import withCardsService from '../with-cards-service/with-cards-service.jsx';
+import SendActions from '../../actions/send-actions/send-actions.js';
+import {DataTypes} from '../../const.js';
 
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const withValidatedForm = (Component) => {
-  class WithValidatedForm extends PureComponent {
+const withSignInFormState = (Component) => {
+
+  class WithSignInFormState extends PureComponent {
+
     constructor(props) {
       super(props);
       this.state = {
@@ -27,6 +29,10 @@ const withValidatedForm = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
+    componentWillUnmount() {
+      this.setState({email: ``, password: ``, isValidEmail: true});
+    }
+
     _handleFormSubmit(evt) {
       evt.preventDefault();
 
@@ -36,7 +42,7 @@ const withValidatedForm = (Component) => {
       const isValidEmail = this._checkValidEmail(email);
 
       if (isValidEmail) {
-        authorizesUser(AuthActionTypes.USER_AUTH, formUserData);
+        authorizesUser(DataTypes.SEND_USER_AUTH_DATA, formUserData);
         this.setState({email: ``, password: ``, isValidEmail: true});
         return;
       }
@@ -55,7 +61,7 @@ const withValidatedForm = (Component) => {
     }
 
     render() {
-      const {authStatus, authLoading, authError} = this.props;
+      const {isAuthorized, authLoading, authError} = this.props;
       const content = authLoading ?
         <Spinner/> :
         <Component
@@ -65,23 +71,19 @@ const withValidatedForm = (Component) => {
           onFormSubmit={this._handleFormSubmit}
         />;
 
-      if (authStatus === AuthStatus.AUTH) {
-        return <Redirect to="/" />;
-      }
-
-      return content;
+      return isAuthorized ? <Redirect to="/" /> : content;
     }
   }
 
-  WithValidatedForm.propTypes = {
+  WithSignInFormState.propTypes = {
     authorizesUser: PropTypes.func.isRequired,
-    authStatus: PropTypes.string.isRequired,
+    isAuthorized: PropTypes.bool.isRequired,
     authLoading: PropTypes.bool.isRequired,
     authError: PropTypes.object,
   };
 
   const mapStatToProps = (state) => ({
-    authStatus: getAuthStatus(state),
+    isAuthorized: getAuthStatus(state),
     authLoading: getAuthLoading(state),
     authError: getAuthError(state),
   });
@@ -90,11 +92,11 @@ const withValidatedForm = (Component) => {
     const {cardsService} = ownProps;
 
     return {
-      authorizesUser: (authActionType, formUserData) => dispatch(AuthActions.authActionCreator(cardsService)(authActionType, formUserData)),
+      authorizesUser: (dataType, formUserData) => dispatch(SendActions.sendData(cardsService)(dataType, formUserData)),
     };
   };
 
-  return compose(withCardsService, connect(mapStatToProps, mapDispatchToProps))(WithValidatedForm);
+  return compose(withCardsService, connect(mapStatToProps, mapDispatchToProps))(WithSignInFormState);
 };
 
-export default withValidatedForm;
+export default withSignInFormState;

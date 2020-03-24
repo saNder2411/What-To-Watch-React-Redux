@@ -39,7 +39,7 @@ const mockCardsData = [
 const store = mockStore({
   user: {
     userData: {},
-    authStatus: `AUTH`,
+    isAuthorized: true,
     authLoading: false,
     authError: null,
   },
