@@ -6,7 +6,9 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import compose from '../../hocs/compose/compose.js';
 import {getAuthStatus} from '../../reducers/user/selectors.js';
+
 import {AuthStatus} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
 
 
 const HeaderButtons = ({isCardScreen, authStatus, selectedCardId, history}) => {
@@ -17,7 +19,7 @@ const HeaderButtons = ({isCardScreen, authStatus, selectedCardId, history}) => {
       className="btn movie-card__button">
         Add review
     </Link> : null;
-  const toPlayerScreen = isCardScreen ? `/player/${selectedCardId}` : `/player/${-1}`;
+  const toPlayerScreen = isCardScreen ? getAppRoute(selectedCardId).PLAYER : getAppRoute(-1).PLAYER;
 
   return (
     <div className="movie-card__buttons">

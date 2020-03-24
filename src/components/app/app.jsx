@@ -12,6 +12,7 @@ import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx'
 import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
 
 import {DataTypes} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
 
 
 const WrappedVideoPlayerScreen = withVideoPlayerScreenState(withVideoPlayer(VideoPlayerScreen));
@@ -21,11 +22,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact>
+        <Route path={getAppRoute().ROOT} exact>
           <Main />
         </Route>
         <Route
-          path='/cards/:id'
+          path={getAppRoute().CARDS}
           exact
           render={({match}) => {
             const {id} = match.params;
@@ -33,17 +34,17 @@ const App = () => {
           }}
         />
         <Route
-          path='/player/:id'
+          path={getAppRoute().PLAYER}
           render={({match}) => {
             const {id} = match.params;
             return <WrappedVideoPlayerScreen selectedCardId={id}/>;
           }}
         />
-        <Route path='/login'>
+        <Route path={getAppRoute().LOGIN}>
           <SignInScreen />
         </Route>
         <Route
-          path='/cards/:id/review'
+          path={getAppRoute().REVIEW}
           render={({match}) => {
             const {id} = match.params;
             return <AddReviewScreen selectedCardId={id}/>;

@@ -38,6 +38,8 @@ const ActionCreator = {
     payload: error,
   }),
 
+  setDefaultFilteredCardList: () => ({type: ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST}),
+
   changeGenre: (genre) => ({
     type: ActionTypes.CHANGE_GENRE,
     payload: genre,
@@ -52,8 +54,6 @@ const ActionCreator = {
     type: ActionTypes.CHANGE_SELECTED_CARD,
     payload: id,
   }),
-
-  setDefaultFilteredCardList: () => ({type: ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST}),
 
   authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
 

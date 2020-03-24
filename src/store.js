@@ -20,9 +20,4 @@ const store = createStore(
     )
 );
 
-const actionCreatorForThunkMiddleware = (action, timeout) => (dispatch) => {
-  setTimeout(() => dispatch(action), timeout);
-};
-
-store.dispatch(actionCreatorForThunkMiddleware(`DELAYED_ACTION`, 3000));
 export default store;

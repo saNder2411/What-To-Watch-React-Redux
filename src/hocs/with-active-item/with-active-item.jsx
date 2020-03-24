@@ -9,6 +9,7 @@ import {getCardsData} from '../../reducers/card-list/selectors.js';
 import FilterActions from '../../actions/filter-actions/filter-actions.js';
 
 import {ShowingCardsAmount} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
 
 
 const withActiveItem = (Component) => {
@@ -29,7 +30,7 @@ const withActiveItem = (Component) => {
         const {genre} = cardsData.find((card) => card.id === +id);
 
         filtersCards(genre, ShowingCardsAmount.ON_START, +id);
-        history.push(`/cards/${id}`);
+        history.push(getAppRoute(id).CARDS);
 
         return;
       }
