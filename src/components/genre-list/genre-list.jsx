@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
-import {getGenre} from '../../reducers/filtered-card-list/selectors.js';
+import {getGenre} from '../../reducers/card-list-state/selectors.js';
 
 import GenreListItem from '../genre-list-item/genre-list-item.jsx';
 

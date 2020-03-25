@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 
+import {getAppRoute} from '../../utils/utils.js';
+
 
 const convertVideoTime = (sec) => {
   const hours = (sec - (sec % (60 * 60))) / (60 * 60);
@@ -26,7 +28,7 @@ const VideoPlayerScreen = (props) => {
 
   const selectedCard = +selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
   const {videoSrc, previewImage, title} = selectedCard;
-  const toExit = +selectedCardId === -1 ? `/` : `/cards/${selectedCardId}`;
+  const toExit = +selectedCardId === -1 ? getAppRoute().ROOT : getAppRoute(selectedCardId).CARDS;
   const videoProps = {
     isPlaying,
     previewImage,

@@ -14,7 +14,7 @@ const HeaderButtons = ({isCardScreen, isAuthorized, selectedCardId}) => {
 
   const addReviewButton = isCardScreen && isAuthorized ?
     <Link
-      to={`/cards/${selectedCardId}/review`}
+      to={getAppRoute(selectedCardId).REVIEW}
       className="btn movie-card__button">
         Add review
     </Link> : null;

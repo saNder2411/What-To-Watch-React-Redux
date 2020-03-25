@@ -5,16 +5,18 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActionCreator from '../../actions/action-creator.js';
 
+import {getAppRoute} from '../../utils/utils.js';
 
-const Logo = ({toMain, isFooterLogo, setDefaultFilteredCardList}) => {
 
-  const onClick = toMain ? () => setDefaultFilteredCardList() : (evt) => evt.preventDefault();
+const Logo = ({toMain, isFooterLogo, setDefaultCardListState}) => {
+
+  const onClick = toMain ? () => setDefaultCardListState() : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 
   return (
     <div className="logo">
       <Link
-        to="/"
+        to={getAppRoute().ROOT}
         className={`logo__link ${footerLogoClass}`}
         onClick={onClick}
       >
@@ -29,11 +31,11 @@ const Logo = ({toMain, isFooterLogo, setDefaultFilteredCardList}) => {
 Logo.propTypes = {
   toMain: PropTypes.bool,
   isFooterLogo: PropTypes.bool,
-  setDefaultFilteredCardList: PropTypes.func.isRequired,
+  setDefaultCardListState: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setDefaultFilteredCardList: () => dispatch(ActionCreator.setDefaultFilteredCardList()),
+  setDefaultCardListState: () => dispatch(ActionCreator.setDefaultCardListState()),
 });
 
 

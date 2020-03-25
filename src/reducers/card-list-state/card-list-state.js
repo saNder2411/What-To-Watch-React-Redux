@@ -4,18 +4,18 @@ import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
 
 
 const initialState = {
-  filteredCardList: {
+  cardListState: {
     genre: DEFAULT_GENRE,
     selectedCardId: -1,
     showingCardsAmount: ShowingCardsAmount.ON_START,
   }
 };
 
-const updateFilteredCardList = (state = initialState, action) => {
+const updateCardListState = (state = initialState, action) => {
 
   switch (action.type) {
-    case ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST:
-      return extend(state.filteredCardList,
+    case ActionTypes.SET_DEFAULT_CARD_LIST_STATE:
+      return extend(state.cardListState,
           {
             genre: DEFAULT_GENRE,
             selectedCardId: -1,
@@ -23,21 +23,21 @@ const updateFilteredCardList = (state = initialState, action) => {
           });
 
     case ActionTypes.CHANGE_GENRE:
-      return extend(state.filteredCardList, {genre: action.payload});
+      return extend(state.cardListState, {genre: action.payload});
 
     case ActionTypes.CHANGE_SELECTED_CARD:
-      return extend(state.filteredCardList, {selectedCardId: action.payload});
+      return extend(state.cardListState, {selectedCardId: action.payload});
 
     case ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT:
-      return extend(state.filteredCardList,
+      return extend(state.cardListState,
           {
             showingCardsAmount:
-              action.payload ? action.payload : state.filteredCardList.showingCardsAmount + ShowingCardsAmount.BY_BUTTON,
+              action.payload ? action.payload : state.cardListState.showingCardsAmount + ShowingCardsAmount.BY_BUTTON,
           });
 
     default:
-      return state.filteredCardList;
+      return state.cardListState;
   }
 };
 
-export {updateFilteredCardList};
+export {updateCardListState};

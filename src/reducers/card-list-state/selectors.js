@@ -2,11 +2,11 @@ import {createSelector} from 'reselect';
 import {getCardsData} from '../card-list/selectors.js';
 import {DEFAULT_GENRE} from '../../const.js';
 
-const getGenre = ({filteredCardList: {genre}}) => genre;
+const getGenre = ({cardListState: {genre}}) => genre;
 
-const getSelectedCardId = ({filteredCardList: {selectedCardId}}) => selectedCardId;
+const getSelectedCardId = ({cardListState: {selectedCardId}}) => selectedCardId;
 
-const getShowingCardsAmount = ({filteredCardList: {showingCardsAmount}}) => showingCardsAmount;
+const getShowingCardsAmount = ({cardListState: {showingCardsAmount}}) => showingCardsAmount;
 
 const getFilteredCards = createSelector(
     getGenre, getSelectedCardId, getCardsData,

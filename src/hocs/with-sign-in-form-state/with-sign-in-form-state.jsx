@@ -9,7 +9,11 @@ import compose from '../compose/compose.js';
 import {getAuthStatus, getAuthLoading, getAuthError} from '../../reducers/user/selectors.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import SendActions from '../../actions/send-actions/send-actions.js';
+import ActionCreator from '../../actions/action-creator.js';
+
 import {DataTypes} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
+
 
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -61,7 +65,7 @@ const withSignInFormState = (Component) => {
     }
 
     render() {
-      const {isAuthorized, authLoading, authError} = this.props;
+      const {isAuthorized, authLoading, authError, setDefaultCardListState} = this.props;
       const content = authLoading ?
         <Spinner/> :
         <Component
@@ -71,12 +75,19 @@ const withSignInFormState = (Component) => {
           onFormSubmit={this._handleFormSubmit}
         />;
 
-      return isAuthorized ? <Redirect to="/" /> : content;
+      if (isAuthorized) {
+        setDefaultCardListState();
+
+        return <Redirect to={getAppRoute().ROOT} />;
+      }
+
+      return content;
     }
   }
 
   WithSignInFormState.propTypes = {
     authorizesUser: PropTypes.func.isRequired,
+    setDefaultCardListState: PropTypes.func.isRequired,
     isAuthorized: PropTypes.bool.isRequired,
     authLoading: PropTypes.bool.isRequired,
     authError: PropTypes.object,
@@ -93,6 +104,7 @@ const withSignInFormState = (Component) => {
 
     return {
       authorizesUser: (dataType, formUserData) => dispatch(SendActions.sendData(cardsService)(dataType, formUserData)),
+      setDefaultCardListState: () => dispatch(ActionCreator.setDefaultCardListState()),
     };
   };
 

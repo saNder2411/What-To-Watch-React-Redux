@@ -38,7 +38,7 @@ const ActionCreator = {
     payload: error,
   }),
 
-  setDefaultFilteredCardList: () => ({type: ActionTypes.SET_DEFAULT_FILTERED_CARD_LIST}),
+  setDefaultCardListState: () => ({type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE}),
 
   changeGenre: (genre) => ({
     type: ActionTypes.CHANGE_GENRE,

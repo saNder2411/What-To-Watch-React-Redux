@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getShowingCardsAmount, getFilteredCards, getFavoriteCards} from '../../reducers/filtered-card-list/selectors.js';
+import {getShowingCardsAmount, getFilteredCards, getFavoriteCards} from '../../reducers/card-list-state/selectors.js';
 import {Screens} from '../../const.js';
 
 
@@ -23,7 +23,11 @@ const withPreviewCardListState = (Component) => {
     }
 
     _handlePreviewCardMouseEnter(evt) {
-      const mouseEnterCard = this.props.filteredCards.find(({id}) => id === +evt.currentTarget.id);
+      const {filteredCards, favoriteCards, screen} = this.props;
+      const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : favoriteCards;
+
+      const mouseEnterCard = cards.find(({id}) => id === +evt.currentTarget.id);
+
       this.setState({mouseEnterCard});
     }
 

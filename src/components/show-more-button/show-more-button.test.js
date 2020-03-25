@@ -52,7 +52,7 @@ describe(`Render ShowMoreButton`, () => {
         cardsLoading: false,
         cardsError: null,
       },
-      filteredCardList: {
+      cardListState: {
         genre: `All genre`,
         selectedCardId: -1,
         showingCardsAmount: 1,
@@ -101,7 +101,7 @@ describe(`Render ShowMoreButton`, () => {
         cardsLoading: false,
         cardsError: null,
       },
-      filteredCardList: {
+      cardListState: {
         genre: `All genre`,
         selectedCardId: -1,
         showingCardsAmount: 1,

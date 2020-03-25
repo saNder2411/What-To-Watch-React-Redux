@@ -55,7 +55,7 @@ const store = mockStore({
     cardsLoading: false,
     cardsError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `Drama`,
     selectedCardId: 1,
     showingCardsAmount: 8,
