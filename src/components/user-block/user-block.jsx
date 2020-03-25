@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {getAuthStatus, getUserData} from '../../reducers/user/selectors.js';
+import {getUserAuthStatus, getUserData} from '../../reducers/user/selectors.js';
 import {getAppRoute} from '../../utils/utils.js';
 
 const UserBlock = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
@@ -28,7 +28,7 @@ UserBlock.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthorized: getAuthStatus(state),
+  isAuthorized: getUserAuthStatus(state),
   userData: getUserData(state),
 });
 

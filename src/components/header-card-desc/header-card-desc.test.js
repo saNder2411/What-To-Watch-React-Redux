@@ -12,8 +12,8 @@ const store = mockStore({
   user: {
     userData: {},
     isAuthorized: false,
-    authLoading: false,
-    authError: null,
+    userDataLoading: false,
+    userDataError: null,
   }
 });
 
@@ -72,8 +72,8 @@ describe(`Render HeaderCardDesc`, () => {
       user: {
         userData: {},
         isAuthorized: true,
-        authLoading: false,
-        authError: null,
+        userDataLoading: false,
+        userDataError: null,
       },
     });
     const markup = renderer

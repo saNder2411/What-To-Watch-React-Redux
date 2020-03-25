@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
-import FilterActions from '../../actions/filter-actions/filter-actions.js';
+import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
 
 import {ShowingCardsAmount} from '../../const.js';
 import {getAppRoute} from '../../utils/utils.js';
@@ -41,14 +41,15 @@ const withActiveItem = (Component) => {
     }
 
     render() {
-      const {screen} = this.props;
+      const {screen, userCardsData} = this.props;
 
-      return <Component screen={screen} onActiveItemClick={this._handleActiveItemClick} />;
+      return <Component screen={screen} userCardsData={userCardsData} onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 
   WithActiveItem.propTypes = {
     screen: PropTypes.string,
+    userCardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -58,7 +59,7 @@ const withActiveItem = (Component) => {
     cardsData: getCardsData(state),
   });
 
-  const mapDispatchToProps = (dispatch) => ({filtersCards: FilterActions.filtersCards(dispatch)});
+  const mapDispatchToProps = (dispatch) => ({filtersCards: CardListActions.filtersCards(dispatch)});
 
   return compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(WithActiveItem);
 };

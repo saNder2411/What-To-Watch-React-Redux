@@ -17,8 +17,8 @@ const initialState = {
   user: {
     userData: {},
     isAuthorized: false,
-    authLoading: true,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
   }
 };
 
@@ -27,38 +27,38 @@ describe(`Reducer user work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       userData: {},
       isAuthorized: false,
-      authLoading: true,
-      authError: null,
+      userDataLoading: true,
+      userDataError: null,
     });
   });
 
   it(`Reducer should update user state when request user data`, () => {
-    expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_REQUEST}))
+    expect(reducer(initialState, {type: ActionTypes.FETCH_USER_DATA_REQUEST}))
       .toEqual({
         userData: {},
         isAuthorized: false,
-        authLoading: true,
-        authError: null,
+        userDataLoading: true,
+        userDataError: null,
       });
   });
 
   it(`Reducer should update user state when loaded user data`, () => {
-    expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_SUCCESS, payload: mockUserDate}))
+    expect(reducer(initialState, {type: ActionTypes.FETCH_USER_DATA_SUCCESS, payload: mockUserDate}))
       .toEqual({
         userData: mockUserDate,
         isAuthorized: true,
-        authLoading: false,
-        authError: null,
+        userDataLoading: false,
+        userDataError: null,
       });
   });
 
   it(`Reducer should update user state when user data response return error`, () => {
-    expect(reducer(initialState, {type: ActionTypes.FETCH_AUTH_FAILURE, payload: mockError}))
+    expect(reducer(initialState, {type: ActionTypes.FETCH_USER_DATA_FAILURE, payload: mockError}))
       .toEqual({
         userData: {},
         isAuthorized: false,
-        authLoading: false,
-        authError: mockError,
+        userDataLoading: false,
+        userDataError: mockError,
       });
   });
 });

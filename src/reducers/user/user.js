@@ -3,38 +3,38 @@ import {extend} from '../../utils/utils.js';
 
 const initialState = {
   user: {
-    userData: {},
     isAuthorized: false,
-    authLoading: true,
-    authError: null,
+    userData: {},
+    userDataLoading: true,
+    userDataError: null,
   }
 };
 
 const updateUser = (state = initialState, action) => {
 
   switch (action.type) {
-    case ActionTypes.FETCH_AUTH_REQUEST:
+    case ActionTypes.FETCH_USER_DATA_REQUEST:
       return extend(state.user, {
-        userData: {},
         isAuthorized: false,
-        authLoading: true,
-        authError: null,
+        userData: {},
+        userDataLoading: true,
+        userDataError: null,
       });
 
-    case ActionTypes.FETCH_AUTH_SUCCESS:
+    case ActionTypes.FETCH_USER_DATA_SUCCESS:
       return extend(state.user, {
-        userData: action.payload,
         isAuthorized: true,
-        authLoading: false,
-        authError: null,
+        userData: action.payload,
+        userDataLoading: false,
+        userDataError: null,
       });
 
-    case ActionTypes.FETCH_AUTH_FAILURE:
+    case ActionTypes.FETCH_USER_DATA_FAILURE:
       return extend(state.user, {
-        userData: {},
         isAuthorized: false,
-        authLoading: false,
-        authError: action.payload,
+        userData: {},
+        userDataLoading: false,
+        userDataError: action.payload,
       });
   }
 

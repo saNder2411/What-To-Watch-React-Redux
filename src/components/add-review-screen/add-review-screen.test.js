@@ -40,8 +40,8 @@ const store = mockStore({
   user: {
     userData: {},
     isAuthorized: true,
-    authLoading: false,
-    authError: null,
+    userDataLoading: false,
+    userDataError: null,
   },
   cardList: {
     cardsData: mockCardsData,

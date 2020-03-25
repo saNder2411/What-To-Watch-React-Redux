@@ -20,10 +20,4 @@ const getFilteredCards = createSelector(
     }
 );
 
-const getFavoriteCards = createSelector(
-    getCardsData,
-    (cards) => cards.filter(({isFavorite}) => !isFavorite)
-);
-
-
-export {getGenre, getSelectedCardId, getShowingCardsAmount, getFilteredCards, getFavoriteCards};
+export {getGenre, getSelectedCardId, getShowingCardsAmount, getFilteredCards};

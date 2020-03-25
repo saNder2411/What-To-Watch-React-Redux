@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getAuthStatus} from '../../reducers/user/selectors.js';
+import {getUserAuthStatus} from '../../reducers/user/selectors.js';
 
 import {getAppRoute} from '../../utils/utils.js';
 
@@ -47,6 +47,6 @@ HeaderButtons.propTypes = {
   selectedCardId: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({isAuthorized: getAuthStatus(state)});
+const mapStateToProps = (state) => ({isAuthorized: getUserAuthStatus(state)});
 
 export default connect(mapStateToProps)(HeaderButtons);

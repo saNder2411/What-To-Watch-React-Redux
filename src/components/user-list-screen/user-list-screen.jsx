@@ -6,13 +6,14 @@ import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
 import Footer from '../footer/footer.jsx';
 
 import compose from '../../hocs/compose/compose.js';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 
-import {Screens} from '../../const.js';
+import {DataTypes, Screens} from '../../const.js';
 
 
-const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
+const WrappedPreviewCardList = compose(withFetchData(DataTypes.FETCH_USER_CARDS_DATA), withActiveItem, withPreviewCardListState)(PreviewCardList);
 
 const UserListScreen = () => {
 

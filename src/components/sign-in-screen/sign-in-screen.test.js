@@ -18,8 +18,8 @@ const store = mockStore({
   user: {
     userData: {},
     isAuthorized: false,
-    authLoading: false,
-    authError: null,
+    userDataLoading: false,
+    userDataError: null,
   },
 });
 

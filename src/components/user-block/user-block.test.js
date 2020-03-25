@@ -28,8 +28,8 @@ describe(`Render UserBlock`, () => {
       user: {
         userData: {},
         isAuthorized: false,
-        authLoading: false,
-        authError: null,
+        userDataLoading: false,
+        userDataError: null,
       },
     });
     const markup = renderer
@@ -57,8 +57,8 @@ describe(`Render UserBlock`, () => {
       user: {
         userData: mockUserDate,
         isAuthorized: true,
-        authLoading: false,
-        authError: null,
+        userDataLoading: false,
+        userDataError: null,
       },
     });
     const markup = renderer

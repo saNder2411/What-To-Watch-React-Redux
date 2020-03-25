@@ -39,8 +39,8 @@ describe(`Render ShowMoreButton`, () => {
       user: {
         userData: {},
         isAuthorized: false,
-        authLoading: true,
-        authError: null,
+        userDataLoading: true,
+        userDataError: null,
       },
       promoCard: {
         promoCardData: [],
@@ -88,8 +88,8 @@ describe(`Render ShowMoreButton`, () => {
       user: {
         userData: {},
         isAuthorized: false,
-        authLoading: false,
-        authError: null,
+        userDataLoading: false,
+        userDataError: null,
       },
       promoCard: {
         promoCardData: {},

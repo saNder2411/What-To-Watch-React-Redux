@@ -1,15 +1,15 @@
-import FilterActions from './filter-actions.js';
+import CardListActions from './card-list-actions.js';
 import ActionTypes from '../../action-types/action-types.js';
 
 const mockGenre = `All genre`;
 const mockShowingCardsAmount = 8;
 const mockSelectedCardId = 2;
 
-describe(`FilterActions work correctly`, () => {
+describe(`CardListActions work correctly`, () => {
   it(`Should make a correct filtersCards call to dispatch without argument selectedCardId`, () => {
     const dispatch = jest.fn();
 
-    FilterActions.filtersCards(dispatch)(mockGenre, mockShowingCardsAmount);
+    CardListActions.filtersCards(dispatch)(mockGenre, mockShowingCardsAmount);
 
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
@@ -25,7 +25,7 @@ describe(`FilterActions work correctly`, () => {
   it(`Should make a correct filtersCards call to dispatch with argument selectedCardId`, () => {
     const dispatch = jest.fn();
 
-    FilterActions.filtersCards(dispatch)(mockGenre, mockShowingCardsAmount, mockSelectedCardId);
+    CardListActions.filtersCards(dispatch)(mockGenre, mockShowingCardsAmount, mockSelectedCardId);
 
     expect(dispatch).toHaveBeenCalledTimes(3);
     expect(dispatch).toHaveBeenNthCalledWith(1, {

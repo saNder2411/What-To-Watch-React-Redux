@@ -134,14 +134,14 @@ describe(`Action creators work correctly`, () => {
 
 
   it(`Action creator for auth request returns correct action`, () => {
-    expect(ActionCreator.authRequested()).toEqual({type: ActionTypes.FETCH_AUTH_REQUEST});
+    expect(ActionCreator.userDataRequested()).toEqual({type: ActionTypes.FETCH_USER_DATA_REQUEST});
   });
 
   it(`Action creator for update user auth data returns correct action`, () => {
-    expect(ActionCreator.authDataLoaded(mockUserDate)).toEqual({type: ActionTypes.FETCH_AUTH_SUCCESS, payload: mockUserDate});
+    expect(ActionCreator.userDataLoaded(mockUserDate)).toEqual({type: ActionTypes.FETCH_USER_DATA_SUCCESS, payload: mockUserDate});
   });
 
   it(`Action creator for user auth error request returns correct action`, () => {
-    expect(ActionCreator.authDataError(mockError)).toEqual({type: ActionTypes.FETCH_AUTH_FAILURE, payload: mockError});
+    expect(ActionCreator.userDataError(mockError)).toEqual({type: ActionTypes.FETCH_USER_DATA_FAILURE, payload: mockError});
   });
 });

@@ -53,7 +53,7 @@ describe(`FetchActions work correctly`, () => {
 
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
-      type: ActionTypes.FETCH_AUTH_REQUEST,
+      type: ActionTypes.FETCH_USER_DATA_REQUEST,
     });
   });
 });

@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getShowingCardsAmount, getFilteredCards, getFavoriteCards} from '../../reducers/card-list-state/selectors.js';
+import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors.js';
 import {Screens} from '../../const.js';
 
 
@@ -23,8 +23,8 @@ const withPreviewCardListState = (Component) => {
     }
 
     _handlePreviewCardMouseEnter(evt) {
-      const {filteredCards, favoriteCards, screen} = this.props;
-      const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : favoriteCards;
+      const {filteredCards, userCardsData, screen} = this.props;
+      const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : userCardsData;
 
       const mouseEnterCard = cards.find(({id}) => id === +evt.currentTarget.id);
 
@@ -36,7 +36,7 @@ const withPreviewCardListState = (Component) => {
     }
 
     render() {
-      const {filteredCards, favoriteCards, screen, showingCardsAmount, onActiveItemClick} = this.props;
+      const {filteredCards, userCardsData, screen, showingCardsAmount, onActiveItemClick} = this.props;
       let cards = [];
 
       switch (screen) {
@@ -47,7 +47,7 @@ const withPreviewCardListState = (Component) => {
           cards = [...filteredCards.slice(0, MAX_AMOUNT_SIMILAR_CARD)];
           break;
         case Screens.USER_LIST:
-          cards = [...favoriteCards];
+          cards = [...userCardsData];
           break;
       }
 
@@ -63,7 +63,7 @@ const withPreviewCardListState = (Component) => {
 
   WithPreviewCardListState.propTypes = {
     filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    favoriteCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    userCardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
     screen: PropTypes.string.isRequired,
     showingCardsAmount: PropTypes.number.isRequired,
     onActiveItemClick: PropTypes.func.isRequired,
@@ -72,7 +72,6 @@ const withPreviewCardListState = (Component) => {
   const mapStateToProps = (state) => ({
     showingCardsAmount: getShowingCardsAmount(state),
     filteredCards: getFilteredCards(state),
-    favoriteCards: getFavoriteCards(state),
   });
 
   return connect(mapStateToProps)(WithPreviewCardListState);

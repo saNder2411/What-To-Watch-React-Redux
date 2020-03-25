@@ -55,15 +55,27 @@ const ActionCreator = {
     payload: id,
   }),
 
-  authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
+  userDataRequested: () => ({type: ActionTypes.FETCH_USER_DATA_REQUEST}),
 
-  authDataLoaded: (userData) => ({
-    type: ActionTypes.FETCH_AUTH_SUCCESS,
+  userDataLoaded: (userData) => ({
+    type: ActionTypes.FETCH_USER_DATA_SUCCESS,
     payload: userData,
   }),
 
-  authDataError: (error) => ({
-    type: ActionTypes.FETCH_AUTH_FAILURE,
+  userDataError: (error) => ({
+    type: ActionTypes.FETCH_USER_DATA_FAILURE,
+    payload: error,
+  }),
+
+  userCardsRequested: () => ({type: ActionTypes.FETCH_USER_CARDS_REQUEST}),
+
+  userCardsLoaded: (userCards) => ({
+    type: ActionTypes.FETCH_USER_CARDS_SUCCESS,
+    payload: userCards,
+  }),
+
+  userCardsError: (error) => ({
+    type: ActionTypes.FETCH_USER_CARDS_FAILURE,
     payload: error,
   }),
 };

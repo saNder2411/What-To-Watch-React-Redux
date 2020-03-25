@@ -1,7 +1,7 @@
 import ActionCreator from '../action-creator.js';
 
 
-const FilterActions = {
+const CardListActions = {
 
   filtersCards: (dispatch) => (genre, showingCardsAmount, selectedCardId) => {
     dispatch(ActionCreator.changeGenre(genre));
@@ -13,4 +13,4 @@ const FilterActions = {
   },
 };
 
-export default FilterActions;
+export default CardListActions;

@@ -6,7 +6,7 @@ import Spinner from '../../components/spinner/spinner.jsx';
 
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
-import {getAuthStatus, getAuthLoading, getAuthError} from '../../reducers/user/selectors.js';
+import {getUserAuthStatus, getUserDataLoading, getUserDataError} from '../../reducers/user/selectors.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import SendActions from '../../actions/send-actions/send-actions.js';
 import ActionCreator from '../../actions/action-creator.js';
@@ -65,12 +65,12 @@ const withSignInFormState = (Component) => {
     }
 
     render() {
-      const {isAuthorized, authLoading, authError, setDefaultCardListState} = this.props;
-      const content = authLoading ?
+      const {isAuthorized, userDataLoading, userDataError, setDefaultCardListState} = this.props;
+      const content = userDataLoading ?
         <Spinner/> :
         <Component
           {...this.state}
-          error={authError}
+          error={userDataError}
           onInputChange={this._handleInputChange}
           onFormSubmit={this._handleFormSubmit}
         />;
@@ -89,14 +89,14 @@ const withSignInFormState = (Component) => {
     authorizesUser: PropTypes.func.isRequired,
     setDefaultCardListState: PropTypes.func.isRequired,
     isAuthorized: PropTypes.bool.isRequired,
-    authLoading: PropTypes.bool.isRequired,
-    authError: PropTypes.object,
+    userDataLoading: PropTypes.bool.isRequired,
+    userDataError: PropTypes.object,
   };
 
   const mapStatToProps = (state) => ({
-    isAuthorized: getAuthStatus(state),
-    authLoading: getAuthLoading(state),
-    authError: getAuthError(state),
+    isAuthorized: getUserAuthStatus(state),
+    userDataLoading: getUserDataLoading(state),
+    userDataError: getUserDataError(state),
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
