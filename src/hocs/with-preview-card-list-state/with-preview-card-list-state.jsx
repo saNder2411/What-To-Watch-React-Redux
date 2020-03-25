@@ -33,7 +33,7 @@ const withPreviewCardListState = (Component) => {
 
     render() {
       const {filteredCards, favoriteCards, screen, showingCardsAmount, onActiveItemClick} = this.props;
-      const cards = [];
+      let cards = [];
 
       switch (screen) {
         case Screens.MAIN:
@@ -44,6 +44,7 @@ const withPreviewCardListState = (Component) => {
           break;
         case Screens.USER_LIST:
           cards = [...favoriteCards];
+          break;
       }
 
       return (
@@ -65,8 +66,8 @@ const withPreviewCardListState = (Component) => {
   };
 
   const mapStateToProps = (state) => ({
-    filteredCards: getFilteredCards(state),
     showingCardsAmount: getShowingCardsAmount(state),
+    filteredCards: getFilteredCards(state),
     favoriteCards: getFavoriteCards(state),
   });
 

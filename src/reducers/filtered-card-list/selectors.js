@@ -22,7 +22,7 @@ const getFilteredCards = createSelector(
 
 const getFavoriteCards = createSelector(
     getCardsData,
-    (cards) => cards.filter(({isFavorite}) => isFavorite)
+    (cards) => cards.filter(({isFavorite}) => !isFavorite)
 );
 
 

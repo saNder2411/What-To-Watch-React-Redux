@@ -27,7 +27,7 @@ const Error = {
 
 const Screens = {
   MAIN: `MAIN`,
-  CARD: `CARDS`,
+  CARD: `CARD`,
   USER_LIST: `USER_LIST`,
 };
 

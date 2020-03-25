@@ -57,6 +57,7 @@ const getAppRoute = (id = `:id`) => ({
   PLAYER: `/player/${id}`,
   LOGIN: `/login`,
   REVIEW: `/cards/${id}/review`,
+  USER_LIST: `/userList`,
 });
 
 

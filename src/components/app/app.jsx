@@ -6,6 +6,7 @@ import CardScreen from '../card-screen/card-screen.jsx';
 import VideoPlayerScreen from '../video-player-screen/video-player-screen.jsx';
 import SignInScreen from '../sign-in-screen/sign-in-screen.jsx';
 import AddReviewScreen from '../add-review-screen/add-review-screen.jsx';
+import UserListScreen from '../user-list-screen/user-list-screen.jsx';
 
 import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
@@ -50,6 +51,9 @@ const App = () => {
             return <AddReviewScreen selectedCardId={id}/>;
           }}
         />
+        <Route path={getAppRoute().USER_LIST}>
+          <UserListScreen />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
