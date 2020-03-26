@@ -121,7 +121,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for change selected card returns correct action`, () => {
-    expect(ActionCreator.changeSelectedCard(10)).toEqual({type: ActionTypes.CHANGE_SELECTED_CARD, payload: 10});
+    expect(ActionCreator.changeSelectedCardId(10)).toEqual({type: ActionTypes.CHANGE_SELECTED_CARD, payload: 10});
   });
 
   it(`Action creator for change showing cards amount returns correct action`, () => {

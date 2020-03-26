@@ -4,7 +4,7 @@ import {DataTypes} from '../../const.js';
 
 const FetchActions = {
 
-  fetchData: (cardsService, selectedCardId) => (dataType) => (dispatch) => {
+  fetchData: (cardsService) => (dataType, selectedCardId) => (dispatch) => {
 
     switch (dataType) {
 
@@ -16,10 +16,7 @@ const FetchActions = {
 
         dispatch(ActionCreator.promoCardRequested());
         cardsService.getPromoCard()
-          .then((promoCardData) => {
-            dispatch(ActionCreator.promoCardLoaded(promoCardData));
-            dispatch(ActionCreator.changeSelectedCard(promoCardData.id));
-          })
+          .then((promoCardData) => dispatch(ActionCreator.promoCardLoaded(promoCardData)))
           .catch((error) => dispatch(ActionCreator.promoCardError(error)));
         break;
 

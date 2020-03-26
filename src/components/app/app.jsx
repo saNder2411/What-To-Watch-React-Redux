@@ -15,14 +15,18 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
 import ActionCreator from '../../actions/action-creator.js';
+import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
+import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
 
-import {DataTypes, Screens} from '../../const.js';
+import {DataTypes, Screens, ShowingCardsAmount} from '../../const.js';
 import {getAppRoute} from '../../utils/utils.js';
+import {getCardsData} from '../../reducers/card-list/selectors.js';
 
 
 const WrappedVideoPlayerScreen = compose(withVideoPlayerScreenState, withVideoPlayer)(VideoPlayerScreen);
 
-const App = ({changeAppScreen}) => {
+const App = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}) => {
+
 
   return (
     <BrowserRouter>
@@ -32,6 +36,7 @@ const App = ({changeAppScreen}) => {
           exact
           render={() => {
             changeAppScreen(Screens.MAIN);
+            changeSelectedCardId(promoCardData.id);
 
             return <Main />;
           }} />
@@ -40,17 +45,22 @@ const App = ({changeAppScreen}) => {
           exact
           render={({match}) => {
             const {id} = match.params;
-            changeAppScreen(Screens.CARD);
+            const {genre} = cardsData.find((card) => card.id === +id);
 
-            return <CardScreen selectedCardIdFromHistory={id}/>;
+            changeAppScreen(Screens.CARD);
+            changeSelectedCardId(+id);
+            filtersCards(genre, ShowingCardsAmount.ON_START);
+
+            return <CardScreen />;
           }} />
         <Route
           path={getAppRoute().PLAYER}
           render={({match}) => {
             const {id} = match.params;
             changeAppScreen(Screens.VIDEO_PLAYER);
+            changeSelectedCardId(+id);
 
-            return <WrappedVideoPlayerScreen selectedCardIdFromHistory={id}/>;
+            return <WrappedVideoPlayerScreen />;
           }} />
         <Route
           path={getAppRoute().LOGIN}
@@ -64,8 +74,9 @@ const App = ({changeAppScreen}) => {
           render={({match}) => {
             const {id} = match.params;
             changeAppScreen(Screens.ADD_REVIEW);
+            changeSelectedCardId(+id);
 
-            return <AddReviewScreen selectedCardIdFromHistory={id}/>;
+            return <AddReviewScreen />;
           }} />
         <Route
           path={getAppRoute().USER_LIST}
@@ -80,11 +91,23 @@ const App = ({changeAppScreen}) => {
 };
 
 App.propTypes = {
+  promoCardData: PropTypes.object.isRequired,
+  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   changeAppScreen: PropTypes.func.isRequired,
+  changeSelectedCardId: PropTypes.func.isRequired,
+  filtersCards: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeAppScreen: (screen) => dispatch(ActionCreator.changeAppScreen(screen))
+const mapStateToProps = (state) => ({
+  promoCardData: getPromoCardData(state),
+  cardsData: getCardsData(state),
 });
 
-export default compose(withFetchData(DataTypes.FETCH_CARDS_DATA), connect(void 0, mapDispatchToProps))(App);
+const mapDispatchToProps = (dispatch) => ({
+  changeAppScreen: (screen) => dispatch(ActionCreator.changeAppScreen(screen)),
+  changeSelectedCardId: (id) => dispatch(ActionCreator.changeSelectedCardId(id)),
+  filtersCards: CardListActions.filtersCards(dispatch),
+
+});
+
+export default compose(withFetchData(DataTypes.FETCH_CARDS_DATA), connect(mapStateToProps, mapDispatchToProps))(App);

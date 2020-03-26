@@ -11,6 +11,7 @@ import {getPromoLoading} from '../../reducers/promo-card/selectors.js';
 import {getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
 import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../reducers/user/selectors.js';
+import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
 
 import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
 import {DataTypes} from '../../const.js';
@@ -21,7 +22,9 @@ const withFetchData = (dataType) => (Component) => {
   class WithFetchData extends PureComponent {
 
     componentDidMount() {
-      this.props.fetchData(dataType);
+      const {fetchData, selectedCardId} = this.props;
+
+      fetchData(dataType, selectedCardId);
     }
 
     render() {
@@ -55,6 +58,7 @@ const withFetchData = (dataType) => (Component) => {
 
   WithFetchData.propTypes = {
     fetchData: PropTypes.func.isRequired,
+    selectedCardId: PropTypes.number.isRequired,
     promoLoading: PropTypes.bool.isRequired,
     cardsLoading: PropTypes.bool.isRequired,
     cardsError: PropTypes.object,
@@ -67,6 +71,7 @@ const withFetchData = (dataType) => (Component) => {
   };
 
   const mapStateToProps = (state) => ({
+    selectedCardId: getSelectedCardId(state),
     promoLoading: getPromoLoading(state),
     cardsLoading: getCardsLoading(state),
     cardsError: getCardsError(state),
@@ -79,10 +84,10 @@ const withFetchData = (dataType) => (Component) => {
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
-    const {cardsService, selectedCardIdFromHistory} = ownProps;
+    const {cardsService} = ownProps;
 
     return {
-      fetchData: (datType) => dispatch(FetchActions.fetchData(cardsService, selectedCardIdFromHistory)(datType)),
+      fetchData: (datType, selectedCardId) => dispatch(FetchActions.fetchData(cardsService)(datType, selectedCardId)),
     };
   };
 

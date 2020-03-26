@@ -7,7 +7,6 @@ const mockGenre = `Drama`;
 const initialState = {
   cardListState: {
     genre: DEFAULT_GENRE,
-    selectedCardId: -1,
     showingCardsAmount: ShowingCardsAmount.ON_START,
   }
 };

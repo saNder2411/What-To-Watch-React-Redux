@@ -3,13 +3,9 @@ import ActionCreator from '../action-creator.js';
 
 const CardListActions = {
 
-  filtersCards: (dispatch) => (genre, showingCardsAmount, selectedCardId) => {
+  filtersCards: (dispatch) => (genre, showingCardsAmount) => {
     dispatch(ActionCreator.changeGenre(genre));
     dispatch(ActionCreator.changeShowingCardsAmount(showingCardsAmount));
-
-    if (selectedCardId) {
-      dispatch(ActionCreator.changeSelectedCard(selectedCardId));
-    }
   },
 };
 

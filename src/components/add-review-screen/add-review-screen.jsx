@@ -10,16 +10,12 @@ import Poster from '../poster/poster.jsx';
 import AddReviewForm from '../add-review-form/add-review-form.jsx';
 
 import withAddReviewFormState from '../../hocs/with-add-review-form-state/with-add-review-form-state.jsx';
-
-import {getCardsData} from '../../reducers/card-list/selectors.js';
-
+import {getSelectedCard} from '../../reducers/app-state/selectors';
 
 const WrappedAddReviewForm = withAddReviewFormState(AddReviewForm);
 
 
-const AddReviewScreen = ({selectedCardIdFromHistory, cardsData}) => {
-
-  const selectedCard = cardsData.find(({id}) => +selectedCardIdFromHistory === id);
+const AddReviewScreen = ({selectedCard}) => {
   const {title, posterImage, backgroundImage} = selectedCard;
 
   return (
@@ -28,23 +24,20 @@ const AddReviewScreen = ({selectedCardIdFromHistory, cardsData}) => {
         <Header title={title} backgroundImage={backgroundImage}>
           <Logo />
           <UserBlock />
-          <AddReviewBreadcrumbs title={title} selectedCardIdFromHistory={selectedCardIdFromHistory} />
+          <AddReviewBreadcrumbs title={title} />
         </Header>
-        <Poster isAddReviewScreen posterImage={posterImage} title={title}/>
+        <Poster posterImage={posterImage} title={title}/>
       </div>
 
-      <WrappedAddReviewForm selectedCardIdFromHistory={selectedCardIdFromHistory} />
+      <WrappedAddReviewForm />
     </section>
   );
 };
 
 AddReviewScreen.propTypes = {
-  selectedCardIdFromHistory: PropTypes.string.isRequired,
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
+  selectedCard: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cardsData: getCardsData(state),
-});
+const mapStateToProps = (state) => ({selectedCard: getSelectedCard(state)});
 
 export default connect(mapStateToProps)(AddReviewScreen);

@@ -23,7 +23,7 @@ import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-st
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
 import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
+import {getSelectedCard} from '../../reducers/app-state/selectors';
 
 import {DataTypes} from '../../const.js';
 
@@ -34,9 +34,7 @@ const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardRevie
 
 const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-const CardScreen = ({selectedCardIdFromHistory, cardsData}) => {
-
-  const selectedCard = cardsData.find(({id}) => +selectedCardIdFromHistory === id);
+const CardScreen = ({selectedCard}) => {
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
   return (
@@ -55,7 +53,7 @@ const CardScreen = ({selectedCardIdFromHistory, cardsData}) => {
         <WrappedCardTabs >
           <CardOverview {...selectedCard} />
           <CardDetails {...selectedCard} />
-          <WrappedCardReviews selectedCardIdFromHistory={selectedCardIdFromHistory} />
+          <WrappedCardReviews />
         </WrappedCardTabs>
       </CardScreenTop>
 
@@ -70,10 +68,9 @@ const CardScreen = ({selectedCardIdFromHistory, cardsData}) => {
 };
 
 CardScreen.propTypes = {
-  selectedCardIdFromHistory: PropTypes.string.isRequired,
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
+  selectedCard: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({cardsData: getCardsData(state)});
+const mapStateToProps = (state) => ({selectedCard: getSelectedCard(state)});
 
 export default connect(mapStateToProps)(CardScreen);

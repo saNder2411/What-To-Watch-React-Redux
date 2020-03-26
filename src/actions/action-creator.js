@@ -50,11 +50,6 @@ const ActionCreator = {
     payload: amount,
   }),
 
-  changeSelectedCard: (id) => ({
-    type: ActionTypes.CHANGE_SELECTED_CARD,
-    payload: id,
-  }),
-
   userDataRequested: () => ({type: ActionTypes.FETCH_USER_DATA_REQUEST}),
 
   userDataLoaded: (userData) => ({
@@ -82,6 +77,11 @@ const ActionCreator = {
   changeAppScreen: (screen) => ({
     type: ActionTypes.CHANGE_APP_SCREEN,
     payload: screen,
+  }),
+
+  changeSelectedCardId: (id) => ({
+    type: ActionTypes.CHANGE_SELECTED_CARD,
+    payload: id,
   }),
 };
 

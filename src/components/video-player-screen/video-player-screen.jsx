@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
+
+import {getSelectedCard, getSelectedCardId} from '../../reducers/app-state/selectors';
 
 import {getAppRoute} from '../../utils/utils.js';
 
@@ -19,10 +20,9 @@ const convertVideoTime = (sec) => {
 
 const VideoPlayerScreen = (props) => {
 
-  const {selectedCardIdFromHistory, cardsData, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
+  const {selectedCard, selectedCardId, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
     playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
 
-  const selectedCard = cardsData.find(({id}) => +selectedCardIdFromHistory === id);
   const {videoSrc, previewImage, title} = selectedCard;
   const videoProps = {
     isPlaying,
@@ -39,7 +39,7 @@ const VideoPlayerScreen = (props) => {
         {renderPlayer(videoProps)}
       </div>
 
-      <Link to={getAppRoute(selectedCardIdFromHistory).CARDS}>
+      <Link to={getAppRoute(selectedCardId).CARDS}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
 
@@ -93,8 +93,8 @@ const VideoPlayerScreen = (props) => {
 };
 
 VideoPlayerScreen.propTypes = {
-  selectedCardIdFromHistory: PropTypes.string.isRequired,
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
+  selectedCardId: PropTypes.number.isRequired,
+  selectedCard: PropTypes.object.isRequired,
   renderPlayer: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isFullScreen: PropTypes.bool.isRequired,
@@ -106,6 +106,9 @@ VideoPlayerScreen.propTypes = {
   onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({cardsData: getCardsData(state)});
+const mapStateToProps = (state) => ({
+  selectedCardId: getSelectedCardId(state),
+  selectedCard: getSelectedCard(state),
+});
 
 export default connect(mapStateToProps)(VideoPlayerScreen);

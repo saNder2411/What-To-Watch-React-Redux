@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
 import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
 
 import {ShowingCardsAmount} from '../../const.js';
@@ -24,12 +23,9 @@ const withActiveItem = (Component) => {
     _handleActiveItemClick(evt) {
       evt.preventDefault();
       const {currentTarget: {id}} = evt;
-      const {cardsData, history, filtersCards} = this.props;
+      const {history, filtersCards} = this.props;
 
       if (id) {
-        const {genre} = cardsData.find((card) => card.id === +id);
-
-        filtersCards(genre, ShowingCardsAmount.ON_START, +id);
         history.push(getAppRoute(id).CARDS);
 
         return;
@@ -50,17 +46,12 @@ const withActiveItem = (Component) => {
   WithActiveItem.propTypes = {
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     userCards: PropTypes.arrayOf(PropTypes.object.isRequired),
   };
 
-  const mapStateToProps = (state) => ({
-    cardsData: getCardsData(state),
-  });
-
   const mapDispatchToProps = (dispatch) => ({filtersCards: CardListActions.filtersCards(dispatch)});
 
-  return compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(WithActiveItem);
+  return compose(withRouter, connect(void 0, mapDispatchToProps))(WithActiveItem);
 };
 
 export default withActiveItem;
