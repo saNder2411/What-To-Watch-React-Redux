@@ -17,32 +17,34 @@ import {getCardsData} from '../../reducers/card-list/selectors.js';
 const WrappedAddReviewForm = withAddReviewFormState(AddReviewForm);
 
 
-const AddReviewScreen = ({selectedCardId, cardsData}) => {
+const AddReviewScreen = ({selectedCardIdFromHistory, cardsData}) => {
 
-  const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
+  const selectedCard = cardsData.find(({id}) => +selectedCardIdFromHistory === id);
   const {title, posterImage, backgroundImage} = selectedCard;
 
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <Header title={title} backgroundImage={backgroundImage}>
-          <Logo toMain />
+          <Logo />
           <UserBlock />
-          <AddReviewBreadcrumbs title={title} selectedCardId={selectedCardId} />
+          <AddReviewBreadcrumbs title={title} selectedCardIdFromHistory={selectedCardIdFromHistory} />
         </Header>
         <Poster isAddReviewScreen posterImage={posterImage} title={title}/>
       </div>
 
-      <WrappedAddReviewForm selectedCardId={selectedCardId} />
+      <WrappedAddReviewForm selectedCardIdFromHistory={selectedCardIdFromHistory} />
     </section>
   );
 };
 
 AddReviewScreen.propTypes = {
-  selectedCardId: PropTypes.string.isRequired,
+  selectedCardIdFromHistory: PropTypes.string.isRequired,
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const mapStateToProps = (state) => ({cardsData: getCardsData(state)});
+const mapStateToProps = (state) => ({
+  cardsData: getCardsData(state),
+});
 
 export default connect(mapStateToProps)(AddReviewScreen);

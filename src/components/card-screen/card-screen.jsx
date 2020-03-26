@@ -25,7 +25,7 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getCardsData} from '../../reducers/card-list/selectors.js';
 
-import {DataTypes, Screens} from '../../const.js';
+import {DataTypes} from '../../const.js';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
@@ -34,9 +34,9 @@ const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardRevie
 
 const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-const CardScreen = ({selectedCardId, cardsData}) => {
+const CardScreen = ({selectedCardIdFromHistory, cardsData}) => {
 
-  const selectedCard = cardsData.find(({id}) => +selectedCardId === id);
+  const selectedCard = cardsData.find(({id}) => +selectedCardIdFromHistory === id);
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
   return (
@@ -44,25 +44,25 @@ const CardScreen = ({selectedCardId, cardsData}) => {
       <CardScreenTop>
         <CardScreenHeader >
           <Header title={title} backgroundImage={backgroundImage}>
-            <Logo toMain />
+            <Logo />
             <UserBlock />
           </Header>
           <HeaderCardDesc title={title} genre={genre} released={released} >
-            <HeaderButtons isCardScreen selectedCardId={selectedCardId}/>
+            <HeaderButtons />
           </HeaderCardDesc>
         </CardScreenHeader>
-        <Poster isCardScreen posterImage={posterImage} title={title}/>
+        <Poster posterImage={posterImage} title={title}/>
         <WrappedCardTabs >
           <CardOverview {...selectedCard} />
           <CardDetails {...selectedCard} />
-          <WrappedCardReviews selectedCardId={selectedCardId} />
+          <WrappedCardReviews selectedCardIdFromHistory={selectedCardIdFromHistory} />
         </WrappedCardTabs>
       </CardScreenTop>
 
       <CardScreenBottom>
-        <WrappedPreviewCardList screen={Screens.CARD} />
+        <WrappedPreviewCardList />
         <Footer>
-          <Logo toMain isFooterLogo/>
+          <Logo isFooterLogo/>
         </Footer>
       </CardScreenBottom>
     </Fragment>
@@ -70,7 +70,7 @@ const CardScreen = ({selectedCardId, cardsData}) => {
 };
 
 CardScreen.propTypes = {
-  selectedCardId: PropTypes.string.isRequired,
+  selectedCardIdFromHistory: PropTypes.string.isRequired,
   cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 

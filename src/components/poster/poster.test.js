@@ -22,7 +22,7 @@ describe(`Render Poster`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Poster title={title} posterImage={posterImage} isCardScreen/>}
+                  render={() => <Poster title={title} posterImage={posterImage}/>}
                 />
               </Switch>
             </BrowserRouter>

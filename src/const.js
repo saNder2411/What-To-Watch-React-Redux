@@ -12,7 +12,6 @@ const ShowingCardsAmount = {
 };
 
 const DataTypes = {
-  FETCH_PROMO_DATA: `FETCH_PROMO_DATA`,
   FETCH_CARDS_DATA: `FETCH_CARDS_DATA`,
   FETCH_REVIEWS_DATA: `FETCH_REVIEWS_DATA`,
   FETCH_CHECK_USER_AUTH: `FETCH_CHECK_USER_AUTH`,
@@ -30,6 +29,9 @@ const Screens = {
   MAIN: `MAIN`,
   CARD: `CARD`,
   USER_LIST: `USER_LIST`,
+  VIDEO_PLAYER: `VIDEO_PLAYER`,
+  SIGN_IN: `SIGN_IN`,
+  ADD_REVIEW: `ADD_REVIEW`,
 };
 
 export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, Error, Screens};

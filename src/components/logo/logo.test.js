@@ -46,7 +46,7 @@ describe(`Render Logo`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <Logo toMain />}
+                  render={() => <Logo />}
                 />
               </Switch>
             </BrowserRouter>

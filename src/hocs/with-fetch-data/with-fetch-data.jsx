@@ -7,7 +7,7 @@ import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
-import {getPromoCardData, getPromoLoading, getPromoError} from '../../reducers/promo-card/selectors.js';
+import {getPromoLoading} from '../../reducers/promo-card/selectors.js';
 import {getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
 import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
 import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../reducers/user/selectors.js';
@@ -25,20 +25,14 @@ const withFetchData = (dataType) => (Component) => {
     }
 
     render() {
-      const {
-        promoCardData, promoLoading, promoError, cardsLoading,
-        cardsError, reviewsData, reviewsLoading, reviewsError,
-        userCardsData, userCardsLoading, userCardsError} = this.props;
+      const {promoLoading, cardsLoading, cardsError, reviewsData, reviewsLoading,
+        reviewsError, userCardsData, userCardsLoading, userCardsError} = this.props;
       let content;
 
       switch (dataType) {
-        case DataTypes.FETCH_PROMO_DATA:
-          content = promoLoading ? <div className="movie-card"><Spinner /></div> : <Component {...promoCardData}/>;
-
-          return promoError ? <ErrorIndicator error={promoError} /> : content;
 
         case DataTypes.FETCH_CARDS_DATA:
-          content = cardsLoading ? <Spinner /> : <Component />;
+          content = cardsLoading || promoLoading ? <Spinner /> : <Component />;
 
           return cardsError ? <ErrorIndicator error={cardsError} /> : content;
 
@@ -48,7 +42,7 @@ const withFetchData = (dataType) => (Component) => {
           return reviewsError ? <ErrorIndicator error={reviewsError} /> : content;
 
         case DataTypes.FETCH_USER_CARDS_DATA:
-          content = userCardsLoading ? <Spinner /> : <Component {...this.props} userCardsData={userCardsData} />;
+          content = userCardsLoading ? <Spinner /> : <Component userCards={userCardsData} />;
 
           return userCardsError ? <ErrorIndicator error={userCardsError} /> : content;
       }
@@ -61,9 +55,7 @@ const withFetchData = (dataType) => (Component) => {
 
   WithFetchData.propTypes = {
     fetchData: PropTypes.func.isRequired,
-    promoCardData: PropTypes.object.isRequired,
     promoLoading: PropTypes.bool.isRequired,
-    promoError: PropTypes.object,
     cardsLoading: PropTypes.bool.isRequired,
     cardsError: PropTypes.object,
     reviewsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -75,9 +67,7 @@ const withFetchData = (dataType) => (Component) => {
   };
 
   const mapStateToProps = (state) => ({
-    promoCardData: getPromoCardData(state),
     promoLoading: getPromoLoading(state),
-    promoError: getPromoError(state),
     cardsLoading: getCardsLoading(state),
     cardsError: getCardsError(state),
     reviewsData: getReviewsData(state),
@@ -89,10 +79,10 @@ const withFetchData = (dataType) => (Component) => {
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
-    const {cardsService, selectedCardId} = ownProps;
+    const {cardsService, selectedCardIdFromHistory} = ownProps;
 
     return {
-      fetchData: (datType) => dispatch(FetchActions.fetchData(cardsService, selectedCardId)(datType)),
+      fetchData: (datType) => dispatch(FetchActions.fetchData(cardsService, selectedCardIdFromHistory)(datType)),
     };
   };
 

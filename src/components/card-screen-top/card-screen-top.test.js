@@ -116,14 +116,14 @@ it(`Should CardScreenTop render correctly`, () => {
                 <CardScreenTop>
                   <CardScreenHeader >
                     <Header title={title} backgroundImage={backgroundImage}>
-                      <Logo toMain />
+                      <Logo />
                       <UserBlock />
                     </Header>
                     <HeaderCardDesc title={title} genre={genre} released={released} >
-                      <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                      <HeaderButtons selectedCardId={`1`}/>
                     </HeaderCardDesc>
                   </CardScreenHeader>
-                  <Poster isCardScreen posterImage={posterImage} title={title}/>
+                  <Poster posterImage={posterImage} title={title}/>
                   <WrappedCardTabs >
                     <CardOverview {...selectedCard} />
                     <CardDetails {...selectedCard} />

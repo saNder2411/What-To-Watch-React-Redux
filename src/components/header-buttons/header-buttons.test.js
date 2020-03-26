@@ -25,7 +25,7 @@ describe(`Render HeaderButtons`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <HeaderButtons isCardScreen selectedCardId={`1`}/>}
+                  render={() => <HeaderButtons selectedCardId={`1`}/>}
                 />
               </Switch>
             </BrowserRouter>
@@ -71,7 +71,7 @@ describe(`Render HeaderButtons`, () => {
               <Switch>
                 <Route
                   path='/'
-                  render={() => <HeaderButtons isCardScreen selectedCardId={`1`}/>}
+                  render={() => <HeaderButtons selectedCardId={`1`}/>}
                 />
               </Switch>
             </BrowserRouter>

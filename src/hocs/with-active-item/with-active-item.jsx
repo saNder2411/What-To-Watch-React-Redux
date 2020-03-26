@@ -41,18 +41,17 @@ const withActiveItem = (Component) => {
     }
 
     render() {
-      const {screen, userCardsData} = this.props;
+      const {userCards} = this.props;
 
-      return <Component screen={screen} userCardsData={userCardsData} onActiveItemClick={this._handleActiveItemClick} />;
+      return <Component userCards={userCards} onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 
   WithActiveItem.propTypes = {
-    screen: PropTypes.string,
-    userCardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    userCards: PropTypes.arrayOf(PropTypes.object.isRequired),
   };
 
   const mapStateToProps = (state) => ({

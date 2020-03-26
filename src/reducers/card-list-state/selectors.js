@@ -1,6 +1,7 @@
 import {createSelector} from 'reselect';
 import {getCardsData} from '../card-list/selectors.js';
-import {DEFAULT_GENRE} from '../../const.js';
+import {getScreen} from '../app-state/selectors.js';
+import {DEFAULT_GENRE, Screens} from '../../const.js';
 
 const getGenre = ({cardListState: {genre}}) => genre;
 
@@ -9,9 +10,9 @@ const getSelectedCardId = ({cardListState: {selectedCardId}}) => selectedCardId;
 const getShowingCardsAmount = ({cardListState: {showingCardsAmount}}) => showingCardsAmount;
 
 const getFilteredCards = createSelector(
-    getGenre, getSelectedCardId, getCardsData,
-    (genre, cardId, cards) => {
-      if (cardId === -1) {
+    getScreen, getGenre, getSelectedCardId, getCardsData,
+    (screen, genre, cardId, cards) => {
+      if (screen === Screens.MAIN) {
 
         return genre === DEFAULT_GENRE ? cards : cards.filter((card) => card.genre === genre);
       }

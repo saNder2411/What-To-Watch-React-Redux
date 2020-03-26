@@ -57,7 +57,7 @@ export default class CardsService {
 
   getUserAuthStatus() {
 
-    return this._API.get(`/login     `)
+    return this._API.get(`/login`)
       .then((res) => this._parseUserData(res.data));
   }
 

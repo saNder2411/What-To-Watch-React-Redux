@@ -83,7 +83,7 @@ it(`Should CardScreenBottom render correctly`, () => {
                 <CardScreenBottom>
                   <WrappedPreviewCardList selectedCardId={`1`} />
                   <Footer>
-                    <Logo toMain isFooterLogo/>
+                    <Logo isFooterLogo/>
                   </Footer>
                 </CardScreenBottom>
               </Route>

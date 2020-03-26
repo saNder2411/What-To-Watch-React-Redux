@@ -86,10 +86,10 @@ const withAddReviewFormState = (Component) => {
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
-    const {cardsService, selectedCardId} = ownProps;
+    const {cardsService, selectedCardIdFromHistory} = ownProps;
 
     return {
-      sendReview: (datType, reviewData) => dispatch(SendActions.sendData(cardsService, selectedCardId)(datType, reviewData)),
+      sendReview: (datType, reviewData) => dispatch(SendActions.sendData(cardsService, selectedCardIdFromHistory)(datType, reviewData)),
     };
   };
 

@@ -80,11 +80,11 @@ it(`Should CardScreenHeader render correctly`, () => {
               >
                 <CardScreenHeader >
                   <Header title={title} backgroundImage={backgroundImage}>
-                    <Logo toMain />
+                    <Logo />
                     <UserBlock />
                   </Header>
                   <HeaderCardDesc title={title} genre={genre} released={released} >
-                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                    <HeaderButtons selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </CardScreenHeader>
               </Route>

@@ -6,13 +6,14 @@ import {connect} from 'react-redux';
 import {getUserAuthStatus} from '../../reducers/user/selectors.js';
 
 import {getAppRoute} from '../../utils/utils.js';
+import {getScreen} from '../../reducers/app-state/selectors.js';
+import {Screens} from '../../const.js';
+import {getSelectedCardId} from '../../reducers/card-list-state/selectors.js';
 
 
-const HeaderButtons = ({isCardScreen, isAuthorized, selectedCardId}) => {
+const HeaderButtons = ({screen, isAuthorized, selectedCardId}) => {
 
-  const toPlayerScreen = isCardScreen ? getAppRoute(selectedCardId).PLAYER : getAppRoute(-1).PLAYER;
-
-  const addReviewButton = isCardScreen && isAuthorized ?
+  const addReviewButton = screen === Screens.CARD && isAuthorized ?
     <Link
       to={getAppRoute(selectedCardId).REVIEW}
       className="btn movie-card__button">
@@ -23,7 +24,7 @@ const HeaderButtons = ({isCardScreen, isAuthorized, selectedCardId}) => {
     <div className="movie-card__buttons">
       <Link
         className="btn btn--play movie-card__button"
-        to={toPlayerScreen}
+        to={getAppRoute(selectedCardId).PLAYER}
       >
         <svg viewBox="0 0 19 19" width="19" height="19">
           <use xlinkHref="#play-s"></use>
@@ -42,11 +43,15 @@ const HeaderButtons = ({isCardScreen, isAuthorized, selectedCardId}) => {
 };
 
 HeaderButtons.propTypes = {
-  isCardScreen: PropTypes.bool,
+  screen: PropTypes.string.isRequired,
   isAuthorized: PropTypes.bool.isRequired,
-  selectedCardId: PropTypes.string,
+  selectedCardId: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({isAuthorized: getUserAuthStatus(state)});
+const mapStateToProps = (state) => ({
+  screen: getScreen(state),
+  isAuthorized: getUserAuthStatus(state),
+  selectedCardId: getSelectedCardId(state),
+});
 
 export default connect(mapStateToProps)(HeaderButtons);

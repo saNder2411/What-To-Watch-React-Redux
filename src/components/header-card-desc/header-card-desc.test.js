@@ -33,7 +33,7 @@ describe(`Render HeaderCardDesc`, () => {
                   path='/'
                 >
                   <HeaderCardDesc title={title} genre={genre} released={released} >
-                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                    <HeaderButtons selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </Route>
               </Switch>
@@ -83,7 +83,7 @@ describe(`Render HeaderCardDesc`, () => {
               <Switch>
                 <Route path='/'>
                   <HeaderCardDesc title={title} genre={genre} released={released} >
-                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                    <HeaderButtons selectedCardId={`1`}/>
                   </HeaderCardDesc>
                 </Route>
               </Switch>

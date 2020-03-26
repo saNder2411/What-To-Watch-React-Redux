@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import './error-indicator.css';
 
 
-const ErrorIndicator = ({error}) => {
-  const message = `${error.data.error} Status error ${error.status}`;
+const ErrorIndicator = ({error: {message}}) => {
 
   return (
     <div className="page-content">

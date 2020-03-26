@@ -49,7 +49,7 @@ describe(`Render Footer`, () => {
               <Switch>
                 <Route path='/'>
                   <Footer>
-                    <Logo toMain isFooterLogo/>
+                    <Logo isFooterLogo/>
                   </Footer>
                 </Route>
               </Switch>

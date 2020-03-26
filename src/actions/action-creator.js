@@ -78,6 +78,11 @@ const ActionCreator = {
     type: ActionTypes.FETCH_USER_CARDS_FAILURE,
     payload: error,
   }),
+
+  changeAppScreen: (screen) => ({
+    type: ActionTypes.CHANGE_APP_SCREEN,
+    payload: screen,
+  }),
 };
 
 export default ActionCreator;

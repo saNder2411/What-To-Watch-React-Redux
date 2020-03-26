@@ -60,7 +60,7 @@ describe(`Render Header`, () => {
                 <Switch>
                   <Route path='/'>
                     <Header title={title} backgroundImage={backgroundImage}>
-                      <Logo toMain />
+                      <Logo />
                       <UserBlock />
                     </Header>
                   </Route>
@@ -83,7 +83,7 @@ describe(`Render Header`, () => {
                 <Switch>
                   <Route path='/'>
                     <Header title={title} backgroundImage={backgroundImage}>
-                      <Logo toMain />
+                      <Logo />
                       <UserBlock />
                       <AddReviewBreadcrumbs title={title} selectedCardId={`1`} />
                     </Header>
