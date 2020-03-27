@@ -4,4 +4,8 @@ const getCardsLoading = ({cardList: {cardsLoading}}) => cardsLoading;
 
 const getCardsError = ({cardList: {cardsError}}) => cardsError;
 
-export {getCardsData, getCardsLoading, getCardsError};
+const getUpdatedCardLoading = ({cardList: {updatedCardLoading}}) => updatedCardLoading;
+
+const getUpdatedCardError = ({cardList: {updatedCardError}}) => updatedCardError;
+
+export {getCardsData, getCardsLoading, getCardsError, getUpdatedCardLoading, getUpdatedCardError};

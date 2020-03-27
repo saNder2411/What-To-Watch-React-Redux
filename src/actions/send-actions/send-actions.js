@@ -20,6 +20,13 @@ const SendActions = {
           .then((reviewsData) => dispatch(ActionCreator.reviewsLoaded(reviewsData)))
           .catch((error) => dispatch(ActionCreator.reviewsError(error)));
         break;
+
+      case DataTypes.UPDATE_CARD:
+        dispatch(ActionCreator.updateCardRequested());
+        cardsService.updateFavoriteCard(selectedCardId, sentData)
+          .then((card) => dispatch(ActionCreator.updateCardLoaded(card)))
+          .catch((error) => dispatch(ActionCreator.updateCardError(error)));
+        break;
     }
 
   }

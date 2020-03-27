@@ -20,7 +20,7 @@ const convertVideoTime = (sec) => {
 
 const VideoPlayerScreen = (props) => {
 
-  const {selectedCard, selectedCardId, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
+  const {selectedCard, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
     playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
 
   const {videoSrc, previewImage, title} = selectedCard;
@@ -39,7 +39,7 @@ const VideoPlayerScreen = (props) => {
         {renderPlayer(videoProps)}
       </div>
 
-      <Link to={getAppRoute(selectedCardId).CARDS}>
+      <Link to={getAppRoute(selectedCard.id).CARDS}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
 
@@ -93,7 +93,6 @@ const VideoPlayerScreen = (props) => {
 };
 
 VideoPlayerScreen.propTypes = {
-  selectedCardId: PropTypes.number.isRequired,
   selectedCard: PropTypes.object.isRequired,
   renderPlayer: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
@@ -106,9 +105,6 @@ VideoPlayerScreen.propTypes = {
   onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  selectedCardId: getSelectedCardId(state),
-  selectedCard: getSelectedCard(state),
-});
+const mapStateToProps = (state) => ({selectedCard: getSelectedCard(state)});
 
 export default connect(mapStateToProps)(VideoPlayerScreen);

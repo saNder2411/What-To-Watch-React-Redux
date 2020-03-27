@@ -1,6 +1,8 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import MyListButton from '../my-list-button/my-list-button.jsx';
 
 import {connect} from 'react-redux';
 import {getUserAuthStatus} from '../../reducers/user/selectors.js';
@@ -9,23 +11,6 @@ import {getAppRoute} from '../../utils/utils.js';
 import {getScreen} from '../../reducers/app-state/selectors.js';
 import {Screens} from '../../const.js';
 import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
-
-class MyListButton extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-
-    return (
-      <button className="btn btn--list movie-card__button" type="button">
-        <svg viewBox="0 0 19 20" width="19" height="20">
-          <use xlinkHref="#add"></use>
-        </svg>
-        <span>My list</span>
-      </button>
-    );
-  }
-}
 
 const HeaderButtons = ({screen, isAuthorized, selectedCardId}) => {
 

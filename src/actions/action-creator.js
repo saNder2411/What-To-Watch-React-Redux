@@ -83,6 +83,18 @@ const ActionCreator = {
     type: ActionTypes.CHANGE_SELECTED_CARD,
     payload: id,
   }),
+
+  updateCardRequested: () => ({type: ActionTypes.UPDATE_CARD_REQUEST}),
+
+  updateCardLoaded: (card) => ({
+    type: ActionTypes.UPDATE_CARD_SUCCESS,
+    payload: card,
+  }),
+
+  updateCardError: (error) => ({
+    type: ActionTypes.UPDATE_CARD_FAILURE,
+    payload: error,
+  }),
 };
 
 export default ActionCreator;

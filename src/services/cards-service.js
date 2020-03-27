@@ -78,4 +78,10 @@ export default class CardsService {
     return this._API.get(`/favorite`)
       .then((res) => res.data.map(this._parseCard));
   }
+
+  updateFavoriteCard(id, data) {
+
+    return this._API.post(`/favorite/${id}/${data}`)
+      .then((res) => this._parseCard(res.data));
+  }
 }

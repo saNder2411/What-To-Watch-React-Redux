@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
@@ -27,66 +27,63 @@ const WrappedVideoPlayerScreen = compose(withVideoPlayerScreenState, withVideoPl
 
 const App = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}) => {
 
-
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route
-          path={getAppRoute().ROOT}
-          exact
-          render={() => {
-            changeAppScreen(Screens.MAIN);
-            changeSelectedCardId(promoCardData.id);
+    <Switch>
+      <Route
+        path={getAppRoute().ROOT}
+        exact
+        render={() => {
+          changeAppScreen(Screens.MAIN);
+          changeSelectedCardId(promoCardData.id);
 
-            return <Main />;
-          }} />
-        <Route
-          path={getAppRoute().CARDS}
-          exact
-          render={({match}) => {
-            const {id} = match.params;
-            const {genre} = cardsData.find((card) => card.id === +id);
+          return <Main />;
+        }} />
+      <Route
+        path={getAppRoute().CARDS}
+        exact
+        render={({match}) => {
+          const {id} = match.params;
+          const {genre} = cardsData.find((card) => card.id === +id);
 
-            changeAppScreen(Screens.CARD);
-            changeSelectedCardId(+id);
-            filtersCards(genre, ShowingCardsAmount.ON_START);
+          changeAppScreen(Screens.CARD);
+          changeSelectedCardId(+id);
+          filtersCards(genre, ShowingCardsAmount.ON_START);
 
-            return <CardScreen />;
-          }} />
-        <Route
-          path={getAppRoute().PLAYER}
-          render={({match}) => {
-            const {id} = match.params;
-            changeAppScreen(Screens.VIDEO_PLAYER);
-            changeSelectedCardId(+id);
+          return <CardScreen />;
+        }} />
+      <Route
+        path={getAppRoute().PLAYER}
+        render={({match}) => {
+          const {id} = match.params;
+          changeAppScreen(Screens.VIDEO_PLAYER);
+          changeSelectedCardId(+id);
 
-            return <WrappedVideoPlayerScreen />;
-          }} />
-        <Route
-          path={getAppRoute().LOGIN}
-          render={() => {
-            changeAppScreen(Screens.SIGN_IN);
+          return <WrappedVideoPlayerScreen />;
+        }} />
+      <Route
+        path={getAppRoute().LOGIN}
+        render={() => {
+          changeAppScreen(Screens.SIGN_IN);
 
-            return <SignInScreen />;
-          }} />
-        <Route
-          path={getAppRoute().REVIEW}
-          render={({match}) => {
-            const {id} = match.params;
-            changeAppScreen(Screens.ADD_REVIEW);
-            changeSelectedCardId(+id);
+          return <SignInScreen />;
+        }} />
+      <Route
+        path={getAppRoute().REVIEW}
+        render={({match}) => {
+          const {id} = match.params;
+          changeAppScreen(Screens.ADD_REVIEW);
+          changeSelectedCardId(+id);
 
-            return <AddReviewScreen />;
-          }} />
-        <Route
-          path={getAppRoute().USER_LIST}
-          render={() => {
-            changeAppScreen(Screens.USER_LIST);
+          return <AddReviewScreen />;
+        }} />
+      <Route
+        path={getAppRoute().USER_LIST}
+        render={() => {
+          changeAppScreen(Screens.USER_LIST);
 
-            return <UserListScreen />;
-          }} />
-      </Switch>
-    </BrowserRouter>
+          return <UserListScreen />;
+        }} />
+    </Switch>
   );
 };
 
@@ -107,7 +104,6 @@ const mapDispatchToProps = (dispatch) => ({
   changeAppScreen: (screen) => dispatch(ActionCreator.changeAppScreen(screen)),
   changeSelectedCardId: (id) => dispatch(ActionCreator.changeSelectedCardId(id)),
   filtersCards: CardListActions.filtersCards(dispatch),
-
 });
 
 export default compose(withFetchData(DataTypes.FETCH_CARDS_DATA), connect(mapStateToProps, mapDispatchToProps))(App);
