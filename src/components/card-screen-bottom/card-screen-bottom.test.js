@@ -14,7 +14,6 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import compose from '../../hocs/compose/compose.js';
 
-import {ComponentTypes} from '../../const.js';
 
 const mockStore = configureStore([thunk]);
 const mockCardsData = [
@@ -36,14 +35,24 @@ const mockCardsData = [
     runtime: 98,
     genre: `Drama`,
     released: 1989,
+    isFavorite: true,
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `CARD`,
+    selectedCardId: 1,
+  },
   user: {
-    userData: {},
     isAuthorized: false,
-    userDataLoading: false,
+    userData: {},
+    userDataLoading: true,
     userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: {},
@@ -54,10 +63,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
   cardListState: {
     genre: `Drama`,
-    selectedCardId: 1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -67,9 +77,7 @@ const store = mockStore({
   }
 });
 
-const WrappedPreviewCardList = compose(
-    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
-    withPreviewCardListState)(PreviewCardList);
+const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
 it(`Should CardScreenBottom render correctly`, () => {
   const markup = renderer
@@ -81,7 +89,7 @@ it(`Should CardScreenBottom render correctly`, () => {
                 path='/'
               >
                 <CardScreenBottom>
-                  <WrappedPreviewCardList selectedCardId={`1`} />
+                  <WrappedPreviewCardList />
                   <Footer>
                     <Logo isFooterLogo/>
                   </Footer>

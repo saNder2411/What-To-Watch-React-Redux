@@ -8,9 +8,8 @@ import {connect} from 'react-redux';
 import {getUserAuthStatus} from '../../reducers/user/selectors.js';
 
 import {getAppRoute} from '../../utils/utils.js';
-import {getScreen} from '../../reducers/app-state/selectors.js';
+import {getScreen, getSelectedCardId} from '../../reducers/app-state/selectors.js';
 import {Screens} from '../../const.js';
-import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
 
 const HeaderButtons = ({screen, isAuthorized, selectedCardId}) => {
 

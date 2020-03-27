@@ -37,7 +37,7 @@ it(`Should CardOverview render correctly`, () => {
         <WrappedCardTabs >
           <CardOverview {...selectedCard} />
           <CardDetails {...selectedCard} />
-          <WrappedCardReviews selectedCardId={`1`} />
+          <WrappedCardReviews />
         </WrappedCardTabs>
     )
     .toJSON();

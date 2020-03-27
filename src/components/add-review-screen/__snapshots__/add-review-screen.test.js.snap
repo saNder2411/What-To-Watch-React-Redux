@@ -59,7 +59,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
           >
             <a
               className="breadcrumbs__link"
-              href="/cards1"
+              href="/cards/1"
               onClick={[Function]}
             >
               Bohemian Rhapsody
@@ -79,20 +79,25 @@ exports[`Should AddReviewScreen render correctly 1`] = `
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          href="/userList"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="https://htmlacademy-react-3.appspot.com/"
-            width="63"
-          />
-        </div>
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height="63"
+              src="https://htmlacademy-react-3.appspot.com/"
+              width="63"
+            />
+          </div>
+        </a>
       </div>
     </header>
     <div
-      className="movie-card__poster  movie-card__poster--small"
+      className="movie-card__poster  "
     >
       <img
         alt="Bohemian Rhapsody"

@@ -1,17 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-
-import CardScreenHeader from './card-screen-header.jsx';
-import Header from '../header/header.jsx';
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
-import HeaderButtons from '../header-buttons/header-buttons.jsx';
-
+import MyListButton from './my-list-button.jsx';
+import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 const mockCardsData = [
@@ -31,13 +24,14 @@ const mockCardsData = [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
     runtime: 98,
+    isFavorite: true,
     genre: `Drama`,
     released: 1989,
   },
 ];
 const store = mockStore({
   appState: {
-    screen: `CARD`,
+    screen: `MAIN`,
     selectedCardId: 1,
   },
   user: {
@@ -64,7 +58,7 @@ const store = mockStore({
     updatedCardError: null,
   },
   cardListState: {
-    genre: `Drama`,
+    genre: `All genre`,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -74,29 +68,15 @@ const store = mockStore({
   }
 });
 
-const title = `Bohemian Rhapsody`;
-const genre = `Drama`;
-const released = 1989;
-const backgroundImage = `bg-the-grand-budapest-hotel`;
 
-it(`Should CardScreenHeader render correctly`, () => {
+it(`Should Logo render correctly in CardScreen Header`, () => {
   const markup = renderer
     .create(
         <Provider store={store}>
           <BrowserRouter>
             <Switch>
-              <Route
-                path='/'
-              >
-                <CardScreenHeader >
-                  <Header title={title} backgroundImage={backgroundImage}>
-                    <Logo />
-                    <UserBlock />
-                  </Header>
-                  <HeaderCardDesc title={title} genre={genre} released={released} >
-                    <HeaderButtons />
-                  </HeaderCardDesc>
-                </CardScreenHeader>
+              <Route path='/' >
+                <MyListButton />
               </Route>
             </Switch>
           </BrowserRouter>

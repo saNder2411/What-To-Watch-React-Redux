@@ -7,47 +7,27 @@ import Logo from './logo.jsx';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
-const store = mockStore({
-  user: {
-    userData: {},
-    isAuthorized: false,
-    userDataLoading: false,
-    userDataError: null,
-  },
-  promoCard: {
-    promoCardData: {},
-    promoLoading: false,
-    promoError: null,
-  },
-  cardList: {
-    cardsData: [],
-    cardsLoading: false,
-    cardsError: null,
-  },
-  cardListState: {
-    genre: `Drama`,
-    selectedCardId: 1,
-    showingCardsAmount: 8,
-  },
-  reviews: {
-    reviewsData: [],
-    reviewsLoading: false,
-    reviewsError: null,
-  }
-});
-
 
 describe(`Render Logo`, () => {
   it(`Should Logo render correctly in CardScreen Header`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `CARD`,
+        selectedCardId: 1,
+      },
+      cardListState: {
+        genre: `Drama`,
+        showingCardsAmount: 8,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => <Logo />}
-                />
+                <Route path='/' >
+                  <Logo />
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -58,15 +38,24 @@ describe(`Render Logo`, () => {
   });
 
   it(`Should Logo render correctly in Main Header`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
+      },
+      cardListState: {
+        genre: `Drama`,
+        showingCardsAmount: 8,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  component={Logo}
-                />
+                <Route path='/' >
+                  <Logo />
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -77,15 +66,24 @@ describe(`Render Logo`, () => {
   });
 
   it(`Should Logo render correctly in CardScreen Footer`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `CARD`,
+        selectedCardId: 1,
+      },
+      cardListState: {
+        genre: `Drama`,
+        showingCardsAmount: 8,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => <Logo toMain isFooterLogo />}
-                />
+                <Route path='/' >
+                  <Logo isFooterLogo/>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -96,15 +94,24 @@ describe(`Render Logo`, () => {
   });
 
   it(`Should Logo render correctly in Main Footer`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
+      },
+      cardListState: {
+        genre: `Drama`,
+        showingCardsAmount: 8,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => <Logo isFooterLogo />}
-                />
+                <Route path='/' >
+                  <Logo isFooterLogo/>
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>

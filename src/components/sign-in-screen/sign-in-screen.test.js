@@ -15,6 +15,10 @@ const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
     userData: {},
     isAuthorized: false,

@@ -88,10 +88,10 @@ exports[`Should CardScreenTop render correctly 1`] = `
         <div
           className="movie-card__buttons"
         >
-          <button
+          <a
             className="btn btn--play movie-card__button"
+            href="/player/1"
             onClick={[Function]}
-            type="button"
           >
             <svg
               height="19"
@@ -105,10 +105,11 @@ exports[`Should CardScreenTop render correctly 1`] = `
             <span>
               Play
             </span>
-          </button>
-          <button
+          </a>
+          <a
             className="btn btn--list movie-card__button"
-            type="button"
+            href="/login"
+            onClick={[Function]}
           >
             <svg
               height="20"
@@ -122,7 +123,7 @@ exports[`Should CardScreenTop render correctly 1`] = `
             <span>
               My list
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </div>

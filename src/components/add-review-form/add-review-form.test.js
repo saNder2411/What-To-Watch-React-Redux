@@ -17,6 +17,10 @@ const mockStore = configureStore([thunk]);
 
 
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   reviews: {
     reviewsData: [],
     reviewsLoading: false,
@@ -35,7 +39,7 @@ it(`Should AddReviewForm render correctly`, () => {
             <BrowserRouter>
               <Switch>
                 <Route path='/'>
-                  <WrappedAddReviewForm selectedCardId={`1`} />
+                  <WrappedAddReviewForm />
                 </Route>
               </Switch>
             </BrowserRouter>

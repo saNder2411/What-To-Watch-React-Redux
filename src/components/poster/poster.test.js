@@ -7,7 +7,7 @@ import Poster from './poster.jsx';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
-const store = mockStore({});
+
 
 const posterImage = `the-grand-budapest-hotel-poster`;
 const title = `Terminator`;
@@ -15,6 +15,12 @@ const title = `Terminator`;
 
 describe(`Render Poster`, () => {
   it(`Should Poster render correctly in CardScreen`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `CARD`,
+        selectedCardId: 1,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
@@ -34,6 +40,12 @@ describe(`Render Poster`, () => {
   });
 
   it(`Should Poster render correctly in Main`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
@@ -53,6 +65,12 @@ describe(`Render Poster`, () => {
   });
 
   it(`Should Poster render correctly in AddReviewScreen`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `ADD_REVIEW`,
+        selectedCardId: 1,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>

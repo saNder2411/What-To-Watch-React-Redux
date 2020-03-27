@@ -37,6 +37,10 @@ const mockCardsData = [
 ];
 
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
     userData: {},
     isAuthorized: true,
@@ -63,7 +67,7 @@ it(`Should AddReviewScreen render correctly`, () => {
           <BrowserRouter>
             <Switch>
               <Route path='/'>
-                <AddReviewScreen selectedCardId={`1`}/>
+                <AddReviewScreen />
               </Route>
             </Switch>
           </BrowserRouter>

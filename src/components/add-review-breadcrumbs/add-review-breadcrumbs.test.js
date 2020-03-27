@@ -8,7 +8,12 @@ import thunk from 'redux-thunk';
 import AddReviewBreadcrumbs from './add-review-breadcrumbs.jsx';
 
 const mockStore = configureStore([thunk]);
-const store = mockStore({});
+const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
+});
 
 const title = `Titanic`;
 
@@ -19,7 +24,7 @@ it(`Should AddReviewBreadcrumbs render correctly`, () => {
           <BrowserRouter>
             <Switch>
               <Route path='/'>
-                <AddReviewBreadcrumbs title={title} selectedCardId={`1`} />
+                <AddReviewBreadcrumbs title={title} selectedCardId={1} />
               </Route>
             </Switch>
           </BrowserRouter>

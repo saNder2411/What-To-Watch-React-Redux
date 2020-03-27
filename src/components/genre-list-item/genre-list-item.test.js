@@ -7,28 +7,7 @@ import GenreListItem from './genre-list-item.jsx';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
-const store = mockStore({
-  promoCard: {
-    promoCardData: {},
-    promoLoading: false,
-    promoError: null,
-  },
-  cardList: {
-    cardsData: [],
-    cardsLoading: false,
-    cardsError: null,
-  },
-  cardListState: {
-    genre: `All genre`,
-    selectedCardId: -1,
-    showingCardsAmount: 8,
-  },
-  reviews: {
-    reviewsData: [],
-    reviewsLoading: false,
-    reviewsError: null,
-  }
-});
+const store = mockStore({});
 const label = `All Genre`;
 const isActive = true;
 const onGenreListItemClick = () => {};

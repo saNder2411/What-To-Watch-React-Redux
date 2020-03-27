@@ -15,8 +15,8 @@ const mockError = {
 
 const initialState = {
   user: {
-    userData: {},
     isAuthorized: false,
+    userData: {},
     userDataLoading: true,
     userDataError: null,
   }

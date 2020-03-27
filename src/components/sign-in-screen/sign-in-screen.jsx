@@ -19,7 +19,7 @@ const SignInScreen = () => {
       <WrappedSignInForm />
 
       <Footer>
-        <Logo toMain isFooterLogo />
+        <Logo isFooterLogo />
       </Footer>
     </div>
   );
