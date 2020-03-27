@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 
-import {getSelectedCard, getSelectedCardId} from '../../reducers/app-state/selectors';
+import {getSelectedCard} from '../../reducers/app-state/selectors';
 
 import {getAppRoute} from '../../utils/utils.js';
 
