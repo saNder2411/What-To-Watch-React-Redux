@@ -2,7 +2,9 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getFilteredCards, getShowingCardsAmount} from '../../reducers/filtered-card-list/selectors.js';
+import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors.js';
+import {getScreen} from '../../reducers/app-state/selectors.js';
+import {Screens} from '../../const.js';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
@@ -22,7 +24,11 @@ const withPreviewCardListState = (Component) => {
     }
 
     _handlePreviewCardMouseEnter(evt) {
-      const mouseEnterCard = this.props.filteredCards.find(({id}) => id === +evt.currentTarget.id);
+      const {filteredCards, userCards, screen} = this.props;
+      const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : userCards;
+
+      const mouseEnterCard = cards.find(({id}) => id === +evt.currentTarget.id);
+
       this.setState({mouseEnterCard});
     }
 
@@ -31,11 +37,24 @@ const withPreviewCardListState = (Component) => {
     }
 
     render() {
-      const {filteredCards, selectedCardId, showingCardsAmount, onActiveItemClick} = this.props;
+      const {filteredCards, userCards, screen, showingCardsAmount, onActiveItemClick} = this.props;
+      let cards = [];
+
+      switch (screen) {
+        case Screens.MAIN:
+          cards = [...filteredCards.slice(0, showingCardsAmount)];
+          break;
+        case Screens.CARD:
+          cards = [...filteredCards.slice(0, MAX_AMOUNT_SIMILAR_CARD)];
+          break;
+        case Screens.USER_LIST:
+          cards = [...userCards];
+          break;
+      }
 
       return (
         <Component
-          filteredCards={filteredCards.slice(0, selectedCardId ? MAX_AMOUNT_SIMILAR_CARD : showingCardsAmount)}
+          cards={cards}
           mouseEnterCard={this.state.mouseEnterCard}
           previewCardHandlers={[onActiveItemClick, this._handlePreviewCardMouseEnter, this._handlePreviewCardMouseLeave]}
         />
@@ -45,14 +64,16 @@ const withPreviewCardListState = (Component) => {
 
   WithPreviewCardListState.propTypes = {
     filteredCards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    selectedCardId: PropTypes.string,
+    userCards: PropTypes.arrayOf(PropTypes.object.isRequired),
+    screen: PropTypes.string.isRequired,
     showingCardsAmount: PropTypes.number.isRequired,
     onActiveItemClick: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = (state) => ({
+    showingCardsAmount: getShowingCardsAmount(state),
     filteredCards: getFilteredCards(state),
-    showingCardsAmount: getShowingCardsAmount(state)
+    screen: getScreen(state),
   });
 
   return connect(mapStateToProps)(WithPreviewCardListState);

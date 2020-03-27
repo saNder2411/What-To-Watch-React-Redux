@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
+
+import {getSelectedCard} from '../../reducers/app-state/selectors';
+
+import {getAppRoute} from '../../utils/utils.js';
 
 
 const convertVideoTime = (sec) => {
@@ -18,15 +20,10 @@ const convertVideoTime = (sec) => {
 
 const VideoPlayerScreen = (props) => {
 
-  const {
-    selectedCardId, promoCardData, cardsData, renderPlayer,
-    isPlaying, progressInSeconds, progressInPercent, playerRef,
-    onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick,
-  } = props;
+  const {selectedCard, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
+    playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
 
-  const selectedCard = +selectedCardId === -1 ? promoCardData : cardsData.find(({id}) => +selectedCardId === id);
   const {videoSrc, previewImage, title} = selectedCard;
-  const toExit = +selectedCardId === -1 ? `/` : `/cards${selectedCardId}`;
   const videoProps = {
     isPlaying,
     previewImage,
@@ -42,7 +39,7 @@ const VideoPlayerScreen = (props) => {
         {renderPlayer(videoProps)}
       </div>
 
-      <Link to={toExit}>
+      <Link to={getAppRoute(selectedCard.id).CARDS}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
 
@@ -96,9 +93,7 @@ const VideoPlayerScreen = (props) => {
 };
 
 VideoPlayerScreen.propTypes = {
-  selectedCardId: PropTypes.string.isRequired,
-  cardsData: PropTypes.arrayOf(PropTypes.object.isRequired),
-  promoCardData: PropTypes.object.isRequired,
+  selectedCard: PropTypes.object.isRequired,
   renderPlayer: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isFullScreen: PropTypes.bool.isRequired,
@@ -110,9 +105,6 @@ VideoPlayerScreen.propTypes = {
   onFullScreenButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  promoCardData: getPromoCardData(state),
-  cardsData: getCardsData(state),
-});
+const mapStateToProps = (state) => ({selectedCard: getSelectedCard(state)});
 
 export default connect(mapStateToProps)(VideoPlayerScreen);

@@ -15,11 +15,12 @@ const createAPI = (onUnauthorized) => {
   const onFail = (error) => {
     const {response} = error;
 
-    if (response.status === Error.UNAUTHORIZED) {
-      onUnauthorized(response);
+    if (response && response.status === Error.UNAUTHORIZED) {
+      onUnauthorized(error);
 
       throw error;
     }
+
 
     throw error;
   };

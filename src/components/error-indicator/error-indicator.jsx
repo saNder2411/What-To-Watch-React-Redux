@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './error-indicator.css';
 
 
-const ErrorIndicator = ({message}) => {
+const ErrorIndicator = ({error: {message}}) => {
 
   return (
     <div className="page-content">
@@ -20,7 +20,7 @@ const ErrorIndicator = ({message}) => {
 };
 
 ErrorIndicator.propTypes = {
-  message: PropTypes.string.isRequired,
+  error: PropTypes.object.isRequired,
 };
 
 export default ErrorIndicator;

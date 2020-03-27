@@ -36,11 +36,20 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `CARD`,
+    selectedCardId: 1,
+  },
   user: {
+    isAuthorized: false,
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: {},
@@ -51,10 +60,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `Drama`,
-    selectedCardId: 1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -80,11 +90,11 @@ it(`Should CardScreenHeader render correctly`, () => {
               >
                 <CardScreenHeader >
                   <Header title={title} backgroundImage={backgroundImage}>
-                    <Logo toMain />
+                    <Logo />
                     <UserBlock />
                   </Header>
                   <HeaderCardDesc title={title} genre={genre} released={released} >
-                    <HeaderButtons isCardScreen selectedCardId={`1`}/>
+                    <HeaderButtons />
                   </HeaderCardDesc>
                 </CardScreenHeader>
               </Route>

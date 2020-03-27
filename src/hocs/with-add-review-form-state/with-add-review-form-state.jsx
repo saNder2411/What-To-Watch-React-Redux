@@ -10,6 +10,7 @@ import {getReviewsLoading, getReviewsError} from '../../reducers/reviews/selecto
 
 import SendActions from '../../actions/send-actions/send-actions.js';
 import {DataTypes} from '../../const.js';
+import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
 
 const ReviewLengthRange = {
   MIN: 50,
@@ -33,10 +34,10 @@ const withAddReviewFormState = (Component) => {
 
     _handleFormSubmit(evt) {
       evt.preventDefault();
-      const {sendReview} = this.props;
+      const {selectedCardId, sendReview} = this.props;
       const reviewData = this.state;
 
-      sendReview(DataTypes.SEND_REVIEW_DATA, reviewData);
+      sendReview(DataTypes.SEND_REVIEW_DATA, reviewData, selectedCardId);
       this.setState({
         rating: 0,
         comment: ``,
@@ -77,19 +78,21 @@ const withAddReviewFormState = (Component) => {
   WithAddReviewFormState.propTypes = {
     reviewsLoading: PropTypes.bool.isRequired,
     reviewsError: PropTypes.object,
+    selectedCardId: PropTypes.number.isRequired,
     sendReview: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = (state) => ({
     reviewsLoading: getReviewsLoading(state),
     reviewsError: getReviewsError(state),
+    selectedCardId: getSelectedCardId(state),
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
-    const {cardsService, selectedCardId} = ownProps;
+    const {cardsService} = ownProps;
 
     return {
-      sendReview: (datType, reviewData) => dispatch(SendActions.sendData(cardsService, selectedCardId)(datType, reviewData)),
+      sendReview: (dataType, reviewData, selectedCardId) => dispatch(SendActions.sendData(cardsService)(dataType, reviewData, selectedCardId)),
     };
   };
 

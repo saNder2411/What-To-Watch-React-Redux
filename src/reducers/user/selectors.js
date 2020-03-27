@@ -1,9 +1,16 @@
 const getUserData = ({user: {userData}}) => userData;
 
-const getAuthStatus = ({user: {authStatus}}) => authStatus;
+const getUserAuthStatus = ({user: {isAuthorized}}) => isAuthorized;
 
-const getAuthLoading = ({user: {authLoading}}) => authLoading;
+const getUserDataLoading = ({user: {userDataLoading}}) => userDataLoading;
 
-const getAuthError = ({user: {authError}}) => authError;
+const getUserDataError = ({user: {userDataError}}) => userDataError;
 
-export {getUserData, getAuthStatus, getAuthLoading, getAuthError};
+const getUserCardsData = ({userCardList: {userCardsData}}) => userCardsData;
+
+const getUserCardsLoading = ({userCardList: {userCardsLoading}}) => userCardsLoading;
+
+const getUserCardsError = ({userCardList: {userCardsError}}) => userCardsError;
+
+export {getUserData, getUserAuthStatus, getUserDataLoading, getUserDataError,
+  getUserCardsData, getUserCardsLoading, getUserCardsError};

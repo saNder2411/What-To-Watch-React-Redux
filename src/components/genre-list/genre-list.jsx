@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getGenre} from '../../reducers/filtered-card-list/selectors.js';
+import {getCardsData} from '../../reducers/card-list/selectors.js';
+import {getGenre} from '../../reducers/card-list-state/selectors.js';
 
 import GenreListItem from '../genre-list-item/genre-list-item.jsx';
 
@@ -43,6 +44,9 @@ GenreList.propTypes = {
   onActiveItemClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({genre: getGenre(state)});
+const mapStateToProps = (state) => ({
+  cardsData: getCardsData(state),
+  genre: getGenre(state),
+});
 
 export default connect(mapStateToProps)(GenreList);

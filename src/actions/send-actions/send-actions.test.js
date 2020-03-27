@@ -8,7 +8,7 @@ import {DataTypes} from '../../const.js';
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);
 
-describe(`FetchActions work correctly`, () => {
+describe(`SendActions work correctly`, () => {
 
   it(`Should make a correct sendData call to dispatch with arguments DataTypes.SEND_USER_AUTH_DATA`, () => {
     const sendActionCreator = SendActions.sendData(cardsService)(DataTypes.SEND_USER_AUTH_DATA);
@@ -18,7 +18,7 @@ describe(`FetchActions work correctly`, () => {
 
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
-      type: ActionTypes.FETCH_AUTH_REQUEST,
+      type: ActionTypes.FETCH_USER_DATA_REQUEST,
     });
   });
 
@@ -31,6 +31,18 @@ describe(`FetchActions work correctly`, () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: ActionTypes.FETCH_REVIEWS_REQUEST,
+    });
+  });
+
+  it(`Should make a correct sendData call to dispatch with arguments DataTypes.UPDATE_CARD`, () => {
+    const sendActionCreator = SendActions.sendData(cardsService)(DataTypes.UPDATE_CARD);
+    const dispatch = jest.fn();
+
+    sendActionCreator(dispatch);
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: ActionTypes.UPDATE_CARD_REQUEST,
     });
   });
 });

@@ -7,10 +7,7 @@ import GenreList from './genre-list.jsx';
 import CardsService from '../../services/cards-service.js';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
 import createAPI from '../../api.js';
-import compose from '../../hocs/compose/compose.js';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {DataTypes, ComponentTypes} from '../../const.js';
 import thunk from 'redux-thunk';
 
 const API = createAPI(() => {});
@@ -40,6 +37,21 @@ const mockCardsData = [
 ];
 
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
+  user: {
+    isAuthorized: false,
+    userData: {},
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
+  },
   promoCard: {
     promoCardData: {},
     promoLoading: false,
@@ -49,10 +61,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `All genre`,
-    selectedCardId: -1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -62,9 +75,7 @@ const store = mockStore({
   }
 });
 
-const WrappedGenreList = compose(
-    withFetchData(DataTypes.FETCH_CARDS_DATA),
-    withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
+const WrappedGenreList = withActiveItem(GenreList);
 
 
 it(`Should GenreList render correctly`, () => {
@@ -74,11 +85,9 @@ it(`Should GenreList render correctly`, () => {
           <CardsServiceProvider value={cardsService}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  exact
-                  component={WrappedGenreList}
-                />
+                <Route path='/'>
+                  <WrappedGenreList />
+                </Route>
               </Switch>
             </BrowserRouter>
           </CardsServiceProvider>

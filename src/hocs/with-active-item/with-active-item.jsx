@@ -5,13 +5,13 @@ import {withRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
-import FilterActions from '../../actions/filter-actions/filter-actions.js';
+import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
 
-import {ComponentTypes, ShowingCardsAmount} from '../../const.js';
+import {ShowingCardsAmount} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
 
 
-const withActiveItem = (componentType) => (Component) => {
+const withActiveItem = (Component) => {
 
   class WithActiveItem extends PureComponent {
 
@@ -23,13 +23,10 @@ const withActiveItem = (componentType) => (Component) => {
     _handleActiveItemClick(evt) {
       evt.preventDefault();
       const {currentTarget: {id}} = evt;
-      const {cardsData, history, filtersCards} = this.props;
+      const {history, filtersCards} = this.props;
 
       if (id) {
-        const {genre} = cardsData.find((card) => card.id === +id);
-
-        filtersCards(genre, ShowingCardsAmount.ON_START, +id);
-        history.push(`/cards${id}`);
+        history.push(getAppRoute(id).CARDS);
 
         return;
       }
@@ -40,41 +37,21 @@ const withActiveItem = (componentType) => (Component) => {
     }
 
     render() {
-      const {cardsData} = this.props;
+      const {userCards} = this.props;
 
-      switch (componentType) {
-        case ComponentTypes.PREVIEW_CARDS_LIST:
-          return (
-            <Component
-              onActiveItemClick={this._handleActiveItemClick}
-            />
-          );
-        case ComponentTypes.GENRES_LIST:
-          return (
-            <Component
-              cardsData={cardsData}
-              onActiveItemClick={this._handleActiveItemClick}
-            />
-          );
-      }
-
-      return <Component />;
+      return <Component userCards={userCards} onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 
   WithActiveItem.propTypes = {
     filtersCards: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    cardsData: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    userCards: PropTypes.arrayOf(PropTypes.object.isRequired),
   };
 
-  const mapStateToProps = (state) => ({
-    cardsData: getCardsData(state),
-  });
+  const mapDispatchToProps = (dispatch) => ({filtersCards: CardListActions.filtersCards(dispatch)});
 
-  const mapDispatchToProps = (dispatch) => ({filtersCards: FilterActions.filtersCards(dispatch)});
-
-  return compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(WithActiveItem);
+  return compose(withRouter, connect(void 0, mapDispatchToProps))(WithActiveItem);
 };
 
 export default withActiveItem;

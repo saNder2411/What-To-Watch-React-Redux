@@ -12,17 +12,13 @@ const ShowingCardsAmount = {
 };
 
 const DataTypes = {
-  FETCH_PROMO_DATA: `FETCH_PROMO_DATA`,
   FETCH_CARDS_DATA: `FETCH_CARDS_DATA`,
   FETCH_REVIEWS_DATA: `FETCH_REVIEWS_DATA`,
   FETCH_CHECK_USER_AUTH: `FETCH_CHECK_USER_AUTH`,
   SEND_USER_AUTH_DATA: `SEND_USER_AUTH_DATA`,
   SEND_REVIEW_DATA: `SEND_REVIEW_DATA`,
-};
-
-const ComponentTypes = {
-  PREVIEW_CARDS_LIST: `PREVIEW_CARDS_LIST`,
-  GENRES_LIST: `GENRES_LIST`,
+  FETCH_USER_CARDS_DATA: `FETCH_USER_CARDS_DATA`,
+  UPDATE_CARD: `UPDATE_CARD`,
 };
 
 const Error = {
@@ -30,10 +26,13 @@ const Error = {
   BAD_DATA_REQUEST: 400,
 };
 
-const AuthStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
+const Screens = {
+  MAIN: `MAIN`,
+  CARD: `CARD`,
+  USER_LIST: `USER_LIST`,
+  VIDEO_PLAYER: `VIDEO_PLAYER`,
+  SIGN_IN: `SIGN_IN`,
+  ADD_REVIEW: `ADD_REVIEW`,
 };
 
-export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes,
-  ComponentTypes, Error, AuthStatus};
+export {CardMode, DEFAULT_GENRE, ShowingCardsAmount, DataTypes, Error, Screens};

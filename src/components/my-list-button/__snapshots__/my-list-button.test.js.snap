@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Logo render correctly in CardScreen Header 1`] = `
+<a
+  className="btn btn--list movie-card__button"
+  href="/login"
+  onClick={[Function]}
+>
+  <svg
+    height="14"
+    viewBox="0 0 18 14"
+    width="18"
+  >
+    <use
+      xlinkHref="#in-list"
+    />
+  </svg>
+  <span>
+    My list
+  </span>
+</a>
+`;

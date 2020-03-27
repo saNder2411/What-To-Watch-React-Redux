@@ -15,11 +15,15 @@ const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    isAuthorized: false,
+    userDataLoading: false,
+    userDataError: null,
   },
 });
 

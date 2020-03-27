@@ -27,9 +27,9 @@ describe(`Render UserBlock`, () => {
     const store = mockStore({
       user: {
         userData: {},
-        authStatus: `NO_AUTH`,
-        authLoading: false,
-        authError: null,
+        isAuthorized: false,
+        userDataLoading: false,
+        userDataError: null,
       },
     });
     const markup = renderer
@@ -56,9 +56,9 @@ describe(`Render UserBlock`, () => {
     const store = mockStore({
       user: {
         userData: mockUserDate,
-        authStatus: `AUTH`,
-        authLoading: false,
-        authError: null,
+        isAuthorized: true,
+        userDataLoading: false,
+        userDataError: null,
       },
     });
     const markup = renderer

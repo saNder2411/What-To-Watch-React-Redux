@@ -51,4 +51,15 @@ const getTimeInHoursAndMinutes = (timeInMin) => {
 
 const extend = (a, ...b) => Object.assign({}, a, ...b);
 
-export {calcCardLevel, parseDateToStr, dividedArrayInHalf, getTimeInHoursAndMinutes, extend};
+const getAppRoute = (id = `:id`) => ({
+  ROOT: `/`,
+  CARDS: `/cards/${id}`,
+  PLAYER: `/player/${id}`,
+  LOGIN: `/login`,
+  REVIEW: `/cards/${id}/review`,
+  USER_LIST: `/userList`,
+});
+
+
+export {calcCardLevel, parseDateToStr, dividedArrayInHalf, getTimeInHoursAndMinutes,
+  extend, getAppRoute};

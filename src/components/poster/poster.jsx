@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {connect} from 'react-redux';
+import {getScreen} from '../../reducers/app-state/selectors';
 
-const Poster = ({isCardScreen, isAddReviewScreen, posterImage, title}) => {
-  const cardScreenClassName = isCardScreen ? `movie-card__poster--big` : ``;
-  const addReviewScreenClassName = isAddReviewScreen ? `movie-card__poster--small` : ``;
+import {Screens} from '../../const';
+
+
+const Poster = ({screen, posterImage, title}) => {
+  const cardScreenClassName = screen === Screens.CARD ? `movie-card__poster--big` : ``;
+  const addReviewScreenClassName = screen === Screens.ADD_REVIEW ? `movie-card__poster--small` : ``;
 
   return (
     <div className={`movie-card__poster ${cardScreenClassName} ${addReviewScreenClassName}`}>
@@ -14,10 +19,11 @@ const Poster = ({isCardScreen, isAddReviewScreen, posterImage, title}) => {
 };
 
 Poster.propTypes = {
-  isCardScreen: PropTypes.bool,
-  isAddReviewScreen: PropTypes.bool,
+  screen: PropTypes.string.isRequired,
   posterImage: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
-export default Poster;
+const mapStateToProps = (state) => ({screen: getScreen(state)});
+
+export default connect(mapStateToProps)(Poster);

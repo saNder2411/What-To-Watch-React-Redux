@@ -4,16 +4,21 @@ exports[`Render UserBlock Should UserBlock render correctly when user authorizat
 <div
   className="user-block"
 >
-  <div
-    className="user-block__avatar"
+  <a
+    href="/userList"
+    onClick={[Function]}
   >
-    <img
-      alt="User avatar"
-      height="63"
-      src="https://htmlacademy-react-3.appspot.com/avatar_url"
-      width="63"
-    />
-  </div>
+    <div
+      className="user-block__avatar"
+    >
+      <img
+        alt="User avatar"
+        height="63"
+        src="https://htmlacademy-react-3.appspot.com/avatar_url"
+        width="63"
+      />
+    </div>
+  </a>
 </div>
 `;
 

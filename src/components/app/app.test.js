@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {BrowserRouter} from 'react-router-dom';
 import App from './app.jsx';
 import createAPI from '../../api';
 import CardsService from '../../services/cards-service.js';
@@ -28,6 +29,7 @@ const mockPromoCardData = {
     `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
   ],
   runtime: 98,
+  isFavorite: true,
   genre: `Drama`,
   released: 1989,
 };
@@ -49,16 +51,26 @@ const mockCardsData = [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
     runtime: 98,
+    isFavorite: true,
     genre: `Drama`,
     released: 1989,
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
+    isAuthorized: false,
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: mockPromoCardData,
@@ -69,11 +81,12 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `All genre`,
-    selectedCardId: -1,
-    showingCardsAmount: 1,
+    showingCardsAmount: 8,
   },
   reviews: {
     reviewsData: [],
@@ -87,7 +100,9 @@ it(`Should App render correctly`, () => {
     .create(
         <Provider store={store}>
           <CardsServiceProvider value={cardsService}>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </CardsServiceProvider>
         </Provider>
     )

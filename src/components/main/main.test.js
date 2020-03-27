@@ -29,6 +29,7 @@ const mockPromoCardData = {
     `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
   ],
   runtime: 98,
+  isFavorite: true,
   genre: `Drama`,
   released: 1989,
 };
@@ -50,16 +51,26 @@ const mockCardsData = [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
     runtime: 98,
+    isFavorite: true,
     genre: `Drama`,
     released: 1989,
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
+    isAuthorized: false,
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: mockPromoCardData,
@@ -70,10 +81,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `All genre`,
-    selectedCardId: -1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -90,11 +102,9 @@ it(`Should Main render correctly`, () => {
         <CardsServiceProvider value={cardsService}>
           <BrowserRouter>
             <Switch>
-              <Route
-                path='/'
-                exact
-                component={Main}
-              />
+              <Route path='/' exact >
+                <Main />
+              </Route>
             </Switch>
           </BrowserRouter>
         </CardsServiceProvider>

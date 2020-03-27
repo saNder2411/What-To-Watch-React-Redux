@@ -38,14 +38,11 @@ const ActionCreator = {
     payload: error,
   }),
 
+  setDefaultCardListState: () => ({type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE}),
+
   changeGenre: (genre) => ({
     type: ActionTypes.CHANGE_GENRE,
     payload: genre,
-  }),
-
-  changeSelectedCard: (id) => ({
-    type: ActionTypes.CHANGE_SELECTED_CARD,
-    payload: id,
   }),
 
   changeShowingCardsAmount: (amount) => ({
@@ -53,15 +50,49 @@ const ActionCreator = {
     payload: amount,
   }),
 
-  authRequested: () => ({type: ActionTypes.FETCH_AUTH_REQUEST}),
+  userDataRequested: () => ({type: ActionTypes.FETCH_USER_DATA_REQUEST}),
 
-  authDataLoaded: (userData) => ({
-    type: ActionTypes.FETCH_AUTH_SUCCESS,
+  userDataLoaded: (userData) => ({
+    type: ActionTypes.FETCH_USER_DATA_SUCCESS,
     payload: userData,
   }),
 
-  authDataError: (error) => ({
-    type: ActionTypes.FETCH_AUTH_FAILURE,
+  userDataError: (error) => ({
+    type: ActionTypes.FETCH_USER_DATA_FAILURE,
+    payload: error,
+  }),
+
+  userCardsRequested: () => ({type: ActionTypes.FETCH_USER_CARDS_REQUEST}),
+
+  userCardsLoaded: (userCards) => ({
+    type: ActionTypes.FETCH_USER_CARDS_SUCCESS,
+    payload: userCards,
+  }),
+
+  userCardsError: (error) => ({
+    type: ActionTypes.FETCH_USER_CARDS_FAILURE,
+    payload: error,
+  }),
+
+  changeAppScreen: (screen) => ({
+    type: ActionTypes.CHANGE_APP_SCREEN,
+    payload: screen,
+  }),
+
+  changeSelectedCardId: (id) => ({
+    type: ActionTypes.CHANGE_SELECTED_CARD,
+    payload: id,
+  }),
+
+  updateCardRequested: () => ({type: ActionTypes.UPDATE_CARD_REQUEST}),
+
+  updateCardLoaded: (card) => ({
+    type: ActionTypes.UPDATE_CARD_SUCCESS,
+    payload: card,
+  }),
+
+  updateCardError: (error) => ({
+    type: ActionTypes.UPDATE_CARD_FAILURE,
     payload: error,
   }),
 };

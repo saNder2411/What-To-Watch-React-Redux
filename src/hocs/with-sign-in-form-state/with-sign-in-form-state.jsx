@@ -6,16 +6,20 @@ import Spinner from '../../components/spinner/spinner.jsx';
 
 import {connect} from 'react-redux';
 import compose from '../compose/compose.js';
-import {getAuthStatus, getAuthLoading, getAuthError} from '../../reducers/user/selectors.js';
+import {getUserAuthStatus, getUserDataLoading, getUserDataError} from '../../reducers/user/selectors.js';
 import withCardsService from '../with-cards-service/with-cards-service.jsx';
 import SendActions from '../../actions/send-actions/send-actions.js';
-import {DataTypes, AuthStatus} from '../../const.js';
+import ActionCreator from '../../actions/action-creator.js';
+
+import {DataTypes} from '../../const.js';
+import {getAppRoute} from '../../utils/utils.js';
+
 
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const withAuthFormState = (Component) => {
+const withSignInFormState = (Component) => {
 
-  class WithAuthFormState extends PureComponent {
+  class WithSignInFormState extends PureComponent {
 
     constructor(props) {
       super(props);
@@ -61,35 +65,38 @@ const withAuthFormState = (Component) => {
     }
 
     render() {
-      const {authStatus, authLoading, authError} = this.props;
-      const content = authLoading ?
+      const {isAuthorized, userDataLoading, userDataError, setDefaultCardListState} = this.props;
+      const content = userDataLoading ?
         <Spinner/> :
         <Component
           {...this.state}
-          error={authError}
+          error={userDataError}
           onInputChange={this._handleInputChange}
           onFormSubmit={this._handleFormSubmit}
         />;
 
-      if (authStatus === AuthStatus.AUTH) {
-        return <Redirect to="/" />;
+      if (isAuthorized) {
+        setDefaultCardListState();
+
+        return <Redirect to={getAppRoute().ROOT} />;
       }
 
       return content;
     }
   }
 
-  WithAuthFormState.propTypes = {
+  WithSignInFormState.propTypes = {
     authorizesUser: PropTypes.func.isRequired,
-    authStatus: PropTypes.string.isRequired,
-    authLoading: PropTypes.bool.isRequired,
-    authError: PropTypes.object,
+    setDefaultCardListState: PropTypes.func.isRequired,
+    isAuthorized: PropTypes.bool.isRequired,
+    userDataLoading: PropTypes.bool.isRequired,
+    userDataError: PropTypes.object,
   };
 
   const mapStatToProps = (state) => ({
-    authStatus: getAuthStatus(state),
-    authLoading: getAuthLoading(state),
-    authError: getAuthError(state),
+    isAuthorized: getUserAuthStatus(state),
+    userDataLoading: getUserDataLoading(state),
+    userDataError: getUserDataError(state),
   });
 
   const mapDispatchToProps = (dispatch, ownProps) => {
@@ -97,10 +104,11 @@ const withAuthFormState = (Component) => {
 
     return {
       authorizesUser: (dataType, formUserData) => dispatch(SendActions.sendData(cardsService)(dataType, formUserData)),
+      setDefaultCardListState: () => dispatch(ActionCreator.setDefaultCardListState()),
     };
   };
 
-  return compose(withCardsService, connect(mapStatToProps, mapDispatchToProps))(WithAuthFormState);
+  return compose(withCardsService, connect(mapStatToProps, mapDispatchToProps))(WithSignInFormState);
 };
 
-export default withAuthFormState;
+export default withSignInFormState;

@@ -100,7 +100,7 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.cardsLoaded(mockCardsData)).toEqual({type: ActionTypes.FETCH_CARDS_SUCCESS, payload: mockCardsData});
   });
 
-  it(`Action creator for card error request returns correct action`, () => {
+  it(`Action creator for cards error request returns correct action`, () => {
     expect(ActionCreator.cardsError(mockError)).toEqual({type: ActionTypes.FETCH_CARDS_FAILURE, payload: mockError});
   });
 
@@ -116,12 +116,12 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.reviewsError(mockError)).toEqual({type: ActionTypes.FETCH_REVIEWS_FAILURE, payload: mockError});
   });
 
-  it(`Action creator for change genre returns correct action`, () => {
-    expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
+  it(`Action creator for set default card list state returns correct action`, () => {
+    expect(ActionCreator.setDefaultCardListState()).toEqual({type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE});
   });
 
-  it(`Action creator for change selected card returns correct action`, () => {
-    expect(ActionCreator.changeSelectedCard(10)).toEqual({type: ActionTypes.CHANGE_SELECTED_CARD, payload: 10});
+  it(`Action creator for change genre returns correct action`, () => {
+    expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
   });
 
   it(`Action creator for change showing cards amount returns correct action`, () => {
@@ -132,16 +132,47 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.changeShowingCardsAmount(void 0)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: void 0});
   });
 
-
   it(`Action creator for auth request returns correct action`, () => {
-    expect(ActionCreator.authRequested()).toEqual({type: ActionTypes.FETCH_AUTH_REQUEST});
+    expect(ActionCreator.userDataRequested()).toEqual({type: ActionTypes.FETCH_USER_DATA_REQUEST});
   });
 
   it(`Action creator for update user auth data returns correct action`, () => {
-    expect(ActionCreator.authDataLoaded(mockUserDate)).toEqual({type: ActionTypes.FETCH_AUTH_SUCCESS, payload: mockUserDate});
+    expect(ActionCreator.userDataLoaded(mockUserDate)).toEqual({type: ActionTypes.FETCH_USER_DATA_SUCCESS, payload: mockUserDate});
   });
 
   it(`Action creator for user auth error request returns correct action`, () => {
-    expect(ActionCreator.authDataError(mockError)).toEqual({type: ActionTypes.FETCH_AUTH_FAILURE, payload: mockError});
+    expect(ActionCreator.userDataError(mockError)).toEqual({type: ActionTypes.FETCH_USER_DATA_FAILURE, payload: mockError});
+  });
+
+  it(`Action creator for user cards request returns correct action`, () => {
+    expect(ActionCreator.userCardsRequested()).toEqual({type: ActionTypes.FETCH_USER_CARDS_REQUEST});
+  });
+
+  it(`Action creator for user cards loaded returns correct action`, () => {
+    expect(ActionCreator.userCardsLoaded(mockCardsData)).toEqual({type: ActionTypes.FETCH_USER_CARDS_SUCCESS, payload: mockCardsData});
+  });
+
+  it(`Action creator for user cards error request returns correct action`, () => {
+    expect(ActionCreator.userCardsError(mockError)).toEqual({type: ActionTypes.FETCH_USER_CARDS_FAILURE, payload: mockError});
+  });
+
+  it(`Action creator for change app screen returns correct action`, () => {
+    expect(ActionCreator.changeAppScreen(`MAIN`)).toEqual({type: ActionTypes.CHANGE_APP_SCREEN, payload: `MAIN`});
+  });
+
+  it(`Action creator for change selected card returns correct action`, () => {
+    expect(ActionCreator.changeSelectedCardId(10)).toEqual({type: ActionTypes.CHANGE_SELECTED_CARD, payload: 10});
+  });
+
+  it(`Action creator for updated card request returns correct action`, () => {
+    expect(ActionCreator.updateCardRequested()).toEqual({type: ActionTypes.UPDATE_CARD_REQUEST});
+  });
+
+  it(`Action creator for updated card loaded returns correct action`, () => {
+    expect(ActionCreator.updateCardLoaded(mockPromoCardData)).toEqual({type: ActionTypes.UPDATE_CARD_SUCCESS, payload: mockPromoCardData});
+  });
+
+  it(`Action creator for updated card error request returns correct action`, () => {
+    expect(ActionCreator.updateCardError(mockError)).toEqual({type: ActionTypes.UPDATE_CARD_FAILURE, payload: mockError});
   });
 });

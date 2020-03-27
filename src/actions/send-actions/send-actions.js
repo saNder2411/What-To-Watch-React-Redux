@@ -4,14 +4,14 @@ import {DataTypes} from '../../const.js';
 
 const SendActions = {
 
-  sendData: (cardsService, selectedCardId) => (dataType, sentData) => (dispatch) => {
+  sendData: (cardsService) => (dataType, sentData, selectedCardId) => (dispatch) => {
 
     switch (dataType) {
       case DataTypes.SEND_USER_AUTH_DATA:
-        dispatch(ActionCreator.authRequested());
-        cardsService.sendAuthUserData(sentData)
-          .then((userData) => dispatch(ActionCreator.authDataLoaded(userData)))
-          .catch((error) => dispatch(ActionCreator.authDataError(error.response)));
+        dispatch(ActionCreator.userDataRequested());
+        cardsService.sendUserData(sentData)
+          .then((userData) => dispatch(ActionCreator.userDataLoaded(userData)))
+          .catch((error) => dispatch(ActionCreator.userDataError(error)));
         break;
 
       case DataTypes.SEND_REVIEW_DATA:
@@ -19,6 +19,13 @@ const SendActions = {
         cardsService.sendReview(selectedCardId, sentData)
           .then((reviewsData) => dispatch(ActionCreator.reviewsLoaded(reviewsData)))
           .catch((error) => dispatch(ActionCreator.reviewsError(error)));
+        break;
+
+      case DataTypes.UPDATE_CARD:
+        dispatch(ActionCreator.updateCardRequested());
+        cardsService.updateFavoriteCard(selectedCardId, sentData)
+          .then((card) => dispatch(ActionCreator.updateCardLoaded(card)))
+          .catch((error) => dispatch(ActionCreator.updateCardError(error)));
         break;
     }
 

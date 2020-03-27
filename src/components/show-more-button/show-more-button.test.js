@@ -26,54 +26,39 @@ const mockCardData = {
   runtime: 98,
   genre: `Drama`,
   released: 1989,
+  isFavorite: true,
 };
 
-const filteredCards = [mockCardData, mockCardData, mockCardData];
-
-const changeShowingCardsAmount = () => {};
+const mockCards = [mockCardData, mockCardData, mockCardData, mockCardData];
 
 
 describe(`Render ShowMoreButton`, () => {
-  it(`Should ShowMoreButton render correctly when there are no cards to render`, () => {
+  it(`Should ShowMoreButton render correctly`, () => {
     const store = mockStore({
-      user: {
-        userData: {},
-        authStatus: `NO_AUTH`,
-        authLoading: true,
-        authError: null,
-      },
-      promoCard: {
-        promoCardData: [],
-        promoLoading: false,
-        promoError: null,
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
       },
       cardList: {
-        cardsData: [],
+        cardsData: mockCards,
         cardsLoading: false,
         cardsError: null,
+        updatedCardLoading: false,
+        updatedCardError: null,
       },
-      filteredCardList: {
-        genre: `All genre`,
-        selectedCardId: -1,
-        showingCardsAmount: 1,
+      cardListState: {
+        genre: `All genres`,
+        showingCardsAmount: 2,
       },
-      reviews: {
-        reviewsData: [],
-        reviewsLoading: false,
-        reviewsError: null,
-      }
     });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => {
-                    return <ShowMoreButton changeShowingCardsAmount={changeShowingCardsAmount}/>;
-                  }}
-                />
+                <Route path='/'>
+                  <ShowMoreButton />
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>
@@ -83,44 +68,32 @@ describe(`Render ShowMoreButton`, () => {
     expect(markup).toMatchSnapshot();
   });
 
-  it(`Should ShowMoreButton render correctly`, () => {
+  it(`Should ShowMoreButton render correctly when there are no cards to render`, () => {
     const store = mockStore({
-      user: {
-        userData: {},
-        authStatus: `NO_AUTH`,
-        authLoading: false,
-        authError: null,
-      },
-      promoCard: {
-        promoCardData: {},
-        promoLoading: false,
-        promoError: null,
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
       },
       cardList: {
-        cardsData: [mockCardData, mockCardData, mockCardData],
+        cardsData: mockCards,
         cardsLoading: false,
         cardsError: null,
+        updatedCardLoading: false,
+        updatedCardError: null,
       },
-      filteredCardList: {
-        genre: `All genre`,
-        selectedCardId: -1,
-        showingCardsAmount: 1,
+      cardListState: {
+        genre: `All genres`,
+        showingCardsAmount: 8,
       },
-      reviews: {
-        reviewsData: [],
-        reviewsLoading: false,
-        reviewsError: null,
-      }
     });
     const markup = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Switch>
-                <Route
-                  path='/'
-                  render={() => <ShowMoreButton filteredCards={filteredCards} changeShowingCardsAmount={changeShowingCardsAmount}/>}
-                />
+                <Route path='/'>
+                  <ShowMoreButton />
+                </Route>
               </Switch>
             </BrowserRouter>
           </Provider>

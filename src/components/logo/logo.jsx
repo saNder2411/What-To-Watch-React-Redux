@@ -2,16 +2,23 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {connect} from 'react-redux';
+import ActionCreator from '../../actions/action-creator.js';
 
-const Logo = ({toMain, isFooterLogo}) => {
+import {getAppRoute} from '../../utils/utils.js';
+import {getScreen} from '../../reducers/app-state/selectors.js';
+import {Screens} from '../../const.js';
 
-  const onClick = toMain ? () => {} : (evt) => evt.preventDefault();
+
+const Logo = ({screen, isFooterLogo, setDefaultCardListState}) => {
+
+  const onClick = screen !== Screens.MAIN ? () => setDefaultCardListState() : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;
 
   return (
     <div className="logo">
       <Link
-        to="/"
+        to={getAppRoute().ROOT}
         className={`logo__link ${footerLogoClass}`}
         onClick={onClick}
       >
@@ -24,8 +31,16 @@ const Logo = ({toMain, isFooterLogo}) => {
 };
 
 Logo.propTypes = {
-  toMain: PropTypes.bool,
+  screen: PropTypes.string.isRequired,
   isFooterLogo: PropTypes.bool,
+  setDefaultCardListState: PropTypes.func.isRequired,
 };
 
-export default Logo;
+const mapStateToProps = (state) => ({screen: getScreen(state)});
+
+const mapDispatchToProps = (dispatch) => ({
+  setDefaultCardListState: () => dispatch(ActionCreator.setDefaultCardListState()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logo);

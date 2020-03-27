@@ -10,38 +10,15 @@ import Logo from '../logo/logo.jsx';
 
 
 const mockStore = configureStore([thunk]);
-const store = mockStore({
-  user: {
-    userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
-  },
-  promoCard: {
-    promoCardData: {},
-    promoLoading: false,
-    promoError: null,
-  },
-  cardList: {
-    cardsData: [],
-    cardsLoading: false,
-    cardsError: null,
-  },
-  filteredCardList: {
-    genre: `All genre`,
-    selectedCardId: -1,
-    showingCardsAmount: 8,
-  },
-  reviews: {
-    reviewsData: [],
-    reviewsLoading: false,
-    reviewsError: null,
-  }
-});
-
 
 describe(`Render Footer`, () => {
   it(`Should Footer render correctly in CardScreen`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `CARD`,
+        selectedCardId: 1,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>
@@ -49,7 +26,7 @@ describe(`Render Footer`, () => {
               <Switch>
                 <Route path='/'>
                   <Footer>
-                    <Logo toMain isFooterLogo/>
+                    <Logo isFooterLogo/>
                   </Footer>
                 </Route>
               </Switch>
@@ -62,6 +39,12 @@ describe(`Render Footer`, () => {
   });
 
   it(`Should Footer render correctly in Main`, () => {
+    const store = mockStore({
+      appState: {
+        screen: `MAIN`,
+        selectedCardId: 1,
+      },
+    });
     const markup = renderer
       .create(
           <Provider store={store}>

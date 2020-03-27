@@ -16,11 +16,8 @@ import Footer from '../footer/footer.jsx';
 import Logo from '../logo/logo.jsx';
 
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import compose from '../../hocs/compose/compose.js';
-
-import {DataTypes, ComponentTypes} from '../../const.js';
 
 
 const API = createAPI(() => {});
@@ -43,6 +40,7 @@ const mockPromoCardData = {
     `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
   ],
   runtime: 98,
+  isFavorite: true,
   genre: `Drama`,
   released: 1989,
 };
@@ -64,16 +62,26 @@ const mockCardsData = [
       `Judi Dench`, `Robert De Niro`, `Leonardo DiCaprio`, `Morgan Freeman`, `Tom Hanks`,
     ],
     runtime: 98,
+    isFavorite: true,
     genre: `Drama`,
     released: 1989,
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: 1,
+  },
   user: {
+    isAuthorized: false,
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: false,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: mockPromoCardData,
@@ -84,10 +92,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `All genre`,
-    selectedCardId: -1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -98,13 +107,8 @@ const store = mockStore({
 });
 
 
-const WrappedPreviewCardList = compose(
-    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
-    withPreviewCardListState)(PreviewCardList);
-
-const WrappedGenreList = compose(
-    withFetchData(DataTypes.FETCH_CARDS_DATA),
-    withActiveItem(ComponentTypes.GENRES_LIST))(GenreList);
+const WrappedGenreList = withActiveItem(GenreList);
+const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
 
 it(`Should MainContent render correctly`, () => {

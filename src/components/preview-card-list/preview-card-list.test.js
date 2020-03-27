@@ -8,7 +8,7 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import compose from '../../hocs/compose/compose.js';
 import thunk from 'redux-thunk';
-import {ComponentTypes} from '../../const.js';
+
 
 const mockStore = configureStore([thunk]);
 
@@ -34,11 +34,20 @@ const mockCardsData = [
   },
 ];
 const store = mockStore({
+  appState: {
+    screen: `MAIN`,
+    selectedCardId: -1,
+  },
   user: {
+    isAuthorized: false,
     userData: {},
-    authStatus: `NO_AUTH`,
-    authLoading: false,
-    authError: null,
+    userDataLoading: true,
+    userDataError: null,
+  },
+  userCardList: {
+    userCardsData: [],
+    userCardsLoading: true,
+    userCardsError: null,
   },
   promoCard: {
     promoCardData: {},
@@ -49,10 +58,11 @@ const store = mockStore({
     cardsData: mockCardsData,
     cardsLoading: false,
     cardsError: null,
+    updatedCardLoading: false,
+    updatedCardError: null,
   },
-  filteredCardList: {
+  cardListState: {
     genre: `All genre`,
-    selectedCardId: -1,
     showingCardsAmount: 8,
   },
   reviews: {
@@ -62,11 +72,9 @@ const store = mockStore({
   }
 });
 
-const WrappedPreviewCardList = compose(
-    withActiveItem(ComponentTypes.PREVIEW_CARDS_LIST),
-    withPreviewCardListState)(PreviewCardList);
+const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-describe(`Render PreviewCardsList`, () => {
+describe(`Render PreviewCardList`, () => {
   it(`Should PreviewCardList render correctly in Main`, () => {
     const markup = renderer
       .create(
@@ -96,7 +104,7 @@ describe(`Render PreviewCardsList`, () => {
                 <Route
                   path='/'
                   exact
-                  render={() => <WrappedPreviewCardList selectedCardId={`1`}/>}
+                  component={WrappedPreviewCardList}
                 />
               </Switch>
             </BrowserRouter>
