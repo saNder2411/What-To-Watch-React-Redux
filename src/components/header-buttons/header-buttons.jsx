@@ -2,14 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import MyListButton from '../my-list-button/my-list-button.jsx';
+import MyListButton from '../my-list-button/my-list-button';
 
 import {connect} from 'react-redux';
-import {getUserAuthStatus} from '../../reducers/user/selectors.js';
+import {getUserAuthStatus} from '../../reducers/user/selectors';
 
-import {getAppRoute} from '../../utils/utils.js';
-import {getScreen, getSelectedCardId} from '../../reducers/app-state/selectors.js';
-import {Screens} from '../../const.js';
+import {getAppRoute} from '../../utils/utils';
+import {getScreen, getSelectedCardId} from '../../reducers/app-state/selectors';
+import {Screens} from '../../const';
 
 const HeaderButtons = ({screen, isAuthorized, selectedCardId}) => {
 

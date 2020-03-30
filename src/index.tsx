@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
-import store from './store.js';
-import App from './components/app/app.jsx';
+import store from './store';
+import App from './components/app/app';
 import createAPI from './api';
-import CardsService from './services/cards-service.js';
-import {CardsServiceProvider} from './components/cards-service-context/cards-service-context.js';
-import ActionCreator from './actions/action-creator.js';
-import FetchActions from './actions/fetch-actions/fetch-actions.js';
-import {DataTypes} from './const.js';
+import CardsService from './services/cards-service';
+import {CardsServiceProvider} from './components/cards-service-context/cards-service-context';
+import ActionCreator from './actions/action-creator';
+import FetchActions from './actions/fetch-actions/fetch-actions';
+import {DataTypes} from './const';
 
 const onUnauthorized = (error) => store.dispatch(ActionCreator.userDataError(error));
 const API = createAPI(onUnauthorized);

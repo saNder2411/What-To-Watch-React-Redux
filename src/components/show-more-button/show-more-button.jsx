@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getFilteredCards, getShowingCardsAmount} from '../../reducers/card-list-state/selectors.js';
-import ActionCreator from '../../actions/action-creator.js';
+import {getFilteredCards, getShowingCardsAmount} from '../../reducers/card-list-state/selectors';
+import ActionCreator from '../../actions/action-creator';
 
 
 const ShowMoreButton = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {

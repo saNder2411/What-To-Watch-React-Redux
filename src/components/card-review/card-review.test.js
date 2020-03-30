@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardReview from './card-review.jsx';
+import CardReview from './card-review';
 
 const review = {
   id: 5,

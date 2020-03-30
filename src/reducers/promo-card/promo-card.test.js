@@ -1,5 +1,5 @@
-import {updatePromoCard as reducer} from './promo-card.js';
-import ActionTypes from '../../action-types/action-types.js';
+import {updatePromoCard as reducer} from './promo-card';
+import ActionTypes from '../../action-types/action-types';
 
 const mockPromoCardData = {
   id: 1,

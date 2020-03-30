@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import AddReviewBreadcrumbs from './add-review-breadcrumbs.jsx';
+import AddReviewBreadcrumbs from './add-review-breadcrumbs';
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({

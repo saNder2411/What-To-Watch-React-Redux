@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Error} from '../../const.js';
+import {Error} from '../../const';
 
 const SignInErrorMessage = ({error, isValidEmail}) => {
   const badValidEmailMessage = !isValidEmail ? <p>Please enter a valid email address</p> : null;

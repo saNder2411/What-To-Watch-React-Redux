@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardDetails from './card-details.jsx';
+import CardDetails from './card-details';
 
 const data = {
   director: `Steven Spielberg`,

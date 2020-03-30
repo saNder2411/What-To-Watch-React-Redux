@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoContainer from './video-container.jsx';
+import VideoContainer from './video-container';
 
 
 it(`VideoPlayer is rendered correctly in PreviewCard`, () => {

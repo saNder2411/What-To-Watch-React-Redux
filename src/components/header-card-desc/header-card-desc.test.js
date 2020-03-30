@@ -3,8 +3,8 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import HeaderCardDesc from './header-card-desc.jsx';
-import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import HeaderCardDesc from './header-card-desc';
+import HeaderButtons from '../header-buttons/header-buttons';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);

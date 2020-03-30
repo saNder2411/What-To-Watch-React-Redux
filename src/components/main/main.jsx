@@ -1,16 +1,16 @@
 import React, {Fragment} from 'react';
 
-import MainHeader from '../main-header/main-header.jsx';
-import MainContent from '../main-content/main-content.jsx';
-import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
-import GenreList from '../genre-list/genre-list.jsx';
-import ShowMoreButton from '../show-more-button/show-more-button.jsx';
-import Footer from '../footer/footer.jsx';
-import Logo from '../logo/logo.jsx';
+import MainHeader from '../main-header/main-header';
+import MainContent from '../main-content/main-content';
+import PreviewCardList from '../preview-card-list/preview-card-list';
+import GenreList from '../genre-list/genre-list';
+import ShowMoreButton from '../show-more-button/show-more-button';
+import Footer from '../footer/footer';
+import Logo from '../logo/logo';
 
-import compose from '../../hocs/compose/compose.js';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
+import compose from '../../hocs/compose/compose';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
 
 
 const WrappedGenreList = withActiveItem(GenreList);

@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import CardsService from '../../services/cards-service.js';
-import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
-import VideoPlayerScreen from './video-player-screen.jsx';
-import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
-import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
+import CardsService from '../../services/cards-service';
+import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
+import VideoPlayerScreen from './video-player-screen';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
+import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state';
 import thunk from 'redux-thunk';
 import createAPI from '../../api';
 

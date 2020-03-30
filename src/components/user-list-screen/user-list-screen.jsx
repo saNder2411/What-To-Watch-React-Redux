@@ -1,16 +1,16 @@
 import React from 'react';
 
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
-import Footer from '../footer/footer.jsx';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
+import PreviewCardList from '../preview-card-list/preview-card-list';
+import Footer from '../footer/footer';
 
-import compose from '../../hocs/compose/compose.js';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
+import compose from '../../hocs/compose/compose';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
 
-import {DataTypes} from '../../const.js';
+import {DataTypes} from '../../const';
 
 
 const WrappedPreviewCardList = compose(withFetchData(DataTypes.FETCH_USER_CARDS_DATA), withActiveItem, withPreviewCardListState)(PreviewCardList);

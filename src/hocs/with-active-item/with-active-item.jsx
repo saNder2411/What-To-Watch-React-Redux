@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import compose from '../compose/compose.js';
-import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
+import compose from '../compose/compose';
+import CardListActions from '../../actions/card-list-actions/card-list-actions';
 
-import {ShowingCardsAmount} from '../../const.js';
-import {getAppRoute} from '../../utils/utils.js';
+import {ShowingCardsAmount} from '../../const';
+import {getAppRoute} from '../../utils/utils';
 
 
 const withActiveItem = (Component) => {

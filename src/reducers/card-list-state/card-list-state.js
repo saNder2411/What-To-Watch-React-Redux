@@ -1,6 +1,6 @@
-import ActionTypes from '../../action-types/action-types.js';
-import {extend} from '../../utils/utils.js';
-import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
+import ActionTypes from '../../action-types/action-types';
+import {extend} from '../../utils/utils';
+import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const';
 
 
 const initialState = {

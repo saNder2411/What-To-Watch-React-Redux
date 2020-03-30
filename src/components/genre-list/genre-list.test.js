@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import GenreList from './genre-list.jsx';
-import CardsService from '../../services/cards-service.js';
-import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
-import createAPI from '../../api.js';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import GenreList from './genre-list';
+import CardsService from '../../services/cards-service';
+import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
+import createAPI from '../../api';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import thunk from 'redux-thunk';
 
 const API = createAPI(() => {});

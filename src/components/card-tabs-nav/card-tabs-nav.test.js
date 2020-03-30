@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardTabsNav from './card-tabs-nav.jsx';
+import CardTabsNav from './card-tabs-nav';
 
 const cardMode = `overview`;
 const handleTabsNavClick = () => {};

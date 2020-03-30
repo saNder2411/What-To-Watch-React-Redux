@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 import {getSelectedCard} from '../../reducers/app-state/selectors';
 
-import {getAppRoute} from '../../utils/utils.js';
+import {getAppRoute} from '../../utils/utils';
 
 
 const convertVideoTime = (sec) => {

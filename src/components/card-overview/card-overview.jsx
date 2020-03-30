@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {calcCardLevel} from '../../utils/utils.js';
+import {calcCardLevel} from '../../utils/utils';
 
 
 const CardLevelValues = [3, 5, 8, 10];

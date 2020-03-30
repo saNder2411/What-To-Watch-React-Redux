@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import ActionCreator from '../../actions/action-creator.js';
+import ActionCreator from '../../actions/action-creator';
 
-import {getAppRoute} from '../../utils/utils.js';
-import {getScreen} from '../../reducers/app-state/selectors.js';
-import {Screens} from '../../const.js';
+import {getAppRoute} from '../../utils/utils';
+import {getScreen} from '../../reducers/app-state/selectors';
+import {Screens} from '../../const';
 
 
 const Logo = ({screen, isFooterLogo, setDefaultCardListState}) => {

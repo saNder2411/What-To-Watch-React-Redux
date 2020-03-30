@@ -1,5 +1,5 @@
-import {updateReviews as reducer} from './reviews.js';
-import ActionTypes from '../../action-types/action-types.js';
+import {updateReviews as reducer} from './reviews';
+import ActionTypes from '../../action-types/action-types';
 
 const mockReviewsData = [
   {

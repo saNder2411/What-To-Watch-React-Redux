@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardReview from '../card-review/card-review.jsx';
+import CardReview from '../card-review/card-review';
 
-import {dividedArrayInHalf} from '../../utils/utils.js';
+import {dividedArrayInHalf} from '../../utils/utils';
 
 
 const CardReviews = ({reviewsData}) => {

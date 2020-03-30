@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {CardMode} from '../../const.js';
+import {CardMode} from '../../const';
 
 
 const withCardTabsState = (Component) => {

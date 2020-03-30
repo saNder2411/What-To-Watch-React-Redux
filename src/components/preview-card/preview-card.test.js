@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PreviewCard from './preview-card.jsx';
+import PreviewCard from './preview-card';
 
 const previewCardData = {
   id: 1,

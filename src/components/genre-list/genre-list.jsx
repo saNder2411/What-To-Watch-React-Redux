@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
-import {getGenre} from '../../reducers/card-list-state/selectors.js';
+import {getCardsData} from '../../reducers/card-list/selectors';
+import {getGenre} from '../../reducers/card-list-state/selectors';
 
-import GenreListItem from '../genre-list-item/genre-list-item.jsx';
+import GenreListItem from '../genre-list-item/genre-list-item';
 
-import {DEFAULT_GENRE} from '../../const.js';
+import {DEFAULT_GENRE} from '../../const';
 
 
 const MAX_AMOUNT_GENRES_LABEL = 9;

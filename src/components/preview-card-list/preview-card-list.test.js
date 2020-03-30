@@ -3,10 +3,10 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import PreviewCardList from './preview-card-list.jsx';
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import compose from '../../hocs/compose/compose.js';
+import PreviewCardList from './preview-card-list';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import compose from '../../hocs/compose/compose';
 import thunk from 'redux-thunk';
 
 

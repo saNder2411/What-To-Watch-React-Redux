@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
-import Header from '../header/header.jsx';
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
-import Poster from '../poster/poster.jsx';
-import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import ErrorIndicator from '../../components/error-indicator/error-indicator';
+import Header from '../header/header';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
+import HeaderCardDesc from '../header-card-desc/header-card-desc';
+import Poster from '../poster/poster';
+import HeaderButtons from '../header-buttons/header-buttons';
 
 import {connect} from 'react-redux';
-import {getPromoCardData, getPromoError} from '../../reducers/promo-card/selectors.js';
+import {getPromoCardData, getPromoError} from '../../reducers/promo-card/selectors';
 
 const MainHeader = ({promoError, promoCardData}) => {
 

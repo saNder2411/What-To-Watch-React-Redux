@@ -1,5 +1,5 @@
-import ActionCreator from './action-creator.js';
-import ActionTypes from '../action-types/action-types.js';
+import ActionCreator from './action-creator';
+import ActionTypes from '../action-types/action-types';
 
 const mockPromoCardData = {
   id: 1,

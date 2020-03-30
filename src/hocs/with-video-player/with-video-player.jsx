@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
-import VideoContainer from '../../components/video-container/video-container.jsx';
-import withVideo from '../with-video/with-video.jsx';
+import VideoContainer from '../../components/video-container/video-container';
+import withVideo from '../with-video/with-video';
 
 
 const VideoPlayer = withVideo(VideoContainer);

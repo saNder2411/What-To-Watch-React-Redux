@@ -5,19 +5,19 @@ import createAPI from '../../api';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import CardsService from '../../services/cards-service.js';
-import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+import CardsService from '../../services/cards-service';
+import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
 
-import MainContent from './main-content.jsx';
-import GenreList from '../genre-list/genre-list.jsx';
-import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
-import ShowMoreButton from '../show-more-button/show-more-button.jsx';
-import Footer from '../footer/footer.jsx';
-import Logo from '../logo/logo.jsx';
+import MainContent from './main-content';
+import GenreList from '../genre-list/genre-list';
+import PreviewCardList from '../preview-card-list/preview-card-list';
+import ShowMoreButton from '../show-more-button/show-more-button';
+import Footer from '../footer/footer';
+import Logo from '../logo/logo';
 
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import compose from '../../hocs/compose/compose.js';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import compose from '../../hocs/compose/compose';
 
 
 const API = createAPI(() => {});

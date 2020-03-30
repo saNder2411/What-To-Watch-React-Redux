@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Logo from './logo.jsx';
+import Logo from './logo';
 import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);

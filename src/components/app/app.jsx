@@ -3,24 +3,24 @@ import PropTypes from 'prop-types';
 import {Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import Main from '../main/main.jsx';
-import CardScreen from '../card-screen/card-screen.jsx';
-import VideoPlayerScreen from '../video-player-screen/video-player-screen.jsx';
-import SignInScreen from '../sign-in-screen/sign-in-screen.jsx';
-import AddReviewScreen from '../add-review-screen/add-review-screen.jsx';
-import UserListScreen from '../user-list-screen/user-list-screen.jsx';
+import Main from '../main/main';
+import CardScreen from '../card-screen/card-screen';
+import VideoPlayerScreen from '../video-player-screen/video-player-screen';
+import SignInScreen from '../sign-in-screen/sign-in-screen';
+import AddReviewScreen from '../add-review-screen/add-review-screen';
+import UserListScreen from '../user-list-screen/user-list-screen';
 
-import compose from '../../hocs/compose/compose.js';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
-import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
-import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state.jsx';
-import ActionCreator from '../../actions/action-creator.js';
-import CardListActions from '../../actions/card-list-actions/card-list-actions.js';
-import {getPromoCardData} from '../../reducers/promo-card/selectors.js';
+import compose from '../../hocs/compose/compose';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
+import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state';
+import ActionCreator from '../../actions/action-creator';
+import CardListActions from '../../actions/card-list-actions/card-list-actions';
+import {getPromoCardData} from '../../reducers/promo-card/selectors';
 
-import {DataTypes, Screens, ShowingCardsAmount} from '../../const.js';
-import {getAppRoute} from '../../utils/utils.js';
-import {getCardsData} from '../../reducers/card-list/selectors.js';
+import {DataTypes, Screens, ShowingCardsAmount} from '../../const';
+import {getAppRoute} from '../../utils/utils';
+import {getCardsData} from '../../reducers/card-list/selectors';
 
 
 const WrappedVideoPlayerScreen = compose(withVideoPlayerScreenState, withVideoPlayer)(VideoPlayerScreen);

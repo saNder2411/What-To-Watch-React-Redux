@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import renderer from 'react-test-renderer';
 import PropTypes from 'prop-types';
-import withVideo from './with-video.jsx';
+import withVideo from './with-video';
 
 
 const MockComponent = ({children}) => <Fragment>{children}</Fragment>;

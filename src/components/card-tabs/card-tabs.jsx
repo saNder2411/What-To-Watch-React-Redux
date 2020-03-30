@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardTabsNav from '../card-tabs-nav/card-tabs-nav.jsx';
+import CardTabsNav from '../card-tabs-nav/card-tabs-nav';
 
 
 const CardTabs = ({mode, onTabsNavClick, children}) => {

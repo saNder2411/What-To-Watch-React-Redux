@@ -5,23 +5,23 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import CardScreenTop from './card-screen-top.jsx';
-import CardScreenHeader from '../card-screen-header/card-screen-header.jsx';
-import Header from '../header/header.jsx';
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
-import HeaderButtons from '../header-buttons/header-buttons.jsx';
-import CardOverview from '../../components/card-overview/card-overview.jsx';
-import CardDetails from '../../components/card-details/card-details.jsx';
-import CardReviews from '../../components/card-reviews/card-reviews.jsx';
-import Poster from '../poster/poster.jsx';
-import CardTabs from '../card-tabs/card-tabs.jsx';
+import CardScreenTop from './card-screen-top';
+import CardScreenHeader from '../card-screen-header/card-screen-header';
+import Header from '../header/header';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
+import HeaderCardDesc from '../header-card-desc/header-card-desc';
+import HeaderButtons from '../header-buttons/header-buttons';
+import CardOverview from '../../components/card-overview/card-overview';
+import CardDetails from '../../components/card-details/card-details';
+import CardReviews from '../../components/card-reviews/card-reviews';
+import Poster from '../poster/poster';
+import CardTabs from '../card-tabs/card-tabs';
 
-import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
+import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
 
-import {DataTypes} from '../../const.js';
+import {DataTypes} from '../../const';
 
 
 const mockStore = configureStore([thunk]);

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {getUserAuthStatus, getUserData} from '../../reducers/user/selectors.js';
-import {getAppRoute} from '../../utils/utils.js';
+import {getUserAuthStatus, getUserData} from '../../reducers/user/selectors';
+import {getAppRoute} from '../../utils/utils';
 
 const UserBlock = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
   const content = isAuthorized ?

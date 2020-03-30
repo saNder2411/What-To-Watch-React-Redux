@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import {getTimeInHoursAndMinutes} from '../../utils/utils.js';
+import {getTimeInHoursAndMinutes} from '../../utils/utils';
 
 
 const CardDetails = ({director, starring, runtime, genre, released}) => {

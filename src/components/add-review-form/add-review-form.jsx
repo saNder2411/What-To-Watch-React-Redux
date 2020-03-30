@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ErrorIndicator from '../error-indicator/error-indicator.jsx';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 
 const MAX_RATING = 5;

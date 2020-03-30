@@ -5,14 +5,14 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import CardScreenBottom from './card-screen-bottom.jsx';
-import Logo from '../logo/logo.jsx';
-import PreviewCardList from '../preview-card-list/preview-card-list.jsx';
-import Footer from '../footer/footer.jsx';
+import CardScreenBottom from './card-screen-bottom';
+import Logo from '../logo/logo';
+import PreviewCardList from '../preview-card-list/preview-card-list';
+import Footer from '../footer/footer';
 
-import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import compose from '../../hocs/compose/compose.js';
+import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import compose from '../../hocs/compose/compose';
 
 
 const mockStore = configureStore([thunk]);

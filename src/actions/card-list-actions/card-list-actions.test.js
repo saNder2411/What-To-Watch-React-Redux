@@ -1,5 +1,5 @@
-import CardListActions from './card-list-actions.js';
-import ActionTypes from '../../action-types/action-types.js';
+import CardListActions from './card-list-actions';
+import ActionTypes from '../../action-types/action-types';
 
 const mockGenre = `All genre`;
 const mockShowingCardsAmount = 8;

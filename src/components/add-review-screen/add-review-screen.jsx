@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Header from '../header/header.jsx';
-import Logo from '../logo/logo.jsx';
-import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import Poster from '../poster/poster.jsx';
-import AddReviewForm from '../add-review-form/add-review-form.jsx';
+import Header from '../header/header';
+import Logo from '../logo/logo';
+import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs';
+import UserBlock from '../user-block/user-block';
+import Poster from '../poster/poster';
+import AddReviewForm from '../add-review-form/add-review-form';
 
-import withAddReviewFormState from '../../hocs/with-add-review-form-state/with-add-review-form-state.jsx';
+import withAddReviewFormState from '../../hocs/with-add-review-form-state/with-add-review-form-state';
 import {getSelectedCard} from '../../reducers/app-state/selectors';
 
 const WrappedAddReviewForm = withAddReviewFormState(AddReviewForm);

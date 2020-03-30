@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import SignInErrorMessage from './ sign-in-error-message.jsx';
+import SignInErrorMessage from './ sign-in-error-message';
 
 const error = {
   status: 400,

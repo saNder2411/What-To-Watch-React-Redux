@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardsServiceConsumer} from '../../components/cards-service-context/cards-service-context.js';
+import {CardsServiceConsumer} from '../../components/cards-service-context/cards-service-context';
 
 
 const withCardsService = (Component) => {

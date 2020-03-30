@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PreviewCard from '../preview-card/preview-card.jsx';
-import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
+import PreviewCard from '../preview-card/preview-card';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
 
 const PreviewCardList = ({cards, mouseEnterCard, previewCardHandlers}) => {
 

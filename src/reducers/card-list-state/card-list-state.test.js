@@ -1,6 +1,6 @@
-import {updateCardListState as reducer} from './card-list-state.js';
-import ActionTypes from '../../action-types/action-types.js';
-import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const.js';
+import {updateCardListState as reducer} from './card-list-state';
+import ActionTypes from '../../action-types/action-types';
+import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const';
 
 const mockGenre = `Drama`;
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
-import {CardsServiceProvider} from '../cards-service-context/cards-service-context.js';
+import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import createAPI from '../../api.js';
-import CardsService from '../../services/cards-service.js';
+import createAPI from '../../api';
+import CardsService from '../../services/cards-service';
 import thunk from 'redux-thunk';
 
-import Header from './header.jsx';
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs.jsx';
+import Header from './header';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
+import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs';
 
 
 const API = createAPI(() => {});

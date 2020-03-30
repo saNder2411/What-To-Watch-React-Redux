@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {parseDateToStr} from '../../utils/utils.js';
+import {parseDateToStr} from '../../utils/utils';
 
 
 const CardReview = ({user, rating, comment, date}) => {

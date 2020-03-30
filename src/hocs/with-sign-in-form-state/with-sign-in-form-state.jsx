@@ -2,17 +2,17 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
-import Spinner from '../../components/spinner/spinner.jsx';
+import Spinner from '../../components/spinner/spinner';
 
 import {connect} from 'react-redux';
-import compose from '../compose/compose.js';
-import {getUserAuthStatus, getUserDataLoading, getUserDataError} from '../../reducers/user/selectors.js';
-import withCardsService from '../with-cards-service/with-cards-service.jsx';
-import SendActions from '../../actions/send-actions/send-actions.js';
-import ActionCreator from '../../actions/action-creator.js';
+import compose from '../compose/compose';
+import {getUserAuthStatus, getUserDataLoading, getUserDataError} from '../../reducers/user/selectors';
+import withCardsService from '../with-cards-service/with-cards-service';
+import SendActions from '../../actions/send-actions/send-actions';
+import ActionCreator from '../../actions/action-creator';
 
-import {DataTypes} from '../../const.js';
-import {getAppRoute} from '../../utils/utils.js';
+import {DataTypes} from '../../const';
+import {getAppRoute} from '../../utils/utils';
 
 
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

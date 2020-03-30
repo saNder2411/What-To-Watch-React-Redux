@@ -1,16 +1,16 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import Spinner from '../../components/spinner/spinner.jsx';
+import Spinner from '../../components/spinner/spinner';
 
 import {connect} from 'react-redux';
-import compose from '../compose/compose.js';
-import withCardsService from '../with-cards-service/with-cards-service.jsx';
-import {getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
+import compose from '../compose/compose';
+import withCardsService from '../with-cards-service/with-cards-service';
+import {getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors';
 
-import SendActions from '../../actions/send-actions/send-actions.js';
-import {DataTypes} from '../../const.js';
-import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
+import SendActions from '../../actions/send-actions/send-actions';
+import {DataTypes} from '../../const';
+import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
 const ReviewLengthRange = {
   MIN: 50,

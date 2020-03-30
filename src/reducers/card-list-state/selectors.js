@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
-import {getCardsData} from '../card-list/selectors.js';
-import {getScreen, getSelectedCardId} from '../app-state/selectors.js';
-import {DEFAULT_GENRE, Screens} from '../../const.js';
+import {getCardsData} from '../card-list/selectors';
+import {getScreen, getSelectedCardId} from '../app-state/selectors';
+import {DEFAULT_GENRE, Screens} from '../../const';
 
 const getGenre = ({cardListState: {genre}}) => genre;
 

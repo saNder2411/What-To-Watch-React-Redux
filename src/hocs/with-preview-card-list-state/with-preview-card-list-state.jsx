@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors.js';
-import {getScreen} from '../../reducers/app-state/selectors.js';
-import {Screens} from '../../const.js';
+import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors';
+import {getScreen} from '../../reducers/app-state/selectors';
+import {Screens} from '../../const';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;

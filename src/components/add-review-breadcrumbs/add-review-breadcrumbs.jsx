@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
+import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
-import {getAppRoute} from '../../utils/utils.js';
+import {getAppRoute} from '../../utils/utils';
 
 
 const AddReviewBreadcrumbs = ({title, selectedCardId}) => {

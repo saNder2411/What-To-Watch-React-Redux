@@ -5,8 +5,8 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import Footer from './footer.jsx';
-import Logo from '../logo/logo.jsx';
+import Footer from './footer';
+import Logo from '../logo/logo';
 
 
 const mockStore = configureStore([thunk]);

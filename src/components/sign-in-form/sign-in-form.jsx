@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SignInErrorMessage from '../sign-in-error-message/ sign-in-error-message.jsx';
+import SignInErrorMessage from '../sign-in-error-message/ sign-in-error-message';
 
 
 const SignInForm = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}) => {

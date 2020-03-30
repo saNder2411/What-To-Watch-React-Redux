@@ -1,9 +1,9 @@
-import createAPI from '../../api.js';
-import SendActions from './send-actions.js';
-import CardsService from '../../services/cards-service.js';
+import createAPI from '../../api';
+import SendActions from './send-actions';
+import CardsService from '../../services/cards-service';
 
-import ActionTypes from '../../action-types/action-types.js';
-import {DataTypes} from '../../const.js';
+import ActionTypes from '../../action-types/action-types';
+import {DataTypes} from '../../const';
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);

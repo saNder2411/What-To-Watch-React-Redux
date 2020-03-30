@@ -5,12 +5,12 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import CardScreenHeader from './card-screen-header.jsx';
-import Header from '../header/header.jsx';
-import Logo from '../logo/logo.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import HeaderCardDesc from '../header-card-desc/header-card-desc.jsx';
-import HeaderButtons from '../header-buttons/header-buttons.jsx';
+import CardScreenHeader from './card-screen-header';
+import Header from '../header/header';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
+import HeaderCardDesc from '../header-card-desc/header-card-desc';
+import HeaderButtons from '../header-buttons/header-buttons';
 
 
 const mockStore = configureStore([thunk]);

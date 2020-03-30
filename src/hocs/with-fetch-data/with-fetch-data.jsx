@@ -1,20 +1,20 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import Spinner from '../../components/spinner/spinner.jsx';
-import ErrorIndicator from '../../components/error-indicator/error-indicator.jsx';
+import Spinner from '../../components/spinner/spinner';
+import ErrorIndicator from '../../components/error-indicator/error-indicator';
 
 import {connect} from 'react-redux';
-import compose from '../compose/compose.js';
-import withCardsService from '../with-cards-service/with-cards-service.jsx';
-import {getPromoLoading} from '../../reducers/promo-card/selectors.js';
-import {getCardsLoading, getCardsError} from '../../reducers/card-list/selectors.js';
-import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors.js';
-import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../reducers/user/selectors.js';
-import {getSelectedCardId} from '../../reducers/app-state/selectors.js';
+import compose from '../compose/compose';
+import withCardsService from '../with-cards-service/with-cards-service';
+import {getPromoLoading} from '../../reducers/promo-card/selectors';
+import {getCardsLoading, getCardsError} from '../../reducers/card-list/selectors';
+import {getReviewsData, getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors';
+import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../reducers/user/selectors';
+import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
-import FetchActions from '../../actions/fetch-actions/fetch-actions.js';
-import {DataTypes} from '../../const.js';
+import FetchActions from '../../actions/fetch-actions/fetch-actions';
+import {DataTypes} from '../../const';
 
 
 const withFetchData = (dataType) => (Component) => {

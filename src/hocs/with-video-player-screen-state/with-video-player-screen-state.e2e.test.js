@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withVideoPlayer from '../with-video-player/with-video-player.jsx';
-import withVideoPlayerScreenState from './with-video-player-screen-state.jsx';
+import withVideoPlayer from '../with-video-player/with-video-player';
+import withVideoPlayerScreenState from './with-video-player-screen-state';
 
 const MockVideoPlayerScreen = (props) => {
   const {renderPlayer, isPlaying, playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;

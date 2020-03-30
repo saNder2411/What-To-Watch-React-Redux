@@ -1,5 +1,5 @@
-import ActionCreator from '../action-creator.js';
-import {DataTypes} from '../../const.js';
+import ActionCreator from '../action-creator';
+import {DataTypes} from '../../const';
 
 
 const SendActions = {

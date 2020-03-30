@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardTabs from './card-tabs.jsx';
-import CardOverview from '../../components/card-overview/card-overview.jsx';
-import CardDetails from '../../components/card-details/card-details.jsx';
-import CardReviews from '../../components/card-reviews/card-reviews.jsx';
-import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state.jsx';
-import withFetchData from '../../hocs/with-fetch-data/with-fetch-data.jsx';
-import {DataTypes} from '../../const.js';
+import CardTabs from './card-tabs';
+import CardOverview from '../../components/card-overview/card-overview';
+import CardDetails from '../../components/card-details/card-details';
+import CardReviews from '../../components/card-reviews/card-reviews';
+import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state';
+import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
+import {DataTypes} from '../../const';
 
 const selectedCard = {
   id: 1,

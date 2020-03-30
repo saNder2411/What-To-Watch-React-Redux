@@ -3,15 +3,15 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
-import compose from '../../hocs/compose/compose.js';
-import withCardsService from '../../hocs/with-cards-service/with-cards-service.jsx';
-import {getUserAuthStatus} from '../../reducers/user/selectors.js';
-import {getSelectedCard} from '../../reducers/app-state/selectors.js';
-import SendActions from '../../actions/send-actions/send-actions.js';
+import compose from '../../hocs/compose/compose';
+import withCardsService from '../../hocs/with-cards-service/with-cards-service';
+import {getUserAuthStatus} from '../../reducers/user/selectors';
+import {getSelectedCard} from '../../reducers/app-state/selectors';
+import SendActions from '../../actions/send-actions/send-actions';
 
-import {getAppRoute} from '../../utils/utils.js';
-import {DataTypes} from '../../const.js';
-import {getUpdatedCardLoading, getUpdatedCardError} from '../../reducers/card-list/selectors.js';
+import {getAppRoute} from '../../utils/utils';
+import {DataTypes} from '../../const';
+import {getUpdatedCardLoading, getUpdatedCardError} from '../../reducers/card-list/selectors';
 
 
 const MyListButton = ({selectedCard: {isFavorite, id}, isAuthorized, updateCard, updatedCardLoading, updatedCardError}) => {
