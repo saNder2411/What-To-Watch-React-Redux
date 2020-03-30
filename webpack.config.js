@@ -22,15 +22,15 @@ module.exports = {
         },
       },
       {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
+      },
+      {
         test: /\.(css)$/,
         use: [
           {loader: `style-loader`},
           {loader: `css-loader`}
         ]
-      },
-      {
-        test: /\.(tsx|ts)?$/,
-        loader: `ts-loader`
       },
     ],
   },
