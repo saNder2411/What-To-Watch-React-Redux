@@ -5,13 +5,13 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import GenreListItem from './genre-list-item';
 import thunk from 'redux-thunk';
+import {noop} from '../../utils/utils';
+
 
 const mockStore = configureStore([thunk]);
 const store = mockStore({});
 const label = `All Genre`;
 const isActive = true;
-const onGenreListItemClick = () => {};
-
 
 it(`Should GenreListItem render correctly`, () => {
   const markup = renderer
@@ -25,7 +25,7 @@ it(`Should GenreListItem render correctly`, () => {
                   return <GenreListItem
                     label={label}
                     isActive={isActive}
-                    onGenreListItemClick={onGenreListItemClick}/>;
+                    onGenreListItemClick={noop}/>;
                 }}
               />
             </Switch>

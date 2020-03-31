@@ -7,10 +7,11 @@ import CardsService from '../../services/cards-service';
 import createAPI from '../../api';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
 import thunk from 'redux-thunk';
+import {noop} from '../../utils/utils';
 
 import SignInScreen from './sign-in-screen';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

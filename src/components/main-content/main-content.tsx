@@ -5,7 +5,7 @@ type Props ={
   children: Array<React.ReactNode>;
 }
 
-const MainContent: React.FC<Props> = ({children}) => {
+const MainContent: React.FC<Props> = ({children}: Props) => {
 
   const [WrappedGenreList, WrappedPreviewCardsList, ShowMoreButton, Footer] = children;
 

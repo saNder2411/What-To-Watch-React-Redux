@@ -35,7 +35,7 @@ const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)
 
 type Props = {selectedCard: Card}
 
-const CardScreen: React.FC<Props> = ({selectedCard}) => {
+const CardScreen: React.FC<Props> = ({selectedCard}: Props) => {
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {parseDateToStr} from '../../utils/utils';
 
-type User = {name: string;}
+type User = {name: string}
 
 type Props = {
   user: User;
@@ -10,7 +10,7 @@ type Props = {
   date: string;
 }
 
-const CardReview: React.FC<Props> = ({user, rating, comment, date}) => {
+const CardReview: React.FC<Props> = ({user, rating, comment, date}: Props) => {
 
   const dateToStr = parseDateToStr(date);
 

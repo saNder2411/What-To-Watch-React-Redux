@@ -5,9 +5,10 @@ type Props = {
   title: string;
   genre: string;
   released: number;
+  children: React.ReactNode;
 }
 
-const HeaderCardDesc: React.FC<Props> = ({title, genre, released, children}) => {
+const HeaderCardDesc: React.FC<Props> = ({title, genre, released, children}: Props) => {
 
   return (
     <div className="movie-card__desc">

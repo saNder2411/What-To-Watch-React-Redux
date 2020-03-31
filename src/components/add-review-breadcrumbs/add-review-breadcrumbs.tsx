@@ -12,7 +12,7 @@ type Props = {
   selectedCardId: number;
 }
 
-const AddReviewBreadcrumbs: React.FC<Props> = ({title, selectedCardId}) => {
+const AddReviewBreadcrumbs: React.FC<Props> = ({title, selectedCardId}: Props) => {
 
   return (
     <nav className="breadcrumbs">

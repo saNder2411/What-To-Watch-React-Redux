@@ -3,7 +3,7 @@
 exports[`Should PreviewCard render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  id={1}
+  id="1"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

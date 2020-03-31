@@ -28,7 +28,7 @@ type Props = {
   onFullScreenButtonClick: Handle;
 }
 
-const VideoPlayerScreen: React.FC<Props> = (props) => {
+const VideoPlayerScreen: React.FC<Props> = (props: Props) => {
 
   const {selectedCard, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
     playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;

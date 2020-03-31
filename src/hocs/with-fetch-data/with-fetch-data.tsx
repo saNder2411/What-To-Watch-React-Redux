@@ -13,20 +13,20 @@ import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../re
 import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
 import FetchActions from '../../actions/fetch-actions/fetch-actions';
-import {DataTypes, Card, Review} from '../../types';
+import {DataTypes, Card, Review, Error} from '../../types';
 
 
 type Props = {
   selectedCardId: number;
   promoLoading: boolean;
   cardsLoading: boolean;
-  cardsError: any | null;
+  cardsError: Error | null;
   reviewsData: Array<Review>;
   reviewsLoading: boolean;
-  reviewsError: any | null;
+  reviewsError: Error | null;
   userCardsData: Array<Card>;
   userCardsLoading: boolean;
-  userCardsError: any | null;
+  userCardsError: Error | null;
   fetchData: (dataType: DataTypes, selectedCardId: number) => void;
 }
 

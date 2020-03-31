@@ -12,9 +12,10 @@ import Header from './header';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 import AddReviewBreadcrumbs from '../add-review-breadcrumbs/add-review-breadcrumbs';
+import {noop} from '../../utils/utils';
 
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 
 const mockStore = configureStore([thunk]);

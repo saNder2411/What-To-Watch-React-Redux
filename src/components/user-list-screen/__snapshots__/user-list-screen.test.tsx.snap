@@ -50,7 +50,7 @@ exports[`Should SignInScreen render correctly 1`] = `
           <img
             alt="User avatar"
             height="63"
-            src="https://htmlacademy-react-3.appspot.com/"
+            src="https://htmlacademy-react-3.appspot.com/undefined"
             width="63"
           />
         </div>

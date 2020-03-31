@@ -10,8 +10,9 @@ import thunk from 'redux-thunk';
 
 import SignInForm from './sign-in-form';
 import withSignInFormState from '../../hocs/with-sign-in-form-state/with-sign-in-form-state';
+import {noop} from '../../utils/utils';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

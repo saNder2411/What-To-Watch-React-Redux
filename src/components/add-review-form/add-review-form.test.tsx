@@ -7,11 +7,12 @@ import CardsService from '../../services/cards-service';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
 import createAPI from '../../api';
 import thunk from 'redux-thunk';
+import {noop} from '../../utils/utils';
 
 import AddReviewForm from './add-review-form';
 import withAddReviewFormState from '../../hocs/with-add-review-form-state/with-add-review-form-state';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

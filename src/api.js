@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Error} from './types';
+import {AuthError} from './types';
 
 const createAPI = (onUnauthorized) => {
   const api = axios.create({
@@ -15,7 +15,7 @@ const createAPI = (onUnauthorized) => {
   const onFail = (error) => {
     const {response} = error;
 
-    if (response && response.status === Error.UNAUTHORIZED) {
+    if (response && response.status === AuthError.UNAUTHORIZED) {
       onUnauthorized(error);
 
       throw error;

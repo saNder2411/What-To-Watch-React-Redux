@@ -11,7 +11,7 @@ import SendActions from '../../actions/send-actions/send-actions';
 
 import {getAppRoute} from '../../utils/utils';
 import {getUpdatedCardLoading, getUpdatedCardError} from '../../reducers/card-list/selectors';
-import {DataTypes, Card} from '../../types';
+import {DataTypes, Card, Error} from '../../types';
 
 
 type Props = {
@@ -19,10 +19,10 @@ type Props = {
   isAuthorized: boolean;
   updateCard: (dataType: DataTypes, sentData: number, selectedCardId: number) => void;
   updatedCardLoading: boolean;
-  updatedCardError: any | null;
+  updatedCardError: Error | null;
 }
 
-const MyListButton: React.FC<Props> = ({selectedCard: {isFavorite, id}, isAuthorized, updateCard, updatedCardLoading, updatedCardError}) => {
+const MyListButton: React.FC<Props> = ({selectedCard: {isFavorite, id}, isAuthorized, updateCard, updatedCardLoading, updatedCardError}: Props) => {
 
   const iconButton = isFavorite ?
     <svg viewBox="0 0 18 14" width="18" height="14">

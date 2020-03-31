@@ -12,7 +12,7 @@ type Props = {
   changeShowingCardsAmount: (amount: ShowingCardsAmount | void) => void;
 }
 
-const ShowMoreButton: React.FC<Props> = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
+const ShowMoreButton: React.FC<Props> = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}: Props) => {
 
   const showMoreButton = filteredCards.length > showingCardsAmount ? (
     <div className="catalog__more">

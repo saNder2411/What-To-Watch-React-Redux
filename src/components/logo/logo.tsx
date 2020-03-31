@@ -15,7 +15,7 @@ type Props = {
   setDefaultCardListState: () => void;
 }
 
-const Logo: React.FC<Props> = ({screen, isFooterLogo, setDefaultCardListState}) => {
+const Logo: React.FC<Props> = ({screen, isFooterLogo, setDefaultCardListState}: Props) => {
 
   const onClick = screen !== Screens.MAIN ? () => setDefaultCardListState() : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;

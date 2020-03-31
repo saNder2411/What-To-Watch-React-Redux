@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {Error} from '../../types';
+import {AuthError, Error} from '../../types';
 
 
 type Props = {
-  error: any | null;
+  error: Error | null;
   isValidEmail: boolean;
 }
 
-const SignInErrorMessage: React.FC<Props> = ({error, isValidEmail}) => {
+const SignInErrorMessage: React.FC<Props> = ({error, isValidEmail}: Props) => {
   const badValidEmailMessage = !isValidEmail ? <p>Please enter a valid email address</p> : null;
-  const badDataMessage = error && error.status === Error.BAD_DATA_REQUEST ?
+  const badDataMessage = error && error.response.status === AuthError.BAD_DATA_REQUEST ?
     <p>We can’t recognize this email <br/> and password combination. Please try again.</p> : null;
 
   if (error || !isValidEmail) {

@@ -10,7 +10,7 @@ type Props = {
   previewCardHandlers: Array< HandleWithEvt | Handle>;
 }
 
-const PreviewCardList: React.FC<Props> = ({cards, mouseEnterCard, previewCardHandlers}) => {
+const PreviewCardList: React.FC<Props> = ({cards, mouseEnterCard, previewCardHandlers}: Props) => {
 
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 

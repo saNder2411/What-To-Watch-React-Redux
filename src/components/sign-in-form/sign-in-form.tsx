@@ -1,18 +1,18 @@
 import * as React from 'react';
 import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
-import {HandleWithEvt} from '../../types';
+import {HandleWithEvt, Error} from '../../types';
 
 
 type Props = {
   email: string;
   password: string;
   isValidEmail: boolean;
-  error: any | null;
+  error: Error | null;
   onInputChange: HandleWithEvt;
   onFormSubmit: HandleWithEvt;
 }
 
-const SignInForm: React.FC<Props> = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}) => {
+const SignInForm: React.FC<Props> = ({email, password, isValidEmail, error, onInputChange, onFormSubmit}: Props) => {
   const emailClassName = isValidEmail ? `sign-in__field` : `sign-in__field sign-in__field--error`;
 
   return (

@@ -19,7 +19,7 @@ type Props = {
   selectedCard: Card;
 }
 
-const AddReviewScreen: React.FC<Props> = ({selectedCard}) => {
+const AddReviewScreen: React.FC<Props> = ({selectedCard}: Props) => {
   const {title, posterImage, backgroundImage} = selectedCard;
 
   return (

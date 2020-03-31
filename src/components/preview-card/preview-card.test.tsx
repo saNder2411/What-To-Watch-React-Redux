@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import PreviewCard from './preview-card';
+import {noop} from '../../utils/utils';
 
 const previewCardData = {
   id: 1,
@@ -10,9 +11,9 @@ const previewCardData = {
   isPlaying: false,
 };
 
-const previewCardHandlers = [() => {}, () => {}, () => {}];
+const previewCardHandlers = [noop, noop, noop];
 
-const renderPlayer = () => {};
+const renderPlayer = () => Promise.resolve();
 
 it(`Should PreviewCard render correctly`, () => {
   const markup = renderer

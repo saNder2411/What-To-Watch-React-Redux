@@ -13,7 +13,7 @@ type Props = {
   onTabsNavClick: (evt: React.SyntheticEvent, mode: string) => void;
 }
 
-const CardTabsNav: React.FC<Props> = ({mode, onTabsNavClick}) => {
+const CardTabsNav: React.FC<Props> = ({mode, onTabsNavClick}: Props) => {
 
   const navButtons = NuvButtonsData.map(({name, LABEL}) => {
     const isActiveClass = name === mode ? `movie-nav__item--active` : ``;

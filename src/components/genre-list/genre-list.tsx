@@ -25,7 +25,7 @@ type Props = {
   onActiveItemClick: HandleWithEvt;
 }
 
-const GenreList: React.FC<Props> = ({cardsData, genre, onActiveItemClick}) => {
+const GenreList: React.FC<Props> = ({cardsData, genre, onActiveItemClick}: Props) => {
 
   const labels = createLabels(cardsData);
   const items = labels.map((label) => (

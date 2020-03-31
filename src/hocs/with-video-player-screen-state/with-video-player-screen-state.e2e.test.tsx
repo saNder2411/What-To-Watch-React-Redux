@@ -1,11 +1,24 @@
 import * as React from 'react';
-
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 import withVideoPlayer from '../with-video-player/with-video-player';
 import withVideoPlayerScreenState from './with-video-player-screen-state';
+import {noop} from '../../utils/utils';
+import {Card, VideoProps, Handle} from '../../types';
 
-const MockVideoPlayerScreen = (props) => {
+type Props = {
+  selectedCard: Card;
+  renderPlayer: (videoProps: VideoProps) => React.ReactNode;
+  isPlaying: boolean;
+  progressInSeconds: number;
+  progressInPercent: number;
+  playerRef: React.RefObject<HTMLDivElement>;
+  onPlayButtonClick: Handle;
+  onVideoTimeUpdate: (secondsValue: number, percentValue: number) => void;
+  onFullScreenButtonClick: Handle;
+}
+
+const MockVideoPlayerScreen = (props: Props) => {
   const {renderPlayer, isPlaying, playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;
   const videoProps = {
     isPlaying,
@@ -50,8 +63,8 @@ configure({adapter: new Adapter()});
 describe(`Check VideoPlayerScreen state`, () => {
   it(`Checks that pressing play button changes the state`, () => {
     const wrapper = mount(<WrappedVideoPlayerScreen />);
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
     wrapper.setState({isPlaying: false});
 
@@ -62,13 +75,13 @@ describe(`Check VideoPlayerScreen state`, () => {
 
   it(`Checks that pressing fullScreen button changes the state`, () => {
     const wrapper = mount(<WrappedVideoPlayerScreen />);
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
     wrapper.setState({isFullScreen: false});
 
-    const {_playerRef} = wrapper.instance();
-    _playerRef.current.requestFullscreen = () => wrapper.setState({isFullScreen: true});
+    const {playerRef} = wrapper.instance();
+    playerRef.current.requestFullscreen = () => wrapper.setState({isFullScreen: true});
 
     wrapper.find(`button.player__full-screen`).simulate(`click`);
 

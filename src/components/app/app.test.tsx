@@ -8,8 +8,9 @@ import createAPI from '../../api';
 import CardsService from '../../services/cards-service';
 import thunk from 'redux-thunk';
 import {CardsServiceProvider} from '../cards-service-context/cards-service-context';
+import {noop} from '../../utils/utils';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

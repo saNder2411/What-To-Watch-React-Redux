@@ -10,7 +10,7 @@ import withCardsService from '../with-cards-service/with-cards-service';
 import SendActions from '../../actions/send-actions/send-actions';
 import ActionCreator from '../../actions/action-creator';
 
-import {DataTypes} from '../../types';
+import {DataTypes, Error} from '../../types';
 import {getAppRoute} from '../../utils/utils';
 
 
@@ -19,7 +19,7 @@ const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-z
 type Props = {
   isAuthorized: boolean;
   userDataLoading: boolean;
-  userDataError: any | null;
+  userDataError: Error | null;
   setDefaultCardListState: () => void;
   authorizesUser: (dataType: DataTypes, formUserData: {email: string; password: string}) => void;
 }

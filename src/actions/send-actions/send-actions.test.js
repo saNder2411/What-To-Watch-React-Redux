@@ -4,8 +4,9 @@ import CardsService from '../../services/cards-service';
 
 import ActionTypes from '../../action-types/action-types';
 import {DataTypes} from '../../types';
+import {noop} from '../../utils/utils';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 
 describe(`SendActions work correctly`, () => {

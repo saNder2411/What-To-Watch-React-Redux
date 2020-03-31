@@ -10,7 +10,9 @@ import {getAppRoute} from '../../utils/utils';
 
 
 type Props = {
-  history: any;
+  history: {
+    push: (arg: string) => void;
+  };
   userCards: Array<Card> | void;
   filtersCards: (genre: string, showingCardsAmount: ShowingCardsAmount) => void;
 }

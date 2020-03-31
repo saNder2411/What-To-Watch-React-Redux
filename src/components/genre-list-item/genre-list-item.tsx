@@ -8,7 +8,7 @@ type Props = {
   onGenreListItemClick: HandleWithEvt;
 }
 
-const GenreListItem: React.FC<Props> = ({label, isActive, onGenreListItemClick}) => {
+const GenreListItem: React.FC<Props> = ({label, isActive, onGenreListItemClick}: Props) => {
 
   return (
     <li className={`catalog__genres-item ${isActive ? `catalog__genres-item--active` : ``}`}>

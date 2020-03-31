@@ -1,13 +1,15 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-
 import withVideo from './with-video';
+import {noop} from '../../utils/utils';
 
 
-const MockComponent = ({children}) => <React.Fragment>{children}</React.Fragment>;
+type Props = {
+  children: React.ReactNode;
+}
 
+const MockComponent = ({children}: Props) => <React.Fragment>{children}</React.Fragment>;
 const MockComponentWrapped = withVideo(MockComponent);
-
 
 it(`withVideo is rendered correctly for PreviewCard`, () => {
   const videoProps = {
@@ -36,8 +38,8 @@ it(`withVideo is rendered correctly for VideoPlayerScreen`, () => {
     previewImage: `img/bohemian-rhapsody.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     className: `player__video`,
-    onEnded: () => {},
-    onTimeUpdate: () => {},
+    onEnded: noop,
+    onTimeUpdate: noop,
   };
   const markup = renderer.create(
       <MockComponentWrapped {...videoProps}>

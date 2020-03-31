@@ -12,7 +12,7 @@ type Props = {
   title: string;
 }
 
-const Poster: React.FC<Props> = ({screen, posterImage, title}) => {
+const Poster: React.FC<Props> = ({screen, posterImage, title}: Props) => {
   const cardScreenClassName = screen === Screens.CARD ? `movie-card__poster--big` : ``;
   const addReviewScreenClassName = screen === Screens.ADD_REVIEW ? `movie-card__poster--small` : ``;
 

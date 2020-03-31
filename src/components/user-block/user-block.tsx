@@ -13,7 +13,7 @@ type Props = {
   userData: UserData;
 }
 
-const UserBlock: React.FC<Props> = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
+const UserBlock: React.FC<Props> = ({isAuthorized, userData: {avatarSrc}}: Props) => {
   const content = isAuthorized ?
     <Link to={getAppRoute().USER_LIST}>
       <div className="user-block__avatar">

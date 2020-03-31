@@ -2,7 +2,7 @@ import * as React from 'react';
 
 type Props = {children: Array<React.ReactNode>}
 
-const CardScreenBottom: React.FC<Props> = ({children}) => {
+const CardScreenBottom: React.FC<Props> = ({children}: Props) => {
 
   const [WrappedPreviewCardsList, Footer] = children;
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {VideoProps } from '../../types';
+import {VideoProps} from '../../types';
 
 const DELAY = 1000;
 
@@ -9,7 +9,7 @@ const withVideo = (Component) => {
 
   class WithVideo extends React.PureComponent<Props> {
     private videoRef: React.RefObject<HTMLVideoElement>;
-    private currentTimeout: any;
+    private currentTimeout: NodeJS.Timeout | null;
 
     constructor(props) {
       super(props);
@@ -33,7 +33,6 @@ const withVideo = (Component) => {
           this.currentTimeout = setTimeout(() => {
             video.play();
           }, DELAY);
-
           return;
         }
 

@@ -6,7 +6,7 @@ import {Review} from '../../types';
 
 type Props = {reviewsData: Array<Review>}
 
-const CardReviews: React.FC<Props> = ({reviewsData}) => {
+const CardReviews: React.FC<Props> = ({reviewsData}: Props) => {
 
   const partsReviews = dividedArrayInHalf(reviewsData);
 

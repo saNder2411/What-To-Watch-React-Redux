@@ -5,9 +5,10 @@ import CardTabsNav from '../card-tabs-nav/card-tabs-nav';
 type Props = {
   mode: string;
   onTabsNavClick: (evt: React.SyntheticEvent, mode: string) => void;
+  children: React.ReactNode;
 }
 
-const CardTabs: React.FC<Props> = ({mode, onTabsNavClick, children}) => {
+const CardTabs: React.FC<Props> = ({mode, onTabsNavClick, children}: Props) => {
 
   return (
     <div className="movie-card__desc">

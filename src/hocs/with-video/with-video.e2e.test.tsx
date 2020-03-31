@@ -1,12 +1,16 @@
 import * as React from 'react';
-
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 import withVideo from './with-video';
+import {noop} from '../../utils/utils';
 
 configure({adapter: new Adapter()});
 
-const Player = ({children}) => <React.Fragment>{children}</React.Fragment>;
+type Props = {
+  children: React.ReactNode;
+}
+
+const Player = ({children}: Props) => <React.Fragment>{children}</React.Fragment>;
 
 describe(`Check preview video player`, () => {
   const videoProps = {
@@ -22,12 +26,12 @@ describe(`Check preview video player`, () => {
     const PlayerWrapped = withVideo(Player);
     const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
-    const {_videoRef} = wrapper.instance();
+    const {videoRef} = wrapper.instance();
 
-    jest.spyOn(_videoRef.current, `play`);
+    jest.spyOn(videoRef.current, `play`);
 
     wrapper.instance().componentDidMount();
 
@@ -35,19 +39,19 @@ describe(`Check preview video player`, () => {
 
     wrapper.find(`video`).simulate(`canplaythrough`);
 
-    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+    expect(videoRef.current.play).toHaveBeenCalledTimes(1);
   });
 
   it(`Checks that the video plays from the beginning, when it plays to the end`, () => {
     const PlayerWrapped = withVideo(Player);
     const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
-    const {_videoRef} = wrapper.instance();
+    const {videoRef} = wrapper.instance();
 
-    jest.spyOn(_videoRef.current, `play`);
+    jest.spyOn(videoRef.current, `play`);
 
     wrapper.instance().componentDidMount();
 
@@ -55,7 +59,7 @@ describe(`Check preview video player`, () => {
 
     wrapper.find(`video`).simulate(`ended`);
 
-    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+    expect(videoRef.current.play).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -65,37 +69,37 @@ describe(`Check video player screen`, () => {
     previewImage: `img/bohemian-rhapsody.jpg`,
     src: ``,
     className: `player__video`,
-    onEnded: () => {},
-    onTimeUpdate: () => {},
+    onEnded: noop,
+    onTimeUpdate: noop,
   };
   it(`Checks that video turn on (play) when isPlaying prop becomes true`, () => {
     const PlayerWrapped = withVideo(Player);
     const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
-    const {_videoRef} = wrapper.instance();
+    const {videoRef} = wrapper.instance();
 
-    jest.spyOn(_videoRef.current, `play`);
+    jest.spyOn(videoRef.current, `play`);
 
     wrapper.instance().componentDidMount();
 
     wrapper.setProps({isPlaying: true});
 
-    expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+    expect(videoRef.current.play).toHaveBeenCalledTimes(1);
   });
 
   it(`Checks that video turn on (pause) when isPlaying prop becomes false`, () => {
     const PlayerWrapped = withVideo(Player);
     const wrapper = mount(<PlayerWrapped {...videoProps} />);
 
-    window.HTMLMediaElement.prototype.play = () => {};
-    window.HTMLMediaElement.prototype.pause = () => {};
+    window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+    window.HTMLMediaElement.prototype.pause = noop;
 
-    const {_videoRef} = wrapper.instance();
+    const {videoRef} = wrapper.instance();
 
-    jest.spyOn(_videoRef.current, `pause`);
+    jest.spyOn(videoRef.current, `pause`);
 
     wrapper.instance().componentDidMount();
 
@@ -103,6 +107,6 @@ describe(`Check video player screen`, () => {
 
     wrapper.setProps({isPlaying: false});
 
-    expect(_videoRef.current.pause).toHaveBeenCalledTimes(1);
+    expect(videoRef.current.pause).toHaveBeenCalledTimes(1);
   });
 });

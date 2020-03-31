@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import Spinner from '../../components/spinner/spinner';
 
 import {connect} from 'react-redux';
@@ -15,12 +14,12 @@ import {getSelectedCardId} from '../../reducers/app-state/selectors';
 enum ReviewLengthRange {
   MIN = 50,
   MAX = 400,
-};
+}
 
 type Props = {
   selectedCardId: number;
   reviewsLoading: boolean;
-  reviewsError: any | null;
+  reviewsError: Error | null;
   sendReview: (dataType: DataTypes, reviewData: State, selectedCardId: number) => void;
 }
 

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import './error-indicator.css';
+import {Error} from '../../types';
 
 
-type Props = {error: any};
+type Props = {error: Error};
 
 
-const ErrorIndicator: React.FC<Props> = ({error: {message}}) => {
+const ErrorIndicator: React.FC<Props> = ({error: {message}}: Props) => {
 
   return (
     <div className="page-content">

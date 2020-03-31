@@ -18,26 +18,6 @@ type Card = {
   previewVideoSrc: string;
 }
 
-type CardInPropsComponent = {
-  id?: number;
-  title?: string;
-  posterImage?: string;
-  previewImage?: string;
-  backgroundImage?: string;
-  backgroundColor?: string;
-  description?: string;
-  rating?: number;
-  scoresCount?: number;
-  director: string;
-  starring?: Array<string>;
-  runtime: number;
-  genre: string;
-  released: number;
-  isFavorite?: boolean;
-  videoSrc?: string;
-  previewVideoSrc?: string;
-}
-
 type Review = {
   id: number;
   user: {
@@ -54,6 +34,13 @@ type UserData = {
   email: string;
   name: string;
   avatarSrc: string;
+}
+
+type Error = {
+ message: string;
+ response?: {
+   status: number;
+ }
 }
 
 type VideoProps = {
@@ -105,13 +92,13 @@ enum CardMode {
   REVIEWS = `reviews`,
 };
 
-enum Error {
+enum AuthError {
   UNAUTHORIZED = 401,
   BAD_DATA_REQUEST = 400,
 };
 
 export {
-  Card, CardInPropsComponent, Review, UserData, VideoProps,
+  Card, Review, UserData, VideoProps, Error,
   HandleWithEvt, Handle,
-  DataTypes, ShowingCardsAmount, Screens, CardMode, Error
+  DataTypes, ShowingCardsAmount, Screens, CardMode, AuthError
 };

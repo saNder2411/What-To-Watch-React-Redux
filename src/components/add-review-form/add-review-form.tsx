@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ErrorIndicator from '../error-indicator/error-indicator';
-import {HandleWithEvt} from '../../types';
+import {Error, HandleWithEvt} from '../../types';
 
 
 const MAX_RATING = 5;
@@ -9,13 +9,13 @@ type Props = {
   isValidForm: boolean;
   rating: number;
   comment: string;
-  error: any | null;
+  error: Error | null;
   onFormSubmit: HandleWithEvt;
   onRadioChange: HandleWithEvt;
   onTextareaChange: HandleWithEvt;
 }
 
-const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange}) => {
+const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange}: Props) => {
 
   const radioItems = new Array(MAX_RATING).fill(``)
     .map((item, i) => {

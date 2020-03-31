@@ -22,7 +22,7 @@ type Props = {
   renderPlayer: (videoProps: VideoProps) => React.ReactNode;
 }
 
-const PreviewCard: React.FC<Props> = ({previewCardData, previewCardHandlers, renderPlayer}) => {
+const PreviewCard: React.FC<Props> = ({previewCardData, previewCardHandlers, renderPlayer}: Props) => {
 
   const {id, title, previewImage, previewVideoSrc, isPlaying} = previewCardData;
   const [onPreviewCardClick, onPreviewCardMouseEnter, onPreviewCardMouseLeave] = previewCardHandlers;

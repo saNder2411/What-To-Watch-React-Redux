@@ -7,7 +7,7 @@ type Props = {
   children: Array<React.ReactNode>;
 }
 
-const Header: React.FC<Props> = ({title, backgroundImage, children}) => {
+const Header: React.FC<Props> = ({title, backgroundImage, children}: Props) => {
 
   const [Logo, UserBlock, AddReviewBreadcrumbs] = children;
 

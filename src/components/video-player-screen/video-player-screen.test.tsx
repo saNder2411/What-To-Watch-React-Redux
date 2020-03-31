@@ -10,10 +10,11 @@ import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
 import withVideoPlayerScreenState from '../../hocs/with-video-player-screen-state/with-video-player-screen-state';
 import thunk from 'redux-thunk';
 import createAPI from '../../api';
+import {noop} from '../../utils/utils';
 
 const WrappedVideoPlayerScreen = withVideoPlayerScreenState(withVideoPlayer(VideoPlayerScreen));
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

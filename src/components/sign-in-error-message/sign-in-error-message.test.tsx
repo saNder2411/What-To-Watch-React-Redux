@@ -3,7 +3,10 @@ import * as renderer from 'react-test-renderer';
 import SignInErrorMessage from './sign-in-error-message';
 
 const error = {
-  status: 400,
+  message: `Error`,
+  response: {
+    status: 400,
+  },
 };
 
 describe(`Render SignInErrorMessage`, () => {

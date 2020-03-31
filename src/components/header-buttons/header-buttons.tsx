@@ -16,7 +16,7 @@ type Props = {
   selectedCardId: number;
 }
 
-const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId}) => {
+const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId}: Props) => {
 
   const addReviewButton = screen === Screens.CARD && isAuthorized ?
     <Link

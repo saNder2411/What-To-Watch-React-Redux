@@ -18,9 +18,10 @@ import Logo from '../logo/logo';
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import compose from '../../hocs/compose/compose';
+import {noop} from '../../utils/utils';
 
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 const mockStore = configureStore([thunk]);
 

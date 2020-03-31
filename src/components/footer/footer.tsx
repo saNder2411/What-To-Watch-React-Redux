@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-const Footer: React.FC = ({children}) => {
+
+type Props = {
+  children: React.ReactNode;
+}
+
+const Footer: React.FC<Props> = ({children}: Props) => {
 
   return (
     <footer className="page-footer">

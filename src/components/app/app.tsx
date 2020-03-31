@@ -33,7 +33,7 @@ type Props = {
   filtersCards: (genre: string, showingCardsAmount: ShowingCardsAmount) => void;
 }
 
-const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}) => {
+const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}: Props) => {
 
   return (
     <Switch>
