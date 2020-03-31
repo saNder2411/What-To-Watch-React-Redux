@@ -1,5 +1,5 @@
-import {updateUserCardList as reducer} from './user-card-list.js';
-import ActionTypes from '../../action-types/action-types.js';
+import {updateUserCardList as reducer} from './user-card-list';
+import ActionTypes from '../../action-types/action-types';
 
 const mockCardsData = [
   {

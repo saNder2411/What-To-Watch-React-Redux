@@ -1,5 +1,5 @@
-import ActionTypes from '../../action-types/action-types.js';
-import {extend} from '../../utils/utils.js';
+import ActionTypes from '../../action-types/action-types';
+import {extend} from '../../utils/utils';
 
 const initialState = {
   userCardList: {

@@ -1,11 +1,12 @@
-import createAPI from '../../api.js';
-import FetchActions from './fetch-actions.js';
-import CardsService from '../../services/cards-service.js';
+import createAPI from '../../api';
+import FetchActions from './fetch-actions';
+import CardsService from '../../services/cards-service';
 
-import ActionTypes from '../../action-types/action-types.js';
-import {DataTypes} from '../../const.js';
+import ActionTypes from '../../action-types/action-types';
+import {DataTypes} from '../../types';
+import {noop} from '../../utils/utils';
 
-const API = createAPI(() => {});
+const API = createAPI(noop);
 const cardsService = new CardsService(API);
 
 describe(`FetchActions work correctly`, () => {

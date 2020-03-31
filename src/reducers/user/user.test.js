@@ -1,5 +1,5 @@
-import {updateUser as reducer} from './user.js';
-import ActionTypes from '../../action-types/action-types.js';
+import {updateUser as reducer} from './user';
+import ActionTypes from '../../action-types/action-types';
 
 const mockUserDate = {
   id: 1,

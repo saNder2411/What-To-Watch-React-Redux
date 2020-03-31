@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {getCardsData} from '../card-list/selectors.js';
+import {getCardsData} from '../card-list/selectors';
 
 const getScreen = ({appState: {screen}}) => screen;
 

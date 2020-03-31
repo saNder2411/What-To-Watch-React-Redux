@@ -1,4 +1,4 @@
-import ActionTypes from '../action-types/action-types.js';
+import ActionTypes from '../action-types/action-types';
 
 const ActionCreator = {
 

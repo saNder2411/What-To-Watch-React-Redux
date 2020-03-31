@@ -1,6 +1,6 @@
-import ActionTypes from '../../action-types/action-types.js';
-import {extend} from '../../utils/utils.js';
-import {Screens} from '../../const.js';
+import ActionTypes from '../../action-types/action-types';
+import {extend} from '../../utils/utils';
+import {Screens} from '../../types';
 
 const initialState = {
   appState: {
