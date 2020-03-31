@@ -1,6 +1,6 @@
 import ActionTypes from '../../action-types/action-types';
 import {extend} from '../../utils/utils';
-import {Screens} from '../../const';
+import {Screens} from '../../types';
 
 const initialState = {
   appState: {

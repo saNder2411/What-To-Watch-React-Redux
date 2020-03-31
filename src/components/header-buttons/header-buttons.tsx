@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-
 import MyListButton from '../my-list-button/my-list-button';
 
 import {connect} from 'react-redux';
@@ -9,9 +8,15 @@ import {getUserAuthStatus} from '../../reducers/user/selectors';
 
 import {getAppRoute} from '../../utils/utils';
 import {getScreen, getSelectedCardId} from '../../reducers/app-state/selectors';
-import {Screens} from '../../const';
+import {Screens} from '../../types';
 
-const HeaderButtons = ({screen, isAuthorized, selectedCardId}) => {
+type Props = {
+  screen: Screens;
+  isAuthorized: boolean;
+  selectedCardId: number;
+}
+
+const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId}) => {
 
   const addReviewButton = screen === Screens.CARD && isAuthorized ?
     <Link

@@ -7,7 +7,7 @@ import withSignInFormState from '../../hocs/with-sign-in-form-state/with-sign-in
 
 const WrappedSignInForm = withSignInFormState(SignInForm);
 
-const SignInScreen = () => {
+const SignInScreen: React.FC = () => {
 
   return (
     <div className="user-page">

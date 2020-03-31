@@ -1,21 +1,25 @@
 import * as React from 'react';
-
-
 import {withRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import compose from '../compose/compose';
 import CardListActions from '../../actions/card-list-actions/card-list-actions';
 
-import {ShowingCardsAmount} from '../../const';
+import {ShowingCardsAmount, Card} from '../../types';
 import {getAppRoute} from '../../utils/utils';
 
 
+type Props = {
+  history: any;
+  userCards: Array<Card> | void;
+  filtersCards: (genre: string, showingCardsAmount: ShowingCardsAmount) => void;
+}
+
 const withActiveItem = (Component) => {
 
-  class WithActiveItem extends React.PureComponent {
+  class WithActiveItem extends React.PureComponent<Props> {
 
-    constructor(props) {
+    constructor(props: Props) {
       super(props);
       this._handleActiveItemClick = this._handleActiveItemClick.bind(this);
     }
@@ -39,12 +43,14 @@ const withActiveItem = (Component) => {
     render() {
       const {userCards} = this.props;
 
-      return <Component userCards={userCards} onActiveItemClick={this._handleActiveItemClick} />;
+      return <Component userCards={userCards ? userCards : []} onActiveItemClick={this._handleActiveItemClick} />;
     }
   }
 
 
-  const mapDispatchToProps = (dispatch) => ({filtersCards: CardListActions.filtersCards(dispatch)});
+  const mapDispatchToProps = (dispatch) => ({
+    filtersCards: (genre, showingCardsAmount) => CardListActions.filtersCards(dispatch)(genre, showingCardsAmount),
+  });
 
   return compose(withRouter, connect(void 0, mapDispatchToProps))(WithActiveItem);
 };

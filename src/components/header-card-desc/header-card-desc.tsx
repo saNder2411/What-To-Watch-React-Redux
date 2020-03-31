@@ -1,8 +1,13 @@
 import * as React from 'react';
 
 
+type Props = {
+  title: string;
+  genre: string;
+  released: number;
+}
 
-const HeaderCardDesc = ({title, genre, released, children}) => {
+const HeaderCardDesc: React.FC<Props> = ({title, genre, released, children}) => {
 
   return (
     <div className="movie-card__desc">

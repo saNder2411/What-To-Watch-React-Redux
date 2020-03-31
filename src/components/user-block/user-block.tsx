@@ -5,8 +5,15 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUserAuthStatus, getUserData} from '../../reducers/user/selectors';
 import {getAppRoute} from '../../utils/utils';
+import {UserData} from '../../types';
 
-const UserBlock = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
+
+type Props = {
+  isAuthorized: boolean;
+  userData: UserData;
+}
+
+const UserBlock: React.FC<Props> = ({isAuthorized, userData: {avatarSrc = ``} = {}}) => {
   const content = isAuthorized ?
     <Link to={getAppRoute().USER_LIST}>
       <div className="user-block__avatar">

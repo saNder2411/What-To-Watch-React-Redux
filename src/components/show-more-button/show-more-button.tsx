@@ -1,12 +1,18 @@
 import * as React from 'react';
 
-
 import {connect} from 'react-redux';
 import {getFilteredCards, getShowingCardsAmount} from '../../reducers/card-list-state/selectors';
 import ActionCreator from '../../actions/action-creator';
+import {Card, ShowingCardsAmount} from '../../types';
 
 
-const ShowMoreButton = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
+type Props = {
+  filteredCards: Array<Card>;
+  showingCardsAmount: ShowingCardsAmount;
+  changeShowingCardsAmount: (amount: ShowingCardsAmount | void) => void;
+}
+
+const ShowMoreButton: React.FC<Props> = ({filteredCards, showingCardsAmount, changeShowingCardsAmount}) => {
 
   const showMoreButton = filteredCards.length > showingCardsAmount ? (
     <div className="catalog__more">
@@ -29,9 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeShowingCardsAmount: (amount) => {
-    dispatch(ActionCreator.changeShowingCardsAmount(amount));
-  },
+  changeShowingCardsAmount: (amount) => dispatch(ActionCreator.changeShowingCardsAmount(amount)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);

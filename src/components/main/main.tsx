@@ -16,7 +16,7 @@ import withPreviewCardListState from '../../hocs/with-preview-card-list-state/wi
 const WrappedGenreList = withActiveItem(GenreList);
 const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-const Main = () => {
+const Main: React.FC = () => {
 
   return (
     <React.Fragment>

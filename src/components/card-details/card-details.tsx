@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-
 import {getTimeInHoursAndMinutes} from '../../utils/utils';
+import {CardInPropsComponent} from '../../types';
 
 
-const CardDetails = ({director, starring, runtime, genre, released}) => {
+const CardDetails: React.FC<CardInPropsComponent> = ({director, starring, runtime, genre, released}) => {
 
   const formatRuntime = getTimeInHoursAndMinutes(runtime);
 

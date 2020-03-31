@@ -1,12 +1,12 @@
 import * as React from 'react';
-
-
 import CardReview from '../card-review/card-review';
-
 import {dividedArrayInHalf} from '../../utils/utils';
+import {Review} from '../../types';
 
 
-const CardReviews = ({reviewsData}) => {
+type Props = {reviewsData: Array<Review>}
+
+const CardReviews: React.FC<Props> = ({reviewsData}) => {
 
   const partsReviews = dividedArrayInHalf(reviewsData);
 

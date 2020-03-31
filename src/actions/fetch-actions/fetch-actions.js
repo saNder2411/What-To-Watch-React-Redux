@@ -1,5 +1,5 @@
 import ActionCreator from '../action-creator';
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 
 
 const FetchActions = {

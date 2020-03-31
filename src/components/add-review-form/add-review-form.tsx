@@ -1,20 +1,31 @@
 import * as React from 'react';
 import ErrorIndicator from '../error-indicator/error-indicator';
+import {HandleWithEvt} from '../../types';
 
 
 const MAX_RATING = 5;
 
-const AddReviewForm = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange}) => {
+type Props = {
+  isValidForm: boolean;
+  rating: number;
+  comment: string;
+  error: any | null;
+  onFormSubmit: HandleWithEvt;
+  onRadioChange: HandleWithEvt;
+  onTextareaChange: HandleWithEvt;
+}
+
+const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange}) => {
 
   const radioItems = new Array(MAX_RATING).fill(``)
     .map((item, i) => {
       item = (
-        <React.React.Fragment key={`star-${i + 1}`}>
+        <React.Fragment key={`star-${i + 1}`}>
           <input className="rating__input" id={`star-${i + 1}`} type="radio" name="rating" value={i + 1}
             onChange={onRadioChange}
             checked={rating === (i + 1) ? true : false}/>
           <label className="rating__label" htmlFor={`star-${i + 1}`}>Rating {i + 1}</label>
-        </React.React.Fragment>
+        </React.Fragment>
       );
 
       return item;
@@ -42,7 +53,7 @@ const AddReviewForm = ({isValidForm, rating, comment, error, onFormSubmit, onRad
               <button className="add-review__btn" type="submit">Post</button>
             </div>) : null}
         </div>
-        {error ? <ErrorIndicator message={error.message} /> : null}
+        {error ? <ErrorIndicator error={error} /> : null}
       </form>
     </div>
   );

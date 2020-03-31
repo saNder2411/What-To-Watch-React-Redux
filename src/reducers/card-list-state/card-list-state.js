@@ -1,6 +1,7 @@
 import ActionTypes from '../../action-types/action-types';
 import {extend} from '../../utils/utils';
-import {DEFAULT_GENRE, ShowingCardsAmount} from '../../const';
+import {DEFAULT_GENRE} from '../../const';
+import {ShowingCardsAmount} from '../../types';
 
 
 const initialState = {

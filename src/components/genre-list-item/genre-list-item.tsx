@@ -1,8 +1,14 @@
-import React, {memo} from 'react';
+import * as React from 'react';
+import {HandleWithEvt} from '../../types';
 
 
+type Props = {
+  label: string;
+  isActive: boolean;
+  onGenreListItemClick: HandleWithEvt;
+}
 
-const GenreListItem = ({label, isActive, onGenreListItemClick}) => {
+const GenreListItem: React.FC<Props> = ({label, isActive, onGenreListItemClick}) => {
 
   return (
     <li className={`catalog__genres-item ${isActive ? `catalog__genres-item--active` : ``}`}>
@@ -17,4 +23,4 @@ const GenreListItem = ({label, isActive, onGenreListItemClick}) => {
   );
 };
 
-export default memo(GenreListItem);
+export default React.memo(GenreListItem);

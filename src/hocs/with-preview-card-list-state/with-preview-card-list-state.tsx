@@ -1,17 +1,28 @@
 import * as React from 'react';
 
-
 import {connect} from 'react-redux';
 import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors';
 import {getScreen} from '../../reducers/app-state/selectors';
-import {Screens} from '../../const';
+import {Card, HandleWithEvt, Screens, ShowingCardsAmount} from '../../types';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
 
+type Props = {
+  filteredCards: Array<Card>;
+  screen: Screens;
+  showingCardsAmount: ShowingCardsAmount;
+  userCards: Array<Card> | [];
+  onActiveItemClick: HandleWithEvt;
+}
+
+type State = {
+  mouseEnterCard: Card | null;
+}
+
 const withPreviewCardListState = (Component) => {
 
-  class WithPreviewCardListState extends React.PureComponent {
+  class WithPreviewCardListState extends React.PureComponent<Props, State> {
 
     constructor(props) {
       super(props);
@@ -37,7 +48,7 @@ const withPreviewCardListState = (Component) => {
     }
 
     render() {
-      const {filteredCards, userCards, screen, showingCardsAmount, onActiveItemClick} = this.props;
+      const {filteredCards, screen, showingCardsAmount, userCards, onActiveItemClick} = this.props;
       let cards = [];
 
       switch (screen) {
@@ -63,9 +74,9 @@ const withPreviewCardListState = (Component) => {
   }
 
   const mapStateToProps = (state) => ({
-    showingCardsAmount: getShowingCardsAmount(state),
     filteredCards: getFilteredCards(state),
     screen: getScreen(state),
+    showingCardsAmount: getShowingCardsAmount(state),
   });
 
   return connect(mapStateToProps)(WithPreviewCardListState);

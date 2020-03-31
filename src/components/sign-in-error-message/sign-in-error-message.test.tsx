@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import SignInErrorMessage from './ sign-in-error-message';
+import SignInErrorMessage from './sign-in-error-message';
 
 const error = {
   status: 400,
@@ -9,7 +9,7 @@ const error = {
 describe(`Render SignInErrorMessage`, () => {
   it(`Should SignInErrorMessage render correctly when bad validation email`, () => {
     const markup = renderer
-      .create(<SignInErrorMessage isValidEmail={false} />)
+      .create(<SignInErrorMessage error={null} isValidEmail={false} />)
       .toJSON();
 
     expect(markup).toMatchSnapshot();

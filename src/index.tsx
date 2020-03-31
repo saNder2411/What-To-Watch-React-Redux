@@ -10,7 +10,7 @@ import CardsService from './services/cards-service';
 import {CardsServiceProvider} from './components/cards-service-context/cards-service-context';
 import ActionCreator from './actions/action-creator';
 import FetchActions from './actions/fetch-actions/fetch-actions';
-import {DataTypes} from './const';
+import {DataTypes} from './types';
 
 const onUnauthorized = (error) => store.dispatch(ActionCreator.userDataError(error));
 const API = createAPI(onUnauthorized);

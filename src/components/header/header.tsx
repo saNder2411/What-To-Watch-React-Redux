@@ -1,8 +1,13 @@
 import * as React from 'react';
 
 
+type Props = {
+  title: string;
+  backgroundImage: string;
+  children: Array<React.ReactNode>;
+}
 
-const Header = ({title, backgroundImage, children}) => {
+const Header: React.FC<Props> = ({title, backgroundImage, children}) => {
 
   const [Logo, UserBlock, AddReviewBreadcrumbs] = children;
 

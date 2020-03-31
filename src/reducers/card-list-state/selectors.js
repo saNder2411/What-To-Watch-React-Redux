@@ -1,7 +1,8 @@
 import {createSelector} from 'reselect';
 import {getCardsData} from '../card-list/selectors';
 import {getScreen, getSelectedCardId} from '../app-state/selectors';
-import {DEFAULT_GENRE, Screens} from '../../const';
+import {DEFAULT_GENRE} from '../../const';
+import {Screens} from '../../types';
 
 const getGenre = ({cardListState: {genre}}) => genre;
 

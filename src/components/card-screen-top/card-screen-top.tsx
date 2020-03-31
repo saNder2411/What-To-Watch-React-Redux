@@ -1,8 +1,8 @@
 import * as React from 'react';
 
+type Props = {children: Array<React.ReactNode>}
 
-
-const CardScreenTop = ({children}) => {
+const CardScreenTop: React.FC<Props> = ({children}) => {
 
   const [CardScreenHeader, Poster, WrappedCardTabs] = children;
 

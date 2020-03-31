@@ -3,7 +3,7 @@ import FetchActions from './fetch-actions';
 import CardsService from '../../services/cards-service';
 
 import ActionTypes from '../../action-types/action-types';
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 
 const API = createAPI(() => {});
 const cardsService = new CardsService(API);

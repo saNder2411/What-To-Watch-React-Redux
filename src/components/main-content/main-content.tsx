@@ -1,8 +1,11 @@
 import * as React from 'react';
 
 
+type Props ={
+  children: Array<React.ReactNode>;
+}
 
-const MainContent = ({children}) => {
+const MainContent: React.FC<Props> = ({children}) => {
 
   const [WrappedGenreList, WrappedPreviewCardsList, ShowMoreButton, Footer] = children;
 

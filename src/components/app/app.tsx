@@ -17,14 +17,23 @@ import ActionCreator from '../../actions/action-creator';
 import CardListActions from '../../actions/card-list-actions/card-list-actions';
 import {getPromoCardData} from '../../reducers/promo-card/selectors';
 
-import {DataTypes, Screens, ShowingCardsAmount} from '../../const';
 import {getAppRoute} from '../../utils/utils';
 import {getCardsData} from '../../reducers/card-list/selectors';
+
+import {DataTypes, Screens, ShowingCardsAmount, Card} from '../../types';
 
 
 const WrappedVideoPlayerScreen = compose(withVideoPlayerScreenState, withVideoPlayer)(VideoPlayerScreen);
 
-const App = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}) => {
+type Props = {
+  promoCardData: Card;
+  cardsData: Array<Card>;
+  changeAppScreen: (screen: Screens) => void;
+  changeSelectedCardId: (id: number) => void;
+  filtersCards: (genre: string, showingCardsAmount: ShowingCardsAmount) => void;
+}
+
+const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, changeSelectedCardId, filtersCards}) => {
 
   return (
     <Switch>
@@ -94,7 +103,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeAppScreen: (screen) => dispatch(ActionCreator.changeAppScreen(screen)),
   changeSelectedCardId: (id) => dispatch(ActionCreator.changeSelectedCardId(id)),
-  filtersCards: CardListActions.filtersCards(dispatch),
+  filtersCards: (genre, showingCardsAmount) => CardListActions.filtersCards(dispatch)(genre, showingCardsAmount),
 });
 
 export default compose(withFetchData(DataTypes.FETCH_CARDS_DATA), connect(mapStateToProps, mapDispatchToProps))(App);

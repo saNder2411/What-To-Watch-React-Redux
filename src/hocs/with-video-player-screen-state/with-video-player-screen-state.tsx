@@ -1,9 +1,17 @@
 import * as React from 'react';
 
 
+type State = {
+  isPlaying: boolean;
+  isFullScreen: boolean;
+  progressInSeconds: number;
+  progressInPercent: number;
+}
+
 const withVideoPlayerScreenState = (Component) => {
 
-  class WithVideoPlayerScreenState extends React.PureComponent {
+  class WithVideoPlayerScreenState extends React.PureComponent<{}, State> {
+    private playerRef: React.RefObject<HTMLDivElement>;
 
     constructor(props) {
       super(props);
@@ -15,7 +23,7 @@ const withVideoPlayerScreenState = (Component) => {
         progressInPercent: 0,
       };
 
-      this._playerRef = React.createRef();
+      this.playerRef = React.createRef();
 
       this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
       this._handleVideoTimeUpdate = this._handleVideoTimeUpdate.bind(this);
@@ -49,15 +57,14 @@ const withVideoPlayerScreenState = (Component) => {
         return;
       }
 
-      this._playerRef.current.requestFullscreen();
+      this.playerRef.current.requestFullscreen();
     }
 
     render() {
       return (
         <Component
-          {...this.props}
           {...this.state}
-          playerRef={this._playerRef}
+          playerRef={this.playerRef}
           onPlayButtonClick={this._handlePlayButtonClick}
           onVideoTimeUpdate={this._handleVideoTimeUpdate}
           onFullScreenButtonClick={this._handleFullScreenButtonClick}

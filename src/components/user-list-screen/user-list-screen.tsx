@@ -10,12 +10,12 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import withPreviewCardListState from '../../hocs/with-preview-card-list-state/with-preview-card-list-state';
 
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 
 
 const WrappedPreviewCardList = compose(withFetchData(DataTypes.FETCH_USER_CARDS_DATA), withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-const UserListScreen = () => {
+const UserListScreen: React.FC = () => {
 
   return (
     <div className="user-page">

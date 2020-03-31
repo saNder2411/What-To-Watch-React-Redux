@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 
-const VideoContainer = ({children}) => {
+const VideoContainer: React.FC = ({children}) => {
 
   return (
     <React.Fragment>

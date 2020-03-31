@@ -9,18 +9,31 @@ import withCardsService from '../with-cards-service/with-cards-service';
 import {getReviewsLoading, getReviewsError} from '../../reducers/reviews/selectors';
 
 import SendActions from '../../actions/send-actions/send-actions';
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
-const ReviewLengthRange = {
-  MIN: 50,
-  MAX: 400,
+enum ReviewLengthRange {
+  MIN = 50,
+  MAX = 400,
 };
 
-const withAddReviewFormState = (Component) => {
-  class WithAddReviewFormState extends React.PureComponent {
+type Props = {
+  selectedCardId: number;
+  reviewsLoading: boolean;
+  reviewsError: any | null;
+  sendReview: (dataType: DataTypes, reviewData: State, selectedCardId: number) => void;
+}
 
-    constructor(props) {
+type State = {
+  rating: number;
+  comment: string;
+}
+
+const withAddReviewFormState = (Component) => {
+
+  class WithAddReviewFormState extends React.PureComponent<Props, State> {
+
+    constructor(props: Props) {
       super(props);
       this.state = {
         rating: 0,

@@ -1,13 +1,11 @@
 import * as React from 'react';
-
-
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-
 import {getSelectedCard} from '../../reducers/app-state/selectors';
 
 import {getAppRoute} from '../../utils/utils';
+import {Card, VideoProps, Handle} from '../../types';
 
 
 const convertVideoTime = (sec) => {
@@ -18,7 +16,19 @@ const convertVideoTime = (sec) => {
   return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 };
 
-const VideoPlayerScreen = (props) => {
+type Props = {
+  selectedCard: Card;
+  renderPlayer: (videoProps: VideoProps) => React.ReactNode;
+  isPlaying: boolean;
+  progressInSeconds: number;
+  progressInPercent: number;
+  playerRef: React.RefObject<HTMLDivElement>;
+  onPlayButtonClick: Handle;
+  onVideoTimeUpdate: (secondsValue: number, percentValue: number) => void;
+  onFullScreenButtonClick: Handle;
+}
+
+const VideoPlayerScreen: React.FC<Props> = (props) => {
 
   const {selectedCard, renderPlayer, isPlaying, progressInSeconds, progressInPercent,
     playerRef, onPlayButtonClick, onVideoTimeUpdate, onFullScreenButtonClick} = props;

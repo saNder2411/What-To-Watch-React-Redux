@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-
+import {VideoProps, HandleWithEvt, Handle} from '../../types';
 
 const PreviewVideoOptions = {
   WIDTH: 280,
@@ -9,7 +8,21 @@ const PreviewVideoOptions = {
   IS_DELAY: true,
 };
 
-const PreviewCard = ({previewCardData, previewCardHandlers, renderPlayer}) => {
+type PreviewCard = {
+  id: number;
+  title: string;
+  previewImage: string;
+  previewVideoSrc: string;
+  isPlaying: boolean;
+}
+
+type Props = {
+  previewCardData: PreviewCard;
+  previewCardHandlers: Array< HandleWithEvt | Handle>;
+  renderPlayer: (videoProps: VideoProps) => React.ReactNode;
+}
+
+const PreviewCard: React.FC<Props> = ({previewCardData, previewCardHandlers, renderPlayer}) => {
 
   const {id, title, previewImage, previewVideoSrc, isPlaying} = previewCardData;
   const [onPreviewCardClick, onPreviewCardMouseEnter, onPreviewCardMouseLeave] = previewCardHandlers;
@@ -26,7 +39,7 @@ const PreviewCard = ({previewCardData, previewCardHandlers, renderPlayer}) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      id={id}
+      id={id.toString()}
       onClick={onPreviewCardClick}
       onMouseEnter={onPreviewCardMouseEnter}
       onMouseLeave={onPreviewCardMouseLeave}

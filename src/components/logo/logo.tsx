@@ -1,16 +1,21 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-
 import {connect} from 'react-redux';
 import ActionCreator from '../../actions/action-creator';
 
 import {getAppRoute} from '../../utils/utils';
 import {getScreen} from '../../reducers/app-state/selectors';
-import {Screens} from '../../const';
+import {Screens} from '../../types';
 
 
-const Logo = ({screen, isFooterLogo, setDefaultCardListState}) => {
+type Props = {
+  screen: Screens;
+  isFooterLogo: boolean;
+  setDefaultCardListState: () => void;
+}
+
+const Logo: React.FC<Props> = ({screen, isFooterLogo, setDefaultCardListState}) => {
 
   const onClick = screen !== Screens.MAIN ? () => setDefaultCardListState() : (evt) => evt.preventDefault();
   const footerLogoClass = isFooterLogo ? `logo__link--light` : ``;

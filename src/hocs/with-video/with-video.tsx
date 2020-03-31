@@ -1,20 +1,25 @@
 import * as React from 'react';
+import {VideoProps } from '../../types';
 
 const DELAY = 1000;
 
+type Props = VideoProps
+
 const withVideo = (Component) => {
 
-  class WithVideo extends React.PureComponent {
+  class WithVideo extends React.PureComponent<Props> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+    private currentTimeout: any;
 
     constructor(props) {
       super(props);
-      this._videoRef = React.createRef();
-      this._currentTimeout = null;
+      this.videoRef = React.createRef();
+      this.currentTimeout = null;
     }
 
     componentDidMount() {
-      const {isPlaying, onEnded, onTimeUpdate, src, previewImage, isMuted = false, isDelay = false, width = ``, height = ``} = this.props;
-      const video = this._videoRef.current;
+      const {isPlaying, onEnded, onTimeUpdate, src, previewImage, isMuted = false, isDelay = false, width = void 0, height = void 0} = this.props;
+      const video = this.videoRef.current;
 
       video.src = src;
       video.width = width;
@@ -25,7 +30,7 @@ const withVideo = (Component) => {
 
       video.oncanplaythrough = () => {
         if (isDelay && isPlaying) {
-          this._currentTimeout = setTimeout(() => {
+          this.currentTimeout = setTimeout(() => {
             video.play();
           }, DELAY);
 
@@ -56,7 +61,7 @@ const withVideo = (Component) => {
     }
 
     componentDidUpdate() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       if (this.props.isPlaying) {
         video.play();
@@ -66,7 +71,7 @@ const withVideo = (Component) => {
     }
 
     componentWillUnmount() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       video.src = ``;
       video.poster = ``;
@@ -77,14 +82,14 @@ const withVideo = (Component) => {
       video.onended = null;
       video.ontimeupdate = null;
 
-      clearTimeout(this._currentTimeout);
+      clearTimeout(this.currentTimeout);
     }
 
     render() {
       const {className = ``} = this.props;
       return (
         <Component>
-          <video ref={this._videoRef} className={className}/>
+          <video ref={this.videoRef} className={className}/>
         </Component>
       );
     }

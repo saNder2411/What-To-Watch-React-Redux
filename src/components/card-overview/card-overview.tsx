@@ -2,10 +2,12 @@ import * as React from 'react';
 
 import {calcCardLevel} from '../../utils/utils';
 
+import {CardInPropsComponent} from '../../types';
+
 
 const CardLevelValues = [3, 5, 8, 10];
 
-const CardOverview = ({description, rating, scoresCount, director, starring}) => {
+const CardOverview: React.FC<CardInPropsComponent> = ({description, rating, scoresCount, director, starring}) => {
 
   const cardLevel = calcCardLevel(rating, CardLevelValues);
 

@@ -2,8 +2,15 @@ import * as React from 'react';
 
 import PreviewCard from '../preview-card/preview-card';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
+import {Card, HandleWithEvt, Handle} from '../../types';
 
-const PreviewCardList = ({cards, mouseEnterCard, previewCardHandlers}) => {
+type Props = {
+  cards: Array<Card>;
+  mouseEnterCard: Card | null;
+  previewCardHandlers: Array< HandleWithEvt | Handle>;
+}
+
+const PreviewCardList: React.FC<Props> = ({cards, mouseEnterCard, previewCardHandlers}) => {
 
   const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 

@@ -1,13 +1,18 @@
 import * as React from 'react';
 
-
 import {connect} from 'react-redux';
 import {getScreen} from '../../reducers/app-state/selectors';
 
-import {Screens} from '../../const';
+import {Screens} from '../../types';
 
 
-const Poster = ({screen, posterImage, title}) => {
+type Props = {
+  screen: Screens;
+  posterImage: string;
+  title: string;
+}
+
+const Poster: React.FC<Props> = ({screen, posterImage, title}) => {
   const cardScreenClassName = screen === Screens.CARD ? `movie-card__poster--big` : ``;
   const addReviewScreenClassName = screen === Screens.ADD_REVIEW ? `movie-card__poster--small` : ``;
 

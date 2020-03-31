@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-
 import CardScreenTop from '../card-screen-top/card-screen-top';
 import CardScreenHeader from '../card-screen-header/card-screen-header';
 import Header from '../header/header';
@@ -25,7 +24,7 @@ import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {getSelectedCard} from '../../reducers/app-state/selectors';
 
-import {DataTypes} from '../../const';
+import {DataTypes, Card} from '../../types';
 
 
 const WrappedCardTabs = withCardTabsState(CardTabs);
@@ -34,7 +33,9 @@ const WrappedCardReviews = withFetchData(DataTypes.FETCH_REVIEWS_DATA)(CardRevie
 
 const WrappedPreviewCardList = compose(withActiveItem, withPreviewCardListState)(PreviewCardList);
 
-const CardScreen = ({selectedCard}) => {
+type Props = {selectedCard: Card}
+
+const CardScreen: React.FC<Props> = ({selectedCard}) => {
   const {title, posterImage, genre, released, backgroundImage} = selectedCard;
 
   return (

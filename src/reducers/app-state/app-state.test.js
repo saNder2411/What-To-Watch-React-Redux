@@ -1,6 +1,6 @@
 import {updateAppState as reducer} from './app-state';
 import ActionTypes from '../../action-types/action-types';
-import {Screens} from '../../const';
+import {Screens} from '../../types';
 
 const initialState = {
   appState: {

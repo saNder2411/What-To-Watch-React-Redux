@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {Redirect} from 'react-router-dom';
 
 import Spinner from '../../components/spinner/spinner';
@@ -11,15 +10,29 @@ import withCardsService from '../with-cards-service/with-cards-service';
 import SendActions from '../../actions/send-actions/send-actions';
 import ActionCreator from '../../actions/action-creator';
 
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 import {getAppRoute} from '../../utils/utils';
 
 
 const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+type Props = {
+  isAuthorized: boolean;
+  userDataLoading: boolean;
+  userDataError: any | null;
+  setDefaultCardListState: () => void;
+  authorizesUser: (dataType: DataTypes, formUserData: {email: string; password: string}) => void;
+}
+
+type State = {
+  email?: string;
+  password?: string;
+  isValidEmail?: boolean;
+}
+
 const withSignInFormState = (Component) => {
 
-  class WithSignInFormState extends React.PureComponent {
+  class WithSignInFormState extends React.PureComponent<Props, State> {
 
     constructor(props) {
       super(props);

@@ -6,7 +6,7 @@ import CardDetails from '../card-details/card-details';
 import CardReviews from '../card-reviews/card-reviews';
 import withCardTabsState from '../../hocs/with-card-tabs-state/with-card-tabs-state';
 import withFetchData from '../../hocs/with-fetch-data/with-fetch-data';
-import {DataTypes} from '../../const';
+import {DataTypes} from '../../types';
 
 const selectedCard = {
   id: 1,

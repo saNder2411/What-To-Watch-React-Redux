@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import Spinner from '../../components/spinner/spinner';
 import ErrorIndicator from '../../components/error-indicator/error-indicator';
 
@@ -14,12 +13,26 @@ import {getUserCardsData, getUserCardsLoading, getUserCardsError} from '../../re
 import {getSelectedCardId} from '../../reducers/app-state/selectors';
 
 import FetchActions from '../../actions/fetch-actions/fetch-actions';
-import {DataTypes} from '../../const';
+import {DataTypes, Card, Review} from '../../types';
 
+
+type Props = {
+  selectedCardId: number;
+  promoLoading: boolean;
+  cardsLoading: boolean;
+  cardsError: any | null;
+  reviewsData: Array<Review>;
+  reviewsLoading: boolean;
+  reviewsError: any | null;
+  userCardsData: Array<Card>;
+  userCardsLoading: boolean;
+  userCardsError: any | null;
+  fetchData: (dataType: DataTypes, selectedCardId: number) => void;
+}
 
 const withFetchData = (dataType) => (Component) => {
 
-  class WithFetchData extends React.PureComponent {
+  class WithFetchData extends React.PureComponent<Props> {
 
     componentDidMount() {
       const {fetchData, selectedCardId} = this.props;

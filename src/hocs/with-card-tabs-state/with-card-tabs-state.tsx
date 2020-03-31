@@ -1,14 +1,19 @@
 import * as React from 'react';
+import {CardMode} from '../../types';
 
+type Props = {
+  children: Array<React.ReactNode>;
+}
 
-import {CardMode} from '../../const';
-
+type State = {
+  cardMode: string;
+}
 
 const withCardTabsState = (Component) => {
 
-  class WithCardTabsState extends React.PureComponent {
+  class WithCardTabsState extends React.PureComponent<Props, State> {
 
-    constructor(props) {
+    constructor(props: Props) {
       super(props);
       this.state = {
         cardMode: `overview`,

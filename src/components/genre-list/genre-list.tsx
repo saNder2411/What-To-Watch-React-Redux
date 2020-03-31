@@ -1,25 +1,31 @@
 import * as React from 'react';
 
+import GenreListItem from '../genre-list-item/genre-list-item';
 
 import {connect} from 'react-redux';
 import {getCardsData} from '../../reducers/card-list/selectors';
 import {getGenre} from '../../reducers/card-list-state/selectors';
 
-import GenreListItem from '../genre-list-item/genre-list-item';
-
 import {DEFAULT_GENRE} from '../../const';
+import {Card, HandleWithEvt} from '../../types';
 
 
 const MAX_AMOUNT_GENRES_LABEL = 9;
 
 const createLabels = (cardsData) => {
-
   const genres = cardsData.slice().map(({genre}) => genre).sort();
 
   return [DEFAULT_GENRE, ...Array.from(new Set(genres)).slice(0, MAX_AMOUNT_GENRES_LABEL)];
 };
 
-const GenreList = ({cardsData, genre, onActiveItemClick}) => {
+
+type Props = {
+  cardsData: Array<Card>;
+  genre: string;
+  onActiveItemClick: HandleWithEvt;
+}
+
+const GenreList: React.FC<Props> = ({cardsData, genre, onActiveItemClick}) => {
 
   const labels = createLabels(cardsData);
   const items = labels.map((label) => (

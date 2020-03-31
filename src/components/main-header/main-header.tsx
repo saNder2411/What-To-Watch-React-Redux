@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import ErrorIndicator from '../error-indicator/error-indicator';
 import Header from '../header/header';
 import Logo from '../logo/logo';
@@ -11,8 +10,15 @@ import HeaderButtons from '../header-buttons/header-buttons';
 
 import {connect} from 'react-redux';
 import {getPromoCardData, getPromoError} from '../../reducers/promo-card/selectors';
+import {Card} from '../../types';
 
-const MainHeader = ({promoError, promoCardData}) => {
+
+type Props = {
+  promoError: any | null,
+  promoCardData: Card;
+}
+
+const MainHeader: React.FC<Props> = ({promoError, promoCardData}) => {
 
   if (promoError) {
     return <ErrorIndicator error={promoError} />;

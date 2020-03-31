@@ -1,7 +1,5 @@
-import React, {memo} from 'react';
-
-
-import {CardMode} from '../../const';
+import * as React from 'react';
+import {CardMode} from '../../types';
 
 
 const NuvButtonsData = [
@@ -10,7 +8,12 @@ const NuvButtonsData = [
   {name: CardMode.REVIEWS, LABEL: `Reviews`},
 ];
 
-const CardTabsNav = ({mode, onTabsNavClick}) => {
+type Props = {
+  mode: string;
+  onTabsNavClick: (evt: React.SyntheticEvent, mode: string) => void;
+}
+
+const CardTabsNav: React.FC<Props> = ({mode, onTabsNavClick}) => {
 
   const navButtons = NuvButtonsData.map(({name, LABEL}) => {
     const isActiveClass = name === mode ? `movie-nav__item--active` : ``;
@@ -37,4 +40,4 @@ const CardTabsNav = ({mode, onTabsNavClick}) => {
   );
 };
 
-export default memo(CardTabsNav);
+export default React.memo(CardTabsNav);
