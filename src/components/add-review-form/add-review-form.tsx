@@ -23,7 +23,7 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
         <React.Fragment key={`star-${i + 1}`}>
           <input className="rating__input" id={`star-${i + 1}`} type="radio" name="rating" value={i + 1}
             onChange={onRadioChange}
-            checked={rating === (i + 1) ? true : false}/>
+            checked={rating === (i + 1)}/>
           <label className="rating__label" htmlFor={`star-${i + 1}`}>Rating {i + 1}</label>
         </React.Fragment>
       );
