@@ -20,7 +20,7 @@ const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId}: 
 
   const addReviewButton = screen === Screens.CARD && isAuthorized ?
     <Link
-      to={getAppRoute(selectedCardId).REVIEW}
+      to={getAppRoute(selectedCardId.toString()).REVIEW}
       className="btn movie-card__button">
         Add review
     </Link> : null;
@@ -29,7 +29,7 @@ const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId}: 
     <div className="movie-card__buttons">
       <Link
         className="btn btn--play movie-card__button"
-        to={getAppRoute(selectedCardId).PLAYER}
+        to={getAppRoute(selectedCardId.toString()).PLAYER}
       >
         <svg viewBox="0 0 19 19" width="19" height="19">
           <use xlinkHref="#play-s"></use>

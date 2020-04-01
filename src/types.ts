@@ -97,8 +97,13 @@ enum AuthError {
   BAD_DATA_REQUEST = 400,
 };
 
+enum UserCardStatus {
+  ADD = 1,
+  DELETE = 0,
+}
+
 export {
   Card, Review, UserData, VideoProps, Error,
   HandleWithEvt, Handle,
-  DataTypes, ShowingCardsAmount, Screens, CardMode, AuthError
+  DataTypes, ShowingCardsAmount, Screens, CardMode, AuthError, UserCardStatus
 };

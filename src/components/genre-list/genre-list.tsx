@@ -28,7 +28,7 @@ type Props = {
 const GenreList: React.FC<Props> = ({cardsData, genre, onActiveItemClick}: Props) => {
 
   const labels = createLabels(cardsData);
-  const items = labels.map((label) => (
+  const items = labels.map((label: string) => (
     <GenreListItem
       key={label}
       label={label}

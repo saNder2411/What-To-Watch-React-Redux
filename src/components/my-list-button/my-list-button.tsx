@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-
 import {connect} from 'react-redux';
 import compose from '../../hocs/compose/compose';
 import withCardsService from '../../hocs/with-cards-service/with-cards-service';
@@ -11,7 +10,7 @@ import SendActions from '../../actions/send-actions/send-actions';
 
 import {getAppRoute} from '../../utils/utils';
 import {getUpdatedCardLoading, getUpdatedCardError} from '../../reducers/card-list/selectors';
-import {DataTypes, Card, Error} from '../../types';
+import {DataTypes, Card, Error, UserCardStatus} from '../../types';
 
 
 type Props = {
@@ -24,13 +23,15 @@ type Props = {
 
 const MyListButton: React.FC<Props> = ({selectedCard: {isFavorite, id}, isAuthorized, updateCard, updatedCardLoading, updatedCardError}: Props) => {
 
-  const iconButton = isFavorite ?
+  const iconButton = isFavorite ? (
     <svg viewBox="0 0 18 14" width="18" height="14">
       <use xlinkHref="#in-list"></use>
-    </svg> :
+    </svg>
+  ) : (
     <svg viewBox="0 0 19 20" width="19" height="20">
       <use xlinkHref="#add"></use>
-    </svg>;
+    </svg>
+  );
 
   const labelText = updatedCardLoading ? `Loading ...` : `My list`;
   const label = updatedCardError ? `Something has gone  wrong, try again later!` : labelText;
@@ -46,7 +47,7 @@ const MyListButton: React.FC<Props> = ({selectedCard: {isFavorite, id}, isAuthor
         }
 
         evt.preventDefault();
-        const sentData = isFavorite ? 0 : 1;
+        const sentData = isFavorite ? UserCardStatus.DELETE : UserCardStatus.ADD;
 
         if (!updatedCardLoading) {
           updateCard(DataTypes.UPDATE_CARD, sentData, id);
