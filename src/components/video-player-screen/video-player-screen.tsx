@@ -49,7 +49,7 @@ const VideoPlayerScreen: React.FC<Props> = (props: Props) => {
         {renderPlayer(videoProps)}
       </div>
 
-      <Link to={getAppRoute(selectedCard.id).CARDS}>
+      <Link to={getAppRoute(selectedCard.id.toString()).CARDS}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
 

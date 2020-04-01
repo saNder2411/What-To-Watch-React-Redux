@@ -3,8 +3,9 @@ import {CardsServiceConsumer} from '../../components/cards-service-context/cards
 
 
 const withCardsService = (Component) => {
+  type Props = React.ComponentProps<typeof Component>
 
-  const WithCardsService = (props) => {
+  const WithCardsService: React.FC<Props> = (props: Props) => {
 
     return (
       <CardsServiceConsumer>

@@ -18,7 +18,7 @@ const AddReviewBreadcrumbs: React.FC<Props> = ({title, selectedCardId}: Props) =
     <nav className="breadcrumbs">
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
-          <Link to={getAppRoute(selectedCardId).CARDS} className="breadcrumbs__link">{title}</Link>
+          <Link to={getAppRoute(selectedCardId.toString()).CARDS} className="breadcrumbs__link">{title}</Link>
         </li>
         <li className="breadcrumbs__item">
           <a className="breadcrumbs__link">Add review</a>

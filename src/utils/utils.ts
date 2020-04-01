@@ -1,17 +1,16 @@
 const Month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 const MINUTES_IN_HOUR = 60;
 
-const calcCardLevel = (ratingVal, [minVal, middleLowVal, middleVal, maxVal]) => {
-  const ratingToNum = +ratingVal;
+const calcCardLevel = (ratingVal: number, [minVal, middleLowVal, middleVal, maxVal]: Array<number>) => {
   let level = `Bad`;
 
-  if (ratingToNum >= minVal && ratingToNum <= middleLowVal) {
+  if (ratingVal >= minVal && ratingVal <= middleLowVal) {
     level = `Normal`;
-  } else if (ratingToNum >= middleLowVal && ratingToNum <= middleVal) {
+  } else if (ratingVal >= middleLowVal && ratingVal <= middleVal) {
     level = `Good`;
-  } else if (ratingToNum >= middleVal && ratingToNum < maxVal) {
+  } else if (ratingVal >= middleVal && ratingVal < maxVal) {
     level = `Very good`;
-  } else if (ratingToNum >= maxVal) {
+  } else if (ratingVal >= maxVal) {
     level = `Awesome`;
   }
 
@@ -32,7 +31,7 @@ const parseDateToStr = (date) => {
   return `${Month[month]} ${day}, ${year}`;
 };
 
-const getTimeInHoursAndMinutes = (timeInMin) => {
+const getTimeInHoursAndMinutes = (timeInMin: number) => {
   const runtime = {
     hours: `0`,
     minutes: `0`,
@@ -43,8 +42,8 @@ const getTimeInHoursAndMinutes = (timeInMin) => {
     return runtime.minutes;
   }
 
-  runtime.minutes = timeInMin % MINUTES_IN_HOUR;
-  runtime.hours = (timeInMin - runtime.minutes) / MINUTES_IN_HOUR;
+  runtime.minutes = (timeInMin % MINUTES_IN_HOUR).toString();
+  runtime.hours = ((timeInMin - (+runtime.minutes)) / MINUTES_IN_HOUR).toString();
 
   return (runtime.hours) ? `${runtime.hours}h ${runtime.minutes}m` : `${runtime.minutes}m`;
 };
