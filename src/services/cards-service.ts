@@ -1,7 +1,8 @@
 export default class CardsService {
+  private API: any;
 
   constructor(API) {
-    this._API = API;
+    this.API = API;
   }
 
   _parseCard(data) {
@@ -39,49 +40,49 @@ export default class CardsService {
 
   getPromoCard() {
 
-    return this._API.get(`/films/promo`)
+    return this.API.get(`/films/promo`)
       .then((res) => this._parseCard(res.data));
   }
 
   getCardList() {
 
-    return this._API.get(`/films`)
+    return this.API.get(`/films`)
       .then((res) => res.data.map(this._parseCard));
   }
 
   getReviews(id) {
 
-    return this._API.get(`/comments/${id}`)
+    return this.API.get(`/comments/${id}`)
       .then((res) => res.data);
   }
 
   getUserAuthStatus() {
 
-    return this._API.get(`/login`)
+    return this.API.get(`/login`)
       .then((res) => this._parseUserData(res.data));
   }
 
   sendUserData(userData) {
 
-    return this._API.post(`/login`, userData)
+    return this.API.post(`/login`, userData)
       .then((res) => this._parseUserData(res.data));
   }
 
   sendReview(id, review) {
 
-    return this._API.post(`/comments/${id}`, review)
+    return this.API.post(`/comments/${id}`, review)
       .then((res) => res.data);
   }
 
   getUserCardList() {
 
-    return this._API.get(`/favorite`)
+    return this.API.get(`/favorite`)
       .then((res) => res.data.map(this._parseCard));
   }
 
   updateFavoriteCard(id, data) {
 
-    return this._API.post(`/favorite/${id}/${data}`)
+    return this.API.post(`/favorite/${id}/${data}`)
       .then((res) => this._parseCard(res.data));
   }
 }

@@ -4,7 +4,7 @@ import {DataTypes} from '../../types';
 
 const SendActions = {
 
-  sendData: (cardsService) => (dataType, sentData, selectedCardId) => (dispatch) => {
+  sendData: (cardsService) => (dataType, sentData, selectedCardId = void 0) => (dispatch) => {
 
     switch (dataType) {
       case DataTypes.SEND_USER_AUTH_DATA:

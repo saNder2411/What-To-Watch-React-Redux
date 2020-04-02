@@ -4,7 +4,7 @@ import {DataTypes} from '../../types';
 
 const FetchActions = {
 
-  fetchData: (cardsService) => (dataType, selectedCardId) => (dispatch) => {
+  fetchData: (cardsService) => (dataType, selectedCardId = void 0) => (dispatch) => {
 
     switch (dataType) {
 

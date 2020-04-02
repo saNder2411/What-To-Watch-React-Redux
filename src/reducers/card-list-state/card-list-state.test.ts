@@ -5,6 +5,7 @@ import {ShowingCardsAmount} from '../../types';
 
 const mockGenre = `Drama`;
 
+
 const initialState = {
   cardListState: {
     genre: DEFAULT_GENRE,
@@ -21,7 +22,7 @@ describe(`Reducer card-list-state work correctly`, () => {
   });
 
   it(`Reducer should update card-list-state by action set default card-list-state`, () => {
-    expect(reducer({genre: `Drama`, showingCardsAmount: 24}, {type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE})).toEqual({
+    expect(reducer({cardListState: {genre: `Drama`, showingCardsAmount: 24}}, {type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE})).toEqual({
       genre: DEFAULT_GENRE,
       showingCardsAmount: ShowingCardsAmount.ON_START,
     });

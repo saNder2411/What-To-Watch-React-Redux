@@ -1,8 +1,8 @@
-import {createContext} from 'react';
+import * as React from 'react';
 
 const {
   Provider: CardsServiceProvider,
   Consumer: CardsServiceConsumer
-} = createContext();
+} = React.createContext(void 0);
 
 export {CardsServiceProvider, CardsServiceConsumer};
