@@ -50,6 +50,12 @@ describe(`Render HeaderButtons`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(
@@ -87,6 +93,12 @@ describe(`Render HeaderButtons`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(
@@ -124,6 +136,12 @@ describe(`Render HeaderButtons`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(

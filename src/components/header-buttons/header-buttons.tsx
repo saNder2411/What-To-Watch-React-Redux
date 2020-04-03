@@ -9,22 +9,25 @@ import ActionCreator from '../../actions/action-creator';
 
 import {getAppRoute} from '../../utils/utils';
 import {getScreen, getSelectedCardId} from '../../reducers/app-state/selectors';
+import {getIsReviewAdded} from '../../reducers/reviews/selectors';
 import {Screens} from '../../types';
+
 
 type Props = {
   screen: Screens;
   isAuthorized: boolean;
   selectedCardId: number;
+  isReviewAdded: boolean;
   setDefaultReviewAdded: () => void;
 }
 
-const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId, setDefaultReviewAdded}: Props) => {
+const HeaderButtons: React.FC<Props> = ({screen, isAuthorized, selectedCardId, isReviewAdded, setDefaultReviewAdded}: Props) => {
 
   const addReviewButton = screen === Screens.CARD && isAuthorized ?
     <Link
       className="btn movie-card__button"
       to={getAppRoute(selectedCardId.toString()).REVIEW}
-      onClick={() => setDefaultReviewAdded()}>
+      onClick={() => isReviewAdded && setDefaultReviewAdded()}>
         Add review
     </Link> : null;
 
@@ -50,6 +53,8 @@ const mapStateToProps = (state) => ({
   screen: getScreen(state),
   isAuthorized: getUserAuthStatus(state),
   selectedCardId: getSelectedCardId(state),
+  isReviewAdded: getIsReviewAdded(state),
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

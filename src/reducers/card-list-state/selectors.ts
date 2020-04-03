@@ -6,6 +6,8 @@ import {Screens} from '../../types';
 
 const getGenre = ({cardListState: {genre}}) => genre;
 
+const getMouseEnterCardId = ({cardListState: {mouseEnterCardId}}) => mouseEnterCardId;
+
 const getShowingCardsAmount = ({cardListState: {showingCardsAmount}}) => showingCardsAmount;
 
 const getFilteredCards = createSelector(
@@ -20,4 +22,4 @@ const getFilteredCards = createSelector(
     }
 );
 
-export {getGenre, getShowingCardsAmount, getFilteredCards};
+export {getGenre, getShowingCardsAmount, getFilteredCards, getMouseEnterCardId};

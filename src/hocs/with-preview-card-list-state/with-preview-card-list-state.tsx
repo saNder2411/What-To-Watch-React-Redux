@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors';
 import {getScreen} from '../../reducers/app-state/selectors';
 import {Card, HandleWithEvt, Screens, ShowingCardsAmount} from '../../types';
+import ActionCreator from '../../actions/action-creator';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
@@ -14,6 +15,7 @@ type Props = {
   showingCardsAmount: ShowingCardsAmount;
   userCards: Array<Card> | [];
   onActiveItemClick: HandleWithEvt;
+  setMouseEnterCardId: (id: number) => void;
 }
 
 type State = {
@@ -26,25 +28,22 @@ const withPreviewCardListState = (Component) => {
 
     constructor(props) {
       super(props);
-      this.state = {
-        mouseEnterCard: null,
-      };
 
       this.handlePreviewCardMouseEnter = this.handlePreviewCardMouseEnter.bind(this);
       this.handlePreviewCardMouseLeave = this.handlePreviewCardMouseLeave.bind(this);
     }
 
     private handlePreviewCardMouseEnter(evt) {
-      const {filteredCards, userCards, screen} = this.props;
-      const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : userCards;
+      const {setMouseEnterCardId} = this.props;
+      const {currentTarget: {id}} = evt;
 
-      const mouseEnterCard = cards.find(({id}) => id === +evt.currentTarget.id);
-
-      this.setState({mouseEnterCard});
+      setMouseEnterCardId(+id);
     }
 
     private handlePreviewCardMouseLeave() {
-      this.setState({mouseEnterCard: null});
+      const {setMouseEnterCardId} = this.props;
+
+      setMouseEnterCardId(-1);
     }
 
     render() {
@@ -66,7 +65,6 @@ const withPreviewCardListState = (Component) => {
       return (
         <Component
           cards={cards}
-          mouseEnterCard={this.state.mouseEnterCard}
           previewCardHandlers={[onActiveItemClick, this.handlePreviewCardMouseEnter, this.handlePreviewCardMouseLeave]}
         />
       );
@@ -79,7 +77,11 @@ const withPreviewCardListState = (Component) => {
     showingCardsAmount: getShowingCardsAmount(state),
   });
 
-  return connect(mapStateToProps)(WithPreviewCardListState);
+  const mapDispatchToProps = (dispatch) => ({
+    setMouseEnterCardId: (id) => dispatch(ActionCreator.changeMouseEnterCardId(id)),
+  });
+
+  return connect(mapStateToProps, mapDispatchToProps)(WithPreviewCardListState);
 };
 
 export default withPreviewCardListState;

@@ -56,6 +56,12 @@ describe(`Render HeaderCardDesc`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(
@@ -97,6 +103,12 @@ describe(`Render HeaderCardDesc`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(
@@ -138,6 +150,12 @@ describe(`Render HeaderCardDesc`, () => {
         updatedCardLoading: false,
         updatedCardError: null,
       },
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
+      }
     });
     const markup = renderer
       .create(

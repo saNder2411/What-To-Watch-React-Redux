@@ -47,6 +47,11 @@ const ActionCreator = {
     payload: genre,
   }),
 
+  changeMouseEnterCardId: (id) => ({
+    type: ActionTypes.CHANGE_MOUSE_ENTER_CARD_ID,
+    payload: id,
+  }),
+
   changeShowingCardsAmount: (amount) => ({
     type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT,
     payload: amount,

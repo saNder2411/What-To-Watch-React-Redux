@@ -6,22 +6,19 @@ import {Card, HandleWithEvt, Handle} from '../../types';
 
 type Props = {
   cards: Array<Card>;
-  mouseEnterCard: Card | null;
   previewCardHandlers: Array<HandleWithEvt | Handle>;
 }
 
-const PreviewCardList: React.FC<Props> = ({cards, mouseEnterCard, previewCardHandlers}: Props) => {
-
-  const WrappedPreviewCard = withVideoPlayer(PreviewCard);
+const PreviewCardList: React.FC<Props> = ({cards, previewCardHandlers}: Props) => {
 
   const previewCards = cards
     .map(({id, title, previewImage, previewVideoSrc}) => {
-      const isPlaying = mouseEnterCard !== null && mouseEnterCard.id === id;
+      const WrappedPreviewCard = withVideoPlayer(PreviewCard);
 
       return (
         <WrappedPreviewCard
           key={`${id}-${title.slice(0, 2)}`}
-          previewCardData={{id, title, previewImage, previewVideoSrc, isPlaying}}
+          previewCardData={{id, title, previewImage, previewVideoSrc}}
           previewCardHandlers={previewCardHandlers}
         />
       );
