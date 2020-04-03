@@ -1,4 +1,4 @@
-type Card = {
+export type Card = {
   id: number;
   title: string;
   posterImage: string;
@@ -18,32 +18,32 @@ type Card = {
   previewVideoSrc: string;
 }
 
-type Review = {
+export type Review = {
   id: number;
   user: {
     id: number;
     name: string;
-  }
+  };
   rating: number;
   comment: string;
   date: string;
 }
 
-type UserData = {
+export type UserData = {
   id: number;
   email: string;
   name: string;
   avatarSrc: string;
 }
 
-type Error = {
+export type Error = {
  message: string;
  response?: {
    status: number;
- }
+ };
 }
 
-type VideoProps = {
+export type VideoProps = {
   isPlaying: boolean;
   previewImage: string;
   src: string;
@@ -56,13 +56,13 @@ type VideoProps = {
   onTimeUpdate?: (secondsValue: number, percentValue: number) => void;
 }
 
-type HandleWithEvt = (evt: React.SyntheticEvent) => void;
 
-type Handle = () => void;
+export type HandleWithEvt = (evt: React.SyntheticEvent) => void;
+
+export type Handle = () => void;
 
 
-
-enum DataTypes {
+export enum DataTypes {
   FETCH_CARDS_DATA = `FETCH_CARDS_DATA`,
   FETCH_REVIEWS_DATA = `FETCH_REVIEWS_DATA`,
   FETCH_CHECK_USER_AUTH = `FETCH_CHECK_USER_AUTH`,
@@ -70,40 +70,34 @@ enum DataTypes {
   SEND_REVIEW_DATA = `SEND_REVIEW_DATA`,
   FETCH_USER_CARDS_DATA = `FETCH_USER_CARDS_DATA`,
   UPDATE_CARD = `UPDATE_CARD`,
-};
+}
 
-enum ShowingCardsAmount {
+export enum ShowingCardsAmount {
   ON_START = 8,
   BY_BUTTON = 8,
-};
+}
 
-enum Screens {
+export enum Screens {
   MAIN = `MAIN`,
   CARD = `CARD`,
   USER_LIST = `USER_LIST`,
   VIDEO_PLAYER = `VIDEO_PLAYER`,
   SIGN_IN = `SIGN_IN`,
   ADD_REVIEW = `ADD_REVIEW`,
-};
+}
 
-enum CardMode {
+export enum CardMode {
   OVERVIEW = `overview`,
   DETAILS = `details`,
   REVIEWS = `reviews`,
-};
+}
 
-enum AuthError {
+export enum AuthError {
   UNAUTHORIZED = 401,
   BAD_DATA_REQUEST = 400,
-};
+}
 
-enum UserCardStatus {
+export enum UserCardStatus {
   ADD = 1,
   DELETE = 0,
 }
-
-export {
-  Card, Review, UserData, VideoProps, Error,
-  HandleWithEvt, Handle,
-  DataTypes, ShowingCardsAmount, Screens, CardMode, AuthError, UserCardStatus
-};

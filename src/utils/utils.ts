@@ -59,7 +59,7 @@ const getAppRoute = (id = `:id`) => ({
   USER_LIST: `/userList`,
 });
 
-const noop = () => {};
+const noop = () => void 0;
 
 export {calcCardLevel, parseDateToStr, dividedArrayInHalf, getTimeInHoursAndMinutes,
   extend, getAppRoute, noop};

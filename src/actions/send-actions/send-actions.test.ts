@@ -12,7 +12,7 @@ describe(`SendActions work correctly`, () => {
         return new Promise((resolve) => resolve({fake: true}));
       }
     };
-    const sendUserDataLoader = SendActions.sendData(mockCardsService)(DataTypes.SEND_USER_AUTH_DATA);
+    const sendUserDataLoader = SendActions.sendData(mockCardsService)(DataTypes.SEND_USER_AUTH_DATA, void 0);
     const dispatch = jest.fn();
 
     return new Promise((resolve) => resolve(sendUserDataLoader(dispatch)))
@@ -35,7 +35,7 @@ describe(`SendActions work correctly`, () => {
         return new Promise((resolve) => resolve([{fake: true}]));
       }
     };
-    const sendReviewsDataLoader = SendActions.sendData(mockCardsService)(DataTypes.SEND_REVIEW_DATA);
+    const sendReviewsDataLoader = SendActions.sendData(mockCardsService)(DataTypes.SEND_REVIEW_DATA, void 0);
     const dispatch = jest.fn();
 
     return new Promise((resolve) => resolve(sendReviewsDataLoader(dispatch)))
@@ -58,7 +58,7 @@ describe(`SendActions work correctly`, () => {
         return new Promise((resolve) => resolve({fake: true}));
       }
     };
-    const sendUserCardLoader = SendActions.sendData(mockCardsService)(DataTypes.UPDATE_CARD);
+    const sendUserCardLoader = SendActions.sendData(mockCardsService)(DataTypes.UPDATE_CARD, void 0);
     const dispatch = jest.fn();
 
     return new Promise((resolve) => resolve(sendUserCardLoader(dispatch)))

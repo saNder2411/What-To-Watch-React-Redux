@@ -1,3 +1,3 @@
-const DEFAULT_GENRE: string = `All genres`;
+const DEFAULT_GENRE = `All genres`;
 
 export {DEFAULT_GENRE};
