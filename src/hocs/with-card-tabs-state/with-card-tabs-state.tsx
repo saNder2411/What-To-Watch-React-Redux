@@ -19,15 +19,15 @@ const withCardTabsState = (Component) => {
         cardMode: `overview`,
       };
 
-      this._handleTabsNavClick = this._handleTabsNavClick.bind(this);
+      this.handleTabsNavClick = this.handleTabsNavClick.bind(this);
     }
 
-    _handleTabsNavClick(evt, mode) {
+    private handleTabsNavClick(evt, mode) {
       evt.preventDefault();
       this.setState({cardMode: mode});
     }
 
-    _renderTab(cardMode) {
+    private renderTab(cardMode) {
       const {children: [CardOverview, CardDetails, WrappedCardReviews]} = this.props;
 
       switch (cardMode) {
@@ -44,8 +44,8 @@ const withCardTabsState = (Component) => {
       const {cardMode} = this.state;
 
       return (
-        <Component mode={cardMode} onTabsNavClick={this._handleTabsNavClick}>
-          {this._renderTab(cardMode)}
+        <Component mode={cardMode} onTabsNavClick={this.handleTabsNavClick}>
+          {this.renderTab(cardMode)}
         </Component>
       );
     }

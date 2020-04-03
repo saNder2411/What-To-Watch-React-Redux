@@ -7,7 +7,7 @@ import {Card, HandleWithEvt, Handle} from '../../types';
 type Props = {
   cards: Array<Card>;
   mouseEnterCard: Card | null;
-  previewCardHandlers: Array< HandleWithEvt | Handle>;
+  previewCardHandlers: Array<HandleWithEvt | Handle>;
 }
 
 const PreviewCardList: React.FC<Props> = ({cards, mouseEnterCard, previewCardHandlers}: Props) => {

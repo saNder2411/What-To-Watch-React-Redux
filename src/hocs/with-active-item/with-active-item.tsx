@@ -23,10 +23,10 @@ const withActiveItem = (Component) => {
 
     constructor(props: Props) {
       super(props);
-      this._handleActiveItemClick = this._handleActiveItemClick.bind(this);
+      this.handleActiveItemClick = this.handleActiveItemClick.bind(this);
     }
 
-    _handleActiveItemClick(evt) {
+    private handleActiveItemClick(evt) {
       evt.preventDefault();
       const {currentTarget: {id}} = evt;
       const {history, filtersCards} = this.props;
@@ -45,7 +45,7 @@ const withActiveItem = (Component) => {
     render() {
       const {userCards} = this.props;
 
-      return <Component userCards={userCards ? userCards : []} onActiveItemClick={this._handleActiveItemClick} />;
+      return <Component userCards={userCards ? userCards : []} onActiveItemClick={this.handleActiveItemClick} />;
     }
   }
 

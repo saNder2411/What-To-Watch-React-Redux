@@ -4,13 +4,13 @@ type Props = {children: Array<React.ReactNode>}
 
 const CardScreenBottom: React.FC<Props> = ({children}: Props) => {
 
-  const [WrappedPreviewCardsList, Footer] = children;
+  const [WrappedPreviewCardList, Footer] = children;
 
   return (
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        {WrappedPreviewCardsList}
+        {WrappedPreviewCardList}
       </section>
       {Footer}
     </div>

@@ -25,33 +25,33 @@ const withVideoPlayerScreenState = (Component) => {
 
       this.playerRef = React.createRef();
 
-      this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
-      this._handleVideoTimeUpdate = this._handleVideoTimeUpdate.bind(this);
-      this._handleFullScreenChange = this._handleFullScreenChange.bind(this);
-      this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
+      this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
+      this.handleVideoTimeUpdate = this.handleVideoTimeUpdate.bind(this);
+      this.handleFullScreenChange = this.handleFullScreenChange.bind(this);
+      this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
     }
 
     componentDidMount() {
-      document.addEventListener(`fullscreenchange`, this._handleFullScreenChange);
+      document.addEventListener(`fullscreenchange`, this.handleFullScreenChange);
     }
 
     componentWillUnmount() {
-      document.removeEventListener(`keydown`, this._handleFullScreenChange);
+      document.removeEventListener(`keydown`, this.handleFullScreenChange);
     }
 
-    _handlePlayButtonClick() {
+    private handlePlayButtonClick() {
       this.setState((prevState) => ({isPlaying: !prevState.isPlaying}));
     }
 
-    _handleVideoTimeUpdate(secondsValue, percentValue) {
+    private handleVideoTimeUpdate(secondsValue, percentValue) {
       this.setState({progressInSeconds: secondsValue, progressInPercent: percentValue});
     }
 
-    _handleFullScreenChange() {
+    private handleFullScreenChange() {
       this.setState((prevState) => ({isFullScreen: !prevState.isFullScreen}));
     }
 
-    _handleFullScreenButtonClick() {
+    private handleFullScreenButtonClick() {
       if (this.state.isFullScreen) {
         document.exitFullscreen();
         return;
@@ -65,9 +65,9 @@ const withVideoPlayerScreenState = (Component) => {
         <Component
           {...this.state}
           playerRef={this.playerRef}
-          onPlayButtonClick={this._handlePlayButtonClick}
-          onVideoTimeUpdate={this._handleVideoTimeUpdate}
-          onFullScreenButtonClick={this._handleFullScreenButtonClick}
+          onPlayButtonClick={this.handlePlayButtonClick}
+          onVideoTimeUpdate={this.handleVideoTimeUpdate}
+          onFullScreenButtonClick={this.handleFullScreenButtonClick}
         />
       );
     }

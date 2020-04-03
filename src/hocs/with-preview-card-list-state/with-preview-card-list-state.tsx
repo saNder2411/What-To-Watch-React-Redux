@@ -30,11 +30,11 @@ const withPreviewCardListState = (Component) => {
         mouseEnterCard: null,
       };
 
-      this._handlePreviewCardMouseEnter = this._handlePreviewCardMouseEnter.bind(this);
-      this._handlePreviewCardMouseLeave = this._handlePreviewCardMouseLeave.bind(this);
+      this.handlePreviewCardMouseEnter = this.handlePreviewCardMouseEnter.bind(this);
+      this.handlePreviewCardMouseLeave = this.handlePreviewCardMouseLeave.bind(this);
     }
 
-    _handlePreviewCardMouseEnter(evt) {
+    private handlePreviewCardMouseEnter(evt) {
       const {filteredCards, userCards, screen} = this.props;
       const cards = screen === Screens.MAIN || screen === Screens.CARD ? filteredCards : userCards;
 
@@ -43,7 +43,7 @@ const withPreviewCardListState = (Component) => {
       this.setState({mouseEnterCard});
     }
 
-    _handlePreviewCardMouseLeave() {
+    private handlePreviewCardMouseLeave() {
       this.setState({mouseEnterCard: null});
     }
 
@@ -67,7 +67,7 @@ const withPreviewCardListState = (Component) => {
         <Component
           cards={cards}
           mouseEnterCard={this.state.mouseEnterCard}
-          previewCardHandlers={[onActiveItemClick, this._handlePreviewCardMouseEnter, this._handlePreviewCardMouseLeave]}
+          previewCardHandlers={[onActiveItemClick, this.handlePreviewCardMouseEnter, this.handlePreviewCardMouseLeave]}
         />
       );
     }

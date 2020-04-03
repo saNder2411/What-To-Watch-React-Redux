@@ -1,17 +1,26 @@
 const Month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+
 const MINUTES_IN_HOUR = 60;
 
+enum RatingLevels {
+  BAD = `Bad`,
+  NORMAL = `Normal`,
+  GOOD = `Good`,
+  VERY_GOOD = `Very good`,
+  AWESOME = `Awesome`,
+}
+
 const calcCardLevel = (ratingVal: number, [minVal, middleLowVal, middleVal, maxVal]: Array<number>) => {
-  let level = `Bad`;
+  let level: RatingLevels = RatingLevels.BAD;
 
   if (ratingVal >= minVal && ratingVal <= middleLowVal) {
-    level = `Normal`;
+    level = RatingLevels.NORMAL;
   } else if (ratingVal >= middleLowVal && ratingVal <= middleVal) {
-    level = `Good`;
+    level = RatingLevels.GOOD;
   } else if (ratingVal >= middleVal && ratingVal < maxVal) {
-    level = `Very good`;
+    level = RatingLevels.VERY_GOOD;
   } else if (ratingVal >= maxVal) {
-    level = `Awesome`;
+    level = RatingLevels.AWESOME;
   }
 
   return level;

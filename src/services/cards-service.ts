@@ -1,11 +1,20 @@
+type Response = {
+  data: Array<{}>;
+}
+
+interface API {
+  get: (arg: string) => Promise<Response>;
+  post: (arg1: string, arg2: {} | void) => Promise<Response>;
+}
+
 export default class CardsService {
-  private API: any;
+  private API: API;
 
   constructor(API) {
     this.API = API;
   }
 
-  _parseCard(data) {
+  private parseCard(data) {
 
     return {
       id: data[`id`],
@@ -28,7 +37,7 @@ export default class CardsService {
     };
   }
 
-  _parseUserData(data) {
+  private parseUserData(data) {
 
     return {
       id: data[`id`],
@@ -41,13 +50,13 @@ export default class CardsService {
   getPromoCard() {
 
     return this.API.get(`/films/promo`)
-      .then((res) => this._parseCard(res.data));
+      .then((res) => this.parseCard(res.data));
   }
 
   getCardList() {
 
     return this.API.get(`/films`)
-      .then((res) => res.data.map(this._parseCard));
+      .then((res) => res.data.map(this.parseCard));
   }
 
   getReviews(id) {
@@ -59,13 +68,13 @@ export default class CardsService {
   getUserAuthStatus() {
 
     return this.API.get(`/login`)
-      .then((res) => this._parseUserData(res.data));
+      .then((res) => this.parseUserData(res.data));
   }
 
   sendUserData(userData) {
 
     return this.API.post(`/login`, userData)
-      .then((res) => this._parseUserData(res.data));
+      .then((res) => this.parseUserData(res.data));
   }
 
   sendReview(id, review) {
@@ -77,12 +86,12 @@ export default class CardsService {
   getUserCardList() {
 
     return this.API.get(`/favorite`)
-      .then((res) => res.data.map(this._parseCard));
+      .then((res) => res.data.map(this.parseCard));
   }
 
   updateFavoriteCard(id, data) {
 
     return this.API.post(`/favorite/${id}/${data}`)
-      .then((res) => this._parseCard(res.data));
+      .then((res) => this.parseCard(res.data));
   }
 }

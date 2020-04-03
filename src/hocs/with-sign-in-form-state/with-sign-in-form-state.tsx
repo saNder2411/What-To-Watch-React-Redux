@@ -42,21 +42,21 @@ const withSignInFormState = (Component) => {
         isValidEmail: true,
       };
 
-      this._handleFormSubmit = this._handleFormSubmit.bind(this);
-      this._handleInputChange = this._handleInputChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentWillUnmount() {
       this.setState({email: ``, password: ``, isValidEmail: true});
     }
 
-    _handleFormSubmit(evt) {
+    private handleFormSubmit(evt) {
       evt.preventDefault();
 
       const {authorizesUser} = this.props;
       const {email, password} = this.state;
       const formUserData = {email, password};
-      const isValidEmail = this._checkValidEmail(email);
+      const isValidEmail = this.checkValidEmail(email);
 
       if (isValidEmail) {
         authorizesUser(DataTypes.SEND_USER_AUTH_DATA, formUserData);
@@ -67,12 +67,12 @@ const withSignInFormState = (Component) => {
       this.setState({email: ``, password: ``, isValidEmail});
     }
 
-    _handleInputChange(evt) {
+    private handleInputChange(evt) {
       const {type, value} = evt.target;
       this.setState({[type]: value});
     }
 
-    _checkValidEmail(email) {
+    private checkValidEmail(email) {
 
       return EMAIL_REGEXP.test(email);
     }
@@ -84,8 +84,8 @@ const withSignInFormState = (Component) => {
         <Component
           {...this.state}
           error={userDataError}
-          onInputChange={this._handleInputChange}
-          onFormSubmit={this._handleFormSubmit}
+          onInputChange={this.handleInputChange}
+          onFormSubmit={this.handleFormSubmit}
         />;
 
       if (isAuthorized) {

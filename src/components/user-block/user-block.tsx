@@ -14,13 +14,15 @@ type Props = {
 }
 
 const UserBlock: React.FC<Props> = ({isAuthorized, userData: {avatarSrc}}: Props) => {
-  const content = isAuthorized ?
+  const content = isAuthorized ? (
     <Link to={getAppRoute().USER_LIST}>
       <div className="user-block__avatar">
         <img src={`https://htmlacademy-react-3.appspot.com/${avatarSrc}`} alt="User avatar" width="63" height="63" />
       </div>
-    </Link> :
-    <Link to={getAppRoute().LOGIN} className="user-block__link">Sign in</Link>;
+    </Link>
+  ) : (
+    <Link to={getAppRoute().LOGIN} className="user-block__link">Sign in</Link>
+  );
 
   return (
     <div className="user-block">

@@ -11,7 +11,7 @@ const SignInErrorMessage: React.FC<Props> = ({error, isValidEmail}: Props) => {
 
   const badValidEmailMessage = !isValidEmail ? <p>Please enter a valid email address</p> : null;
 
-  const badDataMessage = error && error.response.status === AuthError.BAD_DATA_REQUEST ? (
+  const badDataMessage = error && error.response && error.response.status === AuthError.BAD_DATA_REQUEST ? (
     <p>We can’t recognize this email <br/> and password combination. Please try again.</p>
   ) : null;
 

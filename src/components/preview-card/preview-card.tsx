@@ -18,7 +18,7 @@ type PreviewCard = {
 
 type Props = {
   previewCardData: PreviewCard;
-  previewCardHandlers: Array< HandleWithEvt | Handle>;
+  previewCardHandlers: Array<HandleWithEvt | Handle>;
   renderPlayer: (videoProps: VideoProps) => React.ReactNode;
 }
 

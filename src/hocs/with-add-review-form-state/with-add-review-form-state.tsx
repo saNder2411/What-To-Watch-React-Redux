@@ -39,12 +39,12 @@ const withAddReviewFormState = (Component) => {
         comment: ``,
       };
 
-      this._handleFormSubmit = this._handleFormSubmit.bind(this);
-      this._handleRadioChange = this._handleRadioChange.bind(this);
-      this._handleTextareaChange = this._handleTextareaChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.handleRadioChange = this.handleRadioChange.bind(this);
+      this.handleTextareaChange = this.handleTextareaChange.bind(this);
     }
 
-    _handleFormSubmit(evt) {
+    private handleFormSubmit(evt) {
       evt.preventDefault();
       const {selectedCardId, sendReview} = this.props;
       const reviewData = this.state;
@@ -56,13 +56,13 @@ const withAddReviewFormState = (Component) => {
       });
     }
 
-    _handleRadioChange(evt) {
+    private handleRadioChange(evt) {
       const rating = +evt.target.value;
 
       this.setState({rating});
     }
 
-    _handleTextareaChange(evt) {
+    private handleTextareaChange(evt) {
       const {value} = evt.target;
 
       this.setState({comment: value});
@@ -80,9 +80,9 @@ const withAddReviewFormState = (Component) => {
           rating={rating}
           comment={comment}
           error={reviewsError}
-          onFormSubmit={this._handleFormSubmit}
-          onRadioChange={this._handleRadioChange}
-          onTextareaChange={this._handleTextareaChange}
+          onFormSubmit={this.handleFormSubmit}
+          onRadioChange={this.handleRadioChange}
+          onTextareaChange={this.handleTextareaChange}
         />;
     }
   }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {calcCardLevel} from '../../utils/utils';
 
 
-const CardLevelValues = [3, 5, 8, 10];
+const RatingRangeLevels = [3, 5, 8, 10];
 
 type Props = {
   description: string;
@@ -14,7 +14,7 @@ type Props = {
 
 const CardOverview: React.FC<Props> = ({description, rating, scoresCount, director, starring}: Props) => {
 
-  const cardLevel = calcCardLevel(rating, CardLevelValues);
+  const cardLevel = calcCardLevel(rating, RatingRangeLevels);
 
   return (
     <React.Fragment>
