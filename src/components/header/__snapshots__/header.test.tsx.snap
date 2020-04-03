@@ -54,7 +54,7 @@ Array [
         >
           <a
             className="breadcrumbs__link"
-            href="/cards/1"
+            href="/cards/1/"
             onClick={[Function]}
           >
             Bohemian Rhapsody
@@ -76,7 +76,7 @@ Array [
     >
       <a
         className="user-block__link"
-        href="/login"
+        href="/login/"
         onClick={[Function]}
       >
         Sign in
@@ -134,7 +134,7 @@ Array [
     >
       <a
         className="user-block__link"
-        href="/login"
+        href="/login/"
         onClick={[Function]}
       >
         Sign in
@@ -192,7 +192,7 @@ Array [
     >
       <a
         className="user-block__link"
-        href="/login"
+        href="/login/"
         onClick={[Function]}
       >
         Sign in

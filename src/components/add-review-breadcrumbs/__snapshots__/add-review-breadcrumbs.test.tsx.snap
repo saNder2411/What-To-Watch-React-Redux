@@ -12,7 +12,7 @@ exports[`Should AddReviewBreadcrumbs render correctly 1`] = `
     >
       <a
         className="breadcrumbs__link"
-        href="/cards/1"
+        href="/cards/1/"
         onClick={[Function]}
       >
         Titanic

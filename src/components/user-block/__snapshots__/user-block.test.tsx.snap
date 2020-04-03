@@ -5,7 +5,7 @@ exports[`Render UserBlock Should UserBlock render correctly when user authorizat
   className="user-block"
 >
   <a
-    href="/userList"
+    href="/userList/"
     onClick={[Function]}
   >
     <div
@@ -28,7 +28,7 @@ exports[`Render UserBlock Should UserBlock render correctly when user no authori
 >
   <a
     className="user-block__link"
-    href="/login"
+    href="/login/"
     onClick={[Function]}
   >
     Sign in

@@ -38,6 +38,8 @@ const ActionCreator = {
     payload: error,
   }),
 
+  setDefaultReviewAdded: () => ({type: ActionTypes.SET_DEFAULT_REVIEW_ADDED}),
+
   setDefaultCardListState: () => ({type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE}),
 
   changeGenre: (genre) => ({

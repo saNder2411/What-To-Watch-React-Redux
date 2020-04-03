@@ -50,7 +50,7 @@ exports[`Should MainHeader render correctly 1`] = `
     >
       <a
         className="user-block__link"
-        href="/login"
+        href="/login/"
         onClick={[Function]}
       >
         Sign in
@@ -100,7 +100,7 @@ exports[`Should MainHeader render correctly 1`] = `
         >
           <a
             className="btn btn--play movie-card__button"
-            href="/player/1"
+            href="/player/1/"
             onClick={[Function]}
           >
             <svg
@@ -118,7 +118,7 @@ exports[`Should MainHeader render correctly 1`] = `
           </a>
           <a
             className="btn btn--list movie-card__button"
-            href="/login"
+            href="/login/"
             onClick={[Function]}
           >
             <svg

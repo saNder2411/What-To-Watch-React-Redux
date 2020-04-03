@@ -59,7 +59,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
           >
             <a
               className="breadcrumbs__link"
-              href="/cards/1"
+              href="/cards/1/"
               onClick={[Function]}
             >
               Bohemian Rhapsody
@@ -80,7 +80,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
         className="user-block"
       >
         <a
-          href="/userList"
+          href="/userList/"
           onClick={[Function]}
         >
           <div

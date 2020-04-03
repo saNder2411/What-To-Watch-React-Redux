@@ -61,6 +61,7 @@ const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, change
         }} />
       <Route
         path={getAppRoute().PLAYER}
+        exact
         render={({match}) => {
           const {id} = match.params;
           changeAppScreen(Screens.VIDEO_PLAYER);
@@ -70,6 +71,7 @@ const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, change
         }} />
       <Route
         path={getAppRoute().LOGIN}
+        exact
         render={() => {
           changeAppScreen(Screens.SIGN_IN);
 
@@ -77,6 +79,7 @@ const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, change
         }} />
       <Route
         path={getAppRoute().REVIEW}
+        exact
         render={({match}) => {
           const {id} = match.params;
           changeAppScreen(Screens.ADD_REVIEW);
@@ -86,10 +89,18 @@ const App: React.FC<Props> = ({promoCardData, cardsData, changeAppScreen, change
         }} />
       <Route
         path={getAppRoute().USER_LIST}
+        exact
         render={() => {
           changeAppScreen(Screens.USER_LIST);
 
           return <UserListScreen />;
+        }} />
+      <Route
+        render={() => {
+          changeAppScreen(Screens.MAIN);
+          changeSelectedCardId(promoCardData.id);
+
+          return <Main />;
         }} />
     </Switch>
   );

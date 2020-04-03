@@ -2,6 +2,8 @@ const getReviewsData = ({reviews: {reviewsData}}) => reviewsData;
 
 const getReviewsLoading = ({reviews: {reviewsLoading}}) => reviewsLoading;
 
+const getIsReviewAdded = ({reviews: {isReviewAdded}}) => isReviewAdded;
+
 const getReviewsError = ({reviews: {reviewsError}}) => reviewsError;
 
-export {getReviewsData, getReviewsLoading, getReviewsError};
+export {getReviewsData, getReviewsLoading, getIsReviewAdded, getReviewsError};

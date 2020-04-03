@@ -41,7 +41,7 @@ exports[`Should SignInScreen render correctly 1`] = `
       className="user-block"
     >
       <a
-        href="/userList"
+        href="/userList/"
         onClick={[Function]}
       >
         <div

@@ -61,11 +61,11 @@ const extend = (a, ...b) => Object.assign({}, a, ...b);
 
 const getAppRoute = (id = `:id`) => ({
   ROOT: `/`,
-  CARDS: `/cards/${id}`,
-  PLAYER: `/player/${id}`,
-  LOGIN: `/login`,
-  REVIEW: `/cards/${id}/review`,
-  USER_LIST: `/userList`,
+  CARDS: `/cards/${id}/`,
+  PLAYER: `/player/${id}/`,
+  LOGIN: `/login/`,
+  REVIEW: `/cards/${id}/review/`,
+  USER_LIST: `/userList/`,
 });
 
 const noop = () => void 0;

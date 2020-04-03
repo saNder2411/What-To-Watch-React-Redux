@@ -6,7 +6,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in CardScree
 >
   <a
     className="btn btn--play movie-card__button"
-    href="/player/1"
+    href="/player/1/"
     onClick={[Function]}
   >
     <svg
@@ -24,7 +24,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in CardScree
   </a>
   <a
     className="btn btn--list movie-card__button"
-    href="/login"
+    href="/login/"
     onClick={[Function]}
   >
     <svg
@@ -49,7 +49,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in CardScree
 >
   <a
     className="btn btn--play movie-card__button"
-    href="/player/1"
+    href="/player/1/"
     onClick={[Function]}
   >
     <svg
@@ -67,7 +67,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in CardScree
   </a>
   <a
     className="btn btn--list movie-card__button"
-    href="/login"
+    href="/login/"
     onClick={[Function]}
   >
     <svg
@@ -85,7 +85,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in CardScree
   </a>
   <a
     className="btn movie-card__button"
-    href="/cards/1/review"
+    href="/cards/1/review/"
     onClick={[Function]}
   >
     Add review
@@ -99,7 +99,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in Main 1`] 
 >
   <a
     className="btn btn--play movie-card__button"
-    href="/player/1"
+    href="/player/1/"
     onClick={[Function]}
   >
     <svg
@@ -117,7 +117,7 @@ exports[`Render HeaderButtons Should HeaderButtons render correctly in Main 1`] 
   </a>
   <a
     className="btn btn--list movie-card__button"
-    href="/login"
+    href="/login/"
     onClick={[Function]}
   >
     <svg

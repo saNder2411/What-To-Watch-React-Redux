@@ -10,7 +10,7 @@ exports[`Should Main render correctly 1`] = `
     />
   </div>
   <a
-    href="/cards/1"
+    href="/cards/1/"
     onClick={[Function]}
   >
     <button

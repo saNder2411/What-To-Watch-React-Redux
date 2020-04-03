@@ -3,7 +3,7 @@
 exports[`Should Logo render correctly in CardScreen Header 1`] = `
 <a
   className="btn btn--list movie-card__button"
-  href="/login"
+  href="/login/"
   onClick={[Function]}
 >
   <svg

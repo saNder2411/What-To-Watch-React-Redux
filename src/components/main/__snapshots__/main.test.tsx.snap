@@ -51,7 +51,7 @@ Array [
       >
         <a
           className="user-block__link"
-          href="/login"
+          href="/login/"
           onClick={[Function]}
         >
           Sign in
@@ -101,7 +101,7 @@ Array [
           >
             <a
               className="btn btn--play movie-card__button"
-              href="/player/1"
+              href="/player/1/"
               onClick={[Function]}
             >
               <svg
@@ -119,7 +119,7 @@ Array [
             </a>
             <a
               className="btn btn--list movie-card__button"
-              href="/login"
+              href="/login/"
               onClick={[Function]}
             >
               <svg

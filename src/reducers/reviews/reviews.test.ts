@@ -32,6 +32,7 @@ const initialState = {
   reviews: {
     reviewsData: [],
     reviewsLoading: false,
+    isReviewAdded: false,
     reviewsError: null,
   }
 };
@@ -41,6 +42,7 @@ describe(`Reducer reviews work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       reviewsData: [],
       reviewsLoading: false,
+      isReviewAdded: false,
       reviewsError: null,
     });
   });
@@ -50,6 +52,7 @@ describe(`Reducer reviews work correctly`, () => {
       .toEqual({
         reviewsData: [],
         reviewsLoading: true,
+        isReviewAdded: false,
         reviewsError: null,
       });
   });
@@ -59,6 +62,7 @@ describe(`Reducer reviews work correctly`, () => {
       .toEqual({
         reviewsData: mockReviewsData,
         reviewsLoading: false,
+        isReviewAdded: true,
         reviewsError: null,
       });
   });
@@ -68,7 +72,25 @@ describe(`Reducer reviews work correctly`, () => {
       .toEqual({
         reviewsData: [],
         reviewsLoading: false,
+        isReviewAdded: false,
         reviewsError: mockError,
+      });
+  });
+
+  it(`Reducer should update is review added by set default review added`, () => {
+    expect(reducer({
+      reviews: {
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: true,
+        reviewsError: null,
+      }
+    }, {type: ActionTypes.SET_DEFAULT_REVIEW_ADDED}))
+      .toEqual({
+        reviewsData: [],
+        reviewsLoading: false,
+        isReviewAdded: false,
+        reviewsError: null,
       });
   });
 });

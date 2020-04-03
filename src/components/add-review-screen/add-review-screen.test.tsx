@@ -55,6 +55,7 @@ const store = mockStore({
   },
   reviews: {
     reviewsData: [],
+    isReviewAdded: false,
     reviewsLoading: false,
     reviewsError: null,
   }

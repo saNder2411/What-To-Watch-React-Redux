@@ -6,6 +6,7 @@ const initialState = {
   reviews: {
     reviewsData: [],
     reviewsLoading: false,
+    isReviewAdded: false,
     reviewsError: null,
   }
 };
@@ -18,6 +19,7 @@ const updateReviews = (state = initialState, action) => {
           {
             reviewsData: [],
             reviewsLoading: true,
+            isReviewAdded: false,
             reviewsError: null,
           });
 
@@ -26,6 +28,7 @@ const updateReviews = (state = initialState, action) => {
           {
             reviewsData: action.payload,
             reviewsLoading: false,
+            isReviewAdded: true,
             reviewsError: null,
           });
 
@@ -34,8 +37,12 @@ const updateReviews = (state = initialState, action) => {
           {
             reviewsData: [],
             reviewsLoading: false,
+            isReviewAdded: false,
             reviewsError: action.payload,
           });
+
+    case ActionTypes.SET_DEFAULT_REVIEW_ADDED:
+      return extend(state.reviews, {isReviewAdded: false});
 
     default:
       return state.reviews;

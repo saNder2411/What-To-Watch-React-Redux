@@ -117,6 +117,10 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for set default card list state returns correct action`, () => {
+    expect(ActionCreator.setDefaultReviewAdded()).toEqual({type: ActionTypes.SET_DEFAULT_REVIEW_ADDED});
+  });
+
+  it(`Action creator for set default card list state returns correct action`, () => {
     expect(ActionCreator.setDefaultCardListState()).toEqual({type: ActionTypes.SET_DEFAULT_CARD_LIST_STATE});
   });
 

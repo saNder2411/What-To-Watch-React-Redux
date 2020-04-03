@@ -70,6 +70,7 @@ const store = mockStore({
   reviews: {
     reviewsData: [],
     reviewsLoading: false,
+    isReviewAdded: false,
     reviewsError: null,
   }
 });
