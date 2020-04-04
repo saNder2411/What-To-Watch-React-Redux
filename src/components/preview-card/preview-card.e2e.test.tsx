@@ -1,22 +1,9 @@
 import * as React from 'react';
-import {configure, mount} from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import PreviewCard from './preview-card';
 
 configure({adapter: new Adapter()});
-
-const mockStore = configureStore([thunk]);
-
-const store = mockStore({
-  cardListState: {
-    genre: `All genre`,
-    mouseEnterCardId: -1,
-    showingCardsAmount: 8,
-  },
-});
 
 const mock = {
   id: 1,
@@ -26,7 +13,7 @@ const mock = {
 };
 
 const mockEvt = {
-  target: {
+  currentTarget: {
     id: mock.id,
   },
 };
@@ -38,34 +25,32 @@ const renderPlayer = jest.fn();
 
 it(`When you hover over the card, the id of the card enters the handler`, () => {
   const {id} = mock;
-  const previewCard = mount(
-      <Provider store={store}>
-        <PreviewCard
-          previewCardData={mock}
-          previewCardHandlers={[onClick, onMouseEnter, onMouseLeave]}
-          renderPlayer={renderPlayer}
-        />
-      </Provider>
+  const previewCard = shallow(
+      <PreviewCard
+        isPlaying={false}
+        previewCardData={mock}
+        previewCardHandlers={[onClick, onMouseEnter, onMouseLeave]}
+        renderPlayer={renderPlayer}
+      />
   );
 
-  previewCard.find(`.small-movie-card`).simulate(`mouseenter`, mockEvt);
+  previewCard.simulate(`mouseenter`, mockEvt);
 
   expect(onMouseEnter.mock.calls.length).toBe(1);
-  expect(onMouseEnter.mock.calls[0][0]).toHaveProperty(`target.id`, id);
+  expect(onMouseEnter.mock.calls[0][0]).toHaveProperty(`currentTarget.id`, id);
 });
 
 it(`Should call onPreviewCardClick when preview card be pressed`, () => {
-  const previewCard = mount(
-      <Provider store={store}>
-        <PreviewCard
-          previewCardData={mock}
-          previewCardHandlers={[onClick, onMouseEnter, onMouseLeave]}
-          renderPlayer={renderPlayer}
-        />
-      </Provider>
+  const previewCard = shallow(
+      <PreviewCard
+        isPlaying={false}
+        previewCardData={mock}
+        previewCardHandlers={[onClick, onMouseEnter, onMouseLeave]}
+        renderPlayer={renderPlayer}
+      />
   );
 
-  previewCard.find(`.small-movie-card`).simulate(`click`);
+  previewCard.simulate(`click`);
 
   expect(onClick.mock.calls.length).toBe(1);
 });

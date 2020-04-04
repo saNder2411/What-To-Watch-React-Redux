@@ -128,10 +128,6 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.changeGenre(mockGenre)).toEqual({type: ActionTypes.CHANGE_GENRE, payload: mockGenre});
   });
 
-  it(`Action creator for change mouse enter card id returns correct action`, () => {
-    expect(ActionCreator.changeMouseEnterCardId(10)).toEqual({type: ActionTypes.CHANGE_MOUSE_ENTER_CARD_ID, payload: 10});
-  });
-
   it(`Action creator for change showing cards amount returns correct action`, () => {
     expect(ActionCreator.changeShowingCardsAmount(8)).toEqual({type: ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT, payload: 8});
   });

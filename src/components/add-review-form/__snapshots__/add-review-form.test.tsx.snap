@@ -98,7 +98,24 @@ exports[`Should AddReviewForm render correctly 1`] = `
       </div>
     </div>
     <div
+      className="sign-in__message"
+      style={
+        Object {
+          "color": "#866866",
+        }
+      }
+    >
+      <p>
+        Please enter a valid email address
+      </p>
+    </div>
+    <div
       className="add-review__text"
+      style={
+        Object {
+          "boxShadow": "0 0 8px 4px #D36987",
+        }
+      }
     >
       <textarea
         className="add-review__textarea"
@@ -108,6 +125,17 @@ exports[`Should AddReviewForm render correctly 1`] = `
         placeholder="Review text"
         value=""
       />
+      <div
+        className="add-review__submit"
+      >
+        <button
+          className="add-review__btn"
+          disabled={true}
+          type="submit"
+        >
+          Post
+        </button>
+      </div>
     </div>
   </form>
 </div>

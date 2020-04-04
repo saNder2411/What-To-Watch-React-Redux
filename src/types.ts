@@ -18,6 +18,13 @@ export type Card = {
   previewVideoSrc: string;
 }
 
+export type PreviewCardData = {
+  id: number;
+  title: string;
+  previewImage: string;
+  previewVideoSrc: string;
+}
+
 export type Review = {
   id: number;
   user: {

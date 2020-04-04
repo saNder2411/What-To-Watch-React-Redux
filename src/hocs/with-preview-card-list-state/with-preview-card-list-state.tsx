@@ -1,10 +1,8 @@
 import * as React from 'react';
-
 import {connect} from 'react-redux';
 import {getShowingCardsAmount, getFilteredCards} from '../../reducers/card-list-state/selectors';
 import {getScreen} from '../../reducers/app-state/selectors';
 import {Card, HandleWithEvt, Screens, ShowingCardsAmount} from '../../types';
-import ActionCreator from '../../actions/action-creator';
 
 
 const MAX_AMOUNT_SIMILAR_CARD = 4;
@@ -15,39 +13,14 @@ type Props = {
   showingCardsAmount: ShowingCardsAmount;
   userCards: Array<Card> | [];
   onActiveItemClick: HandleWithEvt;
-  setMouseEnterCardId: (id: number) => void;
-}
-
-type State = {
-  mouseEnterCard: Card | null;
 }
 
 const withPreviewCardListState = (Component) => {
 
-  class WithPreviewCardListState extends React.PureComponent<Props, State> {
+  class WithPreviewCardListState extends React.PureComponent<Props> {
 
-    constructor(props) {
-      super(props);
-
-      this.handlePreviewCardMouseEnter = this.handlePreviewCardMouseEnter.bind(this);
-      this.handlePreviewCardMouseLeave = this.handlePreviewCardMouseLeave.bind(this);
-    }
-
-    private handlePreviewCardMouseEnter(evt) {
-      const {setMouseEnterCardId} = this.props;
-      const {currentTarget: {id}} = evt;
-
-      setMouseEnterCardId(+id);
-    }
-
-    private handlePreviewCardMouseLeave() {
-      const {setMouseEnterCardId} = this.props;
-
-      setMouseEnterCardId(-1);
-    }
-
-    render() {
-      const {filteredCards, screen, showingCardsAmount, userCards, onActiveItemClick} = this.props;
+    private getPreviewCardList() {
+      const {filteredCards, screen, showingCardsAmount, userCards} = this.props;
       let cards = [];
 
       switch (screen) {
@@ -62,12 +35,13 @@ const withPreviewCardListState = (Component) => {
           break;
       }
 
-      return (
-        <Component
-          cards={cards}
-          previewCardHandlers={[onActiveItemClick, this.handlePreviewCardMouseEnter, this.handlePreviewCardMouseLeave]}
-        />
-      );
+      return cards;
+    }
+
+    render() {
+      const {onActiveItemClick} = this.props;
+
+      return <Component cards={this.getPreviewCardList()} previewCardHandlers={[onActiveItemClick]} />;
     }
   }
 
@@ -77,11 +51,7 @@ const withPreviewCardListState = (Component) => {
     showingCardsAmount: getShowingCardsAmount(state),
   });
 
-  const mapDispatchToProps = (dispatch) => ({
-    setMouseEnterCardId: (id) => dispatch(ActionCreator.changeMouseEnterCardId(id)),
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithPreviewCardListState);
+  return connect(mapStateToProps)(WithPreviewCardListState);
 };
 
 export default withPreviewCardListState;

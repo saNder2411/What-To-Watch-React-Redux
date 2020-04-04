@@ -42,16 +42,17 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
             {radioItems}
           </div>
         </div>
-
-        <div className="add-review__text">
+        <div className="sign-in__message" style={{color: `#866866`}}>
+          <p>Please enter a valid email address</p>
+        </div>
+        <div className="add-review__text" style={{boxShadow: `0 0 8px 4px #D36987`}}>
           <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"
             value={comment}
             onChange={onTextareaChange}>
           </textarea>
-          {isValidForm ? (
-            <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
-            </div>) : null}
+          <div className="add-review__submit">
+            <button className="add-review__btn" type="submit" disabled={!isValidForm}>Post</button>
+          </div>
         </div>
         {error ? <ErrorIndicator error={error} /> : null}
       </form>

@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {getMouseEnterCardId} from '../../reducers/card-list-state/selectors';
-import {VideoProps, HandleWithEvt, Handle} from '../../types';
+import {PreviewCardData, VideoProps, HandleWithEvt, Handle} from '../../types';
 
 
 const PreviewVideoOptions = {
@@ -11,25 +9,17 @@ const PreviewVideoOptions = {
   IS_DELAY: true,
 };
 
-type PreviewCard = {
-  id: number;
-  title: string;
-  previewImage: string;
-  previewVideoSrc: string;
-}
-
 type Props = {
-  mouseEnterCardId: number;
-  previewCardData: PreviewCard;
+  isPlaying: boolean;
+  previewCardData: PreviewCardData;
   previewCardHandlers: Array<HandleWithEvt | Handle>;
   renderPlayer: (videoProps: VideoProps) => React.ReactNode;
 }
 
-const PreviewCard: React.FC<Props> = ({mouseEnterCardId, previewCardData, previewCardHandlers, renderPlayer}: Props) => {
+const PreviewCard: React.FC<Props> = ({isPlaying, previewCardData, previewCardHandlers, renderPlayer}: Props) => {
 
   const {id, title, previewImage, previewVideoSrc} = previewCardData;
   const [onPreviewCardClick, onPreviewCardMouseEnter, onPreviewCardMouseLeave] = previewCardHandlers;
-  const isPlaying = mouseEnterCardId === id;
 
   const videoProps = {
     isPlaying,
@@ -61,8 +51,4 @@ const PreviewCard: React.FC<Props> = ({mouseEnterCardId, previewCardData, previe
   );
 };
 
-const mapStateToProps = (state) => ({
-  mouseEnterCardId: getMouseEnterCardId(state),
-});
-
-export default connect(mapStateToProps)(React.memo(PreviewCard));
+export default React.memo(PreviewCard);

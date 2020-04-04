@@ -1,19 +1,22 @@
 import * as React from 'react';
 
 import PreviewCard from '../preview-card/preview-card';
+
+import compose from '../../hocs/compose/compose';
+import withPreviewCardState from '../../hocs/with-preview-card-state/with-preview-card-state';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
-import {Card, HandleWithEvt, Handle} from '../../types';
+import {Card, HandleWithEvt} from '../../types';
 
 type Props = {
   cards: Array<Card>;
-  previewCardHandlers: Array<HandleWithEvt | Handle>;
+  previewCardHandlers: Array<HandleWithEvt>;
 }
 
 const PreviewCardList: React.FC<Props> = ({cards, previewCardHandlers}: Props) => {
 
   const previewCards = cards
     .map(({id, title, previewImage, previewVideoSrc}) => {
-      const WrappedPreviewCard = withVideoPlayer(PreviewCard);
+      const WrappedPreviewCard = compose(withPreviewCardState, withVideoPlayer)(PreviewCard);
 
       return (
         <WrappedPreviewCard

@@ -7,7 +7,6 @@ import {ShowingCardsAmount} from '../../types';
 const initialState = {
   cardListState: {
     genre: DEFAULT_GENRE,
-    mouseEnterCardId: -1,
     showingCardsAmount: ShowingCardsAmount.ON_START,
   }
 };
@@ -19,15 +18,11 @@ const updateCardListState = (state = initialState, action) => {
       return extend(state.cardListState,
           {
             genre: DEFAULT_GENRE,
-            mouseEnterCardId: -1,
             showingCardsAmount: ShowingCardsAmount.ON_START,
           });
 
     case ActionTypes.CHANGE_GENRE:
       return extend(state.cardListState, {genre: action.payload});
-
-    case ActionTypes.CHANGE_MOUSE_ENTER_CARD_ID:
-      return extend(state.cardListState, {mouseEnterCardId: action.payload});
 
     case ActionTypes.CHANGE_SHOWING_CARDS_AMOUNT:
       return extend(state.cardListState,
