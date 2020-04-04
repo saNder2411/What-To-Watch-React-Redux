@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should PreviewCard render correctly 1`] = `
+exports[`Render PreviewCard Should PreviewCard render correctly with video 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   id="1"
@@ -15,7 +15,62 @@ exports[`Should PreviewCard render correctly 1`] = `
       alt="Bohemian Rhapsody"
       height="175"
       src="bohemian-rhapsody"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
       width="280"
+    />
+    <div
+      style={
+        Object {
+          "display": "",
+        }
+      }
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="movie-page.html"
+    >
+      Bohemian Rhapsody
+    </a>
+  </h3>
+</article>
+`;
+
+exports[`Render PreviewCard Should PreviewCard render correctly without video 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  id="1"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt="Bohemian Rhapsody"
+      height="175"
+      src="bohemian-rhapsody"
+      style={
+        Object {
+          "display": "",
+        }
+      }
+      width="280"
+    />
+    <div
+      style={
+        Object {
+          "display": "none",
+        }
+      }
     />
   </div>
   <h3

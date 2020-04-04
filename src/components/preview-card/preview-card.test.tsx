@@ -15,21 +15,42 @@ const previewCardHandlers = [noop, noop, noop];
 
 const renderPlayer = () => [];
 
-it(`Should PreviewCard render correctly`, () => {
-  const markup = renderer.create(
-      <PreviewCard
-        isPlaying={false}
-        previewCardData={previewCardData}
-        previewCardHandlers={previewCardHandlers}
-        renderPlayer={renderPlayer}
-      />,
-      {
-        createNodeMock: () => {
-          return {};
+describe(`Render PreviewCard`, () => {
+  it(`Should PreviewCard render correctly without video`, () => {
+    const markup = renderer.create(
+        <PreviewCard
+          isPlaying={false}
+          previewCardData={previewCardData}
+          previewCardHandlers={previewCardHandlers}
+          renderPlayer={renderPlayer}
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
         }
-      }
-  )
-  .toJSON();
+    )
+    .toJSON();
 
-  expect(markup).toMatchSnapshot();
+    expect(markup).toMatchSnapshot();
+  });
+
+  it(`Should PreviewCard render correctly with video`, () => {
+    const markup = renderer.create(
+        <PreviewCard
+          isPlaying={true}
+          previewCardData={previewCardData}
+          previewCardHandlers={previewCardHandlers}
+          renderPlayer={renderPlayer}
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    )
+    .toJSON();
+
+    expect(markup).toMatchSnapshot();
+  });
 });

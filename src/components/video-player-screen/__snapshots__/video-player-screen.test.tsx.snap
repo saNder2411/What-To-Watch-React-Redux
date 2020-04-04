@@ -4,11 +4,9 @@ exports[`Should Main render correctly 1`] = `
 <div
   className="player"
 >
-  <div>
-    <video
-      className="player__video"
-    />
-  </div>
+  <video
+    className="player__video"
+  />
   <a
     href="/cards/1/"
     onClick={[Function]}

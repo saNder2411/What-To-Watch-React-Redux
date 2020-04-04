@@ -31,8 +31,7 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
       return item;
     });
 
-    const badValidMessage = !isValidForm ? <p>Please rate the film and leave your review (at least 50 characters).</p> : null;
-
+  const badValidMessage = !isValidForm ? <p>Please rate the film and leave your review (at least 50 characters).</p> : null;
 
   return (
     <div className="add-review">
@@ -44,7 +43,7 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
             {radioItems}
           </div>
         </div>
-        <div className="sign-in__message" style={{color: `rgba(56, 44, 42, 0.8)`, padding: `5px`, height: `50px`,}}>
+        <div className="sign-in__message" style={{color: `rgba(56, 44, 42, 0.8)`, padding: `5px`, height: `50px`}}>
           {badValidMessage}
         </div>
         <div className="add-review__text" style={{boxShadow: !isValidForm ? `0 0 8px 4px rgba(135, 0, 0, 0.5)` : ``}}>
