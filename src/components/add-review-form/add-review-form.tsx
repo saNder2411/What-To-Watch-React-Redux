@@ -13,9 +13,10 @@ type Props = {
   onFormSubmit: HandleWithEvt;
   onRadioChange: HandleWithEvt;
   onTextareaChange: HandleWithEvt;
+  onTextareaKeyDown: (evt: React.SyntheticEvent, isValidForm: boolean) => void;
 }
 
-const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange}: Props) => {
+const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, onFormSubmit, onRadioChange, onTextareaChange, onTextareaKeyDown}: Props) => {
 
   const radioItems = new Array(MAX_RATING).fill(``)
     .map((item, i) => {
@@ -48,6 +49,7 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
         </div>
         <div className="add-review__text" style={{boxShadow: !isValidForm ? `0 0 8px 4px rgba(135, 0, 0, 0.5)` : ``}}>
           <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"
+            onKeyDown={(evt) => onTextareaKeyDown(evt, isValidForm)}
             value={comment}
             onChange={onTextareaChange}>
           </textarea>

@@ -230,6 +230,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
           id="review-text"
           name="review-text"
           onChange={[Function]}
+          onKeyDown={[Function]}
           placeholder="Review text"
           value=""
         />

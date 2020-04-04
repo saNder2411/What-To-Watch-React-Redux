@@ -46,6 +46,7 @@ const withAddReviewFormState = (Component) => {
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleRadioChange = this.handleRadioChange.bind(this);
       this.handleTextareaChange = this.handleTextareaChange.bind(this);
+      this.handleTextareaKeyDown = this.handleTextareaKeyDown.bind(this);
     }
 
     private handleFormSubmit(evt) {
@@ -68,6 +69,15 @@ const withAddReviewFormState = (Component) => {
       this.setState({comment: value});
     }
 
+    private handleTextareaKeyDown(evt, isValidForm) {
+      const isCtrlKey = evt.ctrlKey;
+      const isEnterKey = evt.key === `Enter`;
+
+      if (isCtrlKey && isEnterKey && isValidForm) {
+        this.handleFormSubmit(evt);
+      }
+    }
+
     render() {
       const {rating, comment} = this.state;
       const isValidForm = rating > 0 && comment.length >= ReviewLengthRange.MIN && comment.length <= ReviewLengthRange.MAX;
@@ -87,6 +97,7 @@ const withAddReviewFormState = (Component) => {
           onFormSubmit={this.handleFormSubmit}
           onRadioChange={this.handleRadioChange}
           onTextareaChange={this.handleTextareaChange}
+          onTextareaKeyDown={this.handleTextareaKeyDown}
         />;
     }
   }
