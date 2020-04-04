@@ -31,6 +31,8 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
       return item;
     });
 
+    const badValidMessage = !isValidForm ? <p>Please rate the film and leave your review (at least 50 characters).</p> : null;
+
 
   return (
     <div className="add-review">
@@ -42,16 +44,16 @@ const AddReviewForm: React.FC<Props> = ({isValidForm, rating, comment, error, on
             {radioItems}
           </div>
         </div>
-        <div className="sign-in__message" style={{color: `#866866`}}>
-          <p>Please enter a valid email address</p>
+        <div className="sign-in__message" style={{color: `rgba(56, 44, 42, 0.8)`, padding: `5px`, height: `50px`,}}>
+          {badValidMessage}
         </div>
-        <div className="add-review__text" style={{boxShadow: `0 0 8px 4px #D36987`}}>
+        <div className="add-review__text" style={{boxShadow: !isValidForm ? `0 0 8px 4px rgba(135, 0, 0, 0.5)` : ``}}>
           <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"
             value={comment}
             onChange={onTextareaChange}>
           </textarea>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={!isValidForm}>Post</button>
+            <button className="add-review__btn" type="submit" disabled={!isValidForm} style={{opacity: !isValidForm ? `0.5` : ``}}>Post</button>
           </div>
         </div>
         {error ? <ErrorIndicator error={error} /> : null}

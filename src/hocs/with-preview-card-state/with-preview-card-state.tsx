@@ -25,11 +25,9 @@ const withPreviewCardState = (Component) => {
       this.handlePreviewCardMouseLeave = this.handlePreviewCardMouseLeave.bind(this);
     }
 
-    private handlePreviewCardMouseEnter(evt) {
-      const {previewCardData} = this.props;
-      const {currentTarget: {id}} = evt;
+    private handlePreviewCardMouseEnter() {
 
-      this.setState({isPlaying: +id === previewCardData.id});
+      this.setState({isPlaying: true});
     }
 
     private handlePreviewCardMouseLeave() {

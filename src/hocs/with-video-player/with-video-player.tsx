@@ -12,6 +12,7 @@ const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends React.PureComponent<Props> {
 
     private renderPlayer(props) {
+
       return <VideoPlayer {...props}/>;
     }
 

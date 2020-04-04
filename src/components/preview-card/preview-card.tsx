@@ -40,7 +40,10 @@ const PreviewCard: React.FC<Props> = ({isPlaying, previewCardData, previewCardHa
       onMouseLeave={onPreviewCardMouseLeave}
     >
       <div className="small-movie-card__image">
-        {isPlaying ? renderPlayer(videoProps) : <img src={previewImage} alt={title} width="280" height="175" />}
+        <img style={{display: isPlaying ? `none` : ``}} src={previewImage} alt={title} width="280" height="175" />
+        <div style={{display: !isPlaying ? `none` : ``}}>
+          {renderPlayer(videoProps)}
+        </div>
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">

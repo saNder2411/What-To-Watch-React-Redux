@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import PreviewCard from '../preview-card/preview-card';
-
 import compose from '../../hocs/compose/compose';
 import withPreviewCardState from '../../hocs/with-preview-card-state/with-preview-card-state';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
+
+import PreviewCard from '../preview-card/preview-card';
+
 import {Card, HandleWithEvt} from '../../types';
 
 type Props = {

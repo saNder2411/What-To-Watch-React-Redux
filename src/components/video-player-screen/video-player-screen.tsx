@@ -44,10 +44,8 @@ const VideoPlayerScreen: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className="player" >
-      <div ref={playerRef}>
-        {renderPlayer(videoProps)}
-      </div>
+    <div ref={playerRef} className="player" >
+      {renderPlayer(videoProps)}
 
       <Link to={getAppRoute(selectedCard.id.toString()).CARDS}>
         <button type="button" className="player__exit">Exit</button>

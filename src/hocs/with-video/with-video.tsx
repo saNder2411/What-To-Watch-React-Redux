@@ -67,6 +67,10 @@ const withVideo = (Component) => {
       } else {
         video.pause();
       }
+
+      if (this.props.isDelay && !this.props.isPlaying) {
+        video.load();
+      }
     }
 
     componentWillUnmount() {
