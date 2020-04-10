@@ -2,13 +2,16 @@
   "name": "what-to-watch",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://saNder2411.github.io/what-to-watch",
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
     "eslint": "eslint --config .eslintrc-ts.yml --ext .tsx --ext .ts src/",
     "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "25.1.4",
@@ -24,6 +27,7 @@
     "eslint": "5.13.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-plugin-react": "7.18.3",
+    "gh-pages": "2.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "25.1.0",
     "react-test-renderer": "16.12.0",
