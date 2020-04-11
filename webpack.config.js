@@ -7,7 +7,7 @@ module.exports = {
     path: path.join(__dirname, `build`)
   },
   devServer: {
-    contentBase: path.join(__dirname, `build`),
+    contentBase: path.join(__dirname, `public`),
     open: true,
     port: 1339,
     historyApiFallback: true,
