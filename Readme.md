@@ -1,1 +1,1 @@
-# what-to-watch
+# What-To-Watch
