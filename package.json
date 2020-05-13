@@ -2,7 +2,7 @@
   "name": "what-to-watch",
   "version": "1.0.0",
   "private": true,
-  "homepage": "http://saNder2411.github.io/what-to-watch",
+  "homepage": "http://saNder2411.github.io/What-To-Watch-React-Redux",
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
     "eslint": "eslint --config .eslintrc-ts.yml --ext .tsx --ext .ts src/",
