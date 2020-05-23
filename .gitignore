@@ -15,3 +15,10 @@ node_modules/
 public/
 bundle.js
 bundle.js.map
+
+# production
+/build
+.firebase
+.firebaserc
+firebase.json
+database.rules.json
